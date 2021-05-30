@@ -1,0 +1,54 @@
+ 2 _exit { int exit_code } void noreturn
+ 3 open { char* path, int flags, int mode } int
+ 4 read { int fd, void* data, size_t len } ssize_t
+ 5 write { int fd, const void* data, size_t len } ssize_t
+ 6 fork { } pid_t
+ 7 top { int show_threads } int
+ 8 getpid { } pid_t
+ 9 gettid { } pid_t
+10 execve frame { char* program, args argv, args envp } int
+12 socket { int domain, int type, int protocol } int
+15 syscall_trace { pid_t pid, int state } int
+16 bind { int fd, const struct sockaddr* addr, socklen_t addr_len } int
+17 connect { int sock, const struct sockaddr* addr, socklen_t addr_len } int
+18 send { int sock, const void* buf, size_t len, int flags } ssize_t
+19 sendto { int sock, const void* buf, size_t len, int flags, const struct sockaddr* remote, socklen_t addr_len } ssize_t
+20 recv { int sock, void* buf, size_t len, int flags } ssize_t
+21 recvfrom { int sock, void* buf, size_t len, int flags, struct sockaddr* remote, socklen_t* addr_len } ssize_t
+22 waitpid { pid_t pid, int* exit_code, enum wait_options options } int
+23 dup2 { int fd_dest, int fd_src } int
+24 uname { struct utsname* uname } int
+25 yield { } int
+26 seek { int fd, off_t offset, int whence } off_t
+27 poll { struct pollfd* pollfd, nfds_t nfds, int timeout } int
+28 mmap { void* addr, size_t len, int prot, int flags, int fd, off_t offset } void*
+29 munmap { void* addr, size_t len } int
+31 setpgid { pid_t pid, pid_t pgid } int
+32 exit_group { int exit_code } void noreturn
+33 clone0 frame { clone_fn* fn, void* new_stack, int flags, void* arg } pid_t
+34 loadmod { int fd } int
+35 haltvm { int exit_code } int noreturn
+36 openat { int fd, const char* name, int flags } int
+37 execveat frame { int fd, char* program, args argv, args envp } int
+38 ttyctl { int fd, int command, int arg } int
+39 close { int fd } int
+40 pipe { int* pipefds } int
+41 sigaction { int sig, sighandler_t handler, int flags } sighandler_t
+42 sigreturn { int code } int noreturn
+43 kill { pid_t pid, int dig } int
+44 sleepms { int ms } int
+45 readdir { int fd, struct ng_dirent* buf, size_t count } ssize_t
+46 xtime { } long
+47 create { const char* executable } pid_t
+48 procstate { pid_t pid, enum procstate flags } int
+49 fault { enum fault_type fault } int
+50 trace { enum trace_command cmd, pid_t pid, void* addr, void* data } int
+51 sigprocmask { int op, const sigset_t* new, sigset_t* old } int
+52 unlink { const char* pathname } int
+53 chmod { const char* path, mode_t mode } int
+54 fchmod { int fd, mode_t mode } int
+55 listen { int fd, int backlog } int
+56 accept { int fd, struct sockaddr* addr, socklen_t* addr_len } int
+57 traceback { pid_t tid, char* buffer, size_t len } int
+58 exit_thread { int exit_code } void noreturn
+59 fstat { int fd, struct stat* statbuf } int

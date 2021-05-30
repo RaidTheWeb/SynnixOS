@@ -1,0 +1,22 @@
+# built files
+*.iso
+*.elf
+*.o
+
+init.tar
+
+# toolchain files
+*.tar.gz
+
+# beta
+exp/
+
+# build files
+build-x86_64/
+dep/
+
+# system root
+sysroot/
+
+# stubs
+last_output
