@@ -6,7 +6,7 @@ all: synnixos.iso
 MP_INFO = $(info $(1))
 MKISO ?= grub-mkrescue
 PARALLEL ?= $(shell nproc)
-SYNNIXOS_VERSION ?= 0.1.0
+SYNNIXOS_VERSION ?= $(shell cat version)
 export SYNNIXOS_VERSION
 
 include build.mk
