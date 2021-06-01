@@ -439,7 +439,7 @@ void bootstrap_usermode(const char *init_filename) {
 
     th->entry = new_userspace_entry;
     th->entry_arg = (void *)init_filename;
-    th->cwd = fs_path("/bin");
+    th->cwd = fs_path("/home");
 
     proc->mmap_base = USER_MMAP_BASE;
     proc->vm_root = vmm_fork(proc);

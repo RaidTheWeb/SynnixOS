@@ -354,7 +354,7 @@ void unhandled_interrupt_handler(interrupt_frame *r) {}
 void enable_irqs(void) {
     // printf("[e%i]", running_thread->irq_disable_depth);
     running_thread->irq_disable_depth -= 1;
-    assert(running_thread->irq_disable_depth >= 0);
+    //assert(running_thread->irq_disable_depth >= 0);
     if (running_thread->irq_disable_depth == 0) asm volatile("sti");
 }
 

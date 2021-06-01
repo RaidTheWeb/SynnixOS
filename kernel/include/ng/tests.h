@@ -4,6 +4,6 @@
 
 #include <basic.h>
 
-void run_all_tests(void);
+void run_all_tests(int init_time);
 
 #endif // NG_TESTS_H

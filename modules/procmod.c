@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 void module_procfile(struct open_file *ofd, void *_) {
-    proc_sprintf(ofd, "Hello World from a kernel module\n");
+    proc_sprintf(ofd, "Hello there :)\n");
 }
 
 int modinit(struct mod *_) {

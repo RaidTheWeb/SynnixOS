@@ -119,7 +119,7 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     load_kernel_elf(mb_elf_tag());
     pci_enumerate_bus_and_print();
     procfs_init();
-    run_all_tests();
+    run_all_tests((rdtsc() - tsc));
     bootstrap_usermode("/bin/init");
 
     printf(banner);

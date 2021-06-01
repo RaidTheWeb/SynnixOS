@@ -3,7 +3,7 @@
 require 'optparse'
 
 options = {
-  file: "ngos.iso",
+  file: "synnixos.iso",
   ram: "32M",
   serial: true,
   tee: true,
@@ -31,7 +31,7 @@ QEMU = "qemu-system-x86_64"
 
 qemu_command = [
   QEMU,
-  "-s",
+  #"-s",
   "-vga std",
   "-no-reboot",
   "-m #{options[:ram]}",

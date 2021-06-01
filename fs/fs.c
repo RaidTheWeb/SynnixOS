@@ -409,6 +409,18 @@ struct file *dev_null = &(struct file){
     .mode = USR_READ | USR_WRITE,
 };
 
+/*
+struct file_ops dev_rtw_ops = {
+    .read = dev_rtw_read,
+};
+
+struct file *dev_rtw = &(struct file){
+    .ops = &dev_rtw_ops,
+    .type = FT_CHARDEV,
+    .mode = USR_READ,
+};
+*/
+
 void vfs_boot_file_setup(void) {
     wq_init(&dev_zero->readq);
     wq_init(&dev_serial.file.readq);
@@ -421,10 +433,13 @@ void vfs_init(uintptr_t initfs_len) {
     vfs_boot_file_setup();
 
     struct file *dev = make_directory(fs_root, "dev");
+    printf("vfs: creating /proc directory in root node\n");
     make_directory(fs_root, "proc");
 
+    printf("vfs: creating devfs\n");
     add_dir_file(dev, dev_zero, "zero");
     add_dir_file(dev, dev_null, "null");
+    //add_dir_file(dev, dev_rtw, "rtw");
     add_dir_file(dev, &dev_serial.file, "serial");
     add_dir_file(dev, &dev_serial2.file, "serial2");
 
@@ -433,6 +448,7 @@ void vfs_init(uintptr_t initfs_len) {
 
     struct file *tar_file;
     uintptr_t next_tar;
+    printf("vfs: populating fs with data from tarfs\n");
     while (tar->filename[0]) {
         size_t len = tar_convert_number(tar->size);
         int mode = tar_convert_number(tar->mode);
@@ -467,9 +483,5 @@ void vfs_init(uintptr_t initfs_len) {
         tar = (void *)next_tar;
     }
 
-    // fs_tree();
-    // struct file *test = fs_path("/usr/bin/init");
-    // printf("%p\n", test);
-
-    printf("vfs: filesystem initialized\n");
+    printf("vfs: READY\n");
 }

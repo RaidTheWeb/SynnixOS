@@ -67,20 +67,21 @@ void run_spalloc_test() {
 
 static unsigned long int next = 1;
  
-int rand_num( int max )
+int randn( int max ) // RAND_MAX assumed to be 32767
 {
     next = next * 1103515245 + 12345;
     return (unsigned int)(next / 65536) % (max+1);
 }
  
-void seed_rand_num( unsigned int seed )
+void srand( unsigned int seed )
 {
     next = seed;
 }
 
-char* get_motd() {
-
-    switch (rand_num(5))
+char* get_motd(int init_time) {
+    srand(init_time);
+    int random = randn(5);
+    switch (random)
     {
     case 0:
         return "This is a motd";
@@ -89,10 +90,10 @@ char* get_motd() {
         return "Someone is speaking well of you, How unusual!";
         break;
     case 2:
-        return "The cow is nothing but a machine which makes grass for for us people to eat.";
+        return "The cow is nothing but a machine which makes grass suitable for us people to eat.";
         break;
     case 3:
-        return "The Fifth Rule: You have taken yourself to seriously.";
+        return "The Fifth Rule: You have taken yourself too seriously.";
         break;
     case 4:
         return "Never make any misteaks";
@@ -104,10 +105,10 @@ char* get_motd() {
     }
 }
 
-void run_all_tests() {
+void run_all_tests(int init_time) {
     run_sync_tests();
     run_spalloc_test();
-    kthread_create(motd_kernel_thread, get_motd());
+    kthread_create(motd_kernel_thread, get_motd(init_time));
     // kthread_create(test_sleepy_thread, NULL);
 
     for (int i = 0; i < 50; i++) {

@@ -9,6 +9,16 @@
 #include <sys/ttyctl.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <nightingale.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <unistd.h>
+
+void completely_destroy_array(char* array) {
+    memset(array, 0, strlen(array));
+}
 
 int eval_pipeline(struct pipeline *pipeline) {
     pid_t last_child = -1;
@@ -82,6 +92,57 @@ int eval_pipeline(struct pipeline *pipeline) {
                 dup2(fd, STDERR_FILENO);
                 close(fd);
             }
+
+            /* 
+            /BIN SEARCH PATH
+            */
+            int fd = open("/bin", O_RDONLY);
+
+            struct ng_dirent dirent_buf[128];
+            int entries = readdir(fd, dirent_buf, 128);
+
+            for (int i = 0; i < entries; i++) {
+                struct ng_dirent *entry = &dirent_buf[i];
+                if(strcmp(entry->name, c->argv[0]) == 0) {
+                    char path[128] = { "" };
+                    char bin[6];
+                    char executable[16];
+                    strcpy(bin, "/bin/");
+                    strcpy(executable, c->argv[0]);
+                    strcat(path, bin);
+                    strcat(path, executable);
+                    completely_destroy_array(bin);
+                    completely_destroy_array(executable);
+                    execve(path, c->argv, NULL);
+                    perror("execve");
+                    exit(126);
+                }
+            }
+
+            /*
+            /USR/BIN SEARCH PATH
+            */
+            int usrfd = open("/usr/bin", O_RDONLY);
+
+            struct ng_dirent usrdirent_buf[128];
+            int usrentries = readdir(usrfd, usrdirent_buf, 128);
+
+            for (int i = 0; i < usrentries; i++) {
+                struct ng_dirent *entry = &usrdirent_buf[i];
+                if(strcmp(entry->name, c->argv[0]) == 0) {
+                    char usrpath[128] = { "" };
+                    char usrbin[10];
+                    char usrexecutable[16];
+                    strcpy(usrbin, "/usr/bin/");
+                    strcpy(usrexecutable, c->argv[0]);
+                    strcat(usrpath, usrbin);
+                    strcat(usrpath, usrexecutable);
+                    execve(usrpath, c->argv, NULL);
+                    perror("execve");
+                    exit(126);
+                }
+            }
+
 
             execve(c->argv[0], c->argv, NULL);
             perror("execve");

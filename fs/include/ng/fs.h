@@ -188,5 +188,6 @@ ssize_t dev_zero_read(struct open_file *n, void *data, size_t len);
 ssize_t dev_null_read(struct open_file *n, void *data, size_t len);
 ssize_t dev_null_write(struct open_file *n, const void *data, size_t len);
 ssize_t dev_inc_read(struct open_file *n, void *data_, size_t len);
+ssize_t dev_rtw_read(struct open_file *n, void *data, size_t len);
 
 #endif // NG_FS_H

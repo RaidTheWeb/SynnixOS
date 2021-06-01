@@ -15,3 +15,8 @@ ssize_t dev_null_write(struct open_file *n, const void *data, size_t len) {
 ssize_t dev_null_read(struct open_file *n, void *data, size_t len) {
     return 0;
 }
+
+ssize_t dev_rtw_read(struct open_file *n, void *data, size_t len) {
+    strcpy(data, "hello there user ;)");
+    return 0;
+}

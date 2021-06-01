@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include <sys/utsname.h>
 #include <unistd.h>
+#include <nightingale.h>
+
+noreturn void help(const char *progname) {
+    fprintf(stderr,
+            "%s: usage %s [-hasnrvm]\n",
+            progname, progname);
+    fprintf(stderr,
+            "  -h            Show this help\n"
+            "  -a            Print all uname data\n"
+            "  -s            Print system name\n"
+            "  -n            Print node name\n"
+            "  -r            Print release data\n"
+            "  -v            Print version data\n"
+            "  -m            Print machine data\n");
+    exit(0);
+}
 
 int main(int argc, char **argv) {
     struct utsname buf;
@@ -26,7 +42,8 @@ int main(int argc, char **argv) {
         case 'r': prints |= RELEASE; break;
         case 'v': prints |= VERSION; break;
         case 'm': prints |= MACHINE; break;
-        case '?': printf("Help todo\n"); exit(EXIT_FAILURE);
+        case 'h': // FALLTHROUGH :)
+        case '?': help(argv[0]);
         }
     }
 
