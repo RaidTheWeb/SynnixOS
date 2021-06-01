@@ -32,9 +32,9 @@ help:
 	@echo ""
 	@echo "all				build all"
 	@echo "build.mk			generate makefile for building"
-	@echo "sysroot			create sysroot and migrate executables and header files"
+	@echo "sysroot				create sysroot and migrate executables and header files"
 	@echo "init.tar			build initfs"
-	@echo "synnixos.iso		build ISO file"
+	@echo "synnixos.iso			build ISO file"
 
 sysroot: $(shell find . -name '*.h') $(shell find user -not -name '*.c')
 	./scripts/install_headers.bash

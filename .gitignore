@@ -20,3 +20,6 @@ sysroot/
 
 # stubs
 last_output
+
+# hscripts
+*.hscript.md
