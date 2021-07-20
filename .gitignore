@@ -7,6 +7,10 @@ init.tar
 
 # toolchain files
 *.tar.gz
+toolchain/binutils-2.33.1
+toolchain/build-binutils
+toolchain/build-gcc
+toolchain/gcc-9.2.0
 
 # beta
 exp/

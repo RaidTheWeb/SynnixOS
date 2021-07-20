@@ -113,6 +113,7 @@ int sscanf(const char *s, const char *format, ...) {
     exit(1);
 }
 
+/*
 int rand(void) {
     printf("called unimplemented function rand\n");
     exit(1);
@@ -122,6 +123,7 @@ void srand(unsigned int seed) {
     printf("called unimplemented function srand\n");
     exit(1);
 }
+*/
 
 char *tmpnam(char *s) {
     printf("called unimplemented function tmpnam\n");
