@@ -1,6 +1,6 @@
 #include <dirent.h>
 #include <fcntl.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -12,7 +12,6 @@ void check_err(int code, const char *message) {
     }
 }
 
-// clang-format off
 const char filetype_sigils[] = {
     [FT_DIRECTORY] = '/',
     [FT_BUFFER]    = ' ',
@@ -23,9 +22,8 @@ const char filetype_sigils[] = {
     [FT_PROC]      = '%',
     [FT_PROC_THREAD] = '$',
 };
-// clang-format on
 
-char ft_sigil(struct ng_dirent *dirent) {
+char ft_sigil(struct snx_dirent *dirent) {
     int type = dirent->type;
     int perm = dirent->mode;
     if (type == FT_BUFFER && (perm & USR_EXEC)) {
@@ -70,12 +68,12 @@ int main(int argc, char **argv) {
     }
     check_err(fd, "open");
 
-    struct ng_dirent dirent_buf[128];
+    struct snx_dirent dirent_buf[128];
     int entries = readdir(fd, dirent_buf, 128);
     check_err(entries, "readdir");
 
     for (int i = 0; i < entries; i++) {
-        struct ng_dirent *entry = &dirent_buf[i];
+        struct snx_dirent *entry = &dirent_buf[i];
         if (entry->name[0] == '.') {
             if (!all) continue;
         }

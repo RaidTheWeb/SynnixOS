@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -98,11 +98,11 @@ int eval_pipeline(struct pipeline *pipeline) {
             */
             int fd = open("/bin", O_RDONLY);
 
-            struct ng_dirent dirent_buf[128];
+            struct snx_dirent dirent_buf[128];
             int entries = readdir(fd, dirent_buf, 128);
 
             for (int i = 0; i < entries; i++) {
-                struct ng_dirent *entry = &dirent_buf[i];
+                struct snx_dirent *entry = &dirent_buf[i];
                 if(strcmp(entry->name, c->argv[0]) == 0) {
                     char path[128] = { "" };
                     char bin[6];
@@ -124,11 +124,11 @@ int eval_pipeline(struct pipeline *pipeline) {
             */
             int usrfd = open("/usr/bin", O_RDONLY);
 
-            struct ng_dirent usrdirent_buf[128];
+            struct snx_dirent usrdirent_buf[128];
             int usrentries = readdir(usrfd, usrdirent_buf, 128);
 
             for (int i = 0; i < usrentries; i++) {
-                struct ng_dirent *entry = &usrdirent_buf[i];
+                struct snx_dirent *entry = &usrdirent_buf[i];
                 if(strcmp(entry->name, c->argv[0]) == 0) {
                     char usrpath[128] = { "" };
                     char usrbin[10];

@@ -1,7 +1,7 @@
 #include <basic.h>
 #include <list.h>
-#include <ng/sync.h>
-#include <ng/thread.h>
+#include <snx/sync.h>
+#include <snx/thread.h>
 #include <stdatomic.h>
 #include <x86/interrupt.h>
 

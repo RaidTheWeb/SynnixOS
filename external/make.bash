@@ -2,7 +2,7 @@
 # set -x
 function build() {
     cd lua
-    CC=~/.local/bin/x86_64-nightingale-gcc SYSUSR=../../../sysroot/usr CFLAGS="-g -static" LDFLAGS="-g -static" make -j 8
+    CC=~/.local/bin/x86_64-synnixos-gcc SYSUSR=../../../sysroot/usr CFLAGS="-g -static" LDFLAGS="-g -static" make -j 8
     SYSUSR=../../../sysroot/usr make install
     cd -
 }

@@ -10,7 +10,7 @@ alias rq='r32'
 alias rw='r64'
 
 export BUILD_LUA=1
-export NG_NET=1
+export SNX_NET=1
 
 function mk() {
     make32 &

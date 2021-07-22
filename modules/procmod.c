@@ -1,6 +1,6 @@
 #include <basic.h>
-#include <ng/fs.h>
-#include <ng/mod.h>
+#include <snx/fs.h>
+#include <snx/mod.h>
 #include <stdio.h>
 #include <stdlib.h>
 

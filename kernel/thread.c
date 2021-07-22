@@ -2,22 +2,22 @@
 #include <basic.h>
 #include <elf.h>
 #include <errno.h>
-#include <ng/cpu.h>
-#include <ng/debug.h>
-#include <ng/dmgr.h>
-#include <ng/fs.h>
-#include <ng/memmap.h>
-#include <ng/mutex.h>
-#include <ng/panic.h>
-#include <ng/signal.h>
-#include <ng/string.h>
-#include <ng/sync.h>
-#include <ng/syscall.h>
-#include <ng/syscalls.h>
-#include <ng/tarfs.h>
-#include <ng/thread.h>
-#include <ng/timer.h>
-#include <ng/vmm.h>
+#include <snx/cpu.h>
+#include <snx/debug.h>
+#include <snx/dmgr.h>
+#include <snx/fs.h>
+#include <snx/memmap.h>
+#include <snx/mutex.h>
+#include <snx/panic.h>
+#include <snx/signal.h>
+#include <snx/string.h>
+#include <snx/sync.h>
+#include <snx/syscall.h>
+#include <snx/syscalls.h>
+#include <snx/tarfs.h>
+#include <snx/thread.h>
+#include <snx/timer.h>
+#include <snx/vmm.h>
 #include <setjmp.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -54,7 +54,7 @@ void thread_done_irqsdisabled(void);
 struct process proc_zero = {
     .pid = 0,
     .magic = PROC_MAGIC,
-    .comm = "<nightingale>",
+    .comm = "<synnixos>",
     .vm_root = (uintptr_t)&boot_pt_root,
     .parent = NULL,
     .children = LIST_INIT(proc_zero.children),
@@ -706,7 +706,6 @@ sysret sys_execveat(struct interrupt_frame *frame, int dir_fd, char *filename,
 
 static void close_open_fd(void *fd) {
     struct open_file *ofd = fd;
-    // printf("closing '%s'\n", ofd->file->filename);
     do_close_open_file(ofd);
 }
 
@@ -718,7 +717,6 @@ static void destroy_child_process(struct process *proc) {
     assert(child_thread == ZOMBIE);
     dmgr_drop(&threads, proc->pid);
 
-    // ONE OF THESE IS WRONG
     assert(list_empty(&proc->threads));
     list_remove(&proc->siblings);
 

@@ -288,8 +288,8 @@ void fail(const char *message);
 #ifdef __kernel__
 int elf_verify(const Elf_Ehdr *elf);
 int elf_load(elf_md *e);
-extern elf_md elf_ngk_md;
-#include <ng/multiboot2.h>
+extern elf_md elf_snxk_md;
+#include <snx/multiboot2.h>
 void load_kernel_elf(multiboot_tag_elf_sections *);
 #endif
 

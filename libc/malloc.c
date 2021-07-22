@@ -10,12 +10,12 @@
 #include <string.h>
 
 #ifdef __kernel__
-#include <ng/debug.h>
-#include <ng/fs.h>
-#include <ng/mutex.h>
-#include <ng/panic.h>
-#include <ng/syscall.h>
-#include <ng/vmm.h>
+#include <snx/debug.h>
+#include <snx/fs.h>
+#include <snx/mutex.h>
+#include <snx/panic.h>
+#include <snx/syscall.h>
+#include <snx/vmm.h>
 #else // ! __kernel__
 #include <sys/mman.h>
 #define gassert assert

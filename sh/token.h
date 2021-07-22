@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NG_SH_TOKEN_H
-#define NG_SH_TOKEN_H
+#ifndef SNX_SH_TOKEN_H
+#define SNX_SH_TOKEN_H
 
 #include "list.h" // <list.h>
 #include <stdbool.h>
@@ -8,11 +8,6 @@
 #include <sys/types.h>
 
 enum token_type {
-    // These must be sorted so prefixes appear later.
-    // '>>' will match '>' twice, so '>>' must be first.
-    // This affects the ordering of the token_info struct
-    // in token.c, which in turn is the order these are
-    // tested against the input string.
     TOKEN_OR,        // '||'
     TOKEN_AND,       // '&&'
     TOKEN_PIPE,      // '|'
@@ -42,4 +37,4 @@ bool tokenize(const char *string, list_head *out);
 char *token_strdup(struct token *t);
 char *token_strcpy(char *dest, struct token *t);
 
-#endif // NG_SH_TOKEN_H
+#endif

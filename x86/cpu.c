@@ -1,6 +1,6 @@
 #include <basic.h>
-#include <ng/debug.h>
-#include <ng/thread.h>
+#include <snx/debug.h>
+#include <snx/thread.h>
 #include <stdio.h>
 #include <x86/cpu.h>
 

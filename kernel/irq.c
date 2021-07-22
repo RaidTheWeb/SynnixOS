@@ -1,6 +1,6 @@
 #include <basic.h>
 #include <list.h>
-#include <ng/irq.h>
+#include <snx/irq.h>
 #include <stdlib.h>
 
 bool handlers_init = false;

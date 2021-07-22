@@ -7,7 +7,7 @@
 #include <stdnoreturn.h>
 
 #if __kernel__
-#include <ng/mutex.h>
+#include <snx/mutex.h>
 #endif
 
 #define EXIT_SUCCESS (0)
@@ -80,21 +80,7 @@ void heap_free(struct mheap *, void *alloc);
 void *heap_realloc(struct mheap *, void *alloc, size_t len);
 void *heap_calloc(struct mheap *, size_t count, size_t len);
 
-/*
-void *__location_malloc(size_t len, const char *location);
-void *__location_zmalloc(size_t len, const char *location);
-void *__location_realloc(void *allocation, size_t len, const char *location);
-void __location_free(void *allocation, const char *location);
-
-#if _NC_LOCATION_MALLOC
-#define malloc(length) __location_malloc(length, __FILE__ ":" QUOTE(__LINE__));
-#define zmalloc(length) __location_zmalloc(length, __FILE__ ":" QUOTE(__LINE__));
-#define realloc(allocation, length) __location_realloc(allocation, length, __FILE__ ":" QUOTE(__LINE__));
-#define free(allocation) __location_free(allocation, __FILE__ ":" QUOTE(__LINE__));
-#endif
-*/
-
-#ifndef _NG
+#ifndef _SNX
 
 int abs(int x);
 long labs(long x);
@@ -146,6 +132,6 @@ int atexit(void (*fn)(void));
 int system(const char *command);
 int mkstemp(char *name);
 
-#endif // !_NG
+#endif
 
 #endif // _STDLIB_H_

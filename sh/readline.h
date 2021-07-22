@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NG_SH_READLINE_H
-#define NG_SH_READLINE_H
+#ifndef SNX_SH_READLINE_H
+#define SNX_SH_READLINE_H
 
 #include <basic.h>
 #include <stdio.h>
@@ -19,4 +19,4 @@ void load_history_line(char *buf, long *ix, struct history_item *);
 long read_line_interactive(char *buf, size_t max_len);
 long read_line_simple(FILE *file, char *buf, size_t limit);
 
-#endif // NG_SH_READLINE_H
+#endif

@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 #ifdef __kernel__
-#include <ng/serial.h>
+#include <snx/serial.h>
 #define STDOUT_FILENO 1
 #endif // ifndef __kernel__
 

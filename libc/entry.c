@@ -1,5 +1,5 @@
 #include <fcntl.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

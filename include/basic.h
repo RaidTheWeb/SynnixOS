@@ -46,7 +46,7 @@
 #endif // __cplusplus
 
 #ifdef __kernel__
-#include <ng/ubsan.h>
+#include <snx/ubsan.h>
 static_assert(__STDC_HOSTED__ != 1);
 #define KB (1024)
 #define MB (KB * KB)
@@ -75,15 +75,13 @@ static_assert(__STDC_HOSTED__ != 1);
 #define noinline __NOINLINE
 #endif
 
-// find a better place for this to live
 typedef int clone_fn(void *);
 
-// GCC stack smasking protection
 extern uintptr_t __stack_chk_guard;
 
 void __stack_chk_fail(void);
 
-// nice-to-haves
+// haha
 static inline intptr_t max(intptr_t a, intptr_t b) {
     return (a > b) ? a : b;
 }

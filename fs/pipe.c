@@ -1,10 +1,10 @@
 #include <basic.h>
 #include <assert.h>
-#include <ng/fs.h>
-#include <ng/ringbuf.h>
-#include <ng/signal.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
+#include <snx/fs.h>
+#include <snx/ringbuf.h>
+#include <snx/signal.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
 #include <stdlib.h>
 #include <string.h>
 

@@ -1,17 +1,9 @@
 #include <basic.h>
-#include <ng/fs.h>
-#include <ng/mod.h>
-#include <ng/thread.h>
-#include <ng/timer.h>
+#include <snx/fs.h>
+#include <snx/mod.h>
+#include <snx/thread.h>
+#include <snx/timer.h>
 #include <stdio.h>
-
-//     void (*open)(struct open_file *n, const char *name);
-//     void (*close)(struct open_file *n);
-//     void (*destroy)(struct file *);
-//     ssize_t (*read)(struct open_file *, void *, size_t);
-//     ssize_t (*write)(struct open_file *, const void *, size_t);
-//     void (*clone)(struct open_file *parent, struct open_file *child);
-//     struct file *(*child)(struct file *, const char *name);
 
 ssize_t my_file_read(struct open_file *ofd, void *buf, size_t len) {
     for (size_t i = 0; i < len; i++) { ((char *)buf)[i] = (char)i; }

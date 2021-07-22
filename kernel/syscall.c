@@ -1,11 +1,11 @@
 #include <basic.h>
 #include <errno.h>
-#include <ng/panic.h>
-#include <ng/syscall.h>
-#include <ng/syscall_consts.h>
-#include <ng/syscalls.h> // syscall sys_* prototypes
-#include <ng/thread.h>
-#include <ng/vmm.h>
+#include <snx/panic.h>
+#include <snx/syscall.h>
+#include <snx/syscall_consts.h>
+#include <snx/syscalls.h>
+#include <snx/thread.h>
+#include <snx/vmm.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -56,12 +56,9 @@ enum ptr_status check_ptr(unsigned enable, uintptr_t ptr) {
     }
 }
 
-// Extra arguments are not passed or clobbered in registers, that is
-// handled in arch/, anything unused is ignored here.
-// arch/ code also handles the multiple return
 sysret do_syscall(interrupt_frame *frame) {
     sysret ret;
-    enum ng_syscall syscall_num = FRAME_SYSCALL(frame);
+    enum snx_syscall syscall_num = FRAME_SYSCALL(frame);
     syscall_entry(syscall_num);
 
     uintptr_t arg1 = FRAME_ARG1(frame);
@@ -91,8 +88,8 @@ sysret do_syscall(interrupt_frame *frame) {
         goto out;
     }
 
-    if (syscall_num == NG_EXECVE || syscall_num == NG_FORK ||
-        syscall_num == NG_CLONE0) {
+    if (syscall_num == SNX_EXECVE || syscall_num == SNX_FORK ||
+        syscall_num == SNX_CLONE0) {
         ret = syscall(frame, arg1, arg2, arg3, arg4, arg5, arg6);
     } else {
         ret = syscall(arg1, arg2, arg3, arg4, arg5, arg6);
@@ -100,11 +97,7 @@ sysret do_syscall(interrupt_frame *frame) {
 
 out:
     if (running_thread->flags & TF_SYSCALL_TRACE) {
-        if (syscall_num == NG_SYSCALL_TRACE) {
-            // This is just here to mark this as a strace return,
-            // since it can be confusing that " -> 0" appears
-            // after some other random syscall when the strace
-            // call returns.
+        if (syscall_num == SNX_SYSCALL_TRACE) {
             printf("XX");
         }
         if (ret >= 0 && ret < 0x100000) {

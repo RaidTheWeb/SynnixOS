@@ -1,18 +1,8 @@
 #!/bin/bash
 
-# Prerequisite: to build gcc you will need GMP, MPFR, and MPC, on ubuntu
-# the necessary packages are:
 # - libgmp-dev
 # - libmpfr-dev
 # - libmpc-dev
-#
-# on fedora:
-# sudo dnf install gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel make bison flex wget patch
-
-# run this script in nightingale/toolchain
-
-# this will tie the compiler's sysroot to the `sysroot` directory in your current
-# checkout - make sure the project is checked out where you want it to stay.
 
 pushd toolchain
 
@@ -22,18 +12,18 @@ PARALLEL=-j20
 
 PREFIX="$HOME/.local"
 PATH="$PREFIX/bin:$PATH"
-TARGET=x86_64-nightingale
+TARGET=x86_64-synnixos
 
 BUILDDIR=$(pwd)
-NGDIR=$(realpath ..)
+SNXDIR=$(realpath ..)
 SYSROOT=$(realpath ../sysroot)
 
 echo "building binutils ${BINUTILS_VERSION} and gcc ${GCC_VERSION}"
-echo "with nightingale patches"
+echo "with SynnixOS patches"
 
 echo "installing headers to sysroot"
 pushd ..
-./install_headers.bash
+./scripts/install_headers.bash
 popd 
 
 echo "cleaning up old builds"
@@ -53,13 +43,13 @@ echo "downloading gcc"
 tar xzf $BINUTILS_TAR
 tar xzf $GCC_TAR
 
-### patch nightingale diffs
+### patch diffs
 pushd $BINUTILS_DIR
-patch -p1 -i ../nightingale-binutils-${BINUTILS_VERSION}.patch
+patch -p1 -i ../synnixos-binutils-${BINUTILS_VERSION}.patch
 popd
 
 pushd $GCC_DIR
-patch -p1 -i ../nightingale-gcc-${GCC_VERSION}.patch
+patch -p1 -i ../synnixos-gcc-${GCC_VERSION}.patch
 popd
 
 ### binutils

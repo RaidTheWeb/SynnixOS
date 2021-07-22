@@ -2,12 +2,12 @@
 #include <elf.h>
 #include <errno.h>
 #include <list.h>
-#include <ng/dmgr.h>
-#include <ng/fs.h>
-#include <ng/mod.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
-#include <ng/vmm.h>
+#include <snx/dmgr.h>
+#include <snx/fs.h>
+#include <snx/mod.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
+#include <snx/vmm.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +15,7 @@ struct list loaded_mods = LIST_INIT(loaded_mods);
 
 struct mod_sym elf_find_symbol_by_address(uintptr_t address) {
     struct mod *in_mod = NULL;
-    elf_md *in_elf = &elf_ngk_md;
+    elf_md *in_elf = &elf_snxk_md;
     list_for_each(struct mod, mod, &loaded_mods, node) {
         elf_md *e = mod->md;
         uintptr_t mod_start = (uintptr_t)e->mmap;

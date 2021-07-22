@@ -1,7 +1,7 @@
 #include <basic.h>
 #include <assert.h>
-#include <ng/fs.h>
-#include <ng/thread.h>
+#include <snx/fs.h>
+#include <snx/thread.h>
 #include <stdlib.h>
 
 void proc_close(struct open_file *ofd);

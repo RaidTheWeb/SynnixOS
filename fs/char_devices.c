@@ -1,5 +1,5 @@
 #include <basic.h>
-#include <ng/fs.h>
+#include <snx/fs.h>
 
 ssize_t dev_zero_read(struct open_file *n, void *data_, size_t len) {
     char *data = data_;

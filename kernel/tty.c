@@ -1,14 +1,14 @@
 #include <basic.h>
 #include <errno.h>
-#include <ng/debug.h>
-#include <ng/fs.h>
-#include <ng/panic.h>
-#include <ng/ringbuf.h>
-#include <ng/serial.h>
-#include <ng/signal.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
-#include <ng/tty.h>
+#include <snx/debug.h>
+#include <snx/fs.h>
+#include <snx/panic.h>
+#include <snx/ringbuf.h>
+#include <snx/serial.h>
+#include <snx/signal.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
+#include <snx/tty.h>
 #include <stdio.h>
 
 ssize_t dev_serial_write(struct open_file *ofd, const void *data, size_t len) {

@@ -1,6 +1,6 @@
 #include <basic.h>
-#include <ng/string.h>
-#include <ng/tarfs.h>
+#include <snx/string.h>
+#include <snx/tarfs.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>

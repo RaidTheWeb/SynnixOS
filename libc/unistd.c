@@ -1,4 +1,4 @@
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdio.h>
 #include <sys/ttyctl.h>
 #include <sys/types.h>

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NG_X86_CPU_H
-#define NG_X86_CPU_H
+#ifndef SNX_X86_CPU_H
+#define SNX_X86_CPU_H
 
 #include <basic.h>
 #include <stdnoreturn.h>
@@ -48,4 +48,4 @@ void wrmsr(uint32_t msr_id, uint64_t value);
 
 noreturn void halt();
 
-#endif // NG_X86_CPU_H
+#endif

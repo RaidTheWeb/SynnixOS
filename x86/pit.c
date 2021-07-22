@@ -1,7 +1,7 @@
 // #define DEBUG
 #include <basic.h>
-#include <ng/cpu.h>
-#include <ng/debug.h>
+#include <snx/cpu.h>
+#include <snx/debug.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <x86/pit.h>
@@ -27,8 +27,6 @@
 int pit_create_periodic(int hz) {
     int divisor = 1193182 / hz;
 
-    // 0 represents 65536 and is the largest possible divisor
-    // giving 18.2Hz
     if (divisor > 65535) divisor = 0;
 
     printf("pit: actual divisor: %i\n", divisor);
@@ -48,9 +46,7 @@ int pit_create_oneshot(int microseconds) {
 
     int hz = 1000000 / microseconds;
     int divisor = 1193182 / hz;
-
-    // 0 represents 65536 and is the largest possible divisor
-    // giving 18.2Hz
+    
     if (divisor > 65535) {
         printf("pit: warning, time > 55ms clamped\n");
         divisor = 0;

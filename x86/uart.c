@@ -1,9 +1,9 @@
 #include <basic.h>
-#include <ng/fs.h>
-#include <ng/irq.h>
-#include <ng/panic.h>
-#include <ng/thread.h>
-#include <ng/tty.h>
+#include <snx/fs.h>
+#include <snx/irq.h>
+#include <snx/panic.h>
+#include <snx/thread.h>
+#include <snx/tty.h>
 #include <stdio.h>
 #include <x86/cpu.h>
 #include <x86/pic.h>

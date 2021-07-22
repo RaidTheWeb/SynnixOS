@@ -1,7 +1,7 @@
 #include <basic.h>
-#include <ng/debug.h>
-#include <ng/panic.h>
-#include <ng/ubsan.h>
+#include <snx/debug.h>
+#include <snx/panic.h>
+#include <snx/ubsan.h>
 #include <stdio.h>
 
 void print_sloc(struct source_location *sloc) {

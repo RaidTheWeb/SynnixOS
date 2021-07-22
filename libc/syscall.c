@@ -1,6 +1,6 @@
 #include "unistd.h"
 #include <errno.h>
-#include <ng/syscall_consts.h>
+#include <snx/syscall_consts.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>

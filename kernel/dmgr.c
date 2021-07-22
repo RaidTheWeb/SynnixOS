@@ -1,8 +1,8 @@
 #include <basic.h>
-#include <ng/debug.h>
-#include <ng/dmgr.h>
-#include <ng/mutex.h>
-#include <ng/string.h>
+#include <snx/debug.h>
+#include <snx/dmgr.h>
+#include <snx/mutex.h>
+#include <snx/string.h>
 #include <stdlib.h>
 
 const int dmgr_initial = 16;
@@ -98,9 +98,6 @@ void dmgr_copy(struct dmgr *child, struct dmgr *parent) {
 }
 
 void dmgr_free(struct dmgr *d) {
-    // TODO: should this do anything else?
-    // maybe you just have to guarantee there's nothing left in a dmgr
-    // before you destroy it?
     free(d->data);
 }
 

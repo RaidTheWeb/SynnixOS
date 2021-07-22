@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>

@@ -1,7 +1,7 @@
 #include <basic.h>
-#include <ng/panic.h>
-#include <ng/spalloc.h>
-#include <ng/vmm.h>
+#include <snx/panic.h>
+#include <snx/spalloc.h>
+#include <snx/vmm.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>

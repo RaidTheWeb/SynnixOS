@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/utsname.h>
 #include <unistd.h>
-#include <nightingale.h>
+#include <synnixos.h>
 
 noreturn void help(const char *progname) {
     fprintf(stderr,

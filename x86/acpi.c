@@ -1,10 +1,10 @@
-#include <ng/panic.h>
-#include <ng/string.h>
+#include <snx/panic.h>
+#include <snx/string.h>
 
 #define DEBUG 1
 
-#include <ng/debug.h>
-#include <ng/vmm.h>
+#include <snx/debug.h>
+#include <snx/vmm.h>
 #include <x86/acpi.h>
 
 static acpi_rsdt *acpi_rsdt_cache;

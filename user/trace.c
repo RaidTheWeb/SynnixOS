@@ -1,5 +1,5 @@
 #include <errno.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,8 +1,8 @@
 #include "syscall.h"
 #include <dirent.h>
 #include <errno.h>
-#include <ng/syscall_consts.h>
-#include <nightingale.h>
+#include <snx/syscall_consts.h>
+#include <synnixos.h>
 #include <poll.h>
 #include <signal.h>
 #include <stdbool.h>

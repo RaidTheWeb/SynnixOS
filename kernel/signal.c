@@ -1,36 +1,30 @@
 #include <basic.h>
 #include <assert.h>
 #include <errno.h>
-#include <ng/memmap.h>
-#include <ng/signal.h>
-#include <ng/syscall.h>
-#include <ng/syscall_consts.h>
-#include <ng/thread.h>
+#include <snx/memmap.h>
+#include <snx/signal.h>
+#include <snx/syscall.h>
+#include <snx/syscall_consts.h>
+#include <snx/thread.h>
 
 #define SIGSTACK_LEN 2048
 
-static_assert(NG_SIGRETURN < 0xFF); // sigreturn must fit in one byte
+static_assert(SNX_SIGRETURN < 0xFF); // sigreturn must fit in one byte
 
-// clang-format off
 const unsigned char signal_handler_return[] = {
     // mov rdi, rax
     0x48, 0x89, 0xc7,
     // mov rax, (signal return code)
-    0x48, 0xc7, 0xc0, NG_SIGRETURN, 0, 0, 0,
+    0x48, 0xc7, 0xc0, SNX_SIGRETURN, 0, 0, 0,
     // int 0x80
     0xCD, 0x80,
 };
-// clang-format on
 
-// If this grows it needs to change in bootstrap_usermode
 static_assert(sizeof(signal_handler_return) < 0x10);
 
 sysret sys_sigaction(int sig, sighandler_t handler, int flags) {
     if (sig < 0 || sig > 32) return -EINVAL;
 
-    // Flags is intended for things like specifying that the signal
-    // handler is interested in an additional parameter with more
-    // information about the signal. See siginfo_t on Linux.
     if (flags) return -ETODO;
 
     running_thread->sighandlers[sig] = handler;
@@ -76,7 +70,6 @@ int signal_send_th(struct thread *th, int signal) {
 }
 
 int signal_send(pid_t pid, int signal) {
-    // TODO: negative pid pgrp things
     if (pid < 0) return -ETODO;
     if (pid == 0) return -EPERM;
 
@@ -127,7 +120,6 @@ void signal_self(int signal) {
 void handle_signal(int signal, sighandler_t handler) {
     if (signal == SIGKILL) kill_process(running_process, signal + 128);
 
-    // the tracer can change what signal is delivered to the traced thread.
     signal = trace_signal_delivery(signal, handler);
     if (!signal) return;
 

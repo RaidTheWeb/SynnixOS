@@ -2,15 +2,15 @@
 #include <assert.h>
 #include <ctype.h>
 #include <elf.h>
-#include <ng/debug.h>
-#include <ng/fs.h>
-#include <ng/memmap.h>
-#include <ng/string.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
+#include <snx/debug.h>
+#include <snx/fs.h>
+#include <snx/memmap.h>
+#include <snx/string.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
 #include <stdlib.h>
 
-//  argument passing and copying ---------------------------------------------
+// COUNT ARGS
 
 struct args_size {
     size_t count;
@@ -94,7 +94,7 @@ size_t argc(char *const args[]) {
     return i;
 }
 
-//  loading   ----------------------------------------------------------------
+// LOAD ELF
 
 elf_md *exec_open_elf(struct file *file) {
     if (file->type != FT_BUFFER) return NULL;
@@ -200,7 +200,7 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
     running_process->elf_metadata = e;
 
     if ((path_tmp = exec_interp(e))) {
-        // this one will actually load both /bin/ld-ng.so *and* the real
+        // this one will actually load both /bin/ld-snx.so *and* the real
         // executable file and pass the base address of the real file to
         // the dynamic linker _somehow_. TODO
         printf("[Debug] Loading interpreter: %s\n", path_tmp);

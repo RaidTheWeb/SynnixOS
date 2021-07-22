@@ -17,14 +17,14 @@ end
 
 def correct_guard(filename)
   case filename
-  when /ng\/([^\/]*)\.h/
-    "NG_#{$1.to_guard}_H"
+  when /snx\/([^\/]*)\.h/
+    "SNX_#{$1.to_guard}_H"
   when /kernel\/([^\/]*)\.h/
-    "NG_K_#{$1.to_guard}_H"
+    "SNX_K_#{$1.to_guard}_H"
   when /x86\/([^\/]*)\.h/
-    "NG_X86_#{$1.to_guard}_H"
+    "SNX_X86_#{$1.to_guard}_H"
   when /sh\/([^\/]*)\.h/
-    "NG_SH_#{$1.to_guard}_H"
+    "SNX_SH_#{$1.to_guard}_H"
   when /libc\/include\/(.*)\.h/
     "_#{$1.to_guard}_H_"
   when /include\/([^\/]*)\.h/

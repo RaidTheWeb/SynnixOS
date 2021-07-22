@@ -1,7 +1,7 @@
 #include <basic.h>
 #include <elf.h>
-#include <ng/thread.h>
-#include <ng/vmm.h>
+#include <snx/thread.h>
+#include <snx/vmm.h>
 #include <string.h>
 
 static void init_section(void *destination_vaddr, size_t len) {
@@ -14,9 +14,6 @@ static void init_section(void *destination_vaddr, size_t len) {
 static void load_section(void *destination_vaddr, void *source_vaddr,
                          size_t flen, size_t mlen) {
     memcpy(destination_vaddr, source_vaddr, flen);
-
-    // BSS is specified by having p_memsz > p_filesz
-    // you are expected to zero the extra space
     if (mlen > flen) {
         memset((char *)destination_vaddr + flen, 0, mlen - flen);
     }

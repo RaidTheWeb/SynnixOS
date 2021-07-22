@@ -1,21 +1,16 @@
 // #define DEBUG
 #include <basic.h>
 #include <errno.h>
-#include <ng/debug.h>
-#include <ng/fs.h>
-#include <ng/memmap.h>
-#include <ng/mman.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
-#include <ng/vmm.h>
+#include <snx/debug.h>
+#include <snx/fs.h>
+#include <snx/memmap.h>
+#include <snx/mman.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
+#include <snx/vmm.h>
 #include <stdio.h>
 
-// drivers and modules should call this if they want a large amount of virtual
-// space available for use over time.
-//
-// ex: malloc reserves 128MB for it to manage.
-//
-// there's no way to free currently.
+// KERNEL RESERVE MEMORY
 
 char *kernel_reservable_vma = (char *)KERNEL_RESERVABLE_SPACE;
 
@@ -23,7 +18,6 @@ void *vmm_reserve(size_t len) {
     len = round_up(len, 0x1000);
 
     void *res = kernel_reservable_vma;
-    // printf("RESERVING RANGE %p + %lx\n", res, len);
     kernel_reservable_vma += len;
 
     vmm_create_unbacked_range((uintptr_t)res, len, PAGE_WRITEABLE);

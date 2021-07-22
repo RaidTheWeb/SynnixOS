@@ -1,5 +1,5 @@
 #include <errno.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <stdio.h>
 #include <sys/wait.h>
 #include <time.h>

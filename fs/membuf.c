@@ -1,7 +1,7 @@
 #include <basic.h>
 #include <assert.h>
 #include <errno.h>
-#include <ng/fs.h>
+#include <snx/fs.h>
 
 ssize_t membuf_read(struct open_file *n, void *data, size_t len);
 ssize_t membuf_write(struct open_file *n, const void *data, size_t len);

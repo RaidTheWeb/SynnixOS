@@ -1,15 +1,15 @@
 #include <basic.h>
 #include <assert.h>
 #include <elf.h>
-#include <ng/debug.h>
-#include <ng/mod.h>
-#include <ng/panic.h>
-#include <ng/serial.h>
-#include <ng/string.h>
-#include <ng/syscall.h>
-#include <ng/syscalls.h>
-#include <ng/vmm.h>
-#include <nightingale.h>
+#include <snx/debug.h>
+#include <snx/mod.h>
+#include <snx/panic.h>
+#include <snx/serial.h>
+#include <snx/string.h>
+#include <snx/syscall.h>
+#include <snx/syscalls.h>
+#include <snx/vmm.h>
+#include <synnixos.h>
 #include <stdio.h>
 
 
@@ -44,7 +44,7 @@ static bool check_bp(uintptr_t bp) {
 static void print_frame(uintptr_t bp, uintptr_t ip) {
     struct mod_sym sym = elf_find_symbol_by_address(ip);
     if (ip > higher_half && sym.sym) {
-        const elf_md *md = sym.mod ? sym.mod->md : &elf_ngk_md;
+        const elf_md *md = sym.mod ? sym.mod->md : &elf_snxk_md;
         const char *name = elf_symbol_name(md, sym.sym);
         ptrdiff_t offset = ip - sym.sym->st_value;
         if (sym.mod) {
@@ -95,7 +95,7 @@ void backtrace_all(void) {
 static void print_perf_frame(uintptr_t bp, uintptr_t ip) {
     struct mod_sym sym = elf_find_symbol_by_address(ip);
     if (!sym.sym) return;
-    const elf_md *md = sym.mod ? sym.mod->md : &elf_ngk_md;
+    const elf_md *md = sym.mod ? sym.mod->md : &elf_snxk_md;
     const char *name = elf_symbol_name(md, sym.sym);
 
     if (sym.mod) {
@@ -143,11 +143,8 @@ int hexdump(size_t len, char ptr[len]) {
     return 0;
 }
 
-// random things
 
 void break_point() {
-    // This is called in assert() to give a place to put a
-    // gdb break point
     int a = 10;
     volatile int *x = &a;
     *x = 20;
@@ -175,7 +172,7 @@ sysret sys_fault(enum fault_type type) {
 __USED uintptr_t __stack_chk_guard = (~14882L);
 
 __USED noreturn void __stack_chk_fail(void) {
-    panic("Stack smashing detected");
+    panic("Stack smashing detected, ahhhh!");
     __builtin_unreachable();
 }
 

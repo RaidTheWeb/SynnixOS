@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef __nightingale__
+#ifndef __synnixos__
 void *zmalloc(size_t len) {
     void *allocation = malloc(len);
     memset(allocation, 0, len);

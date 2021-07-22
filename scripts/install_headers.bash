@@ -23,5 +23,4 @@ copy fakerootfs/home sysroot/home
 
 find user -maxdepth 1 -type f -not -name '*.c' -exec cp {} sysroot/bin \;
 
-# update the timestamp for make
 touch sysroot

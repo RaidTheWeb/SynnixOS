@@ -1,12 +1,12 @@
 #include <basic.h>
 #include <assert.h>
-#include <ng/fs.h>
-#include <ng/irq.h>
-#include <ng/spalloc.h>
-#include <ng/sync.h>
-#include <ng/syscall.h>
-#include <ng/thread.h>
-#include <ng/timer.h>
+#include <snx/fs.h>
+#include <snx/irq.h>
+#include <snx/spalloc.h>
+#include <snx/sync.h>
+#include <snx/syscall.h>
+#include <snx/thread.h>
+#include <snx/timer.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +33,7 @@ int milliseconds(int ms) {
 
 void timer_enable_periodic(int hz) {
     pit_create_periodic(hz);
-    printf("timer: ticking at %i HZ\n", hz);
+    printf("Timer is running at a tick rate of %i HZ\n", hz);
 }
 
 enum timer_flags {

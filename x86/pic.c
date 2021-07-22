@@ -1,5 +1,5 @@
 #include <basic.h>
-#include <ng/panic.h>
+#include <snx/panic.h>
 #include <stdio.h>
 #include <x86/pic.h>
 

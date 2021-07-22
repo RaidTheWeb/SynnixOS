@@ -1,16 +1,16 @@
 #include <basic.h>
 #include <assert.h>
-#include <ng/fs.h>
-#include <ng/pmm.h>
-#include <ng/sync.h>
-#include <ng/thread.h> // testing OOM handling
-#include <ng/vmm.h>
+#include <snx/fs.h>
+#include <snx/pmm.h>
+#include <snx/sync.h>
+#include <snx/thread.h> 
+#include <snx/vmm.h>
 
 static struct mutex pm_lock = MUTEX_INIT(pm_lock);
 
 #define NBASE (4 * PAGE_SIZE)
 
-// page refcounts for bottom 64M of physical memory
+// Bottom 64M of physical memory
 uint8_t base_page_refcounts[NBASE] = {0};
 
 /*
@@ -86,7 +86,6 @@ void pm_set(phys_addr_t base, phys_addr_t top, uint8_t set_to) {
     mtx_lock(&pm_lock);
     for (size_t i = base_offset; i < top_offset; i++) {
         if (i > NBASE) break;
-        // map entries can overlap, don't reset something already claimed.
         if (base_page_refcounts[i] == 1) continue;
         base_page_refcounts[i] = set_to;
     }
@@ -103,7 +102,7 @@ phys_addr_t pm_alloc(void) {
         }
     }
     mtx_unlock(&pm_lock);
-    // panic("no more physical pages");
+    // OH NO, lol
     printf("WARNING: OOM\n");
     kill_process(running_process, 1);
     return 0;

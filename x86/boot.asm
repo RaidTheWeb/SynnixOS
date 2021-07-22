@@ -1,8 +1,4 @@
-
-; Nightingale-64
-; A 64 bit kernel for x86_64
-; Copyright (C) 2017, Tyler Philbrick
-; vim: syntax=nasm
+; SynnixOS x86_64 Kernel
 
 section .rodata.multiboot
 header:

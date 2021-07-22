@@ -3,8 +3,8 @@
 #include <dirent.h>
 #include <errno.h>
 #include <list.h>
-#include <ng/fs.h>
-#include <ng/thread.h>
+#include <snx/fs.h>
+#include <snx/thread.h>
 
 struct file_ops directory_ops = {
     .readdir = directory_readdir,
@@ -12,7 +12,7 @@ struct file_ops directory_ops = {
     .destroy = directory_destroy,
 };
 
-ssize_t directory_readdir(struct open_file *ofd, struct ng_dirent *buf,
+ssize_t directory_readdir(struct open_file *ofd, struct snx_dirent *buf,
                           size_t count) {
     struct file *file = ofd->file;
     if (file->type != FT_DIRECTORY) return -ENOTDIR;

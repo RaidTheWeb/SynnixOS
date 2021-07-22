@@ -66,7 +66,7 @@ KERNEL_CFLAGS = [
   "-fno-omit-frame-pointer",
   "-DSYNNIXOS_VERSION=\\\"$(SYNNIXOS_VERSION)\\\"",
   "-D__kernel__=1",
-  "-D_NG=1",
+  "-D_SNX=1",
   "-mcmodel=kernel",
   "-fsanitize=undefined",
   "$(KERNEL_CFLAGS)",
@@ -95,20 +95,20 @@ build = MagpieBuild.define do
     cflags USER_CFLAGS
     cxxflags USER_CXXFLAGS
     ldflags USER_LDFLAGS
-    cc "~/.local/bin/x86_64-nightingale-gcc"
-    cxx "~/.local/bin/x86_64-nightingale-gcc"
-    ld "~/.local/bin/x86_64-nightingale-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
+    cxx "~/.local/bin/x86_64-synnixos-gcc"
+    ld "~/.local/bin/x86_64-synnixos-gcc"
   end
 
   mode :libc do
     cflags [*USER_CFLAGS, "-fno-builtin"]
     ldflags USER_LDFLAGS
-    cc "~/.local/bin/x86_64-nightingale-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
     ld "ar"
   end
 
   mode :crt do
-    as "~/.local/bin/x86_64-nightingale-gcc"
+    as "~/.local/bin/x86_64-synnixos-gcc"
     ld nil
   end
 
@@ -127,8 +127,8 @@ build = MagpieBuild.define do
       "-shared",
       "-g",
     ]
-    cc "~/.local/bin/x86_64-nightingale-gcc"
-    ld "~/.local/bin/x86_64-nightingale-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
+    ld "~/.local/bin/x86_64-synnixos-gcc"
   end
 
   mode :kernel do
@@ -136,21 +136,21 @@ build = MagpieBuild.define do
     ldflags KERNEL_LDFLAGS + ["-L#{build_dir}"]
     asflags KERNEL_ASFLAGS
     as "nasm"
-    cc "~/.local/bin/x86_64-nightingale-gcc"
-    ld "~/.local/bin/x86_64-nightingale-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
+    ld "~/.local/bin/x86_64-synnixos-gcc"
   end
 
   mode :libk do
     cflags KERNEL_CFLAGS
     asflags KERNEL_CFLAGS
-    as "~/.local/bin/x86_64-nightingale-gcc"
-    cc "~/.local/bin/x86_64-nightingale-gcc"
+    as "~/.local/bin/x86_64-synnixos-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
     ld "ar"
   end
 
   mode :module do
     cflags KERNEL_CFLAGS
-    cc "~/.local/bin/x86_64-nightingale-gcc"
+    cc "~/.local/bin/x86_64-synnixos-gcc"
     ld nil
   end
 
@@ -171,7 +171,7 @@ build = MagpieBuild.define do
   target "libelf.a" do
     language "C"
     mode :libc
-    sources "linker/elf-ng.c"
+    sources "linker/elf-snx.c"
     install "sysroot/usr/lib"
     alt_dir "libelf"
   end
@@ -194,19 +194,19 @@ build = MagpieBuild.define do
       "libc/malloc.c",
       "libc/errno.c",
       "libc/signal.c",
-      "libc/x86_64/nightingale.c",
+      "libc/x86_64/synnixos.c",
       "libc/setjmp.S",
     ]
     mode :libk
     alt_dir "libk"
   end
 
-  target "ngk.elf" do
+  target "snxk.elf" do
     depends "libk.a"
     language "C", "asm"
     sources [
       "kernel/**/*.c",
-      "linker/elf-ng.c",
+      "linker/elf-snx.c",
       "linker/modld.c",
       "fs/**/*.c",
       "x86/**/*.c",
@@ -232,16 +232,16 @@ build = MagpieBuild.define do
     install "sysroot/bin"
   end
 
-  target "ld-ng.so" do
+  target "ld-snx.so" do
     sources [
-      "linker/elf-ng.c",
+      "linker/elf-snx.c",
       "linker/ldso.c",
       "linker/pltstub.S",
       "libc/syscall.c",
       "libc/syscalls.c",
     ]
     mode :so
-    alt_dir "ld-ng"
+    alt_dir "ld-snx"
     install "sysroot/bin"
   end
 
@@ -267,8 +267,6 @@ build = MagpieBuild.define do
   end
 end
 
-# require 'yaml'
-# puts YAML.dump(build)
 File.open("build.mk", "w") do |f|
   f.puts build.render
 end

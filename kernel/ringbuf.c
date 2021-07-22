@@ -1,7 +1,7 @@
 #include <basic.h>
-#include <ng/panic.h>
-#include <ng/ringbuf.h>
-#include <ng/string.h>
+#include <snx/panic.h>
+#include <snx/ringbuf.h>
+#include <snx/string.h>
 #include <stdlib.h>
 
 struct ringbuf *new_ring(size_t size) {
@@ -43,11 +43,11 @@ size_t ring_write(struct ringbuf *r, const void *data, size_t len) {
         memcpy(r->data + r->head, data, count);
         r->head += count;
         r->len += count;
-        r->head %= r->size; // shouldn't be needed
+        r->head %= r->size;
         return count;
     }
 
-    panic("No condition matched, did we race the ring?\n");
+    panic("idk man, I think we raced the ring :0");
 }
 
 size_t ring_read(struct ringbuf *r, void *data, size_t len) {
@@ -69,6 +69,5 @@ size_t ring_read(struct ringbuf *r, void *data, size_t len) {
         }
         return count;
     }
-
-    panic("No condition matched, did we race the ring?\n");
+    panic("Bro we raced the ring!");
 }

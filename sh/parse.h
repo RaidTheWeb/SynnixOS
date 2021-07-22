@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NG_SH_PARSE_H
-#define NG_SH_PARSE_H
+#ifndef SNX_SH_PARSE_H
+#define SNX_SH_PARSE_H
 
 #include "token.h"
 #include <list.h>
@@ -65,4 +65,4 @@ struct node *parse(list *tokens);
 void node_print(struct node *);
 void node_fprint(FILE *, struct node *);
 
-#endif // NG_SH_PARSE_H
+#endif

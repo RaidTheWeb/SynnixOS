@@ -2,12 +2,12 @@
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <ng/dmgr.h>
-#include <ng/fs.h>
-#include <ng/string.h>
-#include <ng/syscall.h>
-#include <ng/tarfs.h>
-#include <ng/thread.h>
+#include <snx/dmgr.h>
+#include <snx/fs.h>
+#include <snx/string.h>
+#include <snx/syscall.h>
+#include <snx/tarfs.h>
+#include <snx/thread.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -237,7 +237,7 @@ sysret sys_write(int fd, const void *data, size_t len) {
     return file->ops->write(ofd, data, len);
 }
 
-sysret sys_readdir(int fd, struct ng_dirent *buf, size_t count) {
+sysret sys_readdir(int fd, struct snx_dirent *buf, size_t count) {
     struct open_file *ofd = dmgr_get(&running_process->fds, fd);
     if (!ofd) return -EBADF;
     struct file *file = ofd->file;

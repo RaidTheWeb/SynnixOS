@@ -1,7 +1,7 @@
 #include <elf.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <nightingale.h>
+#include <synnixos.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

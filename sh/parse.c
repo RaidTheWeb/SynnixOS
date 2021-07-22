@@ -242,16 +242,10 @@ struct node *parse_paren(list *tokens) {
             break;
         case TOKEN_SEMICOLON:
             eat(tokens);
-            // Do nothing -- pipeline [ ] pipeline is interpreted as ';',
-            // and this way a ';' at the end of a line does not intruduce
-            // an extra node for no reason. Something ended the pipeline,
-            // and that's all that matters. This is just the same as something
-            // like an '&'
             break;
         case TOKEN_CPAREN: goto out;
         default:
             unexpected_token(t);
-            // TODO either handle error or do cleanup
             return NULL;
         }
     }

@@ -1,9 +1,9 @@
 #include <basic.h>
 #include <assert.h>
 #include <list.h>
-#include <ng/fs.h>
-#include <ng/ringbuf.h>
-#include <ng/thread.h>
+#include <snx/fs.h>
+#include <snx/ringbuf.h>
+#include <snx/thread.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 

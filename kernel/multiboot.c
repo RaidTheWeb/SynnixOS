@@ -1,10 +1,10 @@
 #include <basic.h>
 #include <elf.h>
-#include <ng/multiboot.h>
-#include <ng/multiboot2.h>
-#include <ng/panic.h>
-#include <ng/pmm.h>
-#include <ng/vmm.h>
+#include <snx/multiboot.h>
+#include <snx/multiboot2.h>
+#include <snx/panic.h>
+#include <snx/pmm.h>
+#include <snx/vmm.h>
 #include <stdio.h>
 
 uintptr_t mb_info;

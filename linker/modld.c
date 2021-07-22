@@ -1,13 +1,13 @@
 #include <basic.h>
 #include <assert.h>
 #include <elf.h>
-#include <ng/fs.h>
-#include <ng/multiboot2.h>
-#include <ng/vmm.h>
+#include <snx/fs.h>
+#include <snx/multiboot2.h>
+#include <snx/vmm.h>
 #include <stdio.h>
 #include <string.h>
 
-elf_md elf_ngk_md;
+elf_md elf_snxk_md;
 
 void elf_relo_resolve(elf_md *module, elf_md *main);
 
@@ -131,7 +131,7 @@ elf_md *elf_relo_load(elf_md *relo) {
         }
     }
 
-    elf_relo_resolve(relo, &elf_ngk_md);
+    elf_relo_resolve(relo, &elf_snxk_md);
 
     for (int i = 0; i < relo->imm_header->e_shnum; i++) {
         Elf_Shdr *sec = relo->mut_section_headers + i;
@@ -183,27 +183,27 @@ void *elf_sym_addr(const elf_md *e, const Elf_Sym *sym) {
 }
 
 void load_kernel_elf(multiboot_tag_elf_sections *mb_sym) {
-    elf_md *ngk = &elf_ngk_md;
+    elf_md *snxk = &elf_snxk_md;
 
-    ngk->section_header_count = mb_sym->num;
-    ngk->section_headers = (Elf_Shdr *)&mb_sym->sections;
+    snxk->section_header_count = mb_sym->num;
+    snxk->section_headers = (Elf_Shdr *)&mb_sym->sections;
 
-    const Elf_Shdr *shstrtab = ngk->section_headers + mb_sym->shndx;
+    const Elf_Shdr *shstrtab = snxk->section_headers + mb_sym->shndx;
     if (shstrtab) {
-        ngk->section_header_string_table =
+        snxk->section_header_string_table =
             (const char *)(shstrtab->sh_addr + VMM_KERNEL_BASE);
     }
 
-    const Elf_Shdr *symtab = elf_find_section(ngk, ".symtab");
-    const Elf_Shdr *strtab = elf_find_section(ngk, ".strtab");
+    const Elf_Shdr *symtab = elf_find_section(snxk, ".symtab");
+    const Elf_Shdr *strtab = elf_find_section(snxk, ".strtab");
 
     if (strtab) {
-        ngk->string_table = (const char *)(strtab->sh_addr + VMM_KERNEL_BASE);
+        snxk->string_table = (const char *)(strtab->sh_addr + VMM_KERNEL_BASE);
     }
 
     if (symtab) {
-        ngk->symbol_table = (Elf_Sym *)(symtab->sh_addr + VMM_KERNEL_BASE);
-        ngk->symbol_count = symtab->sh_size / symtab->sh_entsize;
+        snxk->symbol_table = (Elf_Sym *)(symtab->sh_addr + VMM_KERNEL_BASE);
+        snxk->symbol_count = symtab->sh_size / symtab->sh_entsize;
     }
 }
 

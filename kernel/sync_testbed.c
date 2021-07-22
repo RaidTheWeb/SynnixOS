@@ -1,7 +1,7 @@
 #include <basic.h>
-#include <ng/panic.h>
-#include <ng/sync.h>
-#include <ng/thread.h>
+#include <snx/panic.h>
+#include <snx/sync.h>
+#include <snx/thread.h>
 
 void sync_test_controller(void *);
 

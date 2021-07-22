@@ -1,12 +1,12 @@
 #include <basic.h>
 #include <assert.h>
-#include <ng/cpu.h>
-#include <ng/irq.h>
-#include <ng/pmm.h>
-#include <ng/spalloc.h>
-#include <ng/tests.h>
-#include <ng/thread.h>
-#include <ng/timer.h>
+#include <snx/cpu.h>
+#include <snx/irq.h>
+#include <snx/pmm.h>
+#include <snx/spalloc.h>
+#include <snx/tests.h>
+#include <snx/thread.h>
+#include <snx/timer.h>
 #include <x86/pic.h>
 
 void run_sync_tests(void);
@@ -36,7 +36,6 @@ void print_key(interrupt_frame *frame, void *_x) {
 }
 
 void run_spalloc_test() {
-    // validate spalloc working
     struct testing {
         int a, b, c, d, e, f, g, h;
     };

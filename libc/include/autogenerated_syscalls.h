@@ -43,7 +43,7 @@ sighandler_t sigaction(int sig, sighandler_t handler, int flags);
 noreturn int sigreturn(int code);
 int kill(pid_t pid, int dig);
 int sleepms(int ms);
-ssize_t readdir(int fd, struct ng_dirent *buf, size_t count);
+ssize_t readdir(int fd, struct snx_dirent *buf, size_t count);
 long xtime();
 pid_t create(const char *executable);
 int procstate(pid_t pid, enum procstate flags);

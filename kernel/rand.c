@@ -1,7 +1,7 @@
 #include <basic.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <ng/rand.h>
+#include <snx/rand.h>
 
 static uint64_t random_pool[4];
 
