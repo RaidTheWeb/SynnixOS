@@ -12,7 +12,7 @@
 #ifdef __kernel__
 #include <snx/serial.h>
 #define STDOUT_FILENO 1
-#endif // ifndef __kernel__
+#endif
 
 #include <stdio.h>
 
@@ -41,7 +41,6 @@ int puts(const char *str) {
     return len;
 }
 
-// Formats for printf
 typedef enum Format {
     NORMAL,
     HEX,

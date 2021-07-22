@@ -27,3 +27,6 @@ last_output
 
 # hscripts
 *.hscript.md
+
+# networking files
+*.pcap

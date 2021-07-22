@@ -71,7 +71,6 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     install_isrs();
     pic_init();
 
-    // TODO: BAD architecture specific things
     pic_irq_unmask(0); // Timer
     pic_irq_unmask(4); // Serial
     pic_irq_unmask(3); // Serial COM2
@@ -112,6 +111,8 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
 
     vmm_unmap_range(initfs_v, initfs_len);
     vmm_map_range(initfs_v, initfs_p, initfs_len, 0); // init is read-only
+
+    
 
     init_timer();
     vfs_init(initfs_info.top - initfs_info.base);
