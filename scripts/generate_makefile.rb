@@ -33,6 +33,7 @@ COMMON_CXXFLAGS = [
 USER_CFLAGS = [
   *COMMON_CFLAGS,
   "-Wno-builtin-declaration-mismatch",
+  "-Wno-format",
   "$(USER_CFLAGS)",
 ]
 

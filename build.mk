@@ -24,42 +24,42 @@ build-x86_64/libc/ctype.o: libc/ctype.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	ctype.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/ctype.d -c libc/ctype.c -o build-x86_64/libc/ctype.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/ctype.d -c libc/ctype.c -o build-x86_64/libc/ctype.o
 build-x86_64/libc/entry.o: libc/entry.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	entry.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/entry.d -c libc/entry.c -o build-x86_64/libc/entry.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/entry.d -c libc/entry.c -o build-x86_64/libc/entry.o
 build-x86_64/libc/errno.o: libc/errno.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	errno.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/errno.d -c libc/errno.c -o build-x86_64/libc/errno.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/errno.d -c libc/errno.c -o build-x86_64/libc/errno.o
 build-x86_64/libc/fstdio.o: libc/fstdio.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	fstdio.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/fstdio.d -c libc/fstdio.c -o build-x86_64/libc/fstdio.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/fstdio.d -c libc/fstdio.c -o build-x86_64/libc/fstdio.o
 build-x86_64/libc/fstdio_unlocked.o: libc/fstdio_unlocked.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	fstdio_unlocked.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/fstdio_unlocked.d -c libc/fstdio_unlocked.c -o build-x86_64/libc/fstdio_unlocked.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/fstdio_unlocked.d -c libc/fstdio_unlocked.c -o build-x86_64/libc/fstdio_unlocked.o
 build-x86_64/libc/getopt.o: libc/getopt.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	getopt.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/getopt.d -c libc/getopt.c -o build-x86_64/libc/getopt.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/getopt.d -c libc/getopt.c -o build-x86_64/libc/getopt.o
 build-x86_64/libc/locale.o: libc/locale.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	locale.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/locale.d -c libc/locale.c -o build-x86_64/libc/locale.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/locale.d -c libc/locale.c -o build-x86_64/libc/locale.o
 build-x86_64/libc/malloc.o: libc/malloc.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	malloc.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/malloc.d -c libc/malloc.c -o build-x86_64/libc/malloc.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/malloc.d -c libc/malloc.c -o build-x86_64/libc/malloc.o
 build-x86_64/libc/setjmp.o: libc/setjmp.S
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
@@ -69,67 +69,67 @@ build-x86_64/libc/signal.o: libc/signal.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	signal.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/signal.d -c libc/signal.c -o build-x86_64/libc/signal.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/signal.d -c libc/signal.c -o build-x86_64/libc/signal.o
 build-x86_64/libc/stdio.o: libc/stdio.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	stdio.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/stdio.d -c libc/stdio.c -o build-x86_64/libc/stdio.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/stdio.d -c libc/stdio.c -o build-x86_64/libc/stdio.o
 build-x86_64/libc/stdlib.o: libc/stdlib.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	stdlib.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/stdlib.d -c libc/stdlib.c -o build-x86_64/libc/stdlib.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/stdlib.d -c libc/stdlib.c -o build-x86_64/libc/stdlib.o
 build-x86_64/libc/string.o: libc/string.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	string.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/string.d -c libc/string.c -o build-x86_64/libc/string.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/string.d -c libc/string.c -o build-x86_64/libc/string.o
 build-x86_64/libc/strtod.o: libc/strtod.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	strtod.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/strtod.d -c libc/strtod.c -o build-x86_64/libc/strtod.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/strtod.d -c libc/strtod.c -o build-x86_64/libc/strtod.o
 build-x86_64/libc/synnixos.o: libc/synnixos.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	synnixos.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/synnixos.d -c libc/synnixos.c -o build-x86_64/libc/synnixos.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/synnixos.d -c libc/synnixos.c -o build-x86_64/libc/synnixos.o
 build-x86_64/libc/syscall.o: libc/syscall.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	syscall.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/syscall.d -c libc/syscall.c -o build-x86_64/libc/syscall.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/syscall.d -c libc/syscall.c -o build-x86_64/libc/syscall.o
 build-x86_64/libc/syscalls.o: libc/syscalls.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	syscalls.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/syscalls.d -c libc/syscalls.c -o build-x86_64/libc/syscalls.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/syscalls.d -c libc/syscalls.c -o build-x86_64/libc/syscalls.o
 build-x86_64/libc/time.o: libc/time.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	time.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/time.d -c libc/time.c -o build-x86_64/libc/time.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/time.d -c libc/time.c -o build-x86_64/libc/time.o
 build-x86_64/libc/todo.o: libc/todo.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	todo.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/todo.d -c libc/todo.c -o build-x86_64/libc/todo.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/todo.d -c libc/todo.c -o build-x86_64/libc/todo.o
 build-x86_64/libc/unistd.o: libc/unistd.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	unistd.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/unistd.d -c libc/unistd.c -o build-x86_64/libc/unistd.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/unistd.d -c libc/unistd.c -o build-x86_64/libc/unistd.o
 build-x86_64/libc/vector.o: libc/vector.c
 	@mkdir -p build-x86_64/libc
 	@mkdir -p dep/libc
 	$(call MP_INFO,CC	vector.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/vector.d -c libc/vector.c -o build-x86_64/libc/vector.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/vector.d -c libc/vector.c -o build-x86_64/libc/vector.o
 build-x86_64/libc/x86_64/synnixos.o: libc/x86_64/synnixos.c
 	@mkdir -p build-x86_64/libc/x86_64
 	@mkdir -p dep/libc/x86_64
 	$(call MP_INFO,CC	synnixos.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/x86_64/synnixos.d -c libc/x86_64/synnixos.c -o build-x86_64/libc/x86_64/synnixos.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libc/x86_64/synnixos.d -c libc/x86_64/synnixos.c -o build-x86_64/libc/x86_64/synnixos.o
 build-x86_64/libm.a: build-x86_64/libm/complex.o build-x86_64/libm/double.o build-x86_64/libm/random.o 
 	$(call MP_INFO,AR	libm.a)
 	@ar rcs -o build-x86_64/libm.a build-x86_64/libm/complex.o build-x86_64/libm/double.o build-x86_64/libm/random.o
@@ -137,17 +137,17 @@ build-x86_64/libm/complex.o: libm/complex.c
 	@mkdir -p build-x86_64/libm
 	@mkdir -p dep/libm
 	$(call MP_INFO,CC	complex.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/complex.d -c libm/complex.c -o build-x86_64/libm/complex.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/complex.d -c libm/complex.c -o build-x86_64/libm/complex.o
 build-x86_64/libm/double.o: libm/double.c
 	@mkdir -p build-x86_64/libm
 	@mkdir -p dep/libm
 	$(call MP_INFO,CC	double.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/double.d -c libm/double.c -o build-x86_64/libm/double.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/double.d -c libm/double.c -o build-x86_64/libm/double.o
 build-x86_64/libm/random.o: libm/random.c
 	@mkdir -p build-x86_64/libm
 	@mkdir -p dep/libm
 	$(call MP_INFO,CC	random.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/random.d -c libm/random.c -o build-x86_64/libm/random.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libm/random.d -c libm/random.c -o build-x86_64/libm/random.o
 build-x86_64/libelf.a: build-x86_64/libelf/elf-snx.o 
 	$(call MP_INFO,AR	libelf.a)
 	@ar rcs -o build-x86_64/libelf.a build-x86_64/libelf/elf-snx.o
@@ -155,7 +155,7 @@ build-x86_64/libelf/elf-snx.o: linker/elf-snx.c
 	@mkdir -p build-x86_64/libelf
 	@mkdir -p dep/libelf
 	$(call MP_INFO,CC	elf-snx.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libelf/elf-snx.d -c linker/elf-snx.c -o build-x86_64/libelf/elf-snx.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -fno-builtin -MD -MF dep/libelf/elf-snx.d -c linker/elf-snx.c -o build-x86_64/libelf/elf-snx.o
 build-x86_64/libc.so: build-x86_64/libc_so/crt0.o build-x86_64/libc_so/crti.o build-x86_64/libc_so/crtn.o build-x86_64/libc_so/ctype.o build-x86_64/libc_so/entry.o build-x86_64/libc_so/errno.o build-x86_64/libc_so/fstdio.o build-x86_64/libc_so/fstdio_unlocked.o build-x86_64/libc_so/getopt.o build-x86_64/libc_so/locale.o build-x86_64/libc_so/malloc.o build-x86_64/libc_so/setjmp.o build-x86_64/libc_so/signal.o build-x86_64/libc_so/stdio.o build-x86_64/libc_so/stdlib.o build-x86_64/libc_so/string.o build-x86_64/libc_so/strtod.o build-x86_64/libc_so/synnixos.o build-x86_64/libc_so/syscall.o build-x86_64/libc_so/syscalls.o build-x86_64/libc_so/time.o build-x86_64/libc_so/todo.o build-x86_64/libc_so/unistd.o build-x86_64/libc_so/vector.o build-x86_64/libc_so/x86_64/synnixos.o 
 	$(call MP_INFO,LD	libc.so)
 	@~/.local/bin/x86_64-synnixos-gcc -nostdlib -fpic -shared -g -o build-x86_64/libc.so build-x86_64/libc_so/crt0.o build-x86_64/libc_so/crti.o build-x86_64/libc_so/crtn.o build-x86_64/libc_so/ctype.o build-x86_64/libc_so/entry.o build-x86_64/libc_so/errno.o build-x86_64/libc_so/fstdio.o build-x86_64/libc_so/fstdio_unlocked.o build-x86_64/libc_so/getopt.o build-x86_64/libc_so/locale.o build-x86_64/libc_so/malloc.o build-x86_64/libc_so/setjmp.o build-x86_64/libc_so/signal.o build-x86_64/libc_so/stdio.o build-x86_64/libc_so/stdlib.o build-x86_64/libc_so/string.o build-x86_64/libc_so/strtod.o build-x86_64/libc_so/synnixos.o build-x86_64/libc_so/syscall.o build-x86_64/libc_so/syscalls.o build-x86_64/libc_so/time.o build-x86_64/libc_so/todo.o build-x86_64/libc_so/unistd.o build-x86_64/libc_so/vector.o build-x86_64/libc_so/x86_64/synnixos.o 
@@ -590,27 +590,27 @@ build-x86_64/sh-/eval.o: sh/eval.c
 	@mkdir -p build-x86_64/sh-
 	@mkdir -p dep/sh-
 	$(call MP_INFO,CC	eval.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/sh-/eval.d -c sh/eval.c -o build-x86_64/sh-/eval.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/sh-/eval.d -c sh/eval.c -o build-x86_64/sh-/eval.o
 build-x86_64/sh-/parse.o: sh/parse.c
 	@mkdir -p build-x86_64/sh-
 	@mkdir -p dep/sh-
 	$(call MP_INFO,CC	parse.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/sh-/parse.d -c sh/parse.c -o build-x86_64/sh-/parse.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/sh-/parse.d -c sh/parse.c -o build-x86_64/sh-/parse.o
 build-x86_64/sh-/readline.o: sh/readline.c
 	@mkdir -p build-x86_64/sh-
 	@mkdir -p dep/sh-
 	$(call MP_INFO,CC	readline.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/sh-/readline.d -c sh/readline.c -o build-x86_64/sh-/readline.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/sh-/readline.d -c sh/readline.c -o build-x86_64/sh-/readline.o
 build-x86_64/sh-/sh.o: sh/sh.c
 	@mkdir -p build-x86_64/sh-
 	@mkdir -p dep/sh-
 	$(call MP_INFO,CC	sh.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/sh-/sh.d -c sh/sh.c -o build-x86_64/sh-/sh.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/sh-/sh.d -c sh/sh.c -o build-x86_64/sh-/sh.o
 build-x86_64/sh-/token.o: sh/token.c
 	@mkdir -p build-x86_64/sh-
 	@mkdir -p dep/sh-
 	$(call MP_INFO,CC	token.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/sh-/token.d -c sh/token.c -o build-x86_64/sh-/token.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/sh-/token.d -c sh/token.c -o build-x86_64/sh-/token.o
 build-x86_64/ld-snx.so: build-x86_64/ld-snx/syscall.o build-x86_64/ld-snx/syscalls.o build-x86_64/ld-snx/elf-snx.o build-x86_64/ld-snx/ldso.o build-x86_64/ld-snx/pltstub.o 
 	$(call MP_INFO,LD	ld-snx.so)
 	@~/.local/bin/x86_64-synnixos-gcc -nostdlib -fpic -shared -g -o build-x86_64/ld-snx.so build-x86_64/ld-snx/syscall.o build-x86_64/ld-snx/syscalls.o build-x86_64/ld-snx/elf-snx.o build-x86_64/ld-snx/ldso.o build-x86_64/ld-snx/pltstub.o 
@@ -662,7 +662,7 @@ build-x86_64/user/ls.o: user/ls.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	ls.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/ls.d -c user/ls.c -o build-x86_64/user/ls.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/ls.d -c user/ls.c -o build-x86_64/user/ls.o
 build-x86_64/column: build-x86_64/user/column.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	column)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/column build-x86_64/user/column.o 
@@ -670,7 +670,7 @@ build-x86_64/user/column.o: user/column.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	column.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/column.d -c user/column.c -o build-x86_64/user/column.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/column.d -c user/column.c -o build-x86_64/user/column.o
 build-x86_64/trace: build-x86_64/user/trace.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	trace)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/trace build-x86_64/user/trace.o 
@@ -678,7 +678,7 @@ build-x86_64/user/trace.o: user/trace.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	trace.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/trace.d -c user/trace.c -o build-x86_64/user/trace.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/trace.d -c user/trace.c -o build-x86_64/user/trace.o
 build-x86_64/modsys: build-x86_64/user/modsys.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	modsys)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/modsys build-x86_64/user/modsys.o 
@@ -686,7 +686,7 @@ build-x86_64/user/modsys.o: user/modsys.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	modsys.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/modsys.d -c user/modsys.c -o build-x86_64/user/modsys.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/modsys.d -c user/modsys.c -o build-x86_64/user/modsys.o
 build-x86_64/step: build-x86_64/user/step.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	step)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/step build-x86_64/user/step.o -lelf
@@ -694,7 +694,7 @@ build-x86_64/user/step.o: user/step.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	step.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/step.d -c user/step.c -o build-x86_64/user/step.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/step.d -c user/step.c -o build-x86_64/user/step.o
 build-x86_64/false: build-x86_64/user/false.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	false)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/false build-x86_64/user/false.o 
@@ -702,7 +702,7 @@ build-x86_64/user/false.o: user/false.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	false.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/false.d -c user/false.c -o build-x86_64/user/false.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/false.d -c user/false.c -o build-x86_64/user/false.o
 build-x86_64/mmap: build-x86_64/user/mmap.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	mmap)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/mmap build-x86_64/user/mmap.o 
@@ -710,7 +710,7 @@ build-x86_64/user/mmap.o: user/mmap.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	mmap.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/mmap.d -c user/mmap.c -o build-x86_64/user/mmap.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/mmap.d -c user/mmap.c -o build-x86_64/user/mmap.o
 build-x86_64/rm: build-x86_64/user/rm.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	rm)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/rm build-x86_64/user/rm.o 
@@ -718,7 +718,7 @@ build-x86_64/user/rm.o: user/rm.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	rm.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/rm.d -c user/rm.c -o build-x86_64/user/rm.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/rm.d -c user/rm.c -o build-x86_64/user/rm.o
 build-x86_64/cat: build-x86_64/user/cat.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	cat)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/cat build-x86_64/user/cat.o 
@@ -726,7 +726,7 @@ build-x86_64/user/cat.o: user/cat.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	cat.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/cat.d -c user/cat.c -o build-x86_64/user/cat.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/cat.d -c user/cat.c -o build-x86_64/user/cat.o
 build-x86_64/init: build-x86_64/user/init.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	init)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/init build-x86_64/user/init.o 
@@ -734,7 +734,7 @@ build-x86_64/user/init.o: user/init.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	init.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/init.d -c user/init.c -o build-x86_64/user/init.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/init.d -c user/init.c -o build-x86_64/user/init.o
 build-x86_64/insmod: build-x86_64/user/insmod.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	insmod)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/insmod build-x86_64/user/insmod.o 
@@ -742,7 +742,7 @@ build-x86_64/user/insmod.o: user/insmod.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	insmod.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/insmod.d -c user/insmod.c -o build-x86_64/user/insmod.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/insmod.d -c user/insmod.c -o build-x86_64/user/insmod.o
 build-x86_64/kill: build-x86_64/user/kill.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	kill)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/kill build-x86_64/user/kill.o 
@@ -750,7 +750,7 @@ build-x86_64/user/kill.o: user/kill.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	kill.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/kill.d -c user/kill.c -o build-x86_64/user/kill.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/kill.d -c user/kill.c -o build-x86_64/user/kill.o
 build-x86_64/chmod: build-x86_64/user/chmod.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	chmod)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/chmod build-x86_64/user/chmod.o 
@@ -758,7 +758,7 @@ build-x86_64/user/chmod.o: user/chmod.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	chmod.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/chmod.d -c user/chmod.c -o build-x86_64/user/chmod.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/chmod.d -c user/chmod.c -o build-x86_64/user/chmod.o
 build-x86_64/time: build-x86_64/user/time.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	time)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/time build-x86_64/user/time.o 
@@ -766,7 +766,7 @@ build-x86_64/user/time.o: user/time.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	time.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/time.d -c user/time.c -o build-x86_64/user/time.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/time.d -c user/time.c -o build-x86_64/user/time.o
 build-x86_64/strace: build-x86_64/user/strace.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	strace)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/strace build-x86_64/user/strace.o 
@@ -774,7 +774,7 @@ build-x86_64/user/strace.o: user/strace.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	strace.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/strace.d -c user/strace.c -o build-x86_64/user/strace.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/strace.d -c user/strace.c -o build-x86_64/user/strace.o
 build-x86_64/sleep: build-x86_64/user/sleep.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	sleep)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/sleep build-x86_64/user/sleep.o 
@@ -782,7 +782,7 @@ build-x86_64/user/sleep.o: user/sleep.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	sleep.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/sleep.d -c user/sleep.c -o build-x86_64/user/sleep.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/sleep.d -c user/sleep.c -o build-x86_64/user/sleep.o
 build-x86_64/ab: build-x86_64/user/ab.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	ab)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/ab build-x86_64/user/ab.o 
@@ -790,7 +790,7 @@ build-x86_64/user/ab.o: user/ab.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	ab.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/ab.d -c user/ab.c -o build-x86_64/user/ab.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/ab.d -c user/ab.c -o build-x86_64/user/ab.o
 build-x86_64/echo: build-x86_64/user/echo.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	echo)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/echo build-x86_64/user/echo.o 
@@ -798,7 +798,7 @@ build-x86_64/user/echo.o: user/echo.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	echo.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/echo.d -c user/echo.c -o build-x86_64/user/echo.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/echo.d -c user/echo.c -o build-x86_64/user/echo.o
 build-x86_64/top: build-x86_64/user/top.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	top)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/top build-x86_64/user/top.o 
@@ -806,7 +806,7 @@ build-x86_64/user/top.o: user/top.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	top.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/top.d -c user/top.c -o build-x86_64/user/top.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/top.d -c user/top.c -o build-x86_64/user/top.o
 build-x86_64/rot13: build-x86_64/user/rot13.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	rot13)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/rot13 build-x86_64/user/rot13.o 
@@ -814,7 +814,7 @@ build-x86_64/user/rot13.o: user/rot13.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	rot13.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/rot13.d -c user/rot13.c -o build-x86_64/user/rot13.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/rot13.d -c user/rot13.c -o build-x86_64/user/rot13.o
 build-x86_64/xd: build-x86_64/user/xd.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	xd)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/xd build-x86_64/user/xd.o 
@@ -822,7 +822,7 @@ build-x86_64/user/xd.o: user/xd.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	xd.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/xd.d -c user/xd.c -o build-x86_64/user/xd.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/xd.d -c user/xd.c -o build-x86_64/user/xd.o
 build-x86_64/create: build-x86_64/user/create.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	create)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/create build-x86_64/user/create.o 
@@ -830,7 +830,7 @@ build-x86_64/user/create.o: user/create.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	create.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/create.d -c user/create.c -o build-x86_64/user/create.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/create.d -c user/create.c -o build-x86_64/user/create.o
 build-x86_64/args: build-x86_64/user/args.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	args)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/args build-x86_64/user/args.o 
@@ -838,7 +838,7 @@ build-x86_64/user/args.o: user/args.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	args.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/args.d -c user/args.c -o build-x86_64/user/args.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/args.d -c user/args.c -o build-x86_64/user/args.o
 build-x86_64/uname: build-x86_64/user/uname.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	uname)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/uname build-x86_64/user/uname.o 
@@ -846,7 +846,7 @@ build-x86_64/user/uname.o: user/uname.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	uname.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/uname.d -c user/uname.c -o build-x86_64/user/uname.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/uname.d -c user/uname.c -o build-x86_64/user/uname.o
 build-x86_64/true: build-x86_64/user/true.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	true)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/true build-x86_64/user/true.o 
@@ -854,7 +854,7 @@ build-x86_64/user/true.o: user/true.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	true.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/true.d -c user/true.c -o build-x86_64/user/true.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/true.d -c user/true.c -o build-x86_64/user/true.o
 build-x86_64/bf2: build-x86_64/user/bf2.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	bf2)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/bf2 build-x86_64/user/bf2.o 
@@ -862,7 +862,7 @@ build-x86_64/user/bf2.o: user/bf2.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	bf2.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/bf2.d -c user/bf2.c -o build-x86_64/user/bf2.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/bf2.d -c user/bf2.c -o build-x86_64/user/bf2.o
 build-x86_64/traceback: build-x86_64/user/traceback.o sysroot/usr/lib/libc.so sysroot/usr/lib/libc.a sysroot/usr/lib/libm.a sysroot/usr/lib/libelf.a
 	$(call MP_INFO,LD	traceback)
 	@~/.local/bin/x86_64-synnixos-gcc -g -static -o build-x86_64/traceback build-x86_64/user/traceback.o 
@@ -870,7 +870,7 @@ build-x86_64/user/traceback.o: user/traceback.c
 	@mkdir -p build-x86_64/user
 	@mkdir -p dep/user
 	$(call MP_INFO,CC	traceback.o)
-	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch $(USER_CFLAGS) -static -MD -MF dep/user/traceback.d -c user/traceback.c -o build-x86_64/user/traceback.o
+	@~/.local/bin/x86_64-synnixos-gcc -std=c11 -Wall -Wextra -Werror -g -O2 -Wno-unused-variable -Wno-unused-parameter -Wno-unused-function -Wno-sign-compare -Wno-address-of-packed-member $(CFLAGS) -Wno-builtin-declaration-mismatch -Wno-format $(USER_CFLAGS) -static -MD -MF dep/user/traceback.d -c user/traceback.c -o build-x86_64/user/traceback.o
 
 sysroot/usr/lib/libc.a: build-x86_64/libc.a
 	$(call MP_INFO,install	libc.a)

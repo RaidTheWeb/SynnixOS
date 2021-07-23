@@ -30,3 +30,6 @@ last_output
 
 # networking files
 *.pcap
+
+# fuck you vscode
+.vscode

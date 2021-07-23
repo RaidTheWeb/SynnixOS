@@ -188,3 +188,25 @@ char *strndup(const char *str, size_t len) {
     dest[str_len] = 0;
     return dest;
 }
+
+size_t strcspn(const char *s1, const char *s2)
+{
+    unsigned int len =0;
+    
+    while(*s1)
+    {
+        
+        if(strchr(s2,*s1))
+        {
+            return len;
+        }
+        else
+        {
+           
+            s1++;
+            
+            len++;
+        }
+    }
+    return len;
+}
