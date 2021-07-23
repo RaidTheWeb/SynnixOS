@@ -32,13 +32,6 @@ sysret sys_mmap(void *addr, size_t len, int prot, int flags, int fd,
                 off_t offset) {
     len = round_up(len, 0x1000);
 
-    // TODO:
-    // This is a very dumb simple bump allocator just being made
-    // to make it possible for me to make a dumb simple bump
-    // allocator for user mode.
-    //
-    // It doesn't do a lot of mmap things at all.
-
     if (addr != NULL) return -ETODO;
     if (!(flags & MAP_PRIVATE)) return -ETODO;
 
