@@ -19,7 +19,7 @@
 #include <x86/pic.h>
 
 /**
- * Hello Doxygen
+ * @brief Hello Doxygen
  */
 
 struct tar_header *initfs;
