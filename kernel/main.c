@@ -18,11 +18,15 @@
 #include <x86/cpu.h>
 #include <x86/pic.h>
 
-/**
- * Create tar header for loading the initFS
- */
 struct tar_header *initfs;
 
+/**
+ * @brief Create multiboot callback
+ * 
+ * @param mem 
+ * @param len 
+ * @param type 
+ */
 void mb_pm_callback(phys_addr_t mem, size_t len, int type) {
     int pm_type;
     if (type == MULTIBOOT_MEMORY_AVAILABLE) {
