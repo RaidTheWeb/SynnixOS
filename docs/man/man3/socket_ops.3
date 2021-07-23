@@ -1,0 +1,52 @@
+.TH "socket_ops" 3 "Sat Jul 24 2021" "SynnixOS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+socket_ops
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsocket_file\fP *(* \fBalloc\fP )(void)"
+.br
+.ti -1c
+.RI "void(* \fBinit\fP )(struct \fBsocket_file\fP *)"
+.br
+.ti -1c
+.RI "int(* \fBbind\fP )(struct \fBsocket_file\fP *, const struct \fBsockaddr\fP *, socklen_t)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBrecv\fP )(struct \fBopen_file\fP *, void *, size_t, int flags)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBsend\fP )(struct \fBopen_file\fP *, const void *, size_t, int flags)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBrecvfrom\fP )(struct \fBopen_file\fP *, void *, size_t, int flags, struct \fBsockaddr\fP *, socklen_t *)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBsendto\fP )(struct \fBopen_file\fP *, const void *, size_t, int flags, const struct \fBsockaddr\fP *, socklen_t)"
+.br
+.ti -1c
+.RI "int(* \fBlisten\fP )(struct \fBopen_file\fP *, int backlog)"
+.br
+.ti -1c
+.RI "int(* \fBaccept\fP )(struct \fBopen_file\fP *, struct \fBsockaddr\fP *, socklen_t *)"
+.br
+.ti -1c
+.RI "int(* \fBconnect\fP )(struct \fBopen_file\fP *, const struct \fBsockaddr\fP *, socklen_t)"
+.br
+.ti -1c
+.RI "void(* \fBclose\fP )(struct \fBopen_file\fP *)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 169 of file fs\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SynnixOS from the source code\&.
