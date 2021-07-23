@@ -1,0 +1,8 @@
+<map id="acpi_madt_entry" name="acpi_madt_entry">
+<area shape="rect" id="node1" title=" " alt="" coords="372,95,503,121"/>
+<area shape="rect" id="node2" href="$structacpi__madt__ioapic.html" title=" " alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node3" href="$structacpi__madt__lapic__address.html" title=" " alt="" coords="165,5,352,32"/>
+<area shape="rect" id="node4" href="$structacpi__madt__nmi.html" title=" " alt="" coords="376,5,499,32"/>
+<area shape="rect" id="node5" href="$structacpi__madt__lapic.html" title=" " alt="" coords="523,5,651,32"/>
+<area shape="rect" id="node6" href="$structacpi__madt__iso.html" title=" " alt="" coords="675,5,791,32"/>
+</map>

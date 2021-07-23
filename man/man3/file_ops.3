@@ -1,0 +1,46 @@
+.TH "file_ops" 3 "Sat Jul 24 2021" "SynnixOS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+file_ops
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "void(* \fBopen\fP )(struct \fBopen_file\fP *, const char *name)"
+.br
+.ti -1c
+.RI "void(* \fBclose\fP )(struct \fBopen_file\fP *)"
+.br
+.ti -1c
+.RI "void(* \fBdestroy\fP )(struct \fBfile\fP *)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBread\fP )(struct \fBopen_file\fP *, void *, size_t)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBwrite\fP )(struct \fBopen_file\fP *, const void *, size_t)"
+.br
+.ti -1c
+.RI "off_t(* \fBseek\fP )(struct \fBopen_file\fP *, off_t, int whence)"
+.br
+.ti -1c
+.RI "ssize_t(* \fBreaddir\fP )(struct \fBopen_file\fP *, struct \fBsnx_dirent\fP *, size_t)"
+.br
+.ti -1c
+.RI "void(* \fBclone\fP )(struct \fBopen_file\fP *parent, struct \fBopen_file\fP *child)"
+.br
+.ti -1c
+.RI "struct \fBfile\fP *(* \fBchild\fP )(struct \fBfile\fP *, const char *name)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 29 of file fs\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SynnixOS from the source code\&.

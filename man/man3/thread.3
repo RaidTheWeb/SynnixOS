@@ -1,0 +1,136 @@
+.TH "thread" 3 "Sat Jul 24 2021" "SynnixOS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+thread
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "pid_t \fBtid\fP"
+.br
+.ti -1c
+.RI "struct \fBprocess\fP * \fBproc\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBmagic\fP"
+.br
+.ti -1c
+.RI "enum thread_state \fBstate\fP"
+.br
+.ti -1c
+.RI "enum thread_flags \fBflags\fP"
+.br
+.ti -1c
+.RI "enum thread_state \fBnonsig_state\fP"
+.br
+.ti -1c
+.RI "char * \fBkstack\fP"
+.br
+.ti -1c
+.RI "jmp_buf \fBkernel_ctx\fP"
+.br
+.ti -1c
+.RI "\fBinterrupt_frame\fP * \fBuser_ctx\fP"
+.br
+.ti -1c
+.RI "void(* \fBentry\fP )(void *)"
+.br
+.ti -1c
+.RI "void * \fBentry_arg\fP"
+.br
+.ti -1c
+.RI "struct \fBfile\fP * \fBcwd\fP"
+.br
+.ti -1c
+.RI "pid_t \fBwait_request\fP"
+.br
+.ti -1c
+.RI "struct \fBprocess\fP * \fBwait_result\fP"
+.br
+.ti -1c
+.RI "struct \fBthread\fP * \fBwait_trace_result\fP"
+.br
+.ti -1c
+.RI "\fBlist\fP \fBtracees\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBtrace_node\fP"
+.br
+.ti -1c
+.RI "struct \fBthread\fP * \fBtracer\fP"
+.br
+.ti -1c
+.RI "enum trace_state \fBtrace_state\fP"
+.br
+.ti -1c
+.RI "int \fBtrace_report\fP"
+.br
+.ti -1c
+.RI "int \fBtrace_signal\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBall_threads\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBrunnable\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBfreeable\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBprocess_threads\fP"
+.br
+.ti -1c
+.RI "\fBlist_n\fP \fBwait_node\fP"
+.br
+.ti -1c
+.RI "struct \fBtimer_event\fP * \fBwait_event\fP"
+.br
+.ti -1c
+.RI "uintptr_t \fBuser_sp\fP"
+.br
+.ti -1c
+.RI "jmp_buf \fBsignal_ctx\fP"
+.br
+.ti -1c
+.RI "sighandler_t \fBsighandlers\fP [32]"
+.br
+.ti -1c
+.RI "sigset_t \fBsig_pending\fP"
+.br
+.ti -1c
+.RI "sigset_t \fBsig_mask\fP"
+.br
+.ti -1c
+.RI "long \fBn_scheduled\fP"
+.br
+.ti -1c
+.RI "long \fBtime_ran\fP"
+.br
+.ti -1c
+.RI "long \fBlast_scheduled\fP"
+.br
+.ti -1c
+.RI "long long \fBtsc_ran\fP"
+.br
+.ti -1c
+.RI "long long \fBtsc_scheduled\fP"
+.br
+.ti -1c
+.RI "int \fBirq_disable_depth\fP"
+.br
+.ti -1c
+.RI "fp_ctx \fBfpctx\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 90 of file thread\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SynnixOS from the source code\&.
