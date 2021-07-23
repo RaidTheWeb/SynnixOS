@@ -19,7 +19,7 @@ jobs:
       - run: echo "Building Documentation using Doxygen"
       
       - name: Building Docs
-        uses: mattnotmitt/doxygen-action@v1
+        uses: mattnotmitt/doxygen-action@v1.3.1
         with:
-            working-directory: 'submodule/'
+            working-directory: '.'
             doxyfile-path: 'docs/Doxyfile'
