@@ -18,6 +18,13 @@
 #include <x86/cpu.h>
 #include <x86/pic.h>
 
+/** @file
+ * @brief This is a "brief" explaination of this file
+ *
+ * This is a "Detailed" explaination of this file
+ */
+
+
 struct tar_header *initfs;
 
 void mb_pm_callback(phys_addr_t mem, size_t len, int type) {
