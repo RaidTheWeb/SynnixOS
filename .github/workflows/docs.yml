@@ -1,0 +1,25 @@
+name: Docs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Build Docs
+      - run: echo "Building Documentation using Doxygen"
+      
+      - name: Building Docs
+        uses: mattnotmitt/doxygen-action@v1
+        with:
+            working-directory: 'submodule/'
+            doxyfile-path: 'docs/Doxyfile'
