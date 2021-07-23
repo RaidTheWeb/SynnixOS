@@ -19,9 +19,9 @@
 #include <x86/pic.h>
 
 /** @file
- * @brief This is a "brief" explaination of this file
+ * @brief Kernel entrypoint
  *
- * This is a "Detailed" explaination of this file
+ * Main kernel entrypoint, where vfs, threads, serial, pci, multiboot and usermode are initialized
  */
 
 
