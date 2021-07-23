@@ -60,6 +60,10 @@ Latest releases are released when I upload it manually, and nightly are at 10:30
 
 - GRUB Bootloader, not sweaty limine. (Could probably port it though :thinking:)
 
+## Contributing
+
+[Learn more about how you can help here!](https://github.com/RaidTheWeb/SynnixOS/blob/master/CONTRIBUTING.md)
+
 ## Building
 
 For building SynnixOS you'll need a few dependencies. Please install the following on your **unix-like** system (If on windows consider [WSL](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux))
