@@ -2,6 +2,10 @@
 #ifndef SNX_SYSCALLS_H
 #define SNX_SYSCALLS_H
 
+/** @file
+ * @brief Include systematicaly generated syscalls
+ */
+
 #include <basic.h>
 #include <dirent.h>
 #include <snx/cpu.h>

@@ -2,6 +2,11 @@
 #ifndef SNX_SYSCALL_H
 #define SNX_SYSCALL_H
 
+/** @file
+ * @brief Syscall helpers
+ * 
+ */
+
 #include <basic.h>
 #include <snx/cpu.h>
 #include <snx/string.h>

@@ -13,39 +13,74 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/** @file
+ * @brief Multi-Threading support
+ * 
+ */
+
+/**
+ * @brief List of all threads
+ * 
+ */
 extern list all_threads;
 
 typedef char fp_ctx[512] __ALIGN(16);
 
+/**
+ * @brief MM Flags
+ * 
+ */
 enum mm_flags {
     MM_FILE = (1 << 1),
     MM_SHARED = (1 << 2),
 };
 
+/**
+ * @brief Region struct
+ * 
+ */
 struct mm_region {
     uintptr_t base;
     uintptr_t top;
     enum mm_flags flags;
     struct file *file;
 };
+/**
+ * @brief Number of regions
+ * 
+ */
 #define NREGIONS 32
 
+/**
+ * @brief Comms size
+ * 
+ */
 #define COMM_SIZE 32
-#define PROC_MAGIC 0x434f5250 // 'PROC'
+
+/**
+ * @brief 'PROC' magic as little-endian format
+ * 
+ */
+#define PROC_MAGIC 0x434f5250
+
+/**
+ * @brief Process struct
+ * 
+ */
 struct process {
     pid_t pid;
     pid_t pgid;
     char comm[COMM_SIZE];
 
-    unsigned int magic; // PROC_MAGIC
+    unsigned int magic; // MAGIC number for 'PROC'
 
     phys_addr_t vm_root;
 
     int uid;
     int gid;
 
-    int exit_intention; // tells threads to exit
-    int exit_status;    // tells parent has exitted
+    int exit_intention; // tells threads when to exit
+    int exit_status;    // tells parent that thread has exited
 
     struct process *parent;
 

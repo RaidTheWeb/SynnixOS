@@ -6,6 +6,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/** @file
+ * @brief Enumerations for memory management 
+ * 
+ */
+
 enum {
     PROT_READ = 1,
     PROT_WRITE = 2,

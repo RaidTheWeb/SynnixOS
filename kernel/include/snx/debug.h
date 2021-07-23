@@ -5,6 +5,11 @@
 #include <basic.h>
 #include <stdio.h>
 
+/** @file
+ * @brief Various debugging tools 
+ * 
+ */
+
 #ifdef DEBUG
 
 #define do_debug true
@@ -33,13 +38,44 @@
         }                                                                      \
     } while (0)
 
+/**
+ * @brief Backtrace from pointer
+ * 
+ * @param bp 
+ * @param ip 
+ * @param callback 
+ */
 void backtrace(uintptr_t bp, uintptr_t ip,
                void (*callback)(uintptr_t bp, uintptr_t ip));
+/**
+ * @brief Back trace from point
+ * 
+ */
 void backtrace_from_here(void);
+/**
+ * @brief Back trace from point but using `ip`
+ * 
+ * @param bp 
+ * @param ip 
+ */
 void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip);
 void print_perf_trace(uintptr_t bp, uintptr_t ip);
 
+/**
+ * @brief Perform a memory dump
+ * 
+ * @param ptr 
+ * @param len 
+ * @return int 
+ */
 int dump_mem(void *ptr, size_t len);
+/**
+ * @brief Perform a hex dump
+ * 
+ * @param len 
+ * @param ptr 
+ * @return int 
+ */
 int hexdump(size_t len, char ptr[len]);
 
 __NOINLINE void break_point();

@@ -5,20 +5,30 @@
 #include <signal.h>
 #include <sys/trace.h>
 
+
+/** @file
+ * @brief Syscall trace helpers
+ * 
+ */
+
+/**
+ * @brief Enumeration for different trace commands
+ * 
+ */
 enum trace_command {
-    TR_TRACEME,
-    TR_ATTACH,
+    TR_TRACEME, // Trace syscall
+    TR_ATTACH, // Attach to syscall
 
-    TR_GETREGS,
-    TR_SETREGS,
+    TR_GETREGS, // Get registers
+    TR_SETREGS, // Set registers
 
-    TR_READMEM,
-    TR_WRITEMEM,
+    TR_READMEM, // Read memory
+    TR_WRITEMEM, // Write to memory
 
-    TR_SINGLESTEP,
-    TR_SYSCALL,
-    TR_CONT,
-    TR_DETACH,
+    TR_SINGLESTEP, // Take single step
+    TR_SYSCALL, // Generic syscall
+    TR_CONT, // CONT
+    TR_DETACH, // Detach from syscall
 };
 
 #define TRACE_SIGNAL_CONTINUE 0

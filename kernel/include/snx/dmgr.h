@@ -5,6 +5,10 @@
 #include <basic.h>
 #include <snx/mutex.h>
 
+/** @file
+ * @brief DMGR helpers 
+ * 
+ */
 
 struct dmgr {
     int cap;

@@ -5,6 +5,11 @@
 
 #include <basic.h>
 
+/** @file
+ * @brief PCI Support
+ * 
+ */
+
 #define PCI_1 0x00
 #define PCI_2 0x01
 #define PCI_3 0x02

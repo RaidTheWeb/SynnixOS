@@ -4,6 +4,11 @@
 
 #include <basic.h>
 
+/** @file
+ * @brief Convenience macros for memory mappings
+ * 
+ */
+
 #define KERNEL_RESERVABLE_SPACE 0xFFFFFFFFC0000000
 #define SIGRETURN_THUNK 0x7FFFFF021000
 #define USER_ENVP 0x7FFFFF011000  // to 21000, 16x4K

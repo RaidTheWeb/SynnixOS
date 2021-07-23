@@ -6,10 +6,23 @@
 #include <list.h>
 #include <stdatomic.h>
 
+/** @file
+ * @brief Synchronous Threading helpers
+ * 
+ */
+
+/**
+ * @brief Queue struct
+ * 
+ */
 struct wq {
     list_head queue; // struct thread.wait_node
 };
 
+/**
+ * @brief Initialize queue
+ * 
+ */
 #define WQ_INIT(name)                                                          \
     { .queue = LIST_INIT(name.queue) }
 
@@ -20,6 +33,10 @@ struct condvar {
 #define CV_INIT(name)                                                          \
     { .wq = WQ_INIT(name.wq) }
 
+/**
+ * @brief MUTEX structure
+ * 
+ */
 struct mutex {
     struct wq wq;
     atomic_int state;
@@ -48,9 +65,32 @@ struct sem {
 
 // // // // //
 
+/**
+ * @brief Initialize Queue
+ * 
+ * @param wq 
+ */
 void wq_init(struct wq *wq);
+
+/**
+ * @brief Block queue
+ * 
+ * @param wq 
+ */
 void wq_block_on(struct wq *wq);
+
+/**
+ * @brief Notify queue
+ * 
+ * @param wq 
+ */
 void wq_notify_one(struct wq *wq);
+
+/**
+ * @brief Notify whole queue
+ * 
+ * @param wq 
+ */
 void wq_notify_all(struct wq *wq);
 void cv_wait(struct condvar *cv, struct mutex *mtx);
 void cv_signal(struct condvar *cv);

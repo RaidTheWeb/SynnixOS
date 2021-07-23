@@ -11,6 +11,11 @@
 #include <snx/cpu.h>
 #include <x86/interrupt.h>
 
+/** @file
+ * @brief Helper functions for kernel panics
+ * 
+ */
+
 noinline void break_point();
 
 #define panic(...)                                                             \

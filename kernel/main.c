@@ -25,8 +25,20 @@
  */
 
 
+/**
+ * @brief Initialize tar_header for Initial File System
+ * 
+ */
 struct tar_header *initfs;
 
+/**
+ * @brief Create Multiboot Callback
+ * Initialize Multiboot callback, later passed into `mb_mmap_enumerate`
+ * 
+ * @param mem 
+ * @param len 
+ * @param type 
+ */
 void mb_pm_callback(phys_addr_t mem, size_t len, int type) {
     int pm_type;
     if (type == MULTIBOOT_MEMORY_AVAILABLE) {
@@ -37,10 +49,21 @@ void mb_pm_callback(phys_addr_t mem, size_t len, int type) {
     pm_set(mem, mem + len, pm_type);
 }
 
+/**
+ * @brief Create handler for the opening of `/proc/test`
+ * Create handler for `/proc/test` and write `Testing procfs...` to stdout when read from
+ * 
+ * @param ofd 
+ * @param _ 
+ */
 void proc_test(struct open_file *ofd, void *_) {
-    proc_sprintf(ofd, "Hello World\n");
+    proc_sprintf(ofd, "Testing procfs...\n");
 }
 
+/**
+ * @brief Initialize procfs
+ * Setup full procfs including various tests and essentials
+ */
 void procfs_init() {
     extern void timer_procfile(struct open_file *, void *);
     extern void proc_syscalls(struct open_file *, void *);
@@ -52,9 +75,22 @@ void procfs_init() {
     make_procfile("mods", proc_mods, NULL);
 }
 
+/**
+ * @brief Get start of kernel
+ * Grab the value of where the kernel starts
+ */
 extern char _kernel_phy_base;
+
+/**
+ * @brief Get end of kernel
+ * Grab the value of where the kernel ends
+ */
 extern char _kernel_phy_top;
 
+/**
+ * @brief SynnixOS Banner
+ * Store string value of the SynnixOS Banner
+ */
 const char *banner =
     "\n"
     "********************************\n"
@@ -65,12 +101,28 @@ const char *banner =
     "********************************\n"
     "\n";
 
+/**
+ * @brief Kernel main function
+ * Main function of where kernel initializes
+ * @param mb_magic 
+ * @param mb_info 
+ * @return noreturn 
+ */
 noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     long tsc = rdtsc();
 
+    /**
+     * @brief Find kernel base as physical address
+     * 
+     */
     phys_addr_t kernel_base = (phys_addr_t)&_kernel_phy_base;
+
+    /**
+     * @brief Find kernel end as physical address
+     * 
+     */
     phys_addr_t kernel_top = (phys_addr_t)&_kernel_phy_top;
-    assert(kernel_top < 0x200000); // update boot.asm page mappings
+    assert(kernel_top < 0x200000);
 
     heap_init(global_heap, early_malloc_pool, EARLY_MALLOC_POOL_LEN);
 
@@ -95,29 +147,52 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
 
     printf("kernel: %10zx - %10zx\n", kernel_base, kernel_top);
 
+    /**
+     * @brief Total usable memory
+     * 
+     */
     size_t memory = mb_mmap_total_usable();
+
+    /**
+     * @brief Total usable memory in MBs
+     * 
+     */
     size_t megabytes = memory / MB;
+    /**
+     * @brief Total usable memory in kilobytes
+     * 
+     */
     size_t kilobytes = (memory - (megabytes * MB)) / KB;
     printf("mmap: total usable memory:");
     printf("%zu (%zuMB + %zuKB)\n", memory, megabytes, kilobytes);
     printf("mb: kernel command line '%s'\n", mb_cmdline());
     printf("mb: bootloader is '%s'\n", mb_bootloader());
 
+    /**
+     * @brief Obtain initFS information
+     * 
+     */
     struct initfs_info initfs_info = mb_initfs_info();
+    /**
+     * @brief Obtain initFS address
+     * 
+     */
     initfs = (struct tar_header *)(initfs_info.base + VMM_KERNEL_BASE);
     printf("mb: user init at %#zx - %#zx\n", initfs, initfs_info.top);
     pm_set(initfs_info.base, initfs_info.top, PM_LEAK);
 
-    // FIXME: the elf metadata ends up here, outside of the end of the
-    // file for some reason.
     pm_set(kernel_top, initfs_info.base, PM_LEAK);
 
+    /**
+     * @brief Get length of initfs
+     * 
+     */
     size_t initfs_len = initfs_info.top - initfs_info.base;
     uintptr_t initfs_v = initfs_info.base + VMM_KERNEL_BASE;
     uintptr_t initfs_p = initfs_info.base;
 
     vmm_unmap_range(initfs_v, initfs_len);
-    vmm_map_range(initfs_v, initfs_p, initfs_len, 0); // init is read-only
+    vmm_map_range(initfs_v, initfs_p, initfs_len, 0);
 
     
 
@@ -139,5 +214,5 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     enable_irqs();
 
     while (true) asm volatile("hlt");
-    panic("kernel_main tried to return!");
+    panic("kernel_main tried to return!"); // we should never have to reach here ;)
 }

@@ -5,6 +5,11 @@
 #include <basic.h>
 #include <snx/sync.h>
 
+/** @file
+ * @brief Mutex locks
+ * 
+ */
+
 typedef struct mutex kmutex;
 typedef struct mutex mutex_t;
 
