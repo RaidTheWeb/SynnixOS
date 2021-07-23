@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tar_5ftypeflag_398',['tar_typeflag',['../tarfs_8h.html#a44b200674b2ed40438db5b1e892ed4f1',1,'tarfs.h']]],
-  ['trace_5fcommand_399',['trace_command',['../kernel_2include_2snx_2trace_8h.html#a117e75803d07e84d672251cb2c4d47d1',1,'trace.h']]]
+  ['mm_5fflags_483',['mm_flags',['../thread_8h.html#ae4e0cc6790033e9e4978abe60a055a1d',1,'thread.h']]],
+  ['modinit_5fstatus_484',['modinit_status',['../mod_8h.html#adad4f7fd998680bef176d80ed272b2b7',1,'mod.h']]]
 ];

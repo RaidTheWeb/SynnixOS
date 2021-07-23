@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['panic_2eh_316',['panic.h',['../panic_8h.html',1,'']]],
-  ['pci_2eh_317',['pci.h',['../pci_8h.html',1,'']]]
+  ['elf_2ec_355',['elf.c',['../elf_8c.html',1,'']]],
+  ['exec_2ec_356',['exec.c',['../exec_8c.html',1,'']]]
 ];

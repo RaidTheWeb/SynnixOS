@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/kernel/tty.c Source File</title>
+<title>SynnixOS: kernel/tty.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_39d708dbdf770862c4f331de6e4bc0a4.html">kernel</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,7 +73,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ringbuf_8h.html">snx/ringbuf.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="serial_8h.html">snx/serial.h</a>&gt;</span></div>
@@ -83,7 +83,7 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">snx/tty.h</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;ssize_t dev_serial_write(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">   14</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = ofd-&gt;file;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    assert(<a class="code" href="structfile.html">file</a>-&gt;type == FT_TTY);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a> = (<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *)<a class="code" href="structfile.html">file</a>;</div>
@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;ssize_t dev_serial_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data_, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">   23</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">dev_serial_read</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data_, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = n-&gt;file;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    assert(<a class="code" href="structfile.html">file</a>-&gt;type == FT_TTY);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a> = (<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *)<a class="code" href="structfile.html">file</a>;</div>
@@ -107,8 +107,8 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile__ops.html">file_ops</a> dev_serial_ops = {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    .read = dev_serial_read,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    .write = dev_serial_write,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    .read = <a class="code" href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">dev_serial_read</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    .write = <a class="code" href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a>,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">   42</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a> = {</div>
@@ -232,18 +232,21 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aringbuf_8h_html_a30df8adbe49a7a33c2e751240aaba5da"><div class="ttname"><a href="ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da">ring_read</a></div><div class="ttdeci">size_t ring_read(struct ringbuf *, void *data, size_t len)</div><div class="ttdoc">Read data from Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00053">ringbuf.c:53</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="afs_8h_html_a1019479bc201200d2afb832d084a5c72"><div class="ttname"><a href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">dev_serial_read</a></div><div class="ttdeci">ssize_t dev_serial_read(struct open_file *n, void *data_, size_t len)</div><div class="ttdoc">Read serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00023">tty.c:23</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdoc">Base TTY struct.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00019">tty.h:19</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_ac578a52281847dff43fc6b4830644509"><div class="ttname"><a href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a></div><div class="ttdeci">size_t ring_write(struct ringbuf *, const void *data, size_t len)</div><div class="ttdoc">Write data to Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00027">ringbuf.c:27</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a2bf916c40122f886a5697b9644437855"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a2bf916c40122f886a5697b9644437855">signal_send_pgid</a></div><div class="ttdeci">int signal_send_pgid(pid_t pgid, int signal)</div><div class="ttdoc">Simulate a signal trip to a Process Group via PGID.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00083">signal.c:83</a></div></div>
+<div class="ttc" id="afs_8h_html_af05e796d01ae8f29a977334128a4c2ae"><div class="ttname"><a href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a></div><div class="ttdeci">ssize_t dev_serial_write(struct open_file *n, const void *data_, size_t len)</div><div class="ttdoc">Write serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00014">tty.c:14</a></div></div>
 <div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
 <div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
-<div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00140">fs.h:140</a></div></div>
-<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
+<div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
+<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
 <div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00018">serial.c:18</a></div></div>
 <div class="ttc" id="async_8h_html_a4e6c14c231ca7fe163e97fbd0d306600"><div class="ttname"><a href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a></div><div class="ttdeci">void wq_notify_all(struct wq *wq)</div><div class="ttdoc">Notify whole queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00022">sync.c:22</a></div></div>
 <div class="ttc" id="aserial_8h_html"><div class="ttname"><a href="serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>

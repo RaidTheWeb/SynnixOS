@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/kernel/include/snx/tty.h Source File</title>
+<title>SynnixOS: kernel/include/snx/tty.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_39d708dbdf770862c4f331de6e4bc0a4.html">kernel</a></li><li class="navelem"><a class="el" href="dir_9ba454eef665ae47601a041e2ee3f21d.html">include</a></li><li class="navelem"><a class="el" href="dir_db2bf42f4798381fadbb4abdbb6b64bd.html">snx</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_313c6260eb21298e5507d45084d6810c.html">snx</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_TTY_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;sys/ttyctl.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
@@ -127,11 +127,12 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
 <div class="ttc" id="astructringbuf_html"><div class="ttname"><a href="structringbuf.html">ringbuf</a></div><div class="ttdoc">Ring Buffer structure.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8h_source.html#l00018">ringbuf.h:18</a></div></div>
 <div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdoc">Base TTY struct.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00019">tty.h:19</a></div></div>
 <div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
-<div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00140">fs.h:140</a></div></div>
+<div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

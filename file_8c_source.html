@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/modules/file.c Source File</title>
+<title>SynnixOS: modules/file.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_aa051b34da40fb7f2730ccd7251e7430.html">modules</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_e05d7e2b1ecd646af5bb94391405f3b5.html">modules</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mod_8h.html">snx/mod.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="timer_8h.html">snx/timer.h</a>&gt;</span></div>
@@ -100,13 +100,13 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> make_my_file(<span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *dev_file = fs_path(<span class="stringliteral">&quot;/dev&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *dev_file = <a class="code" href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a>(<span class="stringliteral">&quot;/dev&quot;</span>);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *dev = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)dev_file;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmy__file.html">my_file</a> *<a class="code" href="structmy__file.html">my_file</a> = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structmy__file.html">my_file</a>));</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    file_init(&amp;<a class="code" href="structmy__file.html">my_file</a>-&gt;file, FT_CHARDEV, &amp;my_file_ops);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="structmy__file.html">my_file</a>-&gt;file.mode = USR_READ;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    add_dir_file(dev_file, &amp;<a class="code" href="structmy__file.html">my_file</a>-&gt;file, name);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a>(dev_file, &amp;<a class="code" href="structmy__file.html">my_file</a>-&gt;file, name);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">int</span> init(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a> *_) {</div>
@@ -120,14 +120,17 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    .init = init,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html_a6c3f89db4fb681a6d70d67ebc02d4933"><div class="ttname"><a href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a></div><div class="ttdeci">sysret add_dir_file(struct file *directory, struct file *file, const char *name)</div><div class="ttdoc">Add file to directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00118">directory.c:118</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdoc">Convenience struct for supplying information about a kernel module.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00029">mod.h:29</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="afs_8h_html_a03ef4ce67850c7ee6073925bcb685cc2"><div class="ttname"><a href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a></div><div class="ttdeci">struct file * fs_path(const char *filename)</div><div class="ttdoc">Get file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00097">fs.c:97</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
 <div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div><div class="ttdoc">Kernel-Space PIT-based timer.</div></div>
-<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
+<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdoc">Directory struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00218">fs.h:218</a></div></div>
 <div class="ttc" id="astructmy__file_html"><div class="ttname"><a href="structmy__file.html">my_file</a></div><div class="ttdef"><b>Definition:</b> <a href="file_8c_source.html#l00026">file.c:26</a></div></div>
 <div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
-<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
+<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
 <div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
 <div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>

@@ -9,6 +9,7 @@ var searchData=
   ['acpi_5fmadt_5fnmi_10',['acpi_madt_nmi',['../structacpi__madt__nmi.html',1,'']]],
   ['acpi_5frsdp_11',['acpi_rsdp',['../structacpi__rsdp.html',1,'']]],
   ['acpi_5frsdt_12',['acpi_rsdt',['../structacpi__rsdt.html',1,'']]],
-  ['all_5fthreads_13',['all_threads',['../thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1',1,'thread.h']]],
-  ['args_5fsize_14',['args_size',['../structargs__size.html',1,'']]]
+  ['add_5fdir_5ffile_13',['add_dir_file',['../fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933',1,'directory.c']]],
+  ['all_5fthreads_14',['all_threads',['../thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1',1,'thread.h']]],
+  ['args_5fsize_15',['args_size',['../structargs__size.html',1,'']]]
 ];

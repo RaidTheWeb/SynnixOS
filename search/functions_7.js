@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['load_5fmod_349',['load_mod',['../mod_8h.html#a27f7c7a9db7ed1fbe782226362b96b22',1,'mod.h']]]
+  ['init_5ftimer_419',['init_timer',['../timer_8h.html#a44f970d17544b1dbaded6f109580ee46',1,'timer.c']]],
+  ['insert_5ftimer_5fevent_420',['insert_timer_event',['../timer_8h.html#afd53b4ad1fd1410105378ce8a6178cd1',1,'timer.c']]],
+  ['irq_5fhandler_421',['irq_handler',['../irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c',1,'irq.c']]],
+  ['irq_5finstall_422',['irq_install',['../irq_8h.html#a872bb2e39230e1fef17df03eea8d697b',1,'irq.c']]]
 ];

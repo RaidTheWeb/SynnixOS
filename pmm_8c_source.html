@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/kernel/pmm.c Source File</title>
+<title>SynnixOS: kernel/pmm.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_39d708dbdf770862c4f331de6e4bc0a4.html">kernel</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,7 +72,7 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/pmm.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sync_8h.html">snx/sync.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span> </div>
@@ -224,21 +224,23 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> (dsp == last) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">if</span> (i &gt; 0)</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            proc_sprintf(ofd, <span class="stringliteral">&quot;%010zx %010zx %s\n&quot;</span>, base, i * PAGE_SIZE,</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;%010zx %010zx %s\n&quot;</span>, base, i * PAGE_SIZE,</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                         type(last));</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        base = i * PAGE_SIZE;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        last = dsp;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;%010zx %010zx %s\n&quot;</span>, base, i * PAGE_SIZE, type(last));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;%010zx %010zx %s\n&quot;</span>, base, i * PAGE_SIZE, type(last));</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;available: %10zu (%10zx)\n&quot;</span>, avail, avail);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;in use:    %10zu (%10zx)\n&quot;</span>, inuse, inuse);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;leaked:    %10zu (%10zx)\n&quot;</span>, leak, leak);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;available: %10zu (%10zx)\n&quot;</span>, avail, avail);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;in use:    %10zu (%10zx)\n&quot;</span>, inuse, inuse);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;leaked:    %10zu (%10zx)\n&quot;</span>, leak, leak);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="async_8h_html"><div class="ttname"><a href="sync_8h.html">sync.h</a></div><div class="ttdoc">Synchronous Threading helpers.</div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="afs_8h_html_a19ec9041d80d18fb945c07e5b8e0b8cd"><div class="ttname"><a href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a></div><div class="ttdeci">void proc_sprintf(struct open_file *ofd, const char *format,...)</div><div class="ttdoc">But data into proc file.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00017">procfs.c:17</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
 <div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdoc">MUTEX structure.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00040">sync.h:40</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->

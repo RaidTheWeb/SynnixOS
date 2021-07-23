@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/x86/interrupt.c Source File</title>
+<title>SynnixOS: x86/interrupt.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_0fb0bf776d848b46f8dbef8b2daa8bb2.html">x86</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_70ef696279286f8491369e3b59714092.html">x86</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -294,7 +294,7 @@ $(function() {
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    printf(<span class="stringliteral">&quot;panic: trap at %#lx\n&quot;</span>, r-&gt;ip);</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    print_registers(r);</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    printf(<span class="stringliteral">&quot;backtrace from: %#lx\n&quot;</span>, r-&gt;bp);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a>(r-&gt;bp, r-&gt;ip);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a>(r-&gt;bp, r-&gt;ip);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    panic();</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
@@ -348,7 +348,7 @@ $(function() {
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    printf(<span class="stringliteral">&quot;Fault occured at %#lx\n&quot;</span>, ip);</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    print_registers(r);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    printf(<span class="stringliteral">&quot;backtrace from: %#lx\n&quot;</span>, bp);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a>(bp, ip);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a>(bp, ip);</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    uintptr_t real_sp = r-&gt;user_sp;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#if DO_STACK_DUMP</span></div>
@@ -444,10 +444,10 @@ $(function() {
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="adebug_8h_html_adcc20309a1dbce4a571396d39b286e57"><div class="ttname"><a href="debug_8h.html#adcc20309a1dbce4a571396d39b286e57">dump_mem</a></div><div class="ttdeci">int dump_mem(void *ptr, size_t len)</div><div class="ttdoc">Perform a memory dump.</div></div>
-<div class="ttc" id="adebug_8h_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00075">debug.c:75</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="airq_8h_html_a23fe1ce2cb623ff39cc3ae2f7c14a15c"><div class="ttname"><a href="irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c">irq_handler</a></div><div class="ttdeci">void irq_handler(interrupt_frame *)</div><div class="ttdoc">Handler for an interrupt frame.</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00025">irq.c:25</a></div></div>
+<div class="ttc" id="adebug_8c_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00078">debug.c:78</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a9c8484d82f26d67e2b0f6cfe523774ee"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a9c8484d82f26d67e2b0f6cfe523774ee">signal_self</a></div><div class="ttdeci">void signal_self(int signal)</div><div class="ttdoc">Cause a signal in current process/thread/process group.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00116">signal.c:116</a></div></div>
 <div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>

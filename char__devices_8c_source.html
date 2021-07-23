@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/fs/char_devices.c Source File</title>
+<title>SynnixOS: fs/char_devices.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_3e5715c00e5636f0201f112966e95044.html">fs</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97b3d2b63ac216821c2d7a22ee0ab2b0.html">fs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,29 +71,34 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;ssize_t dev_zero_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data_, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="fs_8h.html#a6276cb82bded27f645860b54c7f0dc42">    4</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#a6276cb82bded27f645860b54c7f0dc42">dev_zero_read</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data_, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordtype">char</span> *data = data_;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) { data[i] = 0; }</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;ssize_t dev_null_write(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="fs_8h.html#aa21e268107aea78c59ab8ef707676187">   11</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#aa21e268107aea78c59ab8ef707676187">dev_null_write</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;ssize_t dev_null_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="fs_8h.html#adaa0e6f38a4fbd8045a6c271113513e1">   15</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#adaa0e6f38a4fbd8045a6c271113513e1">dev_null_read</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;ssize_t dev_rtw_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="fs_8h.html#ae7b3547b60cf8d3488f8bbc1c842c0b0">   19</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#ae7b3547b60cf8d3488f8bbc1c842c0b0">dev_rtw_read</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    strcpy(data, <span class="stringliteral">&quot;hello there user ;)&quot;</span>);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="afs_8h_html_aa21e268107aea78c59ab8ef707676187"><div class="ttname"><a href="fs_8h.html#aa21e268107aea78c59ab8ef707676187">dev_null_write</a></div><div class="ttdeci">ssize_t dev_null_write(struct open_file *n, const void *data, size_t len)</div><div class="ttdoc">/dev/null write (destroy input data)</div><div class="ttdef"><b>Definition:</b> <a href="char__devices_8c_source.html#l00011">char_devices.c:11</a></div></div>
+<div class="ttc" id="afs_8h_html_adaa0e6f38a4fbd8045a6c271113513e1"><div class="ttname"><a href="fs_8h.html#adaa0e6f38a4fbd8045a6c271113513e1">dev_null_read</a></div><div class="ttdeci">ssize_t dev_null_read(struct open_file *n, void *data, size_t len)</div><div class="ttdoc">/dev/null read (read nothing)</div><div class="ttdef"><b>Definition:</b> <a href="char__devices_8c_source.html#l00015">char_devices.c:15</a></div></div>
+<div class="ttc" id="afs_8h_html_ae7b3547b60cf8d3488f8bbc1c842c0b0"><div class="ttname"><a href="fs_8h.html#ae7b3547b60cf8d3488f8bbc1c842c0b0">dev_rtw_read</a></div><div class="ttdeci">ssize_t dev_rtw_read(struct open_file *n, void *data, size_t len)</div><div class="ttdoc">/dev/rtw read</div><div class="ttdef"><b>Definition:</b> <a href="char__devices_8c_source.html#l00019">char_devices.c:19</a></div></div>
+<div class="ttc" id="afs_8h_html_a6276cb82bded27f645860b54c7f0dc42"><div class="ttname"><a href="fs_8h.html#a6276cb82bded27f645860b54c7f0dc42">dev_zero_read</a></div><div class="ttdeci">ssize_t dev_zero_read(struct open_file *n, void *data, size_t len)</div><div class="ttdoc">/dev/zero read</div><div class="ttdef"><b>Definition:</b> <a href="char__devices_8c_source.html#l00004">char_devices.c:4</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

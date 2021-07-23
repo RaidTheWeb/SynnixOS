@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/fs/socket.c Source File</title>
+<title>SynnixOS: fs/socket.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_3e5715c00e5636f0201f112966e95044.html">fs</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97b3d2b63ac216821c2d7a22ee0ab2b0.html">fs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,7 +73,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ringbuf_8h.html">snx/ringbuf.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
@@ -152,7 +152,7 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (socket-&gt;ops-&gt;init) socket-&gt;ops-&gt;init(socket);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> do_open(&amp;socket-&gt;file, NULL, USR_READ | USR_WRITE, 0);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="fs_8h.html#a7810d0779d7b4eabbd1fd1df402fa3a7">do_open</a>(&amp;socket-&gt;file, NULL, USR_READ | USR_WRITE, 0);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;sysret sys_bind(<span class="keywordtype">int</span> sock, <span class="keyword">struct</span> <a class="code" href="structsockaddr.html">sockaddr</a> <span class="keyword">const</span> *addr, socklen_t addrlen) {</div>
@@ -207,14 +207,16 @@ $(function() {
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> socket-&gt;ops-&gt;recvfrom(ofd, buf, len, flags, remote, addrlen);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="astructprotocol__ops_html"><div class="ttname"><a href="structprotocol__ops.html">protocol_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="socket_8c_source.html#l00010">socket.c:10</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
 <div class="ttc" id="astructsockaddr_html"><div class="ttname"><a href="structsockaddr.html">sockaddr</a></div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00042">socket.h:42</a></div></div>
 <div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
-<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
-<div class="ttc" id="astructsocket__file_html"><div class="ttname"><a href="structsocket__file.html">socket_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00160">fs.h:160</a></div></div>
-<div class="ttc" id="astructsocket__ops_html"><div class="ttname"><a href="structsocket__ops.html">socket_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00169">fs.h:169</a></div></div>
+<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
+<div class="ttc" id="astructsocket__file_html"><div class="ttname"><a href="structsocket__file.html">socket_file</a></div><div class="ttdoc">UNIX-like Socket struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00408">fs.h:408</a></div></div>
+<div class="ttc" id="astructsocket__ops_html"><div class="ttname"><a href="structsocket__ops.html">socket_ops</a></div><div class="ttdoc">UNIX-like socket operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00421">fs.h:421</a></div></div>
+<div class="ttc" id="afs_8h_html_a7810d0779d7b4eabbd1fd1df402fa3a7"><div class="ttname"><a href="fs_8h.html#a7810d0779d7b4eabbd1fd1df402fa3a7">do_open</a></div><div class="ttdeci">sysret do_open(struct file *, const char *basename, int flags, int mode)</div><div class="ttdoc">Open a file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00118">fs.c:118</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="aringbuf_8h_html"><div class="ttname"><a href="ringbuf_8h.html">ringbuf.h</a></div><div class="ttdoc">Ring Buffers.</div></div>
 <!-- start footer part -->

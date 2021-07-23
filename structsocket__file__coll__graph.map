@@ -1,8 +1,8 @@
 <map id="socket_file" name="socket_file">
-<area shape="rect" id="node1" title=" " alt="" coords="7,291,98,317"/>
-<area shape="rect" id="node6" href="$structsocket__ops.html" title=" " alt="" coords="5,380,100,407"/>
-<area shape="rect" id="node2" href="$structfile.html" title=" " alt="" coords="87,201,130,228"/>
-<area shape="rect" id="node5" href="$structfile__ops.html" title=" " alt="" coords="130,291,202,317"/>
+<area shape="rect" id="node1" title="UNIX&#45;like Socket struct." alt="" coords="7,291,98,317"/>
+<area shape="rect" id="node6" href="$structsocket__ops.html" title="UNIX&#45;like socket operations." alt="" coords="5,380,100,407"/>
+<area shape="rect" id="node2" href="$structfile.html" title="File struct." alt="" coords="87,201,130,228"/>
+<area shape="rect" id="node5" href="$structfile__ops.html" title="Various file operations." alt="" coords="130,291,202,317"/>
 <area shape="rect" id="node3" href="$structwq.html" title="Queue struct." alt="" coords="88,97,129,124"/>
 <area shape="rect" id="node4" href="$structlist.html" title=" " alt="" coords="87,7,130,33"/>
 </map>

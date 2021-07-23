@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/fs/procfs.c Source File</title>
+<title>SynnixOS: fs/procfs.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_3e5715c00e5636f0201f112966e95044.html">fs</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97b3d2b63ac216821c2d7a22ee0ab2b0.html">fs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,7 +72,7 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> *argument;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> proc_sprintf(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">   17</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
@@ -135,10 +135,10 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// .write = proc_write,</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> make_procfile(<span class="keyword">const</span> <span class="keywordtype">char</span> *name,</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="fs_8h.html#a07dcdea8ea02a2399e17a5e5e6fca23e">   66</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="fs_8h.html#a07dcdea8ea02a2399e17a5e5e6fca23e">make_procfile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name,</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                   <span class="keywordtype">void</span> (*generate)(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keywordtype">void</span> *arg),</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                   <span class="keywordtype">void</span> *argument) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *procdir_file = fs_path(<span class="stringliteral">&quot;/proc&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *procdir_file = <a class="code" href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a>(<span class="stringliteral">&quot;/proc&quot;</span>);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    assert(procdir_file &amp;&amp; procdir_file-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *procdir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)procdir_file;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
@@ -152,15 +152,20 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    proc-&gt;generate = generate;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    proc-&gt;argument = argument;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    add_dir_file(procdir_file, &amp;proc-&gt;file, name);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a>(procdir_file, &amp;proc-&gt;file, name);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html_a07dcdea8ea02a2399e17a5e5e6fca23e"><div class="ttname"><a href="fs_8h.html#a07dcdea8ea02a2399e17a5e5e6fca23e">make_procfile</a></div><div class="ttdeci">void make_procfile(const char *name, void(*generate)(struct open_file *ofd, void *arg), void *argument)</div><div class="ttdoc">Make procfile.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00066">procfs.c:66</a></div></div>
 <div class="ttc" id="astructproc__file_html"><div class="ttname"><a href="structproc__file.html">proc_file</a></div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00011">procfs.c:11</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
-<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
+<div class="ttc" id="afs_8h_html_a6c3f89db4fb681a6d70d67ebc02d4933"><div class="ttname"><a href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a></div><div class="ttdeci">sysret add_dir_file(struct file *directory, struct file *file, const char *name)</div><div class="ttdoc">Add file to directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00118">directory.c:118</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="afs_8h_html_a03ef4ce67850c7ee6073925bcb685cc2"><div class="ttname"><a href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a></div><div class="ttdeci">struct file * fs_path(const char *filename)</div><div class="ttdoc">Get file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00097">fs.c:97</a></div></div>
+<div class="ttc" id="afs_8h_html_a19ec9041d80d18fb945c07e5b8e0b8cd"><div class="ttname"><a href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a></div><div class="ttdeci">void proc_sprintf(struct open_file *ofd, const char *format,...)</div><div class="ttdoc">But data into proc file.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00017">procfs.c:17</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdoc">Directory struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00218">fs.h:218</a></div></div>
 <div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
-<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
+<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: /home/runner/work/SynnixOS/SynnixOS/kernel/ubsan.c Source File</title>
+<title>SynnixOS: kernel/ubsan.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_39d708dbdf770862c4f331de6e4bc0a4.html">kernel</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: negate overflow detected\n&quot;</span>);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    printf(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
@@ -110,7 +110,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -122,7 +122,7 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
@@ -134,7 +134,7 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
@@ -144,7 +144,7 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: load invalid detected\n&quot;</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    printf(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;lhs_type-&gt;type_name[0]), value_lhs);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    printf(<span class="stringliteral">&quot;  rhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;rhs_type-&gt;type_name[0]), value_rhs);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
@@ -172,7 +172,7 @@ $(function() {
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;__USED</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_out_of_bounds() {}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="adebug_8h_html_a2e7d14081d3888a20dc35563c6340453"><div class="ttname"><a href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here(void)</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00079">debug.c:79</a></div></div>
+<div class="ttc" id="adebug_8c_html_a6fd2e2c1eb2b27c857fdfec83b5d1e02"><div class="ttname"><a href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here()</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00082">debug.c:82</a></div></div>
 <div class="ttc" id="astructubsan__invalid__value__info_html"><div class="ttname"><a href="structubsan__invalid__value__info.html">ubsan_invalid_value_info</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00024">ubsan.h:24</a></div></div>
 <div class="ttc" id="astructubsan__shift__oob__info_html"><div class="ttname"><a href="structubsan__shift__oob__info.html">ubsan_shift_oob_info</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00029">ubsan.h:29</a></div></div>
 <div class="ttc" id="astructsource__location_html"><div class="ttname"><a href="structsource__location.html">source_location</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00007">ubsan.h:7</a></div></div>

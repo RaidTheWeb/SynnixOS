@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['do_5fsignal_5fcall_336',['do_signal_call',['../kernel_2include_2snx_2signal_8h.html#a46c15fcda38b9eebeac08e5fac1ab396',1,'signal.c']]],
-  ['drop_5ftimer_5fevent_337',['drop_timer_event',['../timer_8h.html#a4320db37a09f23f2471fcd28aa2d0d4c',1,'timer.c']]],
-  ['dump_5fmem_338',['dump_mem',['../debug_8h.html#adcc20309a1dbce4a571396d39b286e57',1,'debug.h']]]
+  ['backtrace_386',['backtrace',['../debug_8h.html#a8c83bd615e88c421d47b48f44b10ce98',1,'debug.h']]],
+  ['backtrace_5ffrom_5fhere_387',['backtrace_from_here',['../debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02',1,'backtrace_from_here():&#160;debug.c'],['../debug_8h.html#a2e7d14081d3888a20dc35563c6340453',1,'backtrace_from_here(void):&#160;debug.c']]],
+  ['backtrace_5ffrom_5fwith_5fip_388',['backtrace_from_with_ip',['../debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72',1,'backtrace_from_with_ip(uintptr_t bp, uintptr_t ip):&#160;debug.c'],['../debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72',1,'backtrace_from_with_ip(uintptr_t bp, uintptr_t ip):&#160;debug.c']]],
+  ['basename_389',['basename',['../fs_8h.html#a425eb3906f797c781dbf35f6614ac1bf',1,'fs.c']]]
 ];

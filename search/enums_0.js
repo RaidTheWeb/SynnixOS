@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mm_5fflags_396',['mm_flags',['../thread_8h.html#ae4e0cc6790033e9e4978abe60a055a1d',1,'thread.h']]],
-  ['modinit_5fstatus_397',['modinit_status',['../mod_8h.html#adad4f7fd998680bef176d80ed272b2b7',1,'mod.h']]]
+  ['file_5fflags_482',['file_flags',['../fs_8h.html#aba2d48ea5b39d1ab48c6b892a2e2d0db',1,'fs.h']]]
 ];
