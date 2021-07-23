@@ -18,6 +18,10 @@
 #include <x86/cpu.h>
 #include <x86/pic.h>
 
+/**
+ * Hello Doxygen
+ */
+
 struct tar_header *initfs;
 
 void mb_pm_callback(phys_addr_t mem, size_t len, int type) {
