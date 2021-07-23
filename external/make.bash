@@ -6,6 +6,10 @@ function build() {
     SYSUSR=../../../sysroot/usr make install
     cd -
 
+    cd Epic8C
+    make snx
+    cd -
+
     #cd tinyvm
     #CC=~/.local/bin/x86_64-synnixos-gcc make
     #INSTALL_PREFIX=../../sysroot/usr make install 
@@ -20,6 +24,10 @@ function build() {
 function clean() {
     cd lua
     make clean
+    cd -
+
+    cd Epic8C
+    rm epic8
     cd -
 
     #cd tinyvm
