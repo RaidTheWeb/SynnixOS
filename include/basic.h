@@ -6,12 +6,16 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// convenience macros
+/** @file
+ * @brief Basic Convenience Macros
+ * 
+ */
+
 #if defined(__x86_64__)
 #define X86 1
 #define X86_64 1
 #else
-#error unsupported architecture
+#error "Unsupported Architecture!"
 #endif
 
 #define CONCAT_(x, y) x##y
@@ -55,7 +59,7 @@ static_assert(__STDC_HOSTED__ != 1);
 
 
 #ifndef __GNUC__
-#error "You'll need to update basic.h to support this non-GNU compiler"
+#error "SynnixOS only supports GNU"
 #endif
 
 // Compiler independant attributes

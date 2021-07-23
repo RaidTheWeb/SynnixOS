@@ -4,6 +4,11 @@
 #include <snx/syscall.h>
 #include <sys/utsname.h>
 
+/** @file
+ * @brief Uname helpers 
+ * 
+ */
+
 #if X86_64
 #define UNAME_ARCH "x86_64"
 #endif

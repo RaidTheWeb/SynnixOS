@@ -10,7 +10,10 @@
 #include <snx/thread.h>
 #include <stdlib.h>
 
-// COUNT ARGS
+/** @file
+ * @brief Execute Process Helpers
+ * 
+ */
 
 struct args_size {
     size_t count;
@@ -64,16 +67,8 @@ char *const *exec_copy_args(char **out, char *const args[]) {
     return out;
 }
 
-/*
- * Takes a string of format
- * "abc foo bar"
- * and chops it into 0-terminaed C strings for each whitespace-delimited
- * token of the input. Places up to `len` pointers in `addrs`, reading
- * at most `str_len` from `str`
- *
- * This is destructive to the input string, it is mutated to add the NULs,
- * and the resultant pointers are into that buffer. This is best applied to
- * a temporary and then copied out with exec_copy_args or exec_concat_args.
+/**
+ * @brief Parses args
  */
 size_t exec_parse_args(char **addrs, size_t len, char *str, size_t str_len) {
     size_t arg_i = 0;
@@ -110,8 +105,8 @@ bool exec_load_elf(elf_md *e, bool image) {
     return 0;
 }
 
-/*
- * Clear memory maps and reinitialize the critial ones
+/**
+ * @brief Clear memory maps and reinitialize the critial ones
  */
 void exec_memory_setup(void) {
     for (int i = 0; i < NREGIONS; i++) {
@@ -143,15 +138,11 @@ const char *exec_interp(elf_md *e) {
 static void exec_frame_setup(interrupt_frame *frame) {
     memset(frame, 0, sizeof(struct interrupt_frame));
 
-    // TODO: x86ism
     frame->ds = 0x20 | 3;
     frame->cs = 0x18 | 3;
     frame->ss = 0x20 | 3;
     frame->flags = INTERRUPT_ENABLE;
 
-    // on I686, arguments are passed above the initial stack pointer
-    // so give them some space.  This may not be needed on other
-    // platforms, but it's ok for the moment
     frame->user_sp = USER_STACK - 16;
     frame->bp = USER_STACK - 16;
 }
@@ -165,7 +156,6 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
 
     if (!(file->mode & USR_EXEC)) return -ENOEXEC;
 
-    // copy args to kernel space so they survive if they point to the old args
     const char *path_tmp;
     char *const *stored_args = {0};
     char interp_buf[256] = {0};
@@ -175,14 +165,6 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
     strncpy(running_process->comm, basename(filename), COMM_SIZE);
 
     if ((path_tmp = exec_shebang(file))) {
-        /* Script:
-         * #!/bin/a b c
-         *
-         * Invoked as ./script d e f
-         *
-         * Loads real ELF `/bin/a` with ARGV:
-         * { "/bin/a", "b", "c", "./script", "d", "e", "f" }
-         */
 
         strncpyto(interp_buf, path_tmp, 256, '\n');
         char *interp_args[8] = {0};
@@ -200,9 +182,6 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
     running_process->elf_metadata = e;
 
     if ((path_tmp = exec_interp(e))) {
-        // this one will actually load both /bin/ld-snx.so *and* the real
-        // executable file and pass the base address of the real file to
-        // the dynamic linker _somehow_. TODO
         printf("[Debug] Loading interpreter: %s\n", path_tmp);
         struct file *interp = fs_path(path_tmp);
 
@@ -213,7 +192,6 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
         if (!err) return -ENOEXEC;
     }
 
-    // INVALIDATES POINTERS TO USERSPACE
     bool err = exec_load_elf(e, true);
     if (err) return -ENOEXEC;
 
@@ -223,7 +201,6 @@ sysret do_execve(struct file *file, struct interrupt_frame *frame,
     char **user_argv = (char **)USER_ARGV;
     exec_copy_args(user_argv, stored_args);
 
-    // FIXME: it's not e->header->entry if there's an interpreter
     frame->ip = (uintptr_t)e->imm_header->e_entry;
     FRAME_ARGC(frame) = argc(stored_args);
     FRAME_ARGV(frame) = (uintptr_t)user_argv;

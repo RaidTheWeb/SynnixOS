@@ -12,6 +12,10 @@
 #include <synnixos.h>
 #include <stdio.h>
 
+/** @file
+ * @brief Debugging tools 
+ * 
+ */
 
 void s2printf(const char *format, ...) {
     va_list args;
@@ -21,7 +25,6 @@ void s2printf(const char *format, ...) {
     serial2_write_str(buf, len);
 }
 
-// TODO: factor
 #define GET_BP(r) asm("mov %%rbp, %0" : "=r"(r));
 
 #if X86_64

@@ -4,6 +4,11 @@
 #include <snx/vmm.h>
 #include <string.h>
 
+/** @file
+ * @brief ELF Functions
+ * 
+ */
+
 static void init_section(void *destination_vaddr, size_t len) {
     uintptr_t bot = round_down((uintptr_t)destination_vaddr, 0x1000);
     uintptr_t top = round_up((uintptr_t)destination_vaddr + len, 0x1000);
