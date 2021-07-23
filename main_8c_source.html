@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_94a30a8e6188cddde37bc1c5a98fcc53.html">runner</a></li><li class="navelem"><a class="el" href="dir_84287fa28ad63517430bce9998aa5d62.html">work</a></li><li class="navelem"><a class="el" href="dir_c38bd1d35ece4cbc6c51603fbac4c12c.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_2b25c993077de476dca6175830dd7e09.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_9dff85a473f9a307c2e18c856a7e2071.html">kernel</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8e37b9d33140d6009518b7a0bb5633b7.html">work</a></li><li class="navelem"><a class="el" href="dir_4f092c413003284acd441563a762c5df.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_d90ec51b1fd7b135ac594493368caa2d.html">SynnixOS</a></li><li class="navelem"><a class="el" href="dir_39d708dbdf770862c4f331de6e4bc0a4.html">kernel</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,9 +89,28 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sys/time.h&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;x86/cpu.h&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;x86/pic.h&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * @brief Kernel entrypoint</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * Main kernel entrypoint, where vfs, threads, serial, pci, multiboot and usermode are initialized</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * @brief Initialize tar_header for Initial File System</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *<a class="code" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @brief Create Multiboot Callback</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * Initialize Multiboot callback, later passed into `mb_mmap_enumerate`</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @param mem </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @param len </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @param type </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="main_8c.html#ac4428fb4bc2663743777796ee2cfbce9">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8c.html#ac4428fb4bc2663743777796ee2cfbce9">mb_pm_callback</a>(phys_addr_t mem, <span class="keywordtype">size_t</span> len, <span class="keywordtype">int</span> type) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> pm_type;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (type == MULTIBOOT_MEMORY_AVAILABLE) {</div>
@@ -101,11 +120,22 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    pm_set(mem, mem + len, pm_type);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @brief Create handler for the opening of `/proc/test`</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * Create handler for `/proc/test` and write `Testing procfs...` to stdout when read from</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @param ofd </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @param _ </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="main_8c.html#adf912734ccd9aa69d090b58097dec41f">   59</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8c.html#adf912734ccd9aa69d090b58097dec41f">proc_test</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keywordtype">void</span> *_) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;Testing procfs...\n&quot;</span>);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @brief Initialize procfs</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> * Setup full procfs including various tests and essentials</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="main_8c.html#a67b19f8892567cdb63c98ee660300f60">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8c.html#a67b19f8892567cdb63c98ee660300f60">procfs_init</a>() {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> timer_procfile(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *, <span class="keywordtype">void</span> *);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> proc_syscalls(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *, <span class="keywordtype">void</span> *);</div>
@@ -116,11 +146,23 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    make_procfile(<span class="stringliteral">&quot;syscalls&quot;</span>, proc_syscalls, NULL);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    make_procfile(<span class="stringliteral">&quot;mods&quot;</span>, proc_mods, NULL);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @brief Get start of kernel</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * Grab the value of where the kernel starts</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="main_8c.html#a672e31a6ab469b4e0b6dab62e7d6652d">_kernel_phy_base</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * @brief Get end of kernel</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * Grab the value of where the kernel ends</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="main_8c.html#a287b269a2ec4abbe892a7f971e4371c5">_kernel_phy_top</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * @brief SynnixOS Banner</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * Store string value of the SynnixOS Banner</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="main_8c.html#a82f1b66e7564f5d658b612893a758a6b">   94</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="main_8c.html#a82f1b66e7564f5d658b612893a758a6b">banner</a> =</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="stringliteral">&quot;********************************\n&quot;</span></div>
@@ -130,12 +172,27 @@ $(function() {
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="stringliteral">&quot;\n&quot;</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="stringliteral">&quot;********************************\n&quot;</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> * @brief Kernel main function</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> * Main function of where kernel initializes</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * @param mb_magic </span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> * @param mb_info </span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> * @return noreturn </span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="main_8c.html#a0921636b1737a4511853965f143ad1b3">  111</a></span>&#160;noreturn <span class="keywordtype">void</span> <a class="code" href="main_8c.html#a0921636b1737a4511853965f143ad1b3">kernel_main</a>(uint32_t mb_magic, uintptr_t mb_info) {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">long</span> tsc = rdtsc();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">     * @brief Find kernel base as physical address</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    phys_addr_t kernel_base = (phys_addr_t)&amp;<a class="code" href="main_8c.html#a672e31a6ab469b4e0b6dab62e7d6652d">_kernel_phy_base</a>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">     * @brief Find kernel end as physical address</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    phys_addr_t kernel_top = (phys_addr_t)&amp;<a class="code" href="main_8c.html#a287b269a2ec4abbe892a7f971e4371c5">_kernel_phy_top</a>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    assert(kernel_top &lt; 0x200000);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
@@ -161,23 +218,47 @@ $(function() {
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    pm_set(kernel_base, kernel_top, PM_LEAK);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    printf(<span class="stringliteral">&quot;kernel: %10zx - %10zx\n&quot;</span>, kernel_base, kernel_top);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">     * @brief Total usable memory</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">size_t</span> memory = <a class="code" href="multiboot_8h.html#aa841ae4f8c21226cc2d909e71780c681">mb_mmap_total_usable</a>();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">size_t</span> megabytes = memory / MB;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">     * @brief Total usable memory in MBs</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">size_t</span> megabytes = memory / MB;<span class="comment"></span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">     * @brief Total usable memory in kilobytes</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">size_t</span> kilobytes = (memory - (megabytes * MB)) / KB;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    printf(<span class="stringliteral">&quot;mmap: total usable memory:&quot;</span>);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    printf(<span class="stringliteral">&quot;%zu (%zuMB + %zuKB)\n&quot;</span>, memory, megabytes, kilobytes);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    printf(<span class="stringliteral">&quot;mb: kernel command line &#39;%s&#39;\n&quot;</span>, <a class="code" href="multiboot_8h.html#aa76aaa48ed6cc92967edd38bf2702fb6">mb_cmdline</a>());</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    printf(<span class="stringliteral">&quot;mb: bootloader is &#39;%s&#39;\n&quot;</span>, <a class="code" href="multiboot_8h.html#abb1668fb1a5e43f8687b5d7306159f30">mb_bootloader</a>());</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keyword">struct </span><a class="code" href="structinitfs__info.html">initfs_info</a> <a class="code" href="structinitfs__info.html">initfs_info</a> = <a class="code" href="multiboot_8h.html#a8906aafc26bd1ebc3abc29cdcac7774d">mb_initfs_info</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">     * @brief Obtain initFS information</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keyword">struct </span><a class="code" href="structinitfs__info.html">initfs_info</a> <a class="code" href="structinitfs__info.html">initfs_info</a> = <a class="code" href="multiboot_8h.html#a8906aafc26bd1ebc3abc29cdcac7774d">mb_initfs_info</a>();<span class="comment"></span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">     * @brief Obtain initFS address</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a> = (<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *)(<a class="code" href="structinitfs__info.html">initfs_info</a>.base + VMM_KERNEL_BASE);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    printf(<span class="stringliteral">&quot;mb: user init at %#zx - %#zx\n&quot;</span>, <a class="code" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a>, <a class="code" href="structinitfs__info.html">initfs_info</a>.top);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    pm_set(<a class="code" href="structinitfs__info.html">initfs_info</a>.base, <a class="code" href="structinitfs__info.html">initfs_info</a>.top, PM_LEAK);</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    pm_set(kernel_top, <a class="code" href="structinitfs__info.html">initfs_info</a>.base, PM_LEAK);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">     * @brief Get length of initfs</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordtype">size_t</span> initfs_len = <a class="code" href="structinitfs__info.html">initfs_info</a>.top - <a class="code" href="structinitfs__info.html">initfs_info</a>.base;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    uintptr_t initfs_v = <a class="code" href="structinitfs__info.html">initfs_info</a>.base + VMM_KERNEL_BASE;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    uintptr_t initfs_p = <a class="code" href="structinitfs__info.html">initfs_info</a>.base;</div>
