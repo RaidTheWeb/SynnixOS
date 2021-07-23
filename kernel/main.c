@@ -19,9 +19,8 @@
 #include <x86/pic.h>
 
 /**
- * @brief Hello Doxygen
+ * Create tar header for loading the initFS
  */
-
 struct tar_header *initfs;
 
 void mb_pm_callback(phys_addr_t mem, size_t len, int type) {

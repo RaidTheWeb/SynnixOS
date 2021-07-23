@@ -1,0 +1,9 @@
+<map id="tty_file" name="tty_file">
+<area shape="rect" id="node1" title=" " alt="" coords="37,291,103,317"/>
+<area shape="rect" id="node2" href="$structtty.html" title=" " alt="" coords="19,201,59,228"/>
+<area shape="rect" id="node3" href="$structringbuf.html" title=" " alt="" coords="5,97,73,124"/>
+<area shape="rect" id="node4" href="$structfile.html" title=" " alt="" coords="127,201,170,228"/>
+<area shape="rect" id="node7" href="$structfile__ops.html" title=" " alt="" coords="135,291,207,317"/>
+<area shape="rect" id="node5" href="$structwq.html" title=" " alt="" coords="128,97,169,124"/>
+<area shape="rect" id="node6" href="$structlist.html" title=" " alt="" coords="127,7,170,33"/>
+</map>
