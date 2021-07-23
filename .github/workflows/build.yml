@@ -1,0 +1,39 @@
+
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Initial Build
+        run: |
+          ./scripts/generate_makefile.rb
+          make
+
+      - name: Build Ports
+        run: |
+          cd external
+          ./make.bash
+          cd -
+      
+      - name: Final Build
+        run: |
+          make
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: SynnixOS.iso
+          path: ./synnixos.iso
+          error: "Failed to upload ISO"
