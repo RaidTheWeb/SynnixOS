@@ -15,11 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Build Docs
-      - run: echo "Building Documentation using Doxygen"
-      
-      - name: Building Docs
-        uses: mattnotmitt/doxygen-action@v1.3.1
-        with:
-            working-directory: '.'
-            doxyfile-path: 'docs/Doxyfile'
+      - name: Obtaining Dependencies
+      - run: sudo apt-get install doxygen
+
+      - name: Building Doxygen
+      - run: |
+        cd docs
+        doxygen
