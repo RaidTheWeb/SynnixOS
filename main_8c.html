@@ -81,31 +81,35 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac4428fb4bc2663743777796ee2cfbce9"><td class="memItemLeft" align="right" valign="top"><a id="ac4428fb4bc2663743777796ee2cfbce9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mb_pm_callback</b> (phys_addr_t mem, size_t len, int type)</td></tr>
+<tr class="memitem:ac4428fb4bc2663743777796ee2cfbce9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac4428fb4bc2663743777796ee2cfbce9">mb_pm_callback</a> (phys_addr_t mem, size_t len, int type)</td></tr>
+<tr class="memdesc:ac4428fb4bc2663743777796ee2cfbce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create Multiboot Callback Initialize Multiboot callback, later passed into <code>mb_mmap_enumerate</code>  <a href="main_8c.html#ac4428fb4bc2663743777796ee2cfbce9">More...</a><br /></td></tr>
 <tr class="separator:ac4428fb4bc2663743777796ee2cfbce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf912734ccd9aa69d090b58097dec41f"><td class="memItemLeft" align="right" valign="top"><a id="adf912734ccd9aa69d090b58097dec41f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>proc_test</b> (struct <a class="el" href="structopen__file.html">open_file</a> *ofd, void *_)</td></tr>
+<tr class="memitem:adf912734ccd9aa69d090b58097dec41f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#adf912734ccd9aa69d090b58097dec41f">proc_test</a> (struct <a class="el" href="structopen__file.html">open_file</a> *ofd, void *_)</td></tr>
+<tr class="memdesc:adf912734ccd9aa69d090b58097dec41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create handler for the opening of <code>/proc/test</code> Create handler for <code>/proc/test</code> and write <code>Testing procfs...</code> to stdout when read from.  <a href="main_8c.html#adf912734ccd9aa69d090b58097dec41f">More...</a><br /></td></tr>
 <tr class="separator:adf912734ccd9aa69d090b58097dec41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67b19f8892567cdb63c98ee660300f60"><td class="memItemLeft" align="right" valign="top"><a id="a67b19f8892567cdb63c98ee660300f60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>procfs_init</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a67b19f8892567cdb63c98ee660300f60">procfs_init</a> ()</td></tr>
+<tr class="memdesc:a67b19f8892567cdb63c98ee660300f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize procfs Setup full procfs including various tests and essentials. <br /></td></tr>
 <tr class="separator:a67b19f8892567cdb63c98ee660300f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0921636b1737a4511853965f143ad1b3"><td class="memItemLeft" align="right" valign="top"><a id="a0921636b1737a4511853965f143ad1b3"></a>
-noreturn void&#160;</td><td class="memItemRight" valign="bottom"><b>kernel_main</b> (uint32_t mb_magic, uintptr_t mb_info)</td></tr>
+<tr class="memitem:a0921636b1737a4511853965f143ad1b3"><td class="memItemLeft" align="right" valign="top">noreturn void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0921636b1737a4511853965f143ad1b3">kernel_main</a> (uint32_t mb_magic, uintptr_t mb_info)</td></tr>
+<tr class="memdesc:a0921636b1737a4511853965f143ad1b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kernel main function Main function of where kernel initializes.  <a href="main_8c.html#a0921636b1737a4511853965f143ad1b3">More...</a><br /></td></tr>
 <tr class="separator:a0921636b1737a4511853965f143ad1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4af37288b40f88d07ec2a9e5c876131b"><td class="memItemLeft" align="right" valign="top"><a id="a4af37288b40f88d07ec2a9e5c876131b"></a>
-struct <a class="el" href="structtar__header.html">tar_header</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>initfs</b></td></tr>
+<tr class="memitem:a4af37288b40f88d07ec2a9e5c876131b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtar__header.html">tar_header</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a></td></tr>
+<tr class="memdesc:a4af37288b40f88d07ec2a9e5c876131b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize <a class="el" href="structtar__header.html" title="Tar file header struct.">tar_header</a> for Initial File System.  <a href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">More...</a><br /></td></tr>
 <tr class="separator:a4af37288b40f88d07ec2a9e5c876131b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a672e31a6ab469b4e0b6dab62e7d6652d"><td class="memItemLeft" align="right" valign="top"><a id="a672e31a6ab469b4e0b6dab62e7d6652d"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>_kernel_phy_base</b></td></tr>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a672e31a6ab469b4e0b6dab62e7d6652d">_kernel_phy_base</a></td></tr>
+<tr class="memdesc:a672e31a6ab469b4e0b6dab62e7d6652d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get start of kernel Grab the value of where the kernel starts. <br /></td></tr>
 <tr class="separator:a672e31a6ab469b4e0b6dab62e7d6652d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287b269a2ec4abbe892a7f971e4371c5"><td class="memItemLeft" align="right" valign="top"><a id="a287b269a2ec4abbe892a7f971e4371c5"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>_kernel_phy_top</b></td></tr>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a287b269a2ec4abbe892a7f971e4371c5">_kernel_phy_top</a></td></tr>
+<tr class="memdesc:a287b269a2ec4abbe892a7f971e4371c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get end of kernel Grab the value of where the kernel ends. <br /></td></tr>
 <tr class="separator:a287b269a2ec4abbe892a7f971e4371c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82f1b66e7564f5d658b612893a758a6b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><b>banner</b></td></tr>
+<tr class="memitem:a82f1b66e7564f5d658b612893a758a6b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a82f1b66e7564f5d658b612893a758a6b">banner</a></td></tr>
+<tr class="memdesc:a82f1b66e7564f5d658b612893a758a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">SynnixOS Banner Store string value of the SynnixOS Banner.  <a href="main_8c.html#a82f1b66e7564f5d658b612893a758a6b">More...</a><br /></td></tr>
 <tr class="separator:a82f1b66e7564f5d658b612893a758a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -113,7 +117,141 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>_kernel_phy_top</b></
 <p>Main kernel entrypoint, where vfs, threads, serial, pci, multiboot and usermode are initialized </p>
 
 <p class="definition">Definition in file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-</div><h2 class="groupheader">Variable Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a0921636b1737a4511853965f143ad1b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0921636b1737a4511853965f143ad1b3">&#9670;&nbsp;</a></span>kernel_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">noreturn void kernel_main </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mb_magic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uintptr_t&#160;</td>
+          <td class="paramname"><em>mb_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Kernel main function Main function of where kernel initializes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mb_magic</td><td></td></tr>
+    <tr><td class="paramname">mb_info</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>noreturn </dd></dl>
+<p>Find kernel base as physical address</p>
+<p>Find kernel end as physical address</p>
+<p>Total usable memory</p>
+<p>Total usable memory in MBs</p>
+<p>Total usable memory in kilobytes</p>
+<p>Obtain initFS information</p>
+<p>Obtain initFS address</p>
+<p>Get length of initfs</p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00111">111</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="ac4428fb4bc2663743777796ee2cfbce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4428fb4bc2663743777796ee2cfbce9">&#9670;&nbsp;</a></span>mb_pm_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mb_pm_callback </td>
+          <td>(</td>
+          <td class="paramtype">phys_addr_t&#160;</td>
+          <td class="paramname"><em>mem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create Multiboot Callback Initialize Multiboot callback, later passed into <code>mb_mmap_enumerate</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mem</td><td></td></tr>
+    <tr><td class="paramname">len</td><td></td></tr>
+    <tr><td class="paramname">type</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00042">42</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="adf912734ccd9aa69d090b58097dec41f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf912734ccd9aa69d090b58097dec41f">&#9670;&nbsp;</a></span>proc_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void proc_test </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structopen__file.html">open_file</a> *&#160;</td>
+          <td class="paramname"><em>ofd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create handler for the opening of <code>/proc/test</code> Create handler for <code>/proc/test</code> and write <code>Testing procfs...</code> to stdout when read from. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofd</td><td></td></tr>
+    <tr><td class="paramname">_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00059">59</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a82f1b66e7564f5d658b612893a758a6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82f1b66e7564f5d658b612893a758a6b">&#9670;&nbsp;</a></span>banner</h2>
 
@@ -135,7 +273,27 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>_kernel_phy_top</b></
 <div class="line">    <span class="stringliteral">&quot;********************************\n&quot;</span></div>
 <div class="line">    <span class="stringliteral">&quot;\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00058">58</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p>SynnixOS Banner Store string value of the SynnixOS Banner. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00094">94</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a4af37288b40f88d07ec2a9e5c876131b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af37288b40f88d07ec2a9e5c876131b">&#9670;&nbsp;</a></span>initfs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtar__header.html">tar_header</a>* initfs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize <a class="el" href="structtar__header.html" title="Tar file header struct.">tar_header</a> for Initial File System. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00032">32</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>

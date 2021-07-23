@@ -73,9 +73,9 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/syscall.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/trace.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2trace_8h.html">snx/trace.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wake_tracer_with(<span class="keyword">struct</span> <a class="code" href="structthread.html">thread</a> *tracee, <span class="keywordtype">int</span> value);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> trace_start(th, TRACE_RUNNING, 0);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;sysret sys_trace(<span class="keyword">enum</span> trace_command cmd, pid_t pid, <span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *data) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;sysret sys_trace(<span class="keyword">enum</span> <a class="code" href="kernel_2include_2snx_2trace_8h.html#a117e75803d07e84d672251cb2c4d47d1">trace_command</a> cmd, pid_t pid, <span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *data) {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *th = thread_by_id(pid);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> d_signal = (int)(intptr_t)data; <span class="comment">// fun warnings</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
@@ -188,7 +188,7 @@ $(function() {
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        tracer-&gt;state = TS_RUNNING;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        tracer-&gt;wait_trace_result = running_thread;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    signal_send_th(tracee-&gt;tracer, SIGCHLD);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="kernel_2include_2snx_2signal_8h.html#a10c867fc15be211395ff7ce3fea3133d">signal_send_th</a>(tracee-&gt;tracer, SIGCHLD);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">void</span> trace_syscall_entry(<span class="keyword">struct</span> <a class="code" href="structthread.html">thread</a> *tracee, <span class="keywordtype">int</span> syscall) {</div>
@@ -234,9 +234,14 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    thread_block();</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructthread_html"><div class="ttname"><a href="structthread.html">thread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00090">thread.h:90</a></div></div>
-<div class="ttc" id="astructprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00035">thread.h:35</a></div></div>
+<div class="ttc" id="astructthread_html"><div class="ttname"><a href="structthread.html">thread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00125">thread.h:125</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="akernel_2include_2snx_2trace_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2trace_8h.html">trace.h</a></div><div class="ttdoc">Syscall trace helpers.</div></div>
+<div class="ttc" id="astructprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdoc">Process struct.</div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00070">thread.h:70</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2trace_8h_html_a117e75803d07e84d672251cb2c4d47d1"><div class="ttname"><a href="kernel_2include_2snx_2trace_8h.html#a117e75803d07e84d672251cb2c4d47d1">trace_command</a></div><div class="ttdeci">trace_command</div><div class="ttdoc">Enumeration for different trace commands.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2include_2snx_2trace_8h_source.html#l00018">trace.h:18</a></div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a10c867fc15be211395ff7ce3fea3133d"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a10c867fc15be211395ff7ce3fea3133d">signal_send_th</a></div><div class="ttdeci">int signal_send_th(struct thread *th, int signal)</div><div class="ttdoc">Simulate a signal trip to a thread via struct.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00065">signal.c:65</a></div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

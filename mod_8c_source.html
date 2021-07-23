@@ -74,18 +74,18 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;elf.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/dmgr.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/mod.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;snx/syscall.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mod_8h.html">snx/mod.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;snx/vmm.h&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">struct </span><a class="code" href="structlist.html">list</a> loaded_mods = LIST_INIT(loaded_mods);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">struct </span><a class="code" href="structmod__sym.html">mod_sym</a> elf_find_symbol_by_address(uintptr_t address) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="mod_8h.html#a6e971f2e432ece455719da80303f1593">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmod__sym.html">mod_sym</a> <a class="code" href="mod_8h.html#a6e971f2e432ece455719da80303f1593">elf_find_symbol_by_address</a>(uintptr_t address) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmod.html">mod</a> *in_mod = NULL;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    elf_md *in_elf = &amp;elf_snxk_md;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>, <a class="code" href="structmod.html">mod</a>, &amp;loaded_mods, node) {</div>
@@ -147,11 +147,16 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00016">mod.h:16</a></div></div>
+<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdoc">Convenience struct for supplying information about a kernel module.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00029">mod.h:29</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
+<div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
-<div class="ttc" id="astructmod__sym_html"><div class="ttname"><a href="structmod__sym.html">mod_sym</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00035">mod.h:35</a></div></div>
-<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00022">mod.h:22</a></div></div>
+<div class="ttc" id="amod_8h_html_a6e971f2e432ece455719da80303f1593"><div class="ttname"><a href="mod_8h.html#a6e971f2e432ece455719da80303f1593">elf_find_symbol_by_address</a></div><div class="ttdeci">struct mod_sym elf_find_symbol_by_address(uintptr_t address)</div><div class="ttdoc">Helper for finding an elf symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8c_source.html#l00016">mod.c:16</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="astructmod__sym_html"><div class="ttname"><a href="structmod__sym.html">mod_sym</a></div><div class="ttdoc">Kernel module symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00063">mod.h:63</a></div></div>
+<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
+<div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

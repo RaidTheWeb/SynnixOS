@@ -77,12 +77,12 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;snx/dmgr.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;snx/ringbuf.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;snx/sync.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;snx/syscall.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;snx/syscall_consts.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;snx/tty.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ringbuf_8h.html">snx/ringbuf.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sync_8h.html">snx/sync.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="syscall__consts_8h.html">snx/syscall_consts.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">snx/tty.h</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -264,21 +264,27 @@ $(function() {
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#endif // SNX_FS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="async_8h_html"><div class="ttname"><a href="sync_8h.html">sync.h</a></div><div class="ttdoc">Synchronous Threading helpers.</div></div>
 <div class="ttc" id="astructdirectory__node_html"><div class="ttname"><a href="structdirectory__node.html">directory_node</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00103">fs.h:103</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
+<div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
 <div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdef"><b>Definition:</b> <a href="poll_8h_source.html#l00005">poll.h:5</a></div></div>
-<div class="ttc" id="astructthread_html"><div class="ttname"><a href="structthread.html">thread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00090">thread.h:90</a></div></div>
+<div class="ttc" id="astructthread_html"><div class="ttname"><a href="structthread.html">thread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00125">thread.h:125</a></div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
 <div class="ttc" id="astructsockaddr_html"><div class="ttname"><a href="structsockaddr.html">sockaddr</a></div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00042">socket.h:42</a></div></div>
-<div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00010">tty.h:10</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="asyscall__consts_8h_html"><div class="ttname"><a href="syscall__consts_8h.html">syscall_consts.h</a></div><div class="ttdoc">Includes systematicaly generated syscall constants.</div></div>
+<div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdoc">Base TTY struct.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00019">tty.h:19</a></div></div>
 <div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
-<div class="ttc" id="astructwq_html"><div class="ttname"><a href="structwq.html">wq</a></div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00009">sync.h:9</a></div></div>
+<div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
+<div class="ttc" id="astructwq_html"><div class="ttname"><a href="structwq.html">wq</a></div><div class="ttdoc">Queue struct.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00018">sync.h:18</a></div></div>
 <div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00140">fs.h:140</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
 <div class="ttc" id="astructsnx__dirent_html"><div class="ttname"><a href="structsnx__dirent.html">snx_dirent</a></div><div class="ttdef"><b>Definition:</b> <a href="dirent_8h_source.html#l00010">dirent.h:10</a></div></div>
 <div class="ttc" id="astructsocket__file_html"><div class="ttname"><a href="structsocket__file.html">socket_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00160">fs.h:160</a></div></div>
 <div class="ttc" id="astructmembuf__file_html"><div class="ttname"><a href="structmembuf__file.html">membuf_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00128">fs.h:128</a></div></div>
 <div class="ttc" id="astructsocket__ops_html"><div class="ttname"><a href="structsocket__ops.html">socket_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00169">fs.h:169</a></div></div>
+<div class="ttc" id="aringbuf_8h_html"><div class="ttname"><a href="ringbuf_8h.html">ringbuf.h</a></div><div class="ttdoc">Ring Buffers.</div></div>
 <div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

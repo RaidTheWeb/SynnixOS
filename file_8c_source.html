@@ -72,9 +72,9 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/mod.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/timer.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mod_8h.html">snx/mod.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="timer_8h.html">snx/timer.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;ssize_t my_file_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> len) {</div>
@@ -91,8 +91,8 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    f-&gt;ops = ops;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    f-&gt;refcnt = 1;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    wq_init(&amp;f-&gt;readq);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    wq_init(&amp;f-&gt;writeq);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;f-&gt;readq);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;f-&gt;writeq);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structmy__file.html">   26</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmy__file.html">my_file</a> {</div>
@@ -120,13 +120,17 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    .init = init,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00016">mod.h:16</a></div></div>
+<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdoc">Convenience struct for supplying information about a kernel module.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00029">mod.h:29</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div><div class="ttdoc">Kernel-Space PIT-based timer.</div></div>
 <div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
 <div class="ttc" id="astructmy__file_html"><div class="ttname"><a href="structmy__file.html">my_file</a></div><div class="ttdef"><b>Definition:</b> <a href="file_8c_source.html#l00026">file.c:26</a></div></div>
+<div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
-<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00022">mod.h:22</a></div></div>
+<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
+<div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

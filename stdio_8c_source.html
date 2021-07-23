@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifdef __kernel__</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;snx/serial.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="serial_8h.html">snx/serial.h</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define STDOUT_FILENO 1</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">int</span> raw_print(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef __kernel__</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    serial_write_str(buf, len);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>(buf, len);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    write(fd, buf, len);</div>
@@ -589,6 +589,8 @@ $(function() {
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="comment">// va_end in vsprintf</span></div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00018">serial.c:18</a></div></div>
+<div class="ttc" id="aserial_8h_html"><div class="ttname"><a href="serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>
 <div class="ttc" id="astructFormat__Info_html"><div class="ttname"><a href="structFormat__Info.html">Format_Info</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00053">stdio.c:53</a></div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
 <!-- start footer part -->

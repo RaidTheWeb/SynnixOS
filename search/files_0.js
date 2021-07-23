@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_2ec_214',['main.c',['../main_8c.html',1,'']]]
+  ['debug_2eh_306',['debug.h',['../debug_8h.html',1,'']]],
+  ['dmgr_2eh_307',['dmgr.h',['../dmgr_8h.html',1,'']]]
 ];

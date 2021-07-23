@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['pipe_5ffile_76',['pipe_file',['../structpipe__file.html',1,'']]],
-  ['pollfd_77',['pollfd',['../structpollfd.html',1,'']]],
-  ['proc_5ffile_78',['proc_file',['../structproc__file.html',1,'']]],
-  ['process_79',['process',['../structprocess.html',1,'']]],
-  ['protocol_5fops_80',['protocol_ops',['../structprotocol__ops.html',1,'']]]
+  ['kernel_5fmain_51',['kernel_main',['../main_8c.html#a0921636b1737a4511853965f143ad1b3',1,'main.c']]]
 ];

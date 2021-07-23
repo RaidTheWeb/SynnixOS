@@ -74,18 +74,18 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/dmgr.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/string.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;snx/syscall.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;snx/tarfs.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2string_8h.html">snx/string.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tarfs_8h.html">snx/tarfs.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *initfs;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *<a class="code" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *new_file_slot() {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// there are pointers in here, zmalloc it</span></div>
@@ -297,7 +297,7 @@ $(function() {
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        wq_block_on(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="sync_8h.html#a88d5a1a950d219699c529396315f4441">wq_block_on</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> value;</div>
@@ -494,9 +494,9 @@ $(function() {
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keywordtype">void</span> vfs_boot_file_setup(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    wq_init(&amp;dev_zero-&gt;readq);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    wq_init(&amp;dev_serial.file.readq);</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    wq_init(&amp;dev_serial2.file.readq);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;dev_zero-&gt;readq);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;<a class="code" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a>.file.readq);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;<a class="code" href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a>.file.readq);</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="keywordtype">void</span> vfs_init(uintptr_t initfs_len) {</div>
@@ -512,18 +512,18 @@ $(function() {
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    add_dir_file(dev, dev_zero, <span class="stringliteral">&quot;zero&quot;</span>);</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    add_dir_file(dev, dev_null, <span class="stringliteral">&quot;null&quot;</span>);</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="comment">//add_dir_file(dev, dev_rtw, &quot;rtw&quot;);</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    add_dir_file(dev, &amp;dev_serial.file, <span class="stringliteral">&quot;serial&quot;</span>);</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    add_dir_file(dev, &amp;dev_serial2.file, <span class="stringliteral">&quot;serial2&quot;</span>);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    add_dir_file(dev, &amp;<a class="code" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a>.file, <span class="stringliteral">&quot;serial&quot;</span>);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    add_dir_file(dev, &amp;<a class="code" href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a>.file, <span class="stringliteral">&quot;serial2&quot;</span>);</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *tar = initfs;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *tar = <a class="code" href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a>;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    uintptr_t tar_addr = (uintptr_t)tar;</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *tar_file;</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    uintptr_t next_tar;</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    printf(<span class="stringliteral">&quot;vfs: populating fs with data from tarfs\n&quot;</span>);</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordtype">size_t</span> len = tar_convert_number(tar-&gt;size);</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keywordtype">int</span> mode = tar_convert_number(tar-&gt;mode);</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keywordtype">int</span> mode = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;mode);</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        <span class="keywordtype">void</span> *content = ((<span class="keywordtype">char</span> *)tar) + 512;</div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> *filename = tar-&gt;filename;</div>
@@ -558,16 +558,27 @@ $(function() {
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    printf(<span class="stringliteral">&quot;vfs: READY\n&quot;</span>);</div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="atarfs_8h_html"><div class="ttname"><a href="tarfs_8h.html">tarfs.h</a></div><div class="ttdoc">Tar file read support.</div></div>
 <div class="ttc" id="astructstat_html"><div class="ttname"><a href="structstat.html">stat</a></div><div class="ttdef"><b>Definition:</b> <a href="stat_8h_source.html#l00007">stat.h:7</a></div></div>
 <div class="ttc" id="astructfile__pair_html"><div class="ttname"><a href="structfile__pair.html">file_pair</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00046">fs.c:46</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
+<div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
 <div class="ttc" id="astructdirectory__node_html"><div class="ttname"><a href="structdirectory__node.html">directory_node</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00103">fs.h:103</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
+<div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
 <div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdef"><b>Definition:</b> <a href="poll_8h_source.html#l00005">poll.h:5</a></div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
+<div class="ttc" id="amain_8c_html_a4af37288b40f88d07ec2a9e5c876131b"><div class="ttname"><a href="main_8c.html#a4af37288b40f88d07ec2a9e5c876131b">initfs</a></div><div class="ttdeci">struct tar_header * initfs</div><div class="ttdoc">Initialize tar_header for Initial File System.</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00032">main.c:32</a></div></div>
+<div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
 <div class="ttc" id="astructsnx__dirent_html"><div class="ttname"><a href="structsnx__dirent.html">snx_dirent</a></div><div class="ttdef"><b>Definition:</b> <a href="dirent_8h_source.html#l00010">dirent.h:10</a></div></div>
-<div class="ttc" id="astructtar__header_html"><div class="ttname"><a href="structtar__header.html">tar_header</a></div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8h_source.html#l00009">tarfs.h:9</a></div></div>
+<div class="ttc" id="atarfs_8h_html_ae7a89de9e0f770b61040519f8b757952"><div class="ttname"><a href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a></div><div class="ttdeci">uint64_t tar_convert_number(char *num)</div><div class="ttdoc">Convert number into 64 bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00008">tarfs.c:8</a></div></div>
+<div class="ttc" id="astructtar__header_html"><div class="ttname"><a href="structtar__header.html">tar_header</a></div><div class="ttdoc">Tar file header struct.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8h_source.html#l00018">tarfs.h:18</a></div></div>
+<div class="ttc" id="async_8h_html_a88d5a1a950d219699c529396315f4441"><div class="ttname"><a href="sync_8h.html#a88d5a1a950d219699c529396315f4441">wq_block_on</a></div><div class="ttdeci">void wq_block_on(struct wq *wq)</div><div class="ttdoc">Block queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00014">sync.c:14</a></div></div>
+<div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

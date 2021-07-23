@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['initfs_5finfo_23',['initfs_info',['../structinitfs__info.html',1,'']]],
-  ['instruction_5ft_24',['instruction_t',['../structinstruction__t.html',1,'']]],
-  ['interrupt_5fframe_25',['interrupt_frame',['../structinterrupt__frame.html',1,'']]],
-  ['irq_5fhandler_26',['irq_handler',['../structirq__handler.html',1,'']]]
+  ['elf_5ffind_5fsymbol_5fby_5faddress_32',['elf_find_symbol_by_address',['../mod_8h.html#a6e971f2e432ece455719da80303f1593',1,'mod.c']]]
 ];

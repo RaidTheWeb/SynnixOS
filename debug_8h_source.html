@@ -70,54 +70,59 @@ $(function() {
 <div class="title">debug.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="debug_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SNX_DEBUG_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_DEBUG_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define do_debug true</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define DEBUG_PRINTF(...)                                                      \</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">    do { printf(&quot;[DEBUG] &quot; __VA_ARGS__); } while (0)</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#else // DEBUG == false</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define do_debug false</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define DEBUG_PRINTF(...)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define do_debug true</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define DEBUG_PRINTF(...)                                                      \</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">    do { printf(&quot;[DEBUG] &quot; __VA_ARGS__); } while (0)</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif // DEBUG == true</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#else // DEBUG == false</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define WARN_PRINTF(...)                                                       \</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">    do { printf(&quot;[WARN!] &quot; __VA_ARGS__); } while (0)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define do_debug false</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define DEBUG_PRINTF(...)</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define UNREACHABLE() assert(&quot;not reachable&quot; &amp;&amp; 0)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif // DEBUG == true</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define gassert(assertion)                                                     \</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    do {                                                                       \</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">        if (!(assertion)) {                                                    \</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">            printf(&quot;[ASSERT] &#39;&quot; #assertion &quot;&#39; @ &quot; __FILE__                     \</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">                   &quot;:&quot; QUOTE(__LINE__) &quot;\n&quot;);                                  \</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">            panic_gbt();                                                       \</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">            __builtin_unreachable();                                           \</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        }                                                                      \</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    } while (0)</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> backtrace(uintptr_t bp, uintptr_t ip,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;               <span class="keywordtype">void</span> (*callback)(uintptr_t bp, uintptr_t ip));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> backtrace_from_here(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> backtrace_from_with_ip(uintptr_t bp, uintptr_t ip);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> print_perf_trace(uintptr_t bp, uintptr_t ip);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> dump_mem(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> hexdump(<span class="keywordtype">size_t</span> len, <span class="keywordtype">char</span> ptr[len]);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;__NOINLINE <span class="keywordtype">void</span> break_point();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define WARN_PRINTF(...)                                                       \</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    do { printf(&quot;[WARN!] &quot; __VA_ARGS__); } while (0)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define UNREACHABLE() assert(&quot;not reachable&quot; &amp;&amp; 0)</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define gassert(assertion)                                                     \</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">    do {                                                                       \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        if (!(assertion)) {                                                    \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">            printf(&quot;[ASSERT] &#39;&quot; #assertion &quot;&#39; @ &quot; __FILE__                     \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">                   &quot;:&quot; QUOTE(__LINE__) &quot;\n&quot;);                                  \</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">            panic_gbt();                                                       \</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">            __builtin_unreachable();                                           \</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">        }                                                                      \</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">    } while (0)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="debug_8h.html#a8c83bd615e88c421d47b48f44b10ce98">backtrace</a>(uintptr_t bp, uintptr_t ip,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;               <span class="keywordtype">void</span> (*callback)(uintptr_t bp, uintptr_t ip));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a>(uintptr_t bp, uintptr_t ip);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> print_perf_trace(uintptr_t bp, uintptr_t ip);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">int</span> <a class="code" href="debug_8h.html#adcc20309a1dbce4a571396d39b286e57">dump_mem</a>(<span class="keywordtype">void</span> *ptr, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">int</span> <a class="code" href="debug_8h.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a>(<span class="keywordtype">size_t</span> len, <span class="keywordtype">char</span> ptr[len]);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;__NOINLINE <span class="keywordtype">void</span> break_point();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="adebug_8h_html_a2e7d14081d3888a20dc35563c6340453"><div class="ttname"><a href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here(void)</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00079">debug.c:79</a></div></div>
+<div class="ttc" id="adebug_8h_html_adcc20309a1dbce4a571396d39b286e57"><div class="ttname"><a href="debug_8h.html#adcc20309a1dbce4a571396d39b286e57">dump_mem</a></div><div class="ttdeci">int dump_mem(void *ptr, size_t len)</div><div class="ttdoc">Perform a memory dump.</div></div>
+<div class="ttc" id="adebug_8h_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00075">debug.c:75</a></div></div>
+<div class="ttc" id="adebug_8h_html_aabcb320d15ced5c430e1dd3f65f1bbc4"><div class="ttname"><a href="debug_8h.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a></div><div class="ttdeci">int hexdump(size_t len, char ptr[len])</div><div class="ttdoc">Perform a hex dump.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00124">debug.c:124</a></div></div>
+<div class="ttc" id="adebug_8h_html_a8c83bd615e88c421d47b48f44b10ce98"><div class="ttname"><a href="debug_8h.html#a8c83bd615e88c421d47b48f44b10ce98">backtrace</a></div><div class="ttdeci">void backtrace(uintptr_t bp, uintptr_t ip, void(*callback)(uintptr_t bp, uintptr_t ip))</div><div class="ttdoc">Backtrace from pointer.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
