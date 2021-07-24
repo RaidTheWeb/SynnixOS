@@ -100,6 +100,18 @@ Then after compiling the OS initially `cd` into `external` and run `./make.bash`
 
 After completing all these steps, you may run `./run.rb` to run the [QEMU](https://www.qemu.org/) emulator with the `synnixos.iso` ISO
 
+## Tested on
+
+Building SynnixOS has been tested **only on unix-like enviroments**. Here are the following tested operating systems:
+
+| Distribution      | Version                   | Working?     |
+| :---              | :---                      | :---         |
+| Ubuntu            | 20.04.2 LTS (WSL x86_64)  | YES          |
+| Ubuntu            | 20.04.2 LTS x86_64        | YES          |
+| Kali              | 2021.1 (WSL x86_64)       | YES          |
+
+
+
 ## References
 
 ### Books and resources
