@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+/** @file
+ * @brief Parse tokenized shell commands
+ * Parser for shell tokens
+ */
+
 void fprint_ws(FILE *f, int c) {
     fprintf(f, "%.*s", c, "                                                  ");
 }

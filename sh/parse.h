@@ -8,6 +8,15 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
+/** @file
+ * @brief Header file for parser 
+ * 
+ */
+
+/**
+ * @brief Tokens
+ * 
+ */
 enum node_type {
     NODE_PIPELINE,
     // todo:
@@ -20,14 +29,26 @@ enum node_type {
     NODE_FUNCTION,
 };
 
+/**
+ * @brief Operations
+ * 
+ */
 enum node_op {
     NODE_OR,   // ||
     NODE_AND,  // &&
     NODE_THEN, // ;
 };
 
+/**
+ * @brief Pipeline struct
+ * 
+ */
 struct pipeline;
 
+/**
+ * @brief Node struct
+ * 
+ */
 struct node {
     enum node_type type;
 
@@ -40,17 +61,29 @@ struct node {
     char *varname; // NODE_ASSIGN
 };
 
+/**
+ * @brief Pipeline flags
+ * 
+ */
 enum pipeline_flags {
     PIPELINE_NONE,
     PIPELINE_BACKGROUND = 1,
 };
 
+/**
+ * @brief Pipeline struct
+ * 
+ */
 struct pipeline {
     list commands;
     pid_t pgrp;
     enum pipeline_flags flags;
 };
 
+/**
+ * @brief Command struct
+ * 
+ */
 struct command {
     char **argv;
     char *args;
@@ -61,8 +94,24 @@ struct command {
     list_node node;
 };
 
+/**
+ * @brief Parse tokens
+ * 
+ * @param tokens 
+ * @return struct node* 
+ */
 struct node *parse(list *tokens);
+
+/**
+ * @brief Print a node
+ * 
+ */
 void node_print(struct node *);
+
+/**
+ * @brief Print a node to file stream
+ * 
+ */
 void node_fprint(FILE *, struct node *);
 
 #endif

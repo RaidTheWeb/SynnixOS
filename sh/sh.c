@@ -18,16 +18,56 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/** @file
+ * @brief Shell entry point
+ * 
+ */
+
+/**
+ * @brief Do the buffer?
+ * 
+ */
 bool do_buffer = true;
+
+/**
+ * @brief Enable token debugging
+ * 
+ */
 bool token_debug = false;
+
+/**
+ * @brief Enable Abstract Syntax Tree debugging
+ * 
+ */
 bool ast_debug = false;
+
+/**
+ * @brief Enable interactive mode
+ * 
+ */
 bool interactive = true;
+
+/**
+ * @brief Shell script input file
+ * 
+ */
 FILE *input_file;
 
+/**
+ * @brief Evaluate nodes
+ * 
+ * @return int 
+ */
 int eval(struct node *);
 
+/**
+ * @brief Handle a single line
+ * 
+ * @return int 
+ */
 int handle_one_line() {
-    if (interactive) fprintf(stderr, "$ ");
+    // TODO: /etc/hostname ?
+    if (interactive) fprintf(stderr, "[local@synnixos]~$ ");
     char buffer[1024] = {0};
     int ret_val = 127;
     list tokens;
@@ -65,7 +105,6 @@ int handle_one_line() {
 
 
     if (ret_val >= 128 && ret_val < 128 + 32) {
-        // TODO: signal names
         fprintf(stderr, "terminated by signal %i\n", ret_val - 128);
     } else if (ret_val != 0) {
         fprintf(stderr, "-> %i\n", ret_val);
@@ -74,8 +113,12 @@ int handle_one_line() {
     return 0;
 }
 
+/**
+ * @brief Handle signal
+ * 
+ * @param signal 
+ */
 void signal_handler(int signal) {
-    // TODO bail out of readline, clear buffer, print new prompt
     return;
 }
 
@@ -101,7 +144,7 @@ int main(int argc, char **argv) {
         case 'n': do_buffer = false; break;
         case 'd': token_debug = true; break;
         case 'a': ast_debug = true; break;
-        case '?': // FALLTHROUGH
+        case '?': // FALLTHROUGH :)
         case 'h': help(argv[0]); return 0;
         }
     }

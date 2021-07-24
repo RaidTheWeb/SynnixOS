@@ -4,6 +4,15 @@
 
 #include <basic.h>
 
+/** @file
+ * @brief x86 PIC header files
+ * 
+ */
+
+/**
+ * @brief PIC interrupts
+ * 
+ */
 enum pic_interrupt {
     IRQ_TIMER = 0,
     IRQ_KEYBOARD = 1,
@@ -19,9 +28,31 @@ enum pic_interrupt {
     IRQ_ATA2 = 15,
 };
 
+/**
+ * @brief Send an IRQ
+ * 
+ * @param irq 
+ */
 void pic_send_eoi(int irq);
+
+/**
+ * @brief Initialize PIC
+ * 
+ */
 void pic_init();
+
+/**
+ * @brief Unmask IRQ (enum)
+ * 
+ * @param irq 
+ */
 void pic_irq_unmask(int irq);
+
+/**
+ * @brief Mask an IRQ (enum)
+ * 
+ * @param irq 
+ */
 void pic_irq_mask(int irq);
 
 #endif

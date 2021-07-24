@@ -10,9 +10,14 @@
 #define SSDT_SIGNATURE "SSDT"
 #define MADT_SIGNATURE "APIC"
 
-/*
- * These are declared as an enum for convenience:
- * acpi_find_table(rsdt *, FADT);, etc.
+/** @file
+ * @brief ACPI support headers 
+ * 
+ */
+
+/**
+ * @brief Convenience enumeration
+ * 
  */
 enum {
     RSDT,
@@ -21,6 +26,10 @@ enum {
     MADT,
 };
 
+/**
+ * @brief ACPI RDDP type struct
+ * 
+ */
 typedef struct __PACKED acpi_rsdp {
     char signature[8];
     unsigned char checksum;
@@ -29,6 +38,10 @@ typedef struct __PACKED acpi_rsdp {
     uint32_t rsdt_address;
 } acpi_rsdp;
 
+/**
+ * @brief ACPI header type struct
+ * 
+ */
 typedef struct __PACKED acpi_header {
     char signature[4];
     uint32_t length;
@@ -41,6 +54,10 @@ typedef struct __PACKED acpi_header {
     uint32_t creator_revision;
 } acpi_header;
 
+/**
+ * @brief ACPI RSDT type struct
+ * 
+ */
 typedef struct __PACKED acpi_rsdt {
     acpi_header header;
     uint32_t table_ptr[];
@@ -105,9 +122,33 @@ typedef struct __PACKED madt {
     acpi_madt_entry entries[];
 } acpi_madt;
 
+/**
+ * @brief Get the rsdt
+ * 
+ * @param rsdp 
+ * @return acpi_rsdt* 
+ */
 acpi_rsdt *acpi_get_rsdt(acpi_rsdp *rsdp);
+/**
+ * @brief Get ACPI table ID
+ * 
+ * @param table_id 
+ * @return void* 
+ */
 void *acpi_get_table(int table_id);
+
+/**
+ * @brief Print ACPI header to stdout
+ * 
+ * @param header 
+ */
 void acpi_print_header(acpi_header *header);
+
+/**
+ * @brief Print ACPI table to stdout
+ * 
+ * @param table 
+ */
 void acpi_print_table(acpi_header *table);
 
 #endif

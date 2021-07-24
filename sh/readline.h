@@ -5,6 +5,15 @@
 #include <basic.h>
 #include <stdio.h>
 
+/** @file
+ * @brief Readline header file
+ * 
+ */
+
+/**
+ * @brief Item in history
+ * 
+ */
 struct history_item {
     struct history_item *previous;
     struct history_item *next;

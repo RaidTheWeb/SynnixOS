@@ -16,6 +16,11 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/** @file
+ * @brief Evaluate shell commands
+ * C source for evaluating shell commands after parsing.
+ */
+
 void completely_destroy_array(char* array) {
     memset(array, 0, strlen(array));
 }

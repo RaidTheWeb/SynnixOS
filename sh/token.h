@@ -7,6 +7,15 @@
 #include <stdio.h>
 #include <sys/types.h>
 
+/** @file
+ * @brief Lexer header file 
+ * 
+ */
+
+/**
+ * @brief Token types
+ * 
+ */
 enum token_type {
     TOKEN_OR,        // '||'
     TOKEN_AND,       // '&&'
@@ -24,6 +33,10 @@ enum token_type {
     TOKEN_VAR,       // '$""'
 };
 
+/**
+ * @brief Token struct
+ * 
+ */
 struct token {
     enum token_type type;
     const char *string;

@@ -4,7 +4,10 @@
 
 #include <basic.h>
 
-// Confirm this through ACPI, remap as needed:
+/** @file
+ * @brief APIC headers
+ * 
+ */
 
 #define LAPIC_DEFAULT_BASE 0xFEE00000
 
@@ -38,9 +41,25 @@
 #define LAPIC_REG_TIMER_CURRENT 0x390
 #define LAPIC_REG_TIMER_DIVIDE 0x3E0
 
+/**
+ * @brief Enable APIC using addr
+ * 
+ * @param addr 
+ * @return int 
+ */
 int enable_apic(uintptr_t addr);
+
+/**
+ * @brief Enable APIC mode
+ * 
+ */
 void apic_mode_enable();
+
+/**
+ * @brief Enable APIC x2
+ * 
+ */
 void apic_mode_x2apic_enable();
-void apic_stuff();
+
 
 #endif

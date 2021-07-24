@@ -1,5 +1,3 @@
-// vim: ts=4 sw=4 sts=4 :
-
 #include "readline.h"
 #include <ctype.h>
 #include <errno.h>
@@ -8,11 +6,29 @@
 #include <string.h>
 #include <unistd.h>
 
+/** @file
+ * @brief Basic Readline C source file
+ * 
+ */
+
+/**
+ * @brief History start
+ * 
+ */
 struct history_item history_base = {0};
+
+/**
+ * @brief History end
+ * 
+ */
 struct history_item *history_top = &history_base;
 
-// Line manipulation
-
+/**
+ * @brief Clear a line
+ * 
+ * @param buf 
+ * @param ix 
+ */
 void clear_line(char *buf, long *ix) {
     while (*ix > 0) {
         *ix -= 1;
@@ -21,6 +37,12 @@ void clear_line(char *buf, long *ix) {
     }
 }
 
+/**
+ * @brief Print Backspace
+ * 
+ * @param buf 
+ * @param ix 
+ */
 void backspace(char *buf, long *ix) {
     if (*ix == 0) return;
     *ix -= 1;
@@ -28,6 +50,13 @@ void backspace(char *buf, long *ix) {
     printf("\x08 \x08");
 }
 
+/**
+ * @brief Load a line
+ * 
+ * @param buf 
+ * @param ix 
+ * @param new_line 
+ */
 void load_line(char *buf, long *ix, char *new_line) {
     clear_line(buf, ix);
     while (*new_line) {
@@ -38,8 +67,12 @@ void load_line(char *buf, long *ix, char *new_line) {
     }
 }
 
-// History
-
+/**
+ * @brief Store a line in history
+ * 
+ * @param line_to_store 
+ * @param len 
+ */
 void store_history_line(char *line_to_store, long len) {
     struct history_item *node = malloc(sizeof(struct history_item));
     node->history_line = strdup(line_to_store);
@@ -50,14 +83,26 @@ void store_history_line(char *line_to_store, long len) {
     history_top = node;
 }
 
+/**
+ * @brief Get a line from history
+ * 
+ * @param buf 
+ * @param ix 
+ * @param current 
+ */
 void load_history_line(char *buf, long *ix, struct history_item *current) {
     clear_line(buf, ix);
     if (!current->history_line) return;
     load_line(buf, ix, current->history_line);
 }
 
-// Read line
-
+/**
+ * @brief Interactive readline
+ * 
+ * @param buf 
+ * @param max_len 
+ * @return long 
+ */
 long read_line_interactive(char *buf, size_t max_len) {
     long ix = 0;
     int readlen = 0;
@@ -144,6 +189,14 @@ done:
     return ix;
 }
 
+/**
+ * @brief Simple readline
+ * 
+ * @param file 
+ * @param buf 
+ * @param limit 
+ * @return long 
+ */
 long read_line_simple(FILE *file, char *buf, size_t limit) {
     if (feof(file)) return -1;
 
@@ -152,7 +205,10 @@ long read_line_simple(FILE *file, char *buf, size_t limit) {
 
     int ix = strlen(buf);
 
-    // EVIL HACK FIXME
+    /**
+     * @brief Incredibly destructive hack for buffer
+     * 
+     */
     if (buf[ix - 1] == '\n') {
         buf[ix - 1] = '\0';
         ix -= 1;

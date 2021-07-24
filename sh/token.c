@@ -7,6 +7,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+/** @file
+ * @brief Lexer functions 
+ * 
+ */
+
+/**
+ * @brief Token info struct
+ * 
+ */
 struct token_info {
     enum token_type type;
     bool is_simple;
@@ -29,29 +38,69 @@ struct token_info {
     [TOKEN_VAR] = {TOKEN_VAR, false, "var", ""},
 };
 
+/**
+ * @brief Print token to stream
+ * 
+ * @param f 
+ * @param t 
+ */
 void token_fprint(FILE *f, struct token *t) {
     fprintf(f, "token(%s, \"%.*s\")", token_info[t->type].name,
             (int)(t->end - t->begin), t->string + t->begin);
 }
 
+/**
+ * @brief Print token to stdout
+ * 
+ * @param t 
+ */
 void token_print(struct token *t) {
     token_fprint(stdout, t);
 }
 
+/**
+ * @brief strndup token
+ * 
+ * @param t 
+ * @return char* 
+ */
 char *token_strdup(struct token *t) {
     return strndup(t->string + t->begin, t->end - t->begin);
 }
 
+/**
+ * @brief copy token to destination
+ * 
+ * @param dest 
+ * @param t 
+ * @return char* 
+ */
 char *token_strcpy(char *dest, struct token *t) {
     strncpy(dest, t->string + t->begin, t->end - t->begin);
     return dest + t->end - t->begin;
 }
 
+/**
+ * @brief Check if is identifier
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
 bool isident(char c) {
     return isalnum(c) || c == '_' || c == '-' || c == '/' || c == '.' ||
            c == '?';
 }
 
+/**
+ * @brief Create a token
+ * 
+ * @param string 
+ * @param begin 
+ * @param end 
+ * @param type 
+ * @return struct token* 
+ */
 static struct token *make_token(const char *string, const char *begin,
                                 const char *end, enum token_type type) {
     struct token *t = malloc(sizeof(struct token));
@@ -63,18 +112,38 @@ static struct token *make_token(const char *string, const char *begin,
     return t;
 }
 
+/**
+ * @brief Skip whitespace
+ * 
+ * @param cursor 
+ */
 static void skip_whitespace(const char **cursor) {
     while (isspace(**cursor)) (*cursor)++;
 }
 
+/**
+ * @brief End indentifier
+ * 
+ * @param cursor 
+ */
 static void ident_end(const char **cursor) {
     while (isident(**cursor)) (*cursor)++;
 }
 
+/**
+ * @brief End line
+ * 
+ * @param cursor 
+ */
 static void line_end(const char **cursor) {
     while (**cursor && **cursor != '\n') (*cursor)++;
 }
 
+/**
+ * @brief End string
+ * 
+ * @param cursor 
+ */
 static void string_end(const char **cursor) {
     char delim = **cursor;
     assert(delim == '"' || delim == '\'');
@@ -90,6 +159,14 @@ static void string_end(const char **cursor) {
     if (**cursor) (*cursor)++;
 }
 
+/**
+ * @brief Tokenize string
+ * 
+ * @param string 
+ * @param out 
+ * @return true 
+ * @return false 
+ */
 bool tokenize(const char *string, list_head *out) {
     const char *cursor = string;
     const char *begin;
