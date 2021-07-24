@@ -338,108 +338,101 @@ $(function() {
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">static</span> noreturn <span class="keywordtype">void</span> kill_for_unhandled_interrupt(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">if</span> ((r-&gt;cs &amp; 3) &gt; 0) {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="comment">// died in usermode</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="comment">// Died during a usermode process</span></div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <a class="code" href="kernel_2include_2snx_2signal_8h.html#a9c8484d82f26d67e2b0f6cfe523774ee">signal_self</a>(SIGSEGV);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (running_process-&gt;pid &gt; 0) {</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="comment">// died in kernel mode in a user process</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Would signal SEGV, but we decided that was a bad idea\n&quot;</span>);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        kill_process(running_process, 128 + SIGSEGV);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="comment">// died in kernel mode</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        panic();</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    UNREACHABLE();</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">  303</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    uintptr_t fault_addr;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">int</span> code = r-&gt;error_code;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *reason, *rw, *mode, *type;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %%cr2, %0&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(fault_addr));</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (vmm_do_page_fault(fault_addr, code) == FAULT_CONTINUE) {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="comment">// handled and able to return</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (r-&gt;error_code &amp; F_RESERVED) {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Fault was caused by writing to a reserved field\n&quot;</span>);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    reason = code &amp; F_PRESENT ? <span class="stringliteral">&quot;protection violation&quot;</span> : <span class="stringliteral">&quot;page not present&quot;</span>;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    rw = code &amp; F_WRITE ? <span class="stringliteral">&quot;writing&quot;</span> : <span class="stringliteral">&quot;reading&quot;</span>;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    mode = code &amp; F_USERMODE ? <span class="stringliteral">&quot;user&quot;</span> : <span class="stringliteral">&quot;kernel&quot;</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    type = code &amp; F_IFETCH ? <span class="stringliteral">&quot;instruction&quot;</span> : <span class="stringliteral">&quot;data&quot;</span>;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Thread: [%i:%i] (\&quot;%s\&quot;) performed an access violation\n&quot;</span>,</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;           running_process-&gt;pid, running_thread-&gt;tid, running_process-&gt;comm);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *sentence = <span class="stringliteral">&quot;Fault %s %s:%#lx because %s from %s mode.\n&quot;</span>;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(sentence, rw, type, fault_addr, reason, mode);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (fault_addr &lt; 0x1000) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;NULL pointer access?\n&quot;</span>);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    break_point();</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    print_error_dump(r);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">if</span> (code &amp; F_USERMODE) <a class="code" href="kernel_2include_2snx_2signal_8h.html#a9c8484d82f26d67e2b0f6cfe523774ee">signal_self</a>(SIGSEGV);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    kill_for_unhandled_interrupt(r);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;}</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">  337</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Thread: [%i:%i] (\&quot;%s\&quot;) experienced a fault\n&quot;</span>,</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;           running_process-&gt;pid, running_thread-&gt;tid, running_process-&gt;comm);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Unhandled exception at %#lx\n&quot;</span>, r-&gt;ip);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Fault: %s (%s), error code: %#04x\n&quot;</span>,</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;           exception_codes[r-&gt;interrupt_number],</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;           exception_reasons[r-&gt;interrupt_number], r-&gt;error_code);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    break_point();</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    print_error_dump(r);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    kill_for_unhandled_interrupt(r);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="comment">// Died during kernel mode while inside a usermode process</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        kill_process(running_process, 128 + SIGSEGV);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="comment">// Died during kernel mode is running :0</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        panic(<span class="stringliteral">&quot;Died during kernel mode&quot;</span>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    UNREACHABLE();</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">  302</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    uintptr_t fault_addr;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">int</span> code = r-&gt;error_code;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *reason, *rw, *mode, *type;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %%cr2, %0&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(fault_addr));</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">if</span> (vmm_do_page_fault(fault_addr, code) == FAULT_CONTINUE) {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">if</span> (r-&gt;error_code &amp; F_RESERVED) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Attempted access to reserved field and caused fault\n&quot;</span>);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    reason = code &amp; F_PRESENT ? <span class="stringliteral">&quot;general protection violation&quot;</span> : <span class="stringliteral">&quot;page does not exist&quot;</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    rw = code &amp; F_WRITE ? <span class="stringliteral">&quot;writing&quot;</span> : <span class="stringliteral">&quot;reading&quot;</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    mode = code &amp; F_USERMODE ? <span class="stringliteral">&quot;usermode&quot;</span> : <span class="stringliteral">&quot;kernelmode&quot;</span>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    type = code &amp; F_IFETCH ? <span class="stringliteral">&quot;instruction&quot;</span> : <span class="stringliteral">&quot;data&quot;</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Running Thread [%i:%i] (\&quot;%s\&quot;) violated access rights\n&quot;</span>,</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;           running_process-&gt;pid, running_thread-&gt;tid, running_process-&gt;comm);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *sentence = <span class="stringliteral">&quot;Fault %s %s:%#lx because %s from %s mode.\n&quot;</span>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(sentence, rw, type, fault_addr, reason, mode);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">if</span> (fault_addr &lt; 0x1000) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;NULL pointer access?\n&quot;</span>);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    break_point();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    print_error_dump(r);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">if</span> (code &amp; F_USERMODE) <a class="code" href="kernel_2include_2snx_2signal_8h.html#a9c8484d82f26d67e2b0f6cfe523774ee">signal_self</a>(SIGSEGV);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    kill_for_unhandled_interrupt(r);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">  335</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Thread: [%i:%i] (\&quot;%s\&quot;) experienced a fault\n&quot;</span>,</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;           running_process-&gt;pid, running_thread-&gt;tid, running_process-&gt;comm);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Unhandled exception at %#lx\n&quot;</span>, r-&gt;ip);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Fault: %s (%s), error code: %#04x\n&quot;</span>,</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;           exception_codes[r-&gt;interrupt_number],</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;           exception_reasons[r-&gt;interrupt_number], r-&gt;error_code);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    break_point();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    print_error_dump(r);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    kill_for_unhandled_interrupt(r);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keywordtype">void</span> unhandled_interrupt_handler(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {}</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keywordtype">void</span> unhandled_interrupt_handler(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {}</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">/* Utility functions */</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="list_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">  354</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="comment">// printf(&quot;[e%i]&quot;, running_thread-&gt;irq_disable_depth);</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    running_thread-&gt;irq_disable_depth -= 1;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="comment">//assert(running_thread-&gt;irq_disable_depth &gt;= 0);</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">if</span> (running_thread-&gt;irq_disable_depth == 0) <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;sti&quot;</span>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;}</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="list_8h.html#aa84ddd915c24f5b384167dccd378fbcb">  361</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="comment">// printf(&quot;[d%i]&quot;, running_thread-&gt;irq_disable_depth);</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;cli&quot;</span>);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    running_thread-&gt;irq_disable_depth += 1;</div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="list_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">  350</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    running_thread-&gt;irq_disable_depth -= 1;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">if</span> (running_thread-&gt;irq_disable_depth == 0) <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;sti&quot;</span>);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="list_8h.html#aa84ddd915c24f5b384167dccd378fbcb">  355</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;cli&quot;</span>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    running_thread-&gt;irq_disable_depth += 1;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;uintptr_t dr6() {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    uintptr_t result;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %%dr6, %0 \n\t&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result));</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;uintptr_t dr6() {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    uintptr_t result;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %%dr6, %0 \n\t&quot;</span> : <span class="stringliteral">&quot;=r&quot;</span>(result));</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="adebug_8h_html_adcc20309a1dbce4a571396d39b286e57"><div class="ttname"><a href="debug_8h.html#adcc20309a1dbce4a571396d39b286e57">dump_mem</a></div><div class="ttdeci">int dump_mem(void *ptr, size_t len)</div><div class="ttdoc">Perform a memory dump.</div></div>
 <div class="ttc" id="ainterrupt_8h_html_a456acd4e477d04bf6ba111d6937e6a2e"><div class="ttname"><a href="interrupt_8h.html#a456acd4e477d04bf6ba111d6937e6a2e">syscall_handler</a></div><div class="ttdeci">void syscall_handler(interrupt_frame *r)</div><div class="ttdoc">Handle syscalls.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00215">interrupt.c:215</a></div></div>
 <div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
 <div class="ttc" id="apit_8h_html"><div class="ttname"><a href="pit_8h.html">pit.h</a></div><div class="ttdoc">Programmable Interval Timer.</div></div>
-<div class="ttc" id="ainterrupt_8h_html_aa4a9e02a0cb41e15a720683007ec1c59"><div class="ttname"><a href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a></div><div class="ttdeci">void page_fault(interrupt_frame *r)</div><div class="ttdoc">Manage page fault.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00303">interrupt.c:303</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_aa4a9e02a0cb41e15a720683007ec1c59"><div class="ttname"><a href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a></div><div class="ttdeci">void page_fault(interrupt_frame *r)</div><div class="ttdoc">Manage page fault.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00302">interrupt.c:302</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="airq_8h_html_a23fe1ce2cb623ff39cc3ae2f7c14a15c"><div class="ttname"><a href="irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c">irq_handler</a></div><div class="ttdeci">void irq_handler(interrupt_frame *)</div><div class="ttdoc">Handler for an interrupt frame.</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00025">irq.c:25</a></div></div>
 <div class="ttc" id="auart_8h_html"><div class="ttname"><a href="uart_8h.html">uart.h</a></div><div class="ttdoc">UART (COM) header files.</div></div>
 <div class="ttc" id="ainterrupt_8h_html"><div class="ttname"><a href="interrupt_8h.html">interrupt.h</a></div><div class="ttdoc">x86 Interrupt Headers</div></div>
 <div class="ttc" id="adebug_8c_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00078">debug.c:78</a></div></div>
-<div class="ttc" id="ainterrupt_8h_html_aa84ddd915c24f5b384167dccd378fbcb"><div class="ttname"><a href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a></div><div class="ttdeci">void disable_irqs(void)</div><div class="ttdoc">Disable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00361">interrupt.c:361</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_aa84ddd915c24f5b384167dccd378fbcb"><div class="ttname"><a href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a></div><div class="ttdeci">void disable_irqs(void)</div><div class="ttdoc">Disable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00355">interrupt.c:355</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a9c8484d82f26d67e2b0f6cfe523774ee"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a9c8484d82f26d67e2b0f6cfe523774ee">signal_self</a></div><div class="ttdeci">void signal_self(int signal)</div><div class="ttdoc">Cause a signal in current process/thread/process group.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00116">signal.c:116</a></div></div>
-<div class="ttc" id="ainterrupt_8h_html_a9c0acdd6fa6fc322b63fa55f7dd1bf31"><div class="ttname"><a href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a></div><div class="ttdeci">void enable_irqs(void)</div><div class="ttdoc">Enable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00354">interrupt.c:354</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_a9c0acdd6fa6fc322b63fa55f7dd1bf31"><div class="ttname"><a href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a></div><div class="ttdeci">void enable_irqs(void)</div><div class="ttdoc">Enable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00350">interrupt.c:350</a></div></div>
 <div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
-<div class="ttc" id="ainterrupt_8h_html_af3ec26beb013bd13338cd74a6a4096af"><div class="ttname"><a href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a></div><div class="ttdeci">void generic_exception(interrupt_frame *r)</div><div class="ttdoc">Manage generic exception.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00337">interrupt.c:337</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_af3ec26beb013bd13338cd74a6a4096af"><div class="ttname"><a href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a></div><div class="ttdeci">void generic_exception(interrupt_frame *r)</div><div class="ttdoc">Manage generic exception.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00335">interrupt.c:335</a></div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
 <div class="ttc" id="apic_8h_html"><div class="ttname"><a href="pic_8h.html">pic.h</a></div><div class="ttdoc">x86 PIC header files</div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
