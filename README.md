@@ -78,7 +78,8 @@ For building SynnixOS you'll need a few dependencies. Please install the followi
 - `libmpfr-dev`
 - `xorriso`
 - `ruby`
-- `make`
+- `build-essential`
+- `python3`
 
 After installing these dependencies you'll need to build the `x86_64-synnixos` toolchain for cross compiling the OS and it's programs. Run the `./scripts/build_toolchain.bash` file from the root of the git repository and wait around 10 or so minutes for it to complete.
 
