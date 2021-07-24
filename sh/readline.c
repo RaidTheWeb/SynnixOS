@@ -132,6 +132,12 @@ long read_line_interactive(char *buf, size_t max_len) {
                 if (current->next) current = current->next;
                 load_history_line(buf, &ix, current);
                 continue;
+            } else if (strcmp(cb, "\x1b[D") == 0) { // left arrow
+                // TODO: Implement Left Arrow support
+                continue;
+            } else if (strcmp(cb, "\x1b[C") == 0) { // right arrow
+                // TODO: Implement Right Arrow Support
+                continue;
             } else {
                 if (strlen(cb) > 3) {
                     printf("unknown escape-sequence %s\n", &cb[1]);

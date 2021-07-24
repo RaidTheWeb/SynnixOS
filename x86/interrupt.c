@@ -287,15 +287,14 @@ static void print_error_dump(interrupt_frame *r) {
 
 static noreturn void kill_for_unhandled_interrupt(interrupt_frame *r) {
     if ((r->cs & 3) > 0) {
-        // died in usermode
+        // Died during a usermode process
         signal_self(SIGSEGV);
     } else if (running_process->pid > 0) {
-        // died in kernel mode in a user process
-        printf("Would signal SEGV, but we decided that was a bad idea\n");
+        // Died during kernel mode while inside a usermode process
         kill_process(running_process, 128 + SIGSEGV);
     } else {
-        // died in kernel mode
-        panic();
+        // Died during kernel mode is running :0
+        panic("Died during kernel mode");
     }
     UNREACHABLE();
 }
@@ -308,19 +307,18 @@ void page_fault(interrupt_frame *r) {
     asm volatile("mov %%cr2, %0" : "=r"(fault_addr));
 
     if (vmm_do_page_fault(fault_addr, code) == FAULT_CONTINUE) {
-        // handled and able to return
         return;
     }
 
     if (r->error_code & F_RESERVED) {
-        printf("Fault was caused by writing to a reserved field\n");
+        printf("Attempted access to reserved field and caused fault\n");
     }
-    reason = code & F_PRESENT ? "protection violation" : "page not present";
+    reason = code & F_PRESENT ? "general protection violation" : "page does not exist";
     rw = code & F_WRITE ? "writing" : "reading";
-    mode = code & F_USERMODE ? "user" : "kernel";
+    mode = code & F_USERMODE ? "usermode" : "kernelmode";
     type = code & F_IFETCH ? "instruction" : "data";
 
-    printf("Thread: [%i:%i] (\"%s\") performed an access violation\n",
+    printf("Running Thread [%i:%i] (\"%s\") violated access rights\n",
            running_process->pid, running_thread->tid, running_process->comm);
 
 
@@ -349,17 +347,12 @@ void generic_exception(interrupt_frame *r) {
 
 void unhandled_interrupt_handler(interrupt_frame *r) {}
 
-/* Utility functions */
-
 void enable_irqs(void) {
-    // printf("[e%i]", running_thread->irq_disable_depth);
     running_thread->irq_disable_depth -= 1;
-    //assert(running_thread->irq_disable_depth >= 0);
     if (running_thread->irq_disable_depth == 0) asm volatile("sti");
 }
 
 void disable_irqs(void) {
-    // printf("[d%i]", running_thread->irq_disable_depth);
     asm volatile("cli");
     running_thread->irq_disable_depth += 1;
 }
