@@ -71,8 +71,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;synnixos.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="synnixos_8h.html">synnixos.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#if __kernel__</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
@@ -80,16 +80,16 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> print_registers(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    printf(<span class="stringliteral">&quot;    rax: %16lx    r8 : %16lx\n&quot;</span>, r-&gt;rax, r-&gt;r8);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    printf(<span class="stringliteral">&quot;    rbx: %16lx    r9 : %16lx\n&quot;</span>, r-&gt;rbx, r-&gt;r9);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    printf(<span class="stringliteral">&quot;    rcx: %16lx    r10: %16lx\n&quot;</span>, r-&gt;rcx, r-&gt;r10);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    printf(<span class="stringliteral">&quot;    rdx: %16lx    r11: %16lx\n&quot;</span>, r-&gt;rdx, r-&gt;r11);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    printf(<span class="stringliteral">&quot;    rsp: %16lx    r12: %16lx\n&quot;</span>, r-&gt;user_sp, r-&gt;r12);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    printf(<span class="stringliteral">&quot;    rbp: %16lx    r13: %16lx\n&quot;</span>, r-&gt;bp, r-&gt;r13);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    printf(<span class="stringliteral">&quot;    rsi: %16lx    r14: %16lx\n&quot;</span>, r-&gt;rsi, r-&gt;r14);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    printf(<span class="stringliteral">&quot;    rdi: %16lx    r15: %16lx\n&quot;</span>, r-&gt;rdi, r-&gt;r15);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    printf(<span class="stringliteral">&quot;    rip: %16lx    rfl: [&quot;</span>, r-&gt;ip);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    printf(<span class="stringliteral">&quot;%c%c%c%c%c%c%c%c%c%c%c%c%c%c] (%lx)\n&quot;</span>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rax: %16lx    r8 : %16lx\n&quot;</span>, r-&gt;rax, r-&gt;r8);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rbx: %16lx    r9 : %16lx\n&quot;</span>, r-&gt;rbx, r-&gt;r9);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rcx: %16lx    r10: %16lx\n&quot;</span>, r-&gt;rcx, r-&gt;r10);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rdx: %16lx    r11: %16lx\n&quot;</span>, r-&gt;rdx, r-&gt;r11);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rsp: %16lx    r12: %16lx\n&quot;</span>, r-&gt;user_sp, r-&gt;r12);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rbp: %16lx    r13: %16lx\n&quot;</span>, r-&gt;bp, r-&gt;r13);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rsi: %16lx    r14: %16lx\n&quot;</span>, r-&gt;rsi, r-&gt;r14);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rdi: %16lx    r15: %16lx\n&quot;</span>, r-&gt;rdi, r-&gt;r15);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    rip: %16lx    rfl: [&quot;</span>, r-&gt;ip);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%c%c%c%c%c%c%c%c%c%c%c%c%c%c] (%lx)\n&quot;</span>,</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;           r-&gt;flags &amp; 0x00000001 ? <span class="charliteral">&#39;C&#39;</span> : <span class="charliteral">&#39; &#39;</span>, r-&gt;flags &amp; 0x00000004 ? <span class="charliteral">&#39;P&#39;</span> : <span class="charliteral">&#39; &#39;</span>,</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;           r-&gt;flags &amp; 0x00000010 ? <span class="charliteral">&#39;A&#39;</span> : <span class="charliteral">&#39; &#39;</span>, r-&gt;flags &amp; 0x00000040 ? <span class="charliteral">&#39;Z&#39;</span> : <span class="charliteral">&#39; &#39;</span>,</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;           r-&gt;flags &amp; 0x00000080 ? <span class="charliteral">&#39;S&#39;</span> : <span class="charliteral">&#39; &#39;</span>, r-&gt;flags &amp; 0x00000100 ? <span class="charliteral">&#39;T&#39;</span> : <span class="charliteral">&#39; &#39;</span>,</div>
@@ -101,14 +101,17 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if __kernel__</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    uintptr_t cr3 = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %%cr3, %0&quot;</span> : <span class="stringliteral">&quot;=a&quot;</span>(cr3));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    printf(<span class="stringliteral">&quot;    cr3: %16lx    pid: [%i:%i]\n&quot;</span>, cr3, running_process-&gt;pid,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    cr3: %16lx    pid: [%i:%i]\n&quot;</span>, cr3, running_process-&gt;pid,</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;           running_thread-&gt;tid);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">}</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="asynnixos_8h_html"><div class="ttname"><a href="synnixos_8h.html">synnixos.h</a></div><div class="ttdoc">SynnixOS native Library.</div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

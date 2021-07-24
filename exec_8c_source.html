@@ -71,8 +71,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="exec_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;elf.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
@@ -80,7 +80,7 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2string_8h.html">snx/string.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/** @file</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * @brief Execute Process Helpers</span></div>
@@ -120,7 +120,7 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">size_t</span> arg_count = s1.count + s2.count;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">size_t</span> string_len = s1.strlen + s2.strlen;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> **out = malloc((arg_count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *) + string_len);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> **out = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>((arg_count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *) + string_len);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">char</span> *strings = (<span class="keywordtype">char</span> *)out + (arg_count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">size_t</span> string_offset = partial_copy_args(out, strings, a1, s1.count);</div>
@@ -132,7 +132,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">char</span> *<span class="keyword">const</span> *exec_copy_args(<span class="keywordtype">char</span> **out, <span class="keywordtype">char</span> *<span class="keyword">const</span> args[]) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (!args) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">struct </span><a class="code" href="structargs__size.html">args_size</a> size = size_args(args);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (!out) out = malloc((size.count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *) + size.strlen);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (!out) out = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>((size.count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *) + size.strlen);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">char</span> *strings = (<span class="keywordtype">char</span> *)out + (size.count + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    partial_copy_args(out, strings, args, size.count);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    out[size.count] = 0;</div>
@@ -146,7 +146,7 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">size_t</span> arg_i = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; <a class="code" href="structstr.html">str</a>[i] &amp;&amp; i &lt; str_len; i++) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structstr.html">str</a>[i] == <span class="charliteral">&#39; &#39;</span>) <a class="code" href="structstr.html">str</a>[i] = 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (i == 0 || (<a class="code" href="structstr.html">str</a>[i - 1] == 0 &amp;&amp; !isspace(<a class="code" href="structstr.html">str</a>[i]))) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (i == 0 || (<a class="code" href="structstr.html">str</a>[i - 1] == 0 &amp;&amp; !<a class="code" href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a>(<a class="code" href="structstr.html">str</a>[i]))) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (arg_i &gt;= len) <span class="keywordflow">return</span> arg_i;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            addrs[arg_i++] = &amp;<a class="code" href="structstr.html">str</a>[i];</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
@@ -222,7 +222,7 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;sysret do_execve(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a>, <span class="keyword">struct</span> <a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *frame,</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                 <span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keywordtype">char</span> *<span class="keyword">const</span> argv[], <span class="keywordtype">char</span> *<span class="keyword">const</span> envp[]) {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">if</span> (running_process-&gt;pid == 0) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        printf(<span class="stringliteral">&quot;WARN: an attempt was made to `execve` the kernel. Ignoring!\n&quot;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;WARN: an attempt was made to `execve` the kernel. Ignoring!\n&quot;</span>);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> -EINVAL;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
@@ -254,7 +254,7 @@ $(function() {
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    running_process-&gt;elf_metadata = e;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span> ((path_tmp = exec_interp(e))) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        printf(<span class="stringliteral">&quot;[Debug] Loading interpreter: %s\n&quot;</span>, path_tmp);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;[Debug] Loading interpreter: %s\n&quot;</span>, path_tmp);</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *interp = <a class="code" href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a>(path_tmp);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        elf_md *interp_md = exec_open_elf(interp);</div>
@@ -277,25 +277,32 @@ $(function() {
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    FRAME_ARGC(frame) = argc(stored_args);</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    FRAME_ARGV(frame) = (uintptr_t)user_argv;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    free((<span class="keywordtype">void</span> *)stored_args);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>((<span class="keywordtype">void</span> *)stored_args);</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
 <div class="ttc" id="afs_8h_html_a425eb3906f797c781dbf35f6614ac1bf"><div class="ttname"><a href="fs_8h.html#a425eb3906f797c781dbf35f6614ac1bf">basename</a></div><div class="ttdeci">const char * basename(const char *path)</div><div class="ttdoc">Get file basename.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00101">fs.c:101</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
 <div class="ttc" id="afs_8h_html_a03ef4ce67850c7ee6073925bcb685cc2"><div class="ttname"><a href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a></div><div class="ttdeci">struct file * fs_path(const char *filename)</div><div class="ttdoc">Get file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00097">fs.c:97</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="aexec_8c_html_a7ffd4c750a84332dd92db0ae6344c546"><div class="ttname"><a href="exec_8c.html#a7ffd4c750a84332dd92db0ae6344c546">exec_memory_setup</a></div><div class="ttdeci">void exec_memory_setup(void)</div><div class="ttdoc">Clear memory maps and reinitialize the critial ones.</div><div class="ttdef"><b>Definition:</b> <a href="exec_8c_source.html#l00111">exec.c:111</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="actype_8h_html_a56be4166e4673843042a548a7f513dbc"><div class="ttname"><a href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a></div><div class="ttdeci">int isspace(int c)</div><div class="ttdoc">Check if character is a space.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00033">ctype.c:33</a></div></div>
 <div class="ttc" id="astructmembuf__file_html"><div class="ttname"><a href="structmembuf__file.html">membuf_file</a></div><div class="ttdoc">Memory buffer file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00326">fs.h:326</a></div></div>
 <div class="ttc" id="amemmap_8h_html"><div class="ttname"><a href="memmap_8h.html">memmap.h</a></div><div class="ttdoc">Convenience macros for memory mappings.</div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="astructargs__size_html"><div class="ttname"><a href="structargs__size.html">args_size</a></div><div class="ttdef"><b>Definition:</b> <a href="exec_8c_source.html#l00018">exec.c:18</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="aexec_8c_html_a63edbd40e3d7299369592b48501717d3"><div class="ttname"><a href="exec_8c.html#a63edbd40e3d7299369592b48501717d3">exec_parse_args</a></div><div class="ttdeci">size_t exec_parse_args(char **addrs, size_t len, char *str, size_t str_len)</div><div class="ttdoc">Parses args.</div><div class="ttdef"><b>Definition:</b> <a href="exec_8c_source.html#l00073">exec.c:73</a></div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -70,14 +70,14 @@ $(function() {
 <div class="title">trace.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;synnixos.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="synnixos_8h.html">synnixos.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;sys/trace.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;sys/wait.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2trace_8h.html">sys/trace.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="wait_8h.html">sys/wait.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">int</span> exec(<span class="keywordtype">char</span> **args) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> child = fork();</div>
@@ -91,13 +91,13 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;noreturn <span class="keywordtype">void</span> fail(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structstr.html">str</a>) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    perror(<a class="code" href="structstr.html">str</a>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<a class="code" href="structstr.html">str</a>);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    exit(1);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (!argv[1]) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;No command specified\n&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;No command specified\n&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        exit(EXIT_FAILURE);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        wait(&amp;status);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (errno) fail(<span class="stringliteral">&quot;wait&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="errno_8h.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a>) fail(<span class="stringliteral">&quot;wait&quot;</span>);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (status &lt; 256) exit(0);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">int</span> <span class="keyword">event</span> = status &amp; ~0xFFFF;</div>
@@ -121,16 +121,16 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        trace(TR_GETREGS, child, NULL, &amp;r);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (event == TRACE_SYSCALL_ENTRY) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            printf(<span class="stringliteral">&quot;syscall_enter: %s\n&quot;</span>, syscall_names[syscall]);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;syscall_enter: %s\n&quot;</span>, syscall_names[syscall]);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (event == TRACE_SYSCALL_EXIT) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            printf(<span class="stringliteral">&quot;syscall_exit: %s&quot;</span>, syscall_names[syscall]);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            printf(<span class="stringliteral">&quot; -&gt; %zu\n&quot;</span>, FRAME_RETURN(&amp;r));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;syscall_exit: %s&quot;</span>, syscall_names[syscall]);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot; -&gt; %zu\n&quot;</span>, FRAME_RETURN(&amp;r));</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (event == TRACE_SIGNAL) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            printf(<span class="stringliteral">&quot;signal: %i\n&quot;</span>, syscall);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;signal: %i\n&quot;</span>, syscall);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            trace(TR_SYSCALL, child, NULL, (<span class="keywordtype">void</span> *)(intptr_t)syscall);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            trace(TR_SYSCALL, child, NULL, NULL);</div>
@@ -138,8 +138,20 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="await_8h_html"><div class="ttname"><a href="wait_8h.html">wait.h</a></div><div class="ttdoc">Process waiting.</div></div>
+<div class="ttc" id="asynnixos_8h_html"><div class="ttname"><a href="synnixos_8h.html">synnixos.h</a></div><div class="ttdoc">SynnixOS native Library.</div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="aerrno_8h_html_ad65a8842cc674e3ddf69355898c0ecbf"><div class="ttname"><a href="errno_8h.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a></div><div class="ttdeci">int errno</div><div class="ttdoc">Error number.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00005">errno.c:5</a></div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="alibc_2include_2sys_2trace_8h_html"><div class="ttname"><a href="libc_2include_2sys_2trace_8h.html">trace.h</a></div><div class="ttdoc">Process tracing.</div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

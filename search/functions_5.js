@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['free_5fring_411',['free_ring',['../ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92',1,'ringbuf.c']]],
-  ['fs_5fpath_412',['fs_path',['../fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2',1,'fs.c']]],
-  ['fs_5fresolve_5fdirectory_5fof_413',['fs_resolve_directory_of',['../fs_8h.html#a92ae718028bc1f723181deace36aabe1',1,'fs.c']]],
-  ['fs_5fresolve_5frelative_5fpath_414',['fs_resolve_relative_path',['../fs_8h.html#aa37ac6b588eafcc86a2fb790bfe4b944',1,'fs.c']]],
-  ['fs_5froot_5finit_415',['fs_root_init',['../fs_8h.html#a8d755cf674e06102792bfd692b782b6f',1,'directory.c']]]
+  ['elf_5ffind_5fsymbol_5fby_5faddress_584',['elf_find_symbol_by_address',['../mod_8h.html#a6e971f2e432ece455719da80303f1593',1,'mod.c']]],
+  ['exec_5fmemory_5fsetup_585',['exec_memory_setup',['../exec_8c.html#a7ffd4c750a84332dd92db0ae6344c546',1,'exec.c']]],
+  ['exec_5fparse_5fargs_586',['exec_parse_args',['../exec_8c.html#a63edbd40e3d7299369592b48501717d3',1,'exec.c']]]
 ];

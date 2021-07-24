@@ -71,22 +71,22 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifdef __kernel__</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="serial_8h.html">snx/serial.h</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define STDOUT_FILENO 1</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if __kernel__</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define PRINTF_BUFSZ 512</span></div>
@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">int</span> puts(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structstr.html">str</a>) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="stdio_8h.html#a24df0c04767d20bfc8337baa088605ff">   38</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a24df0c04767d20bfc8337baa088605ff">puts</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structstr.html">str</a>) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> len = raw_print(STDOUT_FILENO, <a class="code" href="structstr.html">str</a>, strlen(<a class="code" href="structstr.html">str</a>));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    len += raw_print(STDOUT_FILENO, <span class="stringliteral">&quot;\n&quot;</span>, 1);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> len;</div>
@@ -161,7 +161,7 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">case</span> OCTAL: base = 8; <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">case</span> BINARY: base = 2; <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">case</span> POINTER: base = 16; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">default</span>: printf(<span class="stringliteral">&quot;invalid base %i\n&quot;</span>, fmt.format); <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">default</span>: <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;invalid base %i\n&quot;</span>, fmt.format); <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">size_t</span> buf_ix = 0;</div>
@@ -342,9 +342,9 @@ $(function() {
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">long</span> fractional_part = labs((<span class="keywordtype">long</span>)(raw_value * 1000) % 1000);</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span> (fmt.print_plus) {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">return</span> sprintf(buf, <span class="stringliteral">&quot;%+li.%03li&quot;</span>, int_part, fractional_part);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">sprintf</a>(buf, <span class="stringliteral">&quot;%+li.%03li&quot;</span>, int_part, fractional_part);</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">return</span> sprintf(buf, <span class="stringliteral">&quot;%li.%03li&quot;</span>, int_part, fractional_part);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">sprintf</a>(buf, <span class="stringliteral">&quot;%li.%03li&quot;</span>, int_part, fractional_part);</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#endif // ifndef __kernel__</span></div>
@@ -355,7 +355,7 @@ $(function() {
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">        val += d;                                                              \</span></div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">    }</span></div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="keywordtype">int</span> vsprintf(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) {</div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">  286</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) {</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordtype">size_t</span> buf_ix = 0;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    uint64_t value;</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">double</span> fvalue;</div>
@@ -515,7 +515,7 @@ $(function() {
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        }</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="keywordflow">if</span> (buf_ix &gt; PRINTF_BUFSZ) {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            puts(<span class="stringliteral">&quot;printf() longer than buf - probably wrong!\n&quot;</span>);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <a class="code" href="stdio_8h.html#a24df0c04767d20bfc8337baa088605ff">puts</a>(<span class="stringliteral">&quot;printf() longer than buf - probably wrong!\n&quot;</span>);</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        }</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    }</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
@@ -524,75 +524,91 @@ $(function() {
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">return</span> buf_ix;</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;}</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="keywordtype">int</span> vsnprintf(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
+<div class="line"><a name="l00455"></a><span class="lineno"><a class="line" href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">  455</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">vsnprintf</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordtype">char</span> <span class="keyword">internal</span>[PRINTF_BUFSZ];</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="keywordtype">int</span> internal_len = vsprintf(<span class="keyword">internal</span>, format, args);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="keywordtype">int</span> internal_len = <a class="code" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a>(<span class="keyword">internal</span>, format, args);</div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordtype">int</span> written = min(len, internal_len + 1);</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    memcpy(buf, <span class="keyword">internal</span>, written);</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">return</span> internal_len;</div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;}</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="keywordtype">int</span> sprintf(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00464"></a><span class="lineno"><a class="line" href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">  464</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">sprintf</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordflow">return</span> vsprintf(buf, format, args);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a>(buf, format, args);</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="comment">// va_end in vsprintf</span></div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;}</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="keywordtype">int</span> snprintf(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00472"></a><span class="lineno"><a class="line" href="stdio_8h.html#a91b8e3a4b5dc25056e5981ea68f18034">  472</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a91b8e3a4b5dc25056e5981ea68f18034">snprintf</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">return</span> vsnprintf(buf, len, format, args);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">vsnprintf</a>(buf, len, format, args);</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="comment">// va_end in vsprintf</span></div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;}</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">#ifndef __kernel__</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="keywordtype">int</span> vdprintf(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
+<div class="line"><a name="l00481"></a><span class="lineno"><a class="line" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">  481</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a>(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="keywordtype">char</span> buf[PRINTF_BUFSZ] = {0};</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordtype">int</span> cnt = vsprintf(buf, format, args);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordtype">int</span> cnt = <a class="code" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a>(buf, format, args);</div>
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    raw_print(fd, buf, cnt);</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <span class="keywordflow">return</span> cnt;</div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;}</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="keywordtype">int</span> vprintf(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
+<div class="line"><a name="l00490"></a><span class="lineno"><a class="line" href="stdio_8h.html#aae4ab8b56862ed0a04505cafb8a05112">  490</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#aae4ab8b56862ed0a04505cafb8a05112">vprintf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="preprocessor">#ifdef __kernel__</span></div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    <span class="keywordtype">char</span> buf[PRINTF_BUFSZ] = {0};</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordtype">int</span> cnt = vsprintf(buf, format, args);</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordtype">int</span> cnt = <a class="code" href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a>(buf, format, args);</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    raw_print(0, buf, cnt);</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    <span class="keywordflow">return</span> cnt;</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordflow">return</span> vdprintf(STDOUT_FILENO, format, args);</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a>(STDOUT_FILENO, format, args);</div>
 <div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;}</div>
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor">#ifndef __kernel__</span></div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="keywordtype">int</span> dprintf(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00503"></a><span class="lineno"><a class="line" href="stdio_8h.html#a5fe0fc8fe920b640d488856c5ca43cb5">  503</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a5fe0fc8fe920b640d488856c5ca43cb5">dprintf</a>(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keywordflow">return</span> vdprintf(fd, format, args);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a>(fd, format, args);</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="comment">// va_end in vsprintf</span></div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;}</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="keywordtype">int</span> printf(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00512"></a><span class="lineno"><a class="line" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">  512</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <span class="keywordflow">return</span> vprintf(format, args);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#aae4ab8b56862ed0a04505cafb8a05112">vprintf</a>(format, args);</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="comment">// va_end in vsprintf</span></div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdio_8h_html_a557dd665397e14bc2f8ef9d31b6c8e3e"><div class="ttname"><a href="stdio_8h.html#a557dd665397e14bc2f8ef9d31b6c8e3e">vsprintf</a></div><div class="ttdeci">int vsprintf(char *buf, const char *format, va_list args)</div><div class="ttdoc">Format to buffer using array.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00286">stdio.c:286</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
+<div class="ttc" id="astdio_8h_html_a5fe0fc8fe920b640d488856c5ca43cb5"><div class="ttname"><a href="stdio_8h.html#a5fe0fc8fe920b640d488856c5ca43cb5">dprintf</a></div><div class="ttdeci">int dprintf(int fd, const char *format,...)</div><div class="ttdoc">Print formatted string to file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00503">stdio.c:503</a></div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="astdio_8h_html_a9702343da581694970e3a0b7cd8630aa"><div class="ttname"><a href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">vsnprintf</a></div><div class="ttdeci">int vsnprintf(char *buf, size_t len, const char *format, va_list args)</div><div class="ttdoc">Write formatted data from variable argument list to sized buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00455">stdio.c:455</a></div></div>
+<div class="ttc" id="astdio_8h_html_aae4ab8b56862ed0a04505cafb8a05112"><div class="ttname"><a href="stdio_8h.html#aae4ab8b56862ed0a04505cafb8a05112">vprintf</a></div><div class="ttdeci">int vprintf(const char *format, va_list args)</div><div class="ttdoc">Print formatted data from variable argument list to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00490">stdio.c:490</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00018">serial.c:18</a></div></div>
+<div class="ttc" id="astdio_8h_html_a91b8e3a4b5dc25056e5981ea68f18034"><div class="ttname"><a href="stdio_8h.html#a91b8e3a4b5dc25056e5981ea68f18034">snprintf</a></div><div class="ttdeci">int snprintf(char *buf, size_t len, const char *format,...)</div><div class="ttdoc">Write formatted output to sized buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00472">stdio.c:472</a></div></div>
 <div class="ttc" id="aserial_8h_html"><div class="ttname"><a href="serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>
+<div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
+<div class="ttc" id="astdio_8h_html_a0365d4c55c8313340392c4d24fd7fb4c"><div class="ttname"><a href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a></div><div class="ttdeci">int vdprintf(int fd, const char *buf, va_list args)</div><div class="ttdoc">Write formatted output to a file descriptor using list arguments.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00481">stdio.c:481</a></div></div>
+<div class="ttc" id="astdio_8h_html_a24df0c04767d20bfc8337baa088605ff"><div class="ttname"><a href="stdio_8h.html#a24df0c04767d20bfc8337baa088605ff">puts</a></div><div class="ttdeci">int puts(const char *str)</div><div class="ttdoc">Print string to stdout including newline.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00038">stdio.c:38</a></div></div>
+<div class="ttc" id="asys_2types_8h_html"><div class="ttname"><a href="sys_2types_8h.html">types.h</a></div><div class="ttdoc">Standard Types.</div></div>
 <div class="ttc" id="astructFormat__Info_html"><div class="ttname"><a href="structFormat__Info.html">Format_Info</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00053">stdio.c:53</a></div></div>
+<div class="ttc" id="astdio_8h_html_a01a2bb0c382b7df2d8c1f51263762bf8"><div class="ttname"><a href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">sprintf</a></div><div class="ttdeci">int sprintf(char *buf, const char *format,...)</div><div class="ttdoc">Write formatted data to buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00464">stdio.c:464</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

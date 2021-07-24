@@ -70,14 +70,14 @@ $(function() {
 <div class="title">fstdio.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fcntl_8h.html">fcntl.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="struct__FILE.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct__FILE.html">_FILE</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> fd;</div>
@@ -92,45 +92,45 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> print_file(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    printf(<span class="stringliteral">&quot;FILE %i {\n&quot;</span>, f-&gt;fd);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    printf(<span class="stringliteral">&quot;    buffer: \&quot;...\&quot;, len: %zu\n&quot;</span>, f-&gt;buflen);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    printf(<span class="stringliteral">&quot;    at eof: %s\n&quot;</span>, f-&gt;eof ? <span class="stringliteral">&quot;true&quot;</span> : <span class="stringliteral">&quot;false&quot;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    printf(<span class="stringliteral">&quot;    offset: %zi\n&quot;</span>, f-&gt;offset);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    printf(<span class="stringliteral">&quot;}\n&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;FILE %i {\n&quot;</span>, f-&gt;fd);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    buffer: \&quot;...\&quot;, len: %zu\n&quot;</span>, f-&gt;buflen);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    at eof: %s\n&quot;</span>, f-&gt;eof ? <span class="stringliteral">&quot;true&quot;</span> : <span class="stringliteral">&quot;false&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    offset: %zi\n&quot;</span>, f-&gt;offset);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;}\n&quot;</span>);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> print_buffer(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 24; i++) { printf(<span class="stringliteral">&quot;%02hhx &quot;</span>, f-&gt;buffer[i]); }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 24; i++) { <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%02hhx &quot;</span>, f-&gt;buffer[i]); }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *stdin = &amp;(<a class="code" href="struct__FILE.html">FILE</a>){.fd = 0, .bufmode = _IOLBF};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *stdout = &amp;(<a class="code" href="struct__FILE.html">FILE</a>){.fd = 1, .bufmode = _IOLBF};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *stderr = &amp;(<a class="code" href="struct__FILE.html">FILE</a>){.fd = 2, .bufmode = _IONBF};</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">   35</a></span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a> = &amp;(<a class="code" href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a>){.fd = 0, .bufmode = _IOLBF};</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">   36</a></span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a> = &amp;(<a class="code" href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a>){.fd = 1, .bufmode = _IOLBF};</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">   37</a></span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a> = &amp;(<a class="code" href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a>){.fd = 2, .bufmode = _IONBF};</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *fopen(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> open_flags = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;r&#39;</span>)) open_flags |= O_RDONLY;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;w&#39;</span>)) open_flags |= O_WRONLY | O_CREAT | O_TRUNC;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">   39</a></span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> = 0;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;r&#39;</span>)) <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> |= O_RDONLY;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;w&#39;</span>)) <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> |= O_WRONLY | O_CREAT | O_TRUNC;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> fd = open(filename, open_flags);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> fd = <a class="code" href="fcntl_8h.html#ae228c30ac0826ace5835545e40416e57">open</a>(filename, <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a>);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (fd &lt; 0) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="struct__FILE.html">FILE</a> *f = malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__FILE.html">FILE</a>));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="struct__FILE.html">FILE</a> *f = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<a class="code" href="struct__FILE.html">FILE</a>));</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    memset(f, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__FILE.html">FILE</a>));</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    f-&gt;fd = fd;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> f;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *freopen(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    fclose(stream);</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="stdio_8h.html#a57fe934ac9f5aab510f2f5638b30916f">   54</a></span>&#160;<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="stdio_8h.html#a57fe934ac9f5aab510f2f5638b30916f">freopen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">fclose</a>(stream);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> open_flags = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;r&#39;</span>)) open_flags |= O_RDONLY;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;w&#39;</span>)) open_flags |= O_WRONLY;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;r&#39;</span>)) <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> |= O_RDONLY;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (strchr(mode, <span class="charliteral">&#39;w&#39;</span>)) <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> |= O_WRONLY;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> fd = open(filename, open_flags);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> fd = <a class="code" href="fcntl_8h.html#ae228c30ac0826ace5835545e40416e57">open</a>(filename, <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a>);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (fd &lt; 0) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    stream-&gt;fd = fd;</div>
@@ -143,21 +143,21 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> stream;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">int</span> vfprintf(<a class="code" href="struct__FILE.html">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> vdprintf(stream-&gt;fd, format, args);</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="stdio_8h.html#a6f312eddd9ab402e31ae21b6ccfc01af">   74</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a6f312eddd9ab402e31ae21b6ccfc01af">vfprintf</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list args) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a>(stream-&gt;fd, format, args);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> fprintf(<a class="code" href="struct__FILE.html">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">   78</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...) {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    va_list args;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> vdprintf(stream-&gt;fd, format, args);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a>(stream-&gt;fd, format, args);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// va_end called in vsprintf</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> read_into_buf(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">int</span> siz = read(f-&gt;fd, f-&gt;buffer + f-&gt;buflen, BUFSIZ - f-&gt;buflen);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> (siz &lt; 0) perror(<span class="stringliteral">&quot;read()&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> (siz &lt; 0) <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">if</span> (siz == 0) f-&gt;eof = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    f-&gt;buflen += siz;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
@@ -222,7 +222,7 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">return</span> len + did_unget;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">size_t</span> fread(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> cnt, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">  153</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">fread</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> cnt, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">size_t</span> len = n * cnt;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">if</span> (stream-&gt;bufmode == _IOFBF) {</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">while</span> (stream-&gt;buflen &lt; len &amp;&amp; !stream-&gt;eof) read_into_buf(stream);</div>
@@ -233,7 +233,7 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> used;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">char</span> *fgets(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> size, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">  164</a></span>&#160;<span class="keywordtype">char</span> *<a class="code" href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> size, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    read_until(stream, <span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">size_t</span> used = consume_until(stream, s, size, <span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    s[used] = 0;</div>
@@ -241,31 +241,31 @@ $(function() {
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> s;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">int</span> fwrite(<span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> cnt, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="stdio_8h.html#ad1c94f935883d85ed7a5d03420cd20f2">  172</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ad1c94f935883d85ed7a5d03420cd20f2">fwrite</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">size_t</span> n, <span class="keywordtype">size_t</span> cnt, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> write(stream-&gt;fd, buf, n * cnt);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keywordtype">int</span> fflush(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="stdio_8h.html#aa0ed35dbaf8a840c92daef7aa52b40bf">  176</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#aa0ed35dbaf8a840c92daef7aa52b40bf">fflush</a>(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">int</span> fclose(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> close(f-&gt;fd);</div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">  180</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">fclose</a>(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#aafbcde67669a1b96577e735ddebd8634">close</a>(f-&gt;fd);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> clearerr(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="stdio_8h.html#ab5de865c3093158c70bf4bd88a9deea5">  184</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="stdio_8h.html#ab5de865c3093158c70bf4bd88a9deea5">clearerr</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keywordtype">int</span> feof(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">  188</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> stream-&gt;eof &amp;&amp; stream-&gt;buflen == 0;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keywordtype">int</span> ferror(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="stdio_8h.html#a4a98383bb54291c2abede7aa28acf597">  192</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a4a98383bb54291c2abede7aa28acf597">ferror</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keywordtype">int</span> fileno(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="stdio_8h.html#af86fa14728c9bad5418a6d29cad9f9ff">  196</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#af86fa14728c9bad5418a6d29cad9f9ff">fileno</a>(<a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">return</span> stream-&gt;fd;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
@@ -305,22 +305,22 @@ $(function() {
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> ftell(stream);</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keywordtype">int</span> getc(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (feof(f)) <span class="keywordflow">return</span> EOF;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">  236</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a>(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(f)) <span class="keywordflow">return</span> EOF;</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    fread(&amp;c, 1, 1, f);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">fread</a>(&amp;c, 1, 1, f);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> c;</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keywordtype">int</span> fgetc(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> getc(f);</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="stdio_8h.html#a2c4fad5f95f4c5242c3ea25d791df6e5">  243</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a2c4fad5f95f4c5242c3ea25d791df6e5">fgetc</a>(<a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a>(f);</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">int</span> getchar(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> getc(stdin);</div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8">  247</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a>(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>);</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keywordtype">int</span> ungetc(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="stdio_8h.html#ab634a645f168154ab18a6496db140eb2">  251</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ab634a645f168154ab18a6496db140eb2">ungetc</a>(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">if</span> (f-&gt;unget_char) {</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="comment">// Pushed-back characters will be returned in reverse order;</span></div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="comment">// only one pushback is guaranteed.</span></div>
@@ -331,22 +331,22 @@ $(function() {
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">return</span> c;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keywordtype">int</span> putc(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="stdio_8h.html#ae2746c969d83109cb599e25396993f9d">  262</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#ae2746c969d83109cb599e25396993f9d">putc</a>(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">char</span> buf = c;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span> fwrite(&amp;buf, 1, 1, f);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#ad1c94f935883d85ed7a5d03420cd20f2">fwrite</a>(&amp;buf, 1, 1, f);</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keywordtype">int</span> fputc(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> putc(c, f);</div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="stdio_8h.html#a0a260faecc8c64f08f4f3d3801c3f71a">  267</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a0a260faecc8c64f08f4f3d3801c3f71a">fputc</a>(<span class="keywordtype">int</span> c, <a class="code" href="struct__FILE.html">FILE</a> *f) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#ae2746c969d83109cb599e25396993f9d">putc</a>(c, f);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keywordtype">int</span> putchar(<span class="keywordtype">int</span> c) {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span> putc(c, stdout);</div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">  271</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#ae2746c969d83109cb599e25396993f9d">putc</a>(c, <a class="code" href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a>);</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keywordtype">int</span> fputs(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structstr.html">str</a>, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="stdio_8h.html#a310f8879df36f4021b9ca1bd988b6a99">  275</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8h.html#a310f8879df36f4021b9ca1bd988b6a99">fputs</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structstr.html">str</a>, <a class="code" href="struct__FILE.html">FILE</a> *stream) {</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">size_t</span> len = strlen(<a class="code" href="structstr.html">str</a>);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">return</span> fwrite(<a class="code" href="structstr.html">str</a>, 1, len, stream);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="stdio_8h.html#ad1c94f935883d85ed7a5d03420cd20f2">fwrite</a>(<a class="code" href="structstr.html">str</a>, 1, len, stream);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keywordtype">void</span> setbuf(<a class="code" href="struct__FILE.html">FILE</a> *stream, <span class="keywordtype">char</span> *buf) {</div>
@@ -368,8 +368,46 @@ $(function() {
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdio_8h_html_ad1c94f935883d85ed7a5d03420cd20f2"><div class="ttname"><a href="stdio_8h.html#ad1c94f935883d85ed7a5d03420cd20f2">fwrite</a></div><div class="ttdeci">int fwrite(const void *s, size_t size, size_t len, FILE *file)</div><div class="ttdoc">Write string to file stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00172">fstdio.c:172</a></div></div>
+<div class="ttc" id="astdio_8h_html_af4de2514b7778805db3815e8dd6cf09a"><div class="ttname"><a href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a></div><div class="ttdeci">int putchar(int c)</div><div class="ttdoc">Put character to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00271">fstdio.c:271</a></div></div>
+<div class="ttc" id="astdio_8h_html_a310f8879df36f4021b9ca1bd988b6a99"><div class="ttname"><a href="stdio_8h.html#a310f8879df36f4021b9ca1bd988b6a99">fputs</a></div><div class="ttdeci">int fputs(const char *c, FILE *f)</div><div class="ttdoc">Write string to stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00275">fstdio.c:275</a></div></div>
+<div class="ttc" id="afcntl_8h_html"><div class="ttname"><a href="fcntl_8h.html">fcntl.h</a></div><div class="ttdoc">File operations.</div></div>
+<div class="ttc" id="astdio_8h_html_a6f312eddd9ab402e31ae21b6ccfc01af"><div class="ttname"><a href="stdio_8h.html#a6f312eddd9ab402e31ae21b6ccfc01af">vfprintf</a></div><div class="ttdeci">int vfprintf(FILE *file, const char *format, va_list args)</div><div class="ttdoc">Print formatted string to file pointer via args list.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00074">fstdio.c:74</a></div></div>
+<div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_ab5de865c3093158c70bf4bd88a9deea5"><div class="ttname"><a href="stdio_8h.html#ab5de865c3093158c70bf4bd88a9deea5">clearerr</a></div><div class="ttdeci">void clearerr(FILE *stream)</div><div class="ttdoc">Clear error indicators of stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00184">fstdio.c:184</a></div></div>
+<div class="ttc" id="astdio_8h_html_ae2746c969d83109cb599e25396993f9d"><div class="ttname"><a href="stdio_8h.html#ae2746c969d83109cb599e25396993f9d">putc</a></div><div class="ttdeci">int putc(int c, FILE *f)</div><div class="ttdoc">Put character to stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00262">fstdio.c:262</a></div></div>
+<div class="ttc" id="astdio_8h_html_a57fe934ac9f5aab510f2f5638b30916f"><div class="ttname"><a href="stdio_8h.html#a57fe934ac9f5aab510f2f5638b30916f">freopen</a></div><div class="ttdeci">FILE * freopen(const char *name, const char *mode, FILE *stream)</div><div class="ttdoc">Reopen file in mode.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00054">fstdio.c:54</a></div></div>
+<div class="ttc" id="astdio_8h_html_a2c4fad5f95f4c5242c3ea25d791df6e5"><div class="ttname"><a href="stdio_8h.html#a2c4fad5f95f4c5242c3ea25d791df6e5">fgetc</a></div><div class="ttdeci">int fgetc(FILE *f)</div><div class="ttdoc">Get next character from stream add advances position.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00243">fstdio.c:243</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="astdio_8h_html_acab9c1fe2a80b10e01858bda28a04244"><div class="ttname"><a href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a></div><div class="ttdeci">FILE * stdin</div><div class="ttdoc">Standard Input.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00035">fstdio.c:35</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="astruct__FILE_html"><div class="ttname"><a href="struct__FILE.html">_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00010">fstdio.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_a043ecd1fa571a0e4f3835a0f19570cfd"><div class="ttname"><a href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a></div><div class="ttdeci">FILE * fopen(const char *name, const char *mode)</div><div class="ttdoc">Open file in mode.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00039">fstdio.c:39</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="astdio_8h_html_a0020b6e39df31f8b342a2444b9b4ad31"><div class="ttname"><a href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a></div><div class="ttdeci">char * fgets(char *str, int num, FILE *stream)</div><div class="ttdoc">Get string of num charactes from stream and write buffer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00164">fstdio.c:164</a></div></div>
+<div class="ttc" id="afcntl_8h_html_ae228c30ac0826ace5835545e40416e57"><div class="ttname"><a href="fcntl_8h.html#ae228c30ac0826ace5835545e40416e57">open</a></div><div class="ttdeci">int open(const char *filename, int flags,...)</div><div class="ttdoc">Open file.</div></div>
+<div class="ttc" id="astdio_8h_html_aafbcde67669a1b96577e735ddebd8634"><div class="ttname"><a href="stdio_8h.html#aafbcde67669a1b96577e735ddebd8634">close</a></div><div class="ttdeci">int close(int fd)</div><div class="ttdoc">Close file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2autogenerated__syscalls_8c_source.html#l00316">autogenerated_syscalls.c:316</a></div></div>
+<div class="ttc" id="astdio_8h_html_a175abb747ea3b78aa8da87355dcec473"><div class="ttname"><a href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a></div><div class="ttdeci">struct _FILE FILE</div><div class="ttdoc">Create typedef to common FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00090">stdio.h:90</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac80f4484175bf6c48d7b7ca4e9897ae6"><div class="ttname"><a href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a></div><div class="ttdeci">FILE * stdout</div><div class="ttdoc">Standard Output.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00036">fstdio.c:36</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_a4a98383bb54291c2abede7aa28acf597"><div class="ttname"><a href="stdio_8h.html#a4a98383bb54291c2abede7aa28acf597">ferror</a></div><div class="ttdeci">int ferror(FILE *stream)</div><div class="ttdoc">Check if error indicator of stream is set.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00192">fstdio.c:192</a></div></div>
+<div class="ttc" id="astdio_8h_html_a0a260faecc8c64f08f4f3d3801c3f71a"><div class="ttname"><a href="stdio_8h.html#a0a260faecc8c64f08f4f3d3801c3f71a">fputc</a></div><div class="ttdeci">int fputc(int c, FILE *f)</div><div class="ttdoc">Write character to stream and advance position.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00267">fstdio.c:267</a></div></div>
+<div class="ttc" id="astdio_8h_html_a3e29caa20f7cffe18f410f01278905a8"><div class="ttname"><a href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a></div><div class="ttdeci">int getchar(void)</div><div class="ttdoc">Get character from stdin.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00247">fstdio.c:247</a></div></div>
+<div class="ttc" id="astdio_8h_html_aa0ed35dbaf8a840c92daef7aa52b40bf"><div class="ttname"><a href="stdio_8h.html#aa0ed35dbaf8a840c92daef7aa52b40bf">fflush</a></div><div class="ttdeci">int fflush(FILE *f)</div><div class="ttdoc">Write all buffered data to stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00176">fstdio.c:176</a></div></div>
+<div class="ttc" id="astdio_8h_html_a5f21408871dc718d04419aed860a4bd8"><div class="ttname"><a href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a></div><div class="ttdeci">int getc(FILE *f)</div><div class="ttdoc">Get character from stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00236">fstdio.c:236</a></div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="astdio_8h_html_ab634a645f168154ab18a6496db140eb2"><div class="ttname"><a href="stdio_8h.html#ab634a645f168154ab18a6496db140eb2">ungetc</a></div><div class="ttdeci">int ungetc(int c, FILE *f)</div><div class="ttdoc">Unget character from stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00251">fstdio.c:251</a></div></div>
+<div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
+<div class="ttc" id="astdio_8h_html_a0365d4c55c8313340392c4d24fd7fb4c"><div class="ttname"><a href="stdio_8h.html#a0365d4c55c8313340392c4d24fd7fb4c">vdprintf</a></div><div class="ttdeci">int vdprintf(int fd, const char *buf, va_list args)</div><div class="ttdoc">Write formatted output to a file descriptor using list arguments.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00481">stdio.c:481</a></div></div>
+<div class="ttc" id="astdio_8h_html_a76370407f9ab0402564c2bb9bc9664e0"><div class="ttname"><a href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">fclose</a></div><div class="ttdeci">int fclose(FILE *stream)</div><div class="ttdoc">Close file stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00180">fstdio.c:180</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="afcntl_8h_html_abaa0e8674b827b6f438585e4c3884d92"><div class="ttname"><a href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a></div><div class="ttdeci">open_flags</div><div class="ttdoc">File open flags.</div><div class="ttdef"><b>Definition:</b> <a href="fcntl_8h_source.html#l00014">fcntl.h:14</a></div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="astdio_8h_html_af86fa14728c9bad5418a6d29cad9f9ff"><div class="ttname"><a href="stdio_8h.html#af86fa14728c9bad5418a6d29cad9f9ff">fileno</a></div><div class="ttdeci">int fileno(FILE *stream)</div><div class="ttdoc">Get integer file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00196">fstdio.c:196</a></div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
+<div class="ttc" id="astdio_8h_html_a64e9ff3a639afea7c21b9145b6645628"><div class="ttname"><a href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">fread</a></div><div class="ttdeci">size_t fread(void *s, size_t size, size_t len, FILE *file)</div><div class="ttdoc">Read string into buffer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00153">fstdio.c:153</a></div></div>
+<div class="ttc" id="astdio_8h_html_a9e71f513ad2496acb5361aedc065e3d8"><div class="ttname"><a href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a></div><div class="ttdeci">int feof(FILE *stream)</div><div class="ttdoc">Test file stream EOF.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00188">fstdio.c:188</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

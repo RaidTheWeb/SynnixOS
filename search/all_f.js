@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['rand_2eh_171',['rand.h',['../rand_8h.html',1,'']]],
-  ['remove_5fdir_5ffile_172',['remove_dir_file',['../fs_8h.html#a6548cd9daa9fee228d658a1564fb3065',1,'directory.c']]],
-  ['ring_5fread_173',['ring_read',['../ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da',1,'ringbuf.c']]],
-  ['ring_5fwrite_174',['ring_write',['../ringbuf_8h.html#ac578a52281847dff43fc6b4830644509',1,'ringbuf.c']]],
-  ['ringbuf_175',['ringbuf',['../structringbuf.html',1,'']]],
-  ['ringbuf_2eh_176',['ringbuf.h',['../ringbuf_8h.html',1,'']]],
-  ['run_5fall_5ftests_177',['run_all_tests',['../tests_8h.html#a2becfba94f27f96ceaafc8df687dcfb3',1,'tests.c']]]
+  ['open_230',['open',['../fcntl_8h.html#ae228c30ac0826ace5835545e40416e57',1,'fcntl.h']]],
+  ['open_5ffile_231',['open_file',['../structopen__file.html',1,'']]],
+  ['open_5fflags_232',['open_flags',['../fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92',1,'fcntl.h']]]
 ];

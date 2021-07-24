@@ -1,5 +1,5 @@
 <map id="mod" name="mod">
 <area shape="rect" id="node1" title="Basic module struct including required data." alt="" coords="62,112,113,139"/>
 <area shape="rect" id="node2" href="$structmodinfo.html" title="Convenience struct for supplying information about a kernel module." alt="" coords="5,7,81,33"/>
-<area shape="rect" id="node3" href="$structlist.html" title=" " alt="" coords="111,7,154,33"/>
+<area shape="rect" id="node3" href="$structlist.html" title="List struct." alt="" coords="111,7,154,33"/>
 </map>

@@ -74,11 +74,11 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ringbuf_8h.html">snx/ringbuf.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2string_8h.html">snx/string.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="ringbuf_8h.html#a3219a93c12cb39efa54ef9e74f499126">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> *<a class="code" href="ringbuf_8h.html#a3219a93c12cb39efa54ef9e74f499126">new_ring</a>(<span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> *ring = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a>));</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    ring-&gt;data = malloc(size);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> *ring = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a>));</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    ring-&gt;data = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(size);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ring-&gt;size = size;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    ring-&gt;len = 0;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    ring-&gt;head = 0;</div>
@@ -86,14 +86,14 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> emplace_ring(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *ring, <span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ring-&gt;data = malloc(size);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ring-&gt;data = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(size);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ring-&gt;size = size;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    ring-&gt;len = 0;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ring-&gt;head = 0;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92">free_ring</a>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *ring) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> (ring-&gt;data) free(ring-&gt;data);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> (ring-&gt;data) <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(ring-&gt;data);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">   27</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *r, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
@@ -144,13 +144,16 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    panic(<span class="stringliteral">&quot;Bro we raced the ring!&quot;</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_a30df8adbe49a7a33c2e751240aaba5da"><div class="ttname"><a href="ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da">ring_read</a></div><div class="ttdeci">size_t ring_read(struct ringbuf *, void *data, size_t len)</div><div class="ttdoc">Read data from Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00053">ringbuf.c:53</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="astructringbuf_html"><div class="ttname"><a href="structringbuf.html">ringbuf</a></div><div class="ttdoc">Ring Buffer structure.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8h_source.html#l00018">ringbuf.h:18</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_ac578a52281847dff43fc6b4830644509"><div class="ttname"><a href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a></div><div class="ttdeci">size_t ring_write(struct ringbuf *, const void *data, size_t len)</div><div class="ttdoc">Write data to Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00027">ringbuf.c:27</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_a3219a93c12cb39efa54ef9e74f499126"><div class="ttname"><a href="ringbuf_8h.html#a3219a93c12cb39efa54ef9e74f499126">new_ring</a></div><div class="ttdeci">struct ringbuf * new_ring(size_t size)</div><div class="ttdoc">Create new Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00007">ringbuf.c:7</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_a4a954a1867d22807625a8e97890e0c92"><div class="ttname"><a href="ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92">free_ring</a></div><div class="ttdeci">void free_ring(struct ringbuf *)</div><div class="ttdoc">Free a Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00023">ringbuf.c:23</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="aringbuf_8h_html"><div class="ttname"><a href="ringbuf_8h.html">ringbuf.h</a></div><div class="ttdoc">Ring Buffers.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

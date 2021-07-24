@@ -70,60 +70,60 @@ $(function() {
 <div class="title">ctype.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keywordtype">int</span> isalnum(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="ctype_8h.html#adf38e126f73a010f30af76db2a28c6e1">    3</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#adf38e126f73a010f30af76db2a28c6e1">isalnum</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;0&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;9&#39;</span>)) || ((c &gt;= <span class="charliteral">&#39;A&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;Z&#39;</span>)) ||</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;           ((c &gt;= <span class="charliteral">&#39;a&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;z&#39;</span>));</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">int</span> isalpha(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">    8</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">isalpha</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;A&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;Z&#39;</span>)) || ((c &gt;= <span class="charliteral">&#39;a&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;z&#39;</span>));</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> islower(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="ctype_8h.html#a7b8f652a0423a80922dd89d8829db5f2">   12</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a7b8f652a0423a80922dd89d8829db5f2">islower</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;a&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;z&#39;</span>));</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> isupper(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="ctype_8h.html#adadd6582d46775aab6a51e29d16d9f77">   16</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#adadd6582d46775aab6a51e29d16d9f77">isupper</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;A&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;Z&#39;</span>));</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> isdigit(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">   20</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;0&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;9&#39;</span>));</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> isxdigit(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="ctype_8h.html#adaf3aadefe3fc4fb07b6be0d7b880f53">   24</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#adaf3aadefe3fc4fb07b6be0d7b880f53">isxdigit</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> ((c &gt;= <span class="charliteral">&#39;0&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;9&#39;</span>)) || ((c &gt;= <span class="charliteral">&#39;a&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;f&#39;</span>)) ||</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;           ((c &gt;= <span class="charliteral">&#39;A&#39;</span>) &amp;&amp; (c &lt;= <span class="charliteral">&#39;F&#39;</span>));</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> iscntrl(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="ctype_8h.html#a0008a4e8e7889734dc1d83297de07158">   29</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a0008a4e8e7889734dc1d83297de07158">iscntrl</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> (c &lt;= 31 || c == 127);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> isspace(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">   33</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> (c &gt;= 9 &amp;&amp; c &lt;= 13) || c == <span class="charliteral">&#39; &#39;</span>; <span class="comment">// c in &quot;\t\n\v\f\r &quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span> isblank(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="ctype_8h.html#aea4929b1b41f1a6d723e0312b1f050ed">   37</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#aea4929b1b41f1a6d723e0312b1f050ed">isblank</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> (c == 9 || c == <span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> isprint(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">   41</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> (c &gt; 31 &amp;&amp; c &lt; 127);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> isgraph(<span class="keywordtype">int</span> c) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> c != <span class="charliteral">&#39; &#39;</span> &amp;&amp; isprint(c);</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="ctype_8h.html#a49f40fd869fd0c90e4497fda08c89561">   45</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a49f40fd869fd0c90e4497fda08c89561">isgraph</a>(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> c != <span class="charliteral">&#39; &#39;</span> &amp;&amp; <a class="code" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a>(c);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> ispunct(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="ctype_8h.html#af29554b3ec04ea7684482bffed5dbce6">   49</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#af29554b3ec04ea7684482bffed5dbce6">ispunct</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> (c &gt;= <span class="charliteral">&#39;!&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;/&#39;</span>) || (c &gt;= <span class="charliteral">&#39;:&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;@&#39;</span>) ||</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;           (c &gt;= <span class="charliteral">&#39;[&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;`&#39;</span>) || (c &gt;= <span class="charliteral">&#39;{&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;~&#39;</span>);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> tolower(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="ctype_8h.html#ac79d6114c9df7350cedcd8cf921a6ea4">   54</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#ac79d6114c9df7350cedcd8cf921a6ea4">tolower</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (c &gt;= <span class="charliteral">&#39;Z&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;A&#39;</span>) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> c + <span class="charliteral">&#39;a&#39;</span> - <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -131,7 +131,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">int</span> toupper(<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517">   62</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517">toupper</a>(<span class="keywordtype">int</span> c) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (c &gt;= <span class="charliteral">&#39;z&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;a&#39;</span>) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> c + <span class="charliteral">&#39;A&#39;</span> - <span class="charliteral">&#39;a&#39;</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -139,6 +139,21 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="actype_8h_html_a25908ae63aac2df990634e1ae5bd14d9"><div class="ttname"><a href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">isalpha</a></div><div class="ttdeci">int isalpha(int c)</div><div class="ttdoc">Check if character is alphabetical.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00008">ctype.c:8</a></div></div>
+<div class="ttc" id="actype_8h_html_adf38e126f73a010f30af76db2a28c6e1"><div class="ttname"><a href="ctype_8h.html#adf38e126f73a010f30af76db2a28c6e1">isalnum</a></div><div class="ttdeci">int isalnum(int c)</div><div class="ttdoc">Check if character is alphanumeric.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00003">ctype.c:3</a></div></div>
+<div class="ttc" id="actype_8h_html_a99355d8f0fb41ec43effb95189db0ed4"><div class="ttname"><a href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a></div><div class="ttdeci">int isprint(int c)</div><div class="ttdoc">Check if character is printable.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00041">ctype.c:41</a></div></div>
+<div class="ttc" id="actype_8h_html_aea4929b1b41f1a6d723e0312b1f050ed"><div class="ttname"><a href="ctype_8h.html#aea4929b1b41f1a6d723e0312b1f050ed">isblank</a></div><div class="ttdeci">int isblank(int c)</div><div class="ttdoc">Check if character is blank.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00037">ctype.c:37</a></div></div>
+<div class="ttc" id="actype_8h_html_ac79d6114c9df7350cedcd8cf921a6ea4"><div class="ttname"><a href="ctype_8h.html#ac79d6114c9df7350cedcd8cf921a6ea4">tolower</a></div><div class="ttdeci">int tolower(int c)</div><div class="ttdoc">Change character to lowercase.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00054">ctype.c:54</a></div></div>
+<div class="ttc" id="actype_8h_html_a9c2f57ac3865af9006fdbfd5db9fd517"><div class="ttname"><a href="ctype_8h.html#a9c2f57ac3865af9006fdbfd5db9fd517">toupper</a></div><div class="ttdeci">int toupper(int c)</div><div class="ttdoc">Change character to uppercase.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00062">ctype.c:62</a></div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="actype_8h_html_af29554b3ec04ea7684482bffed5dbce6"><div class="ttname"><a href="ctype_8h.html#af29554b3ec04ea7684482bffed5dbce6">ispunct</a></div><div class="ttdeci">int ispunct(int c)</div><div class="ttdoc">Check if character is punctuation.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00049">ctype.c:49</a></div></div>
+<div class="ttc" id="actype_8h_html_a56be4166e4673843042a548a7f513dbc"><div class="ttname"><a href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a></div><div class="ttdeci">int isspace(int c)</div><div class="ttdoc">Check if character is a space.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00033">ctype.c:33</a></div></div>
+<div class="ttc" id="actype_8h_html_a3fa45b35c8abf67a950b6d3d4063dede"><div class="ttname"><a href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a></div><div class="ttdeci">int isdigit(int c)</div><div class="ttdoc">Check if character is a number.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00020">ctype.c:20</a></div></div>
+<div class="ttc" id="actype_8h_html_a7b8f652a0423a80922dd89d8829db5f2"><div class="ttname"><a href="ctype_8h.html#a7b8f652a0423a80922dd89d8829db5f2">islower</a></div><div class="ttdeci">int islower(int c)</div><div class="ttdoc">Check if character is lowercase.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00012">ctype.c:12</a></div></div>
+<div class="ttc" id="actype_8h_html_a49f40fd869fd0c90e4497fda08c89561"><div class="ttname"><a href="ctype_8h.html#a49f40fd869fd0c90e4497fda08c89561">isgraph</a></div><div class="ttdeci">int isgraph(int c)</div><div class="ttdoc">Check if character is graphical.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00045">ctype.c:45</a></div></div>
+<div class="ttc" id="actype_8h_html_adadd6582d46775aab6a51e29d16d9f77"><div class="ttname"><a href="ctype_8h.html#adadd6582d46775aab6a51e29d16d9f77">isupper</a></div><div class="ttdeci">int isupper(int c)</div><div class="ttdoc">Check if character is uppercase.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00016">ctype.c:16</a></div></div>
+<div class="ttc" id="actype_8h_html_adaf3aadefe3fc4fb07b6be0d7b880f53"><div class="ttname"><a href="ctype_8h.html#adaf3aadefe3fc4fb07b6be0d7b880f53">isxdigit</a></div><div class="ttdeci">int isxdigit(int c)</div><div class="ttdoc">Check if character is a valid hex number.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00024">ctype.c:24</a></div></div>
+<div class="ttc" id="actype_8h_html_a0008a4e8e7889734dc1d83297de07158"><div class="ttname"><a href="ctype_8h.html#a0008a4e8e7889734dc1d83297de07158">iscntrl</a></div><div class="ttdeci">int iscntrl(int c)</div><div class="ttdoc">Check if character is a control code.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00029">ctype.c:29</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

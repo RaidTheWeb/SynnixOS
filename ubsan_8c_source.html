@@ -74,17 +74,17 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/ubsan.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> print_sloc(<span class="keyword">struct</span> <a class="code" href="structsource__location.html">source_location</a> *sloc) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    printf(<span class="stringliteral">&quot;  at: %s:%li:%li\n&quot;</span>, sloc-&gt;file_name, sloc-&gt;line, sloc-&gt;column);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  at: %s:%li:%li\n&quot;</span>, sloc-&gt;file_name, sloc-&gt;line, sloc-&gt;column);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;__USED</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_negate_overflow(<span class="keyword">struct</span> <a class="code" href="structubsan__overflow__info.html">ubsan_overflow_info</a> *info,</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: negate overflow detected\n&quot;</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    printf(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\nubsan: negate overflow detected\n&quot;</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
@@ -94,8 +94,8 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_add_overflow(<span class="keyword">struct</span> <a class="code" href="structubsan__overflow__info.html">ubsan_overflow_info</a> *info,</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_lhs,</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_rhs) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    printf(<span class="stringliteral">&quot;ubsan: add overflow detected\n&quot;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;ubsan: add overflow detected\n&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
@@ -106,8 +106,8 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_sub_overflow(<span class="keyword">struct</span> <a class="code" href="structubsan__overflow__info.html">ubsan_overflow_info</a> *info,</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_lhs,</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_rhs) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    printf(<span class="stringliteral">&quot;ubsan: sub overflow detected\n&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;ubsan: sub overflow detected\n&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
@@ -118,8 +118,8 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_mul_overflow(<span class="keyword">struct</span> <a class="code" href="structubsan__overflow__info.html">ubsan_overflow_info</a> *info,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_lhs,</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_rhs) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: mul overflow detected\n&quot;</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\nubsan: mul overflow detected\n&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
@@ -130,8 +130,8 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_divrem_overflow(<span class="keyword">struct</span> <a class="code" href="structubsan__overflow__info.html">ubsan_overflow_info</a> *info,</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_lhs,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_rhs) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: divrem overflow detected\n&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\nubsan: divrem overflow detected\n&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  lhs: %lu, rhs: %lu, type: %s\n&quot;</span>, value_lhs, value_rhs,</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;           &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
@@ -141,8 +141,8 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;__USED</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_load_invalid_value(<span class="keyword">struct</span> <a class="code" href="structubsan__invalid__value__info.html">ubsan_invalid_value_info</a> *info,</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    printf(<span class="stringliteral">&quot;\nubsan: load invalid detected\n&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    printf(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\nubsan: load invalid detected\n&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  value: %lu, type: %s\n&quot;</span>, value, &amp;(info-&gt;type-&gt;type_name));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
@@ -152,9 +152,9 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> __ubsan_handle_shift_out_of_bounds(<span class="keyword">struct</span> <a class="code" href="structubsan__shift__oob__info.html">ubsan_shift_oob_info</a> *info,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_lhs,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> value_rhs) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    printf(<span class="stringliteral">&quot;ubsan: shift out of bounds detected\n&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    printf(<span class="stringliteral">&quot;  lhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;lhs_type-&gt;type_name[0]), value_lhs);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    printf(<span class="stringliteral">&quot;  rhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;rhs_type-&gt;type_name[0]), value_rhs);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;ubsan: shift out of bounds detected\n&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  lhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;lhs_type-&gt;type_name[0]), value_lhs);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  rhs: (%s) %lu\n&quot;</span>, &amp;(info-&gt;rhs_type-&gt;type_name[0]), value_rhs);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    print_sloc(&amp;(info-&gt;loc));</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a>();</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    panic(<span class="stringliteral">&quot;&quot;</span>);</div>
@@ -174,11 +174,13 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="adebug_8c_html_a6fd2e2c1eb2b27c857fdfec83b5d1e02"><div class="ttname"><a href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here()</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00082">debug.c:82</a></div></div>
 <div class="ttc" id="astructubsan__invalid__value__info_html"><div class="ttname"><a href="structubsan__invalid__value__info.html">ubsan_invalid_value_info</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00024">ubsan.h:24</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astructubsan__shift__oob__info_html"><div class="ttname"><a href="structubsan__shift__oob__info.html">ubsan_shift_oob_info</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00029">ubsan.h:29</a></div></div>
 <div class="ttc" id="astructsource__location_html"><div class="ttname"><a href="structsource__location.html">source_location</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00007">ubsan.h:7</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="astructubsan__overflow__info_html"><div class="ttname"><a href="structubsan__overflow__info.html">ubsan_overflow_info</a></div><div class="ttdef"><b>Definition:</b> <a href="ubsan_8h_source.html#l00019">ubsan.h:19</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

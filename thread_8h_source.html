@@ -75,15 +75,15 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_THREAD_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;elf.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2signal_8h.html">snx/signal.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2trace_8h.html">snx/trace.h</a>&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;setjmp.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="setjmp_8h.html">setjmp.h</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/** @file</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * @brief Multi-Threading support</span></div>
@@ -96,7 +96,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <a class="code" href="structlist.html">list</a> <a class="code" href="thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1">all_threads</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> fp_ctx[512] __ALIGN(16);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> fp_ctx[512] <a class="code" href="stdlib_8h.html#aff22468305b269ac5f88cdd952258ba1">__ALIGN</a>(16);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * @brief MM Flags</span></div>
@@ -206,7 +206,7 @@ $(function() {
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">char</span> *kstack;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    jmp_buf kernel_ctx;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="setjmp_8h.html#aaf29a2b86abac133b769612b4f7d532c">jmp_buf</a> kernel_ctx;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *user_ctx;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    void (*entry)(<span class="keywordtype">void</span> *);</div>
@@ -234,11 +234,11 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtimer__event.html">timer_event</a> *wait_event;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    uintptr_t user_sp;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    jmp_buf signal_ctx;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="setjmp_8h.html#aaf29a2b86abac133b769612b4f7d532c">jmp_buf</a> signal_ctx;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    sighandler_t sighandlers[32];</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    sigset_t sig_pending;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    sigset_t sig_mask;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="libc_2include_2signal_8h.html#a754cdc0bcfffe07baa426dc252c9101a">sighandler_t</a> sighandlers[32];</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="libc_2include_2signal_8h.html#a7fba2a7c692afae7caa4564f8f82169d">sigset_t</a> sig_pending;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="libc_2include_2signal_8h.html#a7fba2a7c692afae7caa4564f8f82169d">sigset_t</a> sig_mask;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">long</span> n_scheduled;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
@@ -307,15 +307,22 @@ $(function() {
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
 <div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
 <div class="ttc" id="astructthread_html"><div class="ttname"><a href="structthread.html">thread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00125">thread.h:125</a></div></div>
+<div class="ttc" id="alibc_2include_2signal_8h_html_a7fba2a7c692afae7caa4564f8f82169d"><div class="ttname"><a href="libc_2include_2signal_8h.html#a7fba2a7c692afae7caa4564f8f82169d">sigset_t</a></div><div class="ttdeci">uint32_t sigset_t</div><div class="ttdoc">Unsigned 32 bit sigset.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2include_2signal_8h_source.html#l00060">signal.h:60</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
+<div class="ttc" id="astdlib_8h_html_aff22468305b269ac5f88cdd952258ba1"><div class="ttname"><a href="stdlib_8h.html#aff22468305b269ac5f88cdd952258ba1">__ALIGN</a></div><div class="ttdeci">struct __ALIGN(16) mregion</div><div class="ttdoc">Memory region.</div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00080">stdlib.h:80</a></div></div>
+<div class="ttc" id="asetjmp_8h_html"><div class="ttname"><a href="setjmp_8h.html">setjmp.h</a></div><div class="ttdoc">Jumping.</div></div>
 <div class="ttc" id="astructtimer__event_html"><div class="ttname"><a href="structtimer__event.html">timer_event</a></div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00043">timer.c:43</a></div></div>
 <div class="ttc" id="athread_8h_html_ae4e0cc6790033e9e4978abe60a055a1d"><div class="ttname"><a href="thread_8h.html#ae4e0cc6790033e9e4978abe60a055a1d">mm_flags</a></div><div class="ttdeci">mm_flags</div><div class="ttdoc">MM Flags.</div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00033">thread.h:33</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2trace_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2trace_8h.html">trace.h</a></div><div class="ttdoc">Syscall trace helpers.</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div><div class="ttdoc">Standard Integers.</div></div>
 <div class="ttc" id="astructdmgr_html"><div class="ttname"><a href="structdmgr.html">dmgr</a></div><div class="ttdef"><b>Definition:</b> <a href="dmgr_8h_source.html#l00013">dmgr.h:13</a></div></div>
 <div class="ttc" id="astructprocess_html"><div class="ttname"><a href="structprocess.html">process</a></div><div class="ttdoc">Process struct.</div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00070">thread.h:70</a></div></div>
 <div class="ttc" id="athread_8h_html_a6f75bdeeb80982814e5ac8ce3af720c1"><div class="ttname"><a href="thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1">all_threads</a></div><div class="ttdeci">list all_threads</div><div class="ttdoc">List of all threads.</div></div>
+<div class="ttc" id="asetjmp_8h_html_aaf29a2b86abac133b769612b4f7d532c"><div class="ttname"><a href="setjmp_8h.html#aaf29a2b86abac133b769612b4f7d532c">jmp_buf</a></div><div class="ttdeci">union __jmp_buf jmp_buf[1]</div><div class="ttdoc">Typedef jump buffer.</div><div class="ttdef"><b>Definition:</b> <a href="setjmp_8h_source.html#l00037">setjmp.h:37</a></div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
-<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
+<div class="ttc" id="alibc_2include_2signal_8h_html_a754cdc0bcfffe07baa426dc252c9101a"><div class="ttname"><a href="libc_2include_2signal_8h.html#a754cdc0bcfffe07baa426dc252c9101a">sighandler_t</a></div><div class="ttdeci">void(* sighandler_t)(int)</div><div class="ttdoc">Signal handler type.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2include_2signal_8h_source.html#l00065">signal.h:65</a></div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

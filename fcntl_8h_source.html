@@ -70,25 +70,44 @@ $(function() {
 <div class="title">fcntl.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="fcntl_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef _FCNTL_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define _FCNTL_H_</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum</span> open_flags {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    O_RDONLY = 0x0001,</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    O_WRONLY = 0x0002,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    O_RDWR = (O_RDONLY | O_WRONLY),</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    O_CREAT = 0x0004,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    O_TRUNC = 0x0008,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> open(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keywordtype">int</span> flags, ...);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// int open(const char *filename, int flags);</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// int open(const char *filename, int flags, int mode);</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif // _FCNTL_H_</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @brief File operations</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief File open flags</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">   14</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    O_RDONLY = 0x0001,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    O_WRONLY = 0x0002,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    O_RDWR = (O_RDONLY | O_WRONLY),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    O_CREAT = 0x0004,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    O_TRUNC = 0x0008,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * @brief Open file</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * @param filename </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * @param flags </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @param ... </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * @return int </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fcntl_8h.html#ae228c30ac0826ace5835545e40416e57">open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <span class="keywordtype">int</span> flags, ...);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// int open(const char *filename, int flags);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// int open(const char *filename, int flags, int mode);</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif // _FCNTL_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afcntl_8h_html_ae228c30ac0826ace5835545e40416e57"><div class="ttname"><a href="fcntl_8h.html#ae228c30ac0826ace5835545e40416e57">open</a></div><div class="ttdeci">int open(const char *filename, int flags,...)</div><div class="ttdoc">Open file.</div></div>
+<div class="ttc" id="afcntl_8h_html_abaa0e8674b827b6f438585e4c3884d92"><div class="ttname"><a href="fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92">open_flags</a></div><div class="ttdeci">open_flags</div><div class="ttdoc">File open flags.</div><div class="ttdef"><b>Definition:</b> <a href="fcntl_8h_source.html#l00014">fcntl.h:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

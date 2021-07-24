@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['poll_5ftype_485',['poll_type',['../fs_8h.html#af0015d86b784ee25f85997e9dd1a3139',1,'fs.h']]]
+  ['open_5fflags_758',['open_flags',['../fcntl_8h.html#abaa0e8674b827b6f438585e4c3884d92',1,'fcntl.h']]]
 ];

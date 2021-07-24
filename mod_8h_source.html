@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;elf.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/** @file</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @brief Functions for loading and unloading kernel modules at runtime</span></div>
@@ -115,7 +115,7 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span><a class="code" href="structlist.html">list</a> deps;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> refcnt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="structlist.html">list_node</a> node;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="structlist.html">list_node</a> <a class="code" href="structnode.html">node</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/**</span></div>
@@ -149,11 +149,13 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amod_8h_html_a27f7c7a9db7ed1fbe782226362b96b22"><div class="ttname"><a href="mod_8h.html#a27f7c7a9db7ed1fbe782226362b96b22">load_mod</a></div><div class="ttdeci">int load_mod(Elf_Ehdr *elf, size_t len)</div><div class="ttdoc">Load a kernel module by ELF file.</div></div>
 <div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdoc">Convenience struct for supplying information about a kernel module.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00029">mod.h:29</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
 <div class="ttc" id="amod_8h_html_a6e971f2e432ece455719da80303f1593"><div class="ttname"><a href="mod_8h.html#a6e971f2e432ece455719da80303f1593">elf_find_symbol_by_address</a></div><div class="ttdeci">struct mod_sym elf_find_symbol_by_address(uintptr_t address)</div><div class="ttdoc">Helper for finding an elf symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8c_source.html#l00016">mod.c:16</a></div></div>
 <div class="ttc" id="astructmod__sym_html"><div class="ttname"><a href="structmod__sym.html">mod_sym</a></div><div class="ttdoc">Kernel module symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00063">mod.h:63</a></div></div>
 <div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
 <div class="ttc" id="amod_8h_html_adad4f7fd998680bef176d80ed272b2b7"><div class="ttname"><a href="mod_8h.html#adad4f7fd998680bef176d80ed272b2b7">modinit_status</a></div><div class="ttdeci">modinit_status</div><div class="ttdoc">Status types for mod initialization.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00018">mod.h:18</a></div></div>
-<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

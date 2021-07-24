@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_DEBUG_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/** @file</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * @brief Various debugging tools </span></div>
@@ -157,6 +157,7 @@ $(function() {
 <div class="ttc" id="adebug_8h_html_a2e7d14081d3888a20dc35563c6340453"><div class="ttname"><a href="debug_8h.html#a2e7d14081d3888a20dc35563c6340453">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here(void)</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00082">debug.c:82</a></div></div>
 <div class="ttc" id="adebug_8h_html_adcc20309a1dbce4a571396d39b286e57"><div class="ttname"><a href="debug_8h.html#adcc20309a1dbce4a571396d39b286e57">dump_mem</a></div><div class="ttdeci">int dump_mem(void *ptr, size_t len)</div><div class="ttdoc">Perform a memory dump.</div></div>
 <div class="ttc" id="adebug_8h_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8h.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00078">debug.c:78</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="adebug_8h_html_aabcb320d15ced5c430e1dd3f65f1bbc4"><div class="ttname"><a href="debug_8h.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a></div><div class="ttdeci">int hexdump(size_t len, char ptr[len])</div><div class="ttdoc">Perform a hex dump.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00127">debug.c:127</a></div></div>
 <div class="ttc" id="adebug_8h_html_a8c83bd615e88c421d47b48f44b10ce98"><div class="ttname"><a href="debug_8h.html#a8c83bd615e88c421d47b48f44b10ce98">backtrace</a></div><div class="ttdeci">void backtrace(uintptr_t bp, uintptr_t ip, void(*callback)(uintptr_t bp, uintptr_t ip))</div><div class="ttdoc">Backtrace from pointer.</div></div>
 <!-- start footer part -->

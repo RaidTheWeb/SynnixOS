@@ -77,14 +77,14 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/pmm.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/vmm.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;uintptr_t mb_info;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="multiboot_8h.html#a5e34d5190b3dff7a39dcfa467c46aa70">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="multiboot_8h.html#a5e34d5190b3dff7a39dcfa467c46aa70">mb_init</a>(uintptr_t mb) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    mb_info = mb + VMM_KERNEL_BASE;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    printf(<span class="stringliteral">&quot;mb: multiboot initailized\n&quot;</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;mb: multiboot initailized\n&quot;</span>);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
@@ -158,7 +158,7 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">size_t</span> memory_map_len = mmap-&gt;size / <span class="keyword">sizeof</span>(<a class="code" href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; memory_map_len; i++) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        printf(<span class="stringliteral">&quot;mmap: %16llx:%10llx type %i\n&quot;</span>, memory_map[i].addr,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;mmap: %16llx:%10llx type %i\n&quot;</span>, memory_map[i].addr,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;               memory_map[i].len, memory_map[i].type);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
@@ -206,6 +206,7 @@ $(function() {
 <div class="ttc" id="amultiboot_8h_html_a8906aafc26bd1ebc3abc29cdcac7774d"><div class="ttname"><a href="multiboot_8h.html#a8906aafc26bd1ebc3abc29cdcac7774d">mb_initfs_info</a></div><div class="ttdeci">struct initfs_info mb_initfs_info(void)</div><div class="ttdoc">Obtain InitFS information.</div><div class="ttdef"><b>Definition:</b> <a href="multiboot_8c_source.html#l00064">multiboot.c:64</a></div></div>
 <div class="ttc" id="amultiboot_8h_html_ace3fdc1da9cee7240c2f74414fda4bbe"><div class="ttname"><a href="multiboot_8h.html#ace3fdc1da9cee7240c2f74414fda4bbe">mb_mmap_enumerate</a></div><div class="ttdeci">void mb_mmap_enumerate(void(*cb)(uintptr_t, uintptr_t, int))</div><div class="ttdoc">Enumerate Memory Map.</div><div class="ttdef"><b>Definition:</b> <a href="multiboot_8c_source.html#l00112">multiboot.c:112</a></div></div>
 <div class="ttc" id="astructmultiboot__tag__mmap_html"><div class="ttname"><a href="structmultiboot__tag__mmap.html">multiboot_tag_mmap</a></div><div class="ttdef"><b>Definition:</b> <a href="multiboot2_8h_source.html#l00232">multiboot2.h:232</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
 <div class="ttc" id="astructmultiboot__mmap__entry_html"><div class="ttname"><a href="structmultiboot__mmap__entry.html">multiboot_mmap_entry</a></div><div class="ttdef"><b>Definition:</b> <a href="multiboot2_8h_source.html#l00185">multiboot2.h:185</a></div></div>
 <div class="ttc" id="astructmultiboot__tag__module_html"><div class="ttname"><a href="structmultiboot__tag__module.html">multiboot_tag_module</a></div><div class="ttdef"><b>Definition:</b> <a href="multiboot2_8h_source.html#l00209">multiboot2.h:209</a></div></div>
@@ -213,6 +214,7 @@ $(function() {
 <div class="ttc" id="amultiboot_8h_html_aa76aaa48ed6cc92967edd38bf2702fb6"><div class="ttname"><a href="multiboot_8h.html#aa76aaa48ed6cc92967edd38bf2702fb6">mb_cmdline</a></div><div class="ttdeci">char * mb_cmdline(void)</div><div class="ttdoc">Get Multiboot cmdline.</div><div class="ttdef"><b>Definition:</b> <a href="multiboot_8c_source.html#l00029">multiboot.c:29</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="amultiboot2_8h_html"><div class="ttname"><a href="multiboot2_8h.html">multiboot2.h</a></div><div class="ttdoc">Multiboot2 Support Headers.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <div class="ttc" id="amultiboot_8h_html"><div class="ttname"><a href="multiboot_8h.html">multiboot.h</a></div><div class="ttdoc">Headers for Multiboot support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

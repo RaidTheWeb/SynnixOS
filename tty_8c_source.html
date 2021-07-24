@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
@@ -81,7 +81,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">snx/tty.h</a>&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">   14</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = ofd-&gt;file;</div>
@@ -243,6 +243,7 @@ $(function() {
 <div class="ttc" id="aringbuf_8h_html_ac578a52281847dff43fc6b4830644509"><div class="ttname"><a href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a></div><div class="ttdeci">size_t ring_write(struct ringbuf *, const void *data, size_t len)</div><div class="ttdoc">Write data to Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00027">ringbuf.c:27</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a2bf916c40122f886a5697b9644437855"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a2bf916c40122f886a5697b9644437855">signal_send_pgid</a></div><div class="ttdeci">int signal_send_pgid(pid_t pgid, int signal)</div><div class="ttdoc">Simulate a signal trip to a Process Group via PGID.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00083">signal.c:83</a></div></div>
 <div class="ttc" id="afs_8h_html_af05e796d01ae8f29a977334128a4c2ae"><div class="ttname"><a href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a></div><div class="ttdeci">ssize_t dev_serial_write(struct open_file *n, const void *data_, size_t len)</div><div class="ttdoc">Write serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00014">tty.c:14</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
 <div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
 <div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
@@ -254,6 +255,7 @@ $(function() {
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="aringbuf_8h_html"><div class="ttname"><a href="ringbuf_8h.html">ringbuf.h</a></div><div class="ttdoc">Ring Buffers.</div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

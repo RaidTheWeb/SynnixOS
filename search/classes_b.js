@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['sem_325',['sem',['../structsem.html',1,'']]],
-  ['signal_5fcontext_326',['signal_context',['../structsignal__context.html',1,'']]],
-  ['snx_5fdirent_327',['snx_dirent',['../structsnx__dirent.html',1,'']]],
-  ['sockaddr_328',['sockaddr',['../structsockaddr.html',1,'']]],
-  ['sockaddr_5fun_329',['sockaddr_un',['../structsockaddr__un.html',1,'']]],
-  ['socket_5ffile_330',['socket_file',['../structsocket__file.html',1,'']]],
-  ['socket_5fops_331',['socket_ops',['../structsocket__ops.html',1,'']]],
-  ['source_5flocation_332',['source_location',['../structsource__location.html',1,'']]],
-  ['spalloc_333',['spalloc',['../structspalloc.html',1,'']]],
-  ['stat_334',['stat',['../structstat.html',1,'']]],
-  ['str_335',['str',['../structstr.html',1,'']]]
+  ['pipe_5ffile_458',['pipe_file',['../structpipe__file.html',1,'']]],
+  ['pipeline_459',['pipeline',['../structpipeline.html',1,'']]],
+  ['pollfd_460',['pollfd',['../structpollfd.html',1,'']]],
+  ['proc_5ffile_461',['proc_file',['../structproc__file.html',1,'']]],
+  ['process_462',['process',['../structprocess.html',1,'']]],
+  ['protocol_5fops_463',['protocol_ops',['../structprotocol__ops.html',1,'']]]
 ];

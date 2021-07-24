@@ -70,15 +70,15 @@ $(function() {
 <div class="title">column.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef __synnixos__</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> *zmalloc(<span class="keywordtype">size_t</span> len) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> *allocation = malloc(len);</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">    8</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> *allocation = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(len);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    memset(allocation, 0, len);</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> allocation;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
@@ -89,23 +89,23 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="structlist.html">list</a> strings = LIST_INIT(strings);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structstr.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structstr.html">str</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="structlist.html">list_node</a> node;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="structlist.html">list_node</a> <a class="code" href="structnode.html">node</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">char</span> <span class="keywordtype">string</span>[MAX_LENGTH];</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;usage: column\n&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;usage: column\n&quot;</span>);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        exit(1);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">while</span> (!feof(stdin)) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">struct </span><a class="code" href="structstr.html">str</a> *<a class="code" href="structstr.html">str</a> = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>));</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">char</span> *err = fgets(<a class="code" href="structstr.html">str</a>-&gt;string, MAX_LENGTH, stdin);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (err == NULL &amp;&amp; !feof(stdin)) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            perror(<span class="stringliteral">&quot;fgets&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">while</span> (!<a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>)) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">struct </span><a class="code" href="structstr.html">str</a> *<a class="code" href="structstr.html">str</a> = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">char</span> *err = <a class="code" href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a>(<a class="code" href="structstr.html">str</a>-&gt;string, MAX_LENGTH, <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span> (err == NULL &amp;&amp; !<a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>)) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;fgets&quot;</span>);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            exit(1);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        count++;</div>
@@ -115,7 +115,7 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (count == 0) <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> max_len = 0;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, node) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, <a class="code" href="structnode.html">node</a>) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">int</span> len = strlen(<a class="code" href="structstr.html">str</a>-&gt;string);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// drop newlines</span></div>
@@ -135,22 +135,36 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> last_newline = 0;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, node) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        printf(<span class="stringliteral">&quot;%-*s&quot;</span>, column_width, <a class="code" href="structstr.html">str</a>-&gt;string);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, <a class="code" href="structnode.html">node</a>) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%-*s&quot;</span>, column_width, <a class="code" href="structstr.html">str</a>-&gt;string);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        last_newline = 0;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        i++;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (i &gt; 0 &amp;&amp; i % columns == 0) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            last_newline = 1;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (!last_newline) printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (!last_newline) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="astdio_8h_html_acab9c1fe2a80b10e01858bda28a04244"><div class="ttname"><a href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a></div><div class="ttdeci">FILE * stdin</div><div class="ttdoc">Standard Input.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00035">fstdio.c:35</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="astdio_8h_html_a0020b6e39df31f8b342a2444b9b4ad31"><div class="ttname"><a href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a></div><div class="ttdeci">char * fgets(char *str, int num, FILE *stream)</div><div class="ttdoc">Get string of num charactes from stream and write buffer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00164">fstdio.c:164</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a24a781b52556d647e931e8fde7c1f3b0"><div class="ttname"><a href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a></div><div class="ttdeci">void * zmalloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00008">column.c:8</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
-<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
+<div class="ttc" id="astdio_8h_html_a9e71f513ad2496acb5361aedc065e3d8"><div class="ttname"><a href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a></div><div class="ttdeci">int feof(FILE *stream)</div><div class="ttdoc">Test file stream EOF.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00188">fstdio.c:188</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

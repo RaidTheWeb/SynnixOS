@@ -71,8 +71,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;ssize_t membuf_read(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *n, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len);</div>
@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structfile.html">file</a>-&gt;len + len &gt; membuf-&gt;capacity) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (membuf-&gt;capacity == -1) <span class="keywordflow">return</span> -EPERM;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> *memory = realloc(membuf-&gt;memory, membuf-&gt;capacity * 2 + len);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> *memory = <a class="code" href="stdlib_8h.html#a2a8fdcfba456c9053289fcba4cd64f9e">realloc</a>(membuf-&gt;memory, membuf-&gt;capacity * 2 + len);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        membuf-&gt;memory = memory;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        membuf-&gt;capacity *= 2;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        membuf-&gt;capacity += len;</div>
@@ -146,7 +146,7 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a> *__create_file(<span class="keywordtype">int</span> mode) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a> *<span class="keyword">new</span> = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structmembuf__file.html">membuf_file</a>));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a> *<span class="keyword">new</span> = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structmembuf__file.html">membuf_file</a>));</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">new</span>-&gt;file.type = FT_BUFFER;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">new</span>-&gt;file.refcnt = 0;</div>
@@ -160,11 +160,11 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="fs_8h.html#a4d51489398a05cfd6826d5001d8cd7df">   88</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="fs_8h.html#a4d51489398a05cfd6826d5001d8cd7df">create_file</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename,</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                         <span class="keywordtype">int</span> mode) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    assert(directory-&gt;type == FT_DIRECTORY);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">char</span> *allocated_filename = malloc(strlen(filename));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">char</span> *allocated_filename = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(strlen(filename));</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    strcpy(allocated_filename, filename);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a> *<span class="keyword">new</span> = __create_file(mode);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">new</span>-&gt;memory = zmalloc(1024);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">new</span>-&gt;memory = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(1024);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">new</span>-&gt;capacity = 1024;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a>(directory, &amp;new-&gt;file, allocated_filename);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
@@ -185,10 +185,15 @@ $(function() {
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="afs_8h_html_a4d51489398a05cfd6826d5001d8cd7df"><div class="ttname"><a href="fs_8h.html#a4d51489398a05cfd6826d5001d8cd7df">create_file</a></div><div class="ttdeci">struct file * create_file(struct file *directory, const char *name, int mode)</div><div class="ttdoc">Create a file object.</div><div class="ttdef"><b>Definition:</b> <a href="membuf_8c_source.html#l00088">membuf.c:88</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="afs_8h_html_aafbf866fe7c8d931c65f5f3d020e2535"><div class="ttname"><a href="fs_8h.html#aafbf866fe7c8d931c65f5f3d020e2535">make_tar_file</a></div><div class="ttdeci">struct file * make_tar_file(const char *filename, int perm, size_t len, void *data)</div><div class="ttdoc">Make tar file.</div><div class="ttdef"><b>Definition:</b> <a href="membuf_8c_source.html#l00102">membuf.c:102</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a24a781b52556d647e931e8fde7c1f3b0"><div class="ttname"><a href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a></div><div class="ttdeci">void * zmalloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00008">column.c:8</a></div></div>
 <div class="ttc" id="astructmembuf__file_html"><div class="ttname"><a href="structmembuf__file.html">membuf_file</a></div><div class="ttdoc">Memory buffer file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00326">fs.h:326</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a2a8fdcfba456c9053289fcba4cd64f9e"><div class="ttname"><a href="stdlib_8h.html#a2a8fdcfba456c9053289fcba4cd64f9e">realloc</a></div><div class="ttdeci">void * realloc(void *alloc, size_t len)</div><div class="ttdoc">Reallocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00311">malloc.c:311</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

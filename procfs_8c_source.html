@@ -71,10 +71,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> proc_close(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> proc_clone(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *parent, <span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *child);</div>
@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    va_start(args, format);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ofd-&gt;buffer_length +=</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        vsnprintf(ofd-&gt;buffer + ofd-&gt;buffer_length,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">vsnprintf</a>(ofd-&gt;buffer + ofd-&gt;buffer_length,</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                  ofd-&gt;buffer_size - ofd-&gt;buffer_length, format, args);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// va_end is called in vsnprintf</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    assert(ofd-&gt;file-&gt;type == FT_PROC);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">struct </span><a class="code" href="structproc__file.html">proc_file</a> *proc = (<span class="keyword">struct </span><a class="code" href="structproc__file.html">proc_file</a> *)ofd-&gt;file;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    assert(proc-&gt;generate);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ofd-&gt;buffer = malloc(8192);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ofd-&gt;buffer = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(8192);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ofd-&gt;buffer_size = 8192;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ofd-&gt;buffer_length = 0;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
@@ -108,11 +108,11 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> proc_close(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    free(ofd-&gt;buffer);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(ofd-&gt;buffer);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> proc_clone(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *parent, <span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *child) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    child-&gt;buffer = malloc(parent-&gt;buffer_size);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    child-&gt;buffer = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(parent-&gt;buffer_size);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    memcpy(child-&gt;buffer, parent-&gt;buffer, parent-&gt;buffer_size);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
@@ -142,7 +142,7 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    assert(procdir_file &amp;&amp; procdir_file-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *procdir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)procdir_file;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span><a class="code" href="structproc__file.html">proc_file</a> *proc = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structproc__file.html">proc_file</a>));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span><a class="code" href="structproc__file.html">proc_file</a> *proc = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structproc__file.html">proc_file</a>));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    proc-&gt;file.type = FT_PROC;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    proc-&gt;file.mode = USR_READ; <span class="comment">// TODO: writeable procfiles</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    proc-&gt;file.refcnt = 1;</div>
@@ -156,16 +156,22 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afs_8h_html_a07dcdea8ea02a2399e17a5e5e6fca23e"><div class="ttname"><a href="fs_8h.html#a07dcdea8ea02a2399e17a5e5e6fca23e">make_procfile</a></div><div class="ttdeci">void make_procfile(const char *name, void(*generate)(struct open_file *ofd, void *arg), void *argument)</div><div class="ttdoc">Make procfile.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00066">procfs.c:66</a></div></div>
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
 <div class="ttc" id="astructproc__file_html"><div class="ttname"><a href="structproc__file.html">proc_file</a></div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00011">procfs.c:11</a></div></div>
 <div class="ttc" id="afs_8h_html_a6c3f89db4fb681a6d70d67ebc02d4933"><div class="ttname"><a href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a></div><div class="ttdeci">sysret add_dir_file(struct file *directory, struct file *file, const char *name)</div><div class="ttdoc">Add file to directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00118">directory.c:118</a></div></div>
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
 <div class="ttc" id="afs_8h_html_a03ef4ce67850c7ee6073925bcb685cc2"><div class="ttname"><a href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a></div><div class="ttdeci">struct file * fs_path(const char *filename)</div><div class="ttdoc">Get file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00097">fs.c:97</a></div></div>
 <div class="ttc" id="afs_8h_html_a19ec9041d80d18fb945c07e5b8e0b8cd"><div class="ttname"><a href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a></div><div class="ttdeci">void proc_sprintf(struct open_file *ofd, const char *format,...)</div><div class="ttdoc">But data into proc file.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00017">procfs.c:17</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="astdio_8h_html_a9702343da581694970e3a0b7cd8630aa"><div class="ttname"><a href="stdio_8h.html#a9702343da581694970e3a0b7cd8630aa">vsnprintf</a></div><div class="ttdeci">int vsnprintf(char *buf, size_t len, const char *format, va_list args)</div><div class="ttdoc">Write formatted data from variable argument list to sized buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00455">stdio.c:455</a></div></div>
 <div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdoc">Directory struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00218">fs.h:218</a></div></div>
 <div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a24a781b52556d647e931e8fde7c1f3b0"><div class="ttname"><a href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a></div><div class="ttdeci">void * zmalloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00008">column.c:8</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

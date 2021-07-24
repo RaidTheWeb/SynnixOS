@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['synnixos_488',['SynnixOS',['../index.html',1,'']]]
+  ['synnixos_764',['SynnixOS',['../index.html',1,'']]]
 ];

@@ -75,19 +75,19 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mutex_8h.html">snx/mutex.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2string_8h.html">snx/string.h</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> dmgr_initial = 16;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> dmgr_init(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *d) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    d-&gt;cap = dmgr_initial;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    d-&gt;data = zmalloc(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * dmgr_initial);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    d-&gt;data = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * dmgr_initial);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    KMUTEX_INIT_LIVE(&amp;d-&gt;lock);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> _internal_dmgr_expand(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *d) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">size_t</span> new_cap = d-&gt;cap * 3 / 2;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> **new_data = zrealloc(d-&gt;data, d-&gt;cap * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * new_cap);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> **new_data = <a class="code" href="stdlib_8h.html#a195fa13a28dab5c2669fabc6061fb0f0">zrealloc</a>(d-&gt;data, d-&gt;cap * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * new_cap);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (new_data) {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        d-&gt;data = new_data;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        d-&gt;cap = new_cap;</div>
@@ -163,32 +163,38 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> dmgr_copy(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *child, <span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *parent) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    mutex_await(&amp;parent-&gt;lock);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    memcpy(child, parent, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a>));</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    child-&gt;data = malloc(parent-&gt;cap * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    child-&gt;data = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(parent-&gt;cap * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    memcpy(child-&gt;data, parent-&gt;data, parent-&gt;cap * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    mutex_unlock(&amp;parent-&gt;lock);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    mutex_unlock(&amp;child-&gt;lock); <span class="comment">// memcpy picked this up</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> dmgr_free(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *d) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    free(d-&gt;data);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(d-&gt;data);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> dmgr_dump(<span class="keyword">struct</span> <a class="code" href="structdmgr.html">dmgr</a> *d) {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    mutex_await(&amp;d-&gt;lock);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    printf(<span class="stringliteral">&quot;dmgr %p { .cap = %zu, .data = %p }\n&quot;</span>, d, d-&gt;cap, d-&gt;data);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;dmgr %p { .cap = %zu, .data = %p }\n&quot;</span>, d, d-&gt;cap, d-&gt;data);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; d-&gt;cap; i++) {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (d-&gt;data[i]) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            printf(<span class="stringliteral">&quot;  %p: [%i] = %p\n&quot;</span>, &amp;d-&gt;data[i], i, d-&gt;data[i]);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  %p: [%i] = %p\n&quot;</span>, &amp;d-&gt;data[i], i, d-&gt;data[i]);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    mutex_unlock(&amp;d-&gt;lock);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
 <div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="astructdmgr_html"><div class="ttname"><a href="structdmgr.html">dmgr</a></div><div class="ttdef"><b>Definition:</b> <a href="dmgr_8h_source.html#l00013">dmgr.h:13</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a195fa13a28dab5c2669fabc6061fb0f0"><div class="ttname"><a href="stdlib_8h.html#a195fa13a28dab5c2669fabc6061fb0f0">zrealloc</a></div><div class="ttdeci">void * zrealloc(void *, size_t)</div><div class="ttdoc">Reallocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00326">malloc.c:326</a></div></div>
 <div class="ttc" id="amutex_8h_html"><div class="ttname"><a href="mutex_8h.html">mutex.h</a></div><div class="ttdoc">Mutex locks.</div></div>
+<div class="ttc" id="astdlib_8h_html_a24a781b52556d647e931e8fde7c1f3b0"><div class="ttname"><a href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a></div><div class="ttdeci">void * zmalloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00008">column.c:8</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

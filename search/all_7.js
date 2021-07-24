@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['handle_5fpending_5fsignals_71',['handle_pending_signals',['../kernel_2include_2snx_2signal_8h.html#a063a9aac87e8176caa1c2155bf50da70',1,'signal.c']]],
-  ['handle_5fsignal_72',['handle_signal',['../kernel_2include_2snx_2signal_8h.html#a451afac9b5b477394527be0dca6958e0',1,'signal.c']]],
-  ['hexdump_73',['hexdump',['../debug_8c.html#aabcb320d15ced5c430e1dd3f65f1bbc4',1,'hexdump(size_t len, char ptr[len]):&#160;debug.c'],['../debug_8h.html#aabcb320d15ced5c430e1dd3f65f1bbc4',1,'hexdump(size_t len, char ptr[len]):&#160;debug.c']]]
+  ['getc_111',['getc',['../stdio_8h.html#a5f21408871dc718d04419aed860a4bd8',1,'fstdio.c']]],
+  ['getc_5funlocked_112',['getc_unlocked',['../stdio_8h.html#a169f9b7e933ba56156885e30f7263b28',1,'fstdio_unlocked.c']]],
+  ['getchar_113',['getchar',['../stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8',1,'fstdio.c']]],
+  ['getchar_5funlocked_114',['getchar_unlocked',['../stdio_8h.html#afef7e39f2376c63728163cd5ccfbe99e',1,'fstdio_unlocked.c']]]
 ];

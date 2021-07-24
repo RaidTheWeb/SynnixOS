@@ -70,10 +70,10 @@ $(function() {
 <div class="title">stdlib.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __kernel__</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
@@ -142,7 +142,7 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">int</span> atexit(<span class="keywordtype">void</span> (*fn)(<span class="keywordtype">void</span>)) {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (atexit_count == ATEXIT_MAX) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;atexit: too many functions registered\n&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;atexit: too many functions registered\n&quot;</span>);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    atexit_functions[atexit_count++] = fn;</div>
@@ -171,7 +171,7 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        index += 1;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (nptr[0] == <span class="charliteral">&#39;+&#39;</span>) index += 1;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">while</span> (isdigit(nptr[index])) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(nptr[index])) {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        value *= base;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        value += nptr[index] - <span class="charliteral">&#39;0&#39;</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        index += 1;</div>
@@ -192,7 +192,7 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">long</span> value = 0;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">int</span> sign = 1;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">while</span> (isdigit(nptr[index])) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(nptr[index])) {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        value *= base;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        value += nptr[index] - <span class="charliteral">&#39;0&#39;</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        index += 1;</div>
@@ -218,10 +218,24 @@ $(function() {
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;           <span class="keywordtype">int</span> (*compar)(<span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *)) {</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordtype">int</span> system(<span class="keywordtype">char</span>* <a class="code" href="structcommand.html">command</a>) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Unimplemented.&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    exit(1);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructdiv__t_html"><div class="ttname"><a href="structdiv__t.html">div_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00089">stdlib.h:89</a></div></div>
-<div class="ttc" id="astructlldiv__t_html"><div class="ttname"><a href="structlldiv__t.html">lldiv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00097">stdlib.h:97</a></div></div>
-<div class="ttc" id="astructldiv__t_html"><div class="ttname"><a href="structldiv__t.html">ldiv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00093">stdlib.h:93</a></div></div>
+<div class="ttc" id="astructdiv__t_html"><div class="ttname"><a href="structdiv__t.html">div_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00155">stdlib.h:155</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
+<div class="ttc" id="astructlldiv__t_html"><div class="ttname"><a href="structlldiv__t.html">lldiv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00163">stdlib.h:163</a></div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="astructcommand_html"><div class="ttname"><a href="structcommand.html">command</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00054">parse.h:54</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="actype_8h_html_a3fa45b35c8abf67a950b6d3d4063dede"><div class="ttname"><a href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a></div><div class="ttdeci">int isdigit(int c)</div><div class="ttdoc">Check if character is a number.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00020">ctype.c:20</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="astructldiv__t_html"><div class="ttname"><a href="structldiv__t.html">ldiv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="stdlib_8h_source.html#l00159">stdlib.h:159</a></div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -74,8 +74,8 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2string_8h.html">snx/string.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tarfs_8h.html">snx/tarfs.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">    8</a></span>&#160;uint64_t <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(<span class="keywordtype">char</span> *num) {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">size_t</span> len = strlen(num);</div>
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="tarfs_8h.html#a17026b1d4f3d96259a2ac6cbaf938d6d">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tarfs_8h.html#a17026b1d4f3d96259a2ac6cbaf938d6d">tarfs_print_all_files</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar) {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        printf(<span class="stringliteral">&quot;%s (%lub)\n&quot;</span>, tar-&gt;filename, len);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%s (%lub)\n&quot;</span>, tar-&gt;filename, len);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        next_tar += len + 0x200;</div>
@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// printf(&quot;next @ %p\n&quot;, (void*)tar - top);</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// printf(&quot;next  &#39;%c&#39;\n&quot;, *(char*)tar);</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    printf(<span class="stringliteral">&quot;done.\n&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;done.\n&quot;</span>);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">   39</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename) {</div>
@@ -151,8 +151,11 @@ $(function() {
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
 <div class="ttc" id="atarfs_8h_html_af264629d72259f125a39d5510a70ded1"><div class="ttname"><a href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a></div><div class="ttdeci">void * tarfs_get_file(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get a file from tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00039">tarfs.c:39</a></div></div>
 <div class="ttc" id="atarfs_8h_html_afa8d2ac2adf35df22b0e350537698ab8"><div class="ttname"><a href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">tarfs_get_len</a></div><div class="ttdeci">size_t tarfs_get_len(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get length of file in tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00058">tarfs.c:58</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div><div class="ttdoc">Standard Integers.</div></div>
 <div class="ttc" id="atarfs_8h_html_ae7a89de9e0f770b61040519f8b757952"><div class="ttname"><a href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a></div><div class="ttdeci">uint64_t tar_convert_number(char *num)</div><div class="ttdoc">Convert number into 64 bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00008">tarfs.c:8</a></div></div>
 <div class="ttc" id="astructtar__header_html"><div class="ttname"><a href="structtar__header.html">tar_header</a></div><div class="ttdoc">Tar file header struct.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8h_source.html#l00018">tarfs.h:18</a></div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
