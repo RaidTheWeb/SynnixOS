@@ -6,6 +6,7 @@ var files_dup =
     [ "libc", "dir_fc1eb218ab426e5adb60367f98438da0.html", "dir_fc1eb218ab426e5adb60367f98438da0" ],
     [ "libm", "dir_461c72825e87a539a9c6aa933bbd044c.html", "dir_461c72825e87a539a9c6aa933bbd044c" ],
     [ "modules", "dir_e05d7e2b1ecd646af5bb94391405f3b5.html", "dir_e05d7e2b1ecd646af5bb94391405f3b5" ],
+    [ "sh", "dir_60d8ef35a2fa7bc5ae3400a29ad70e2c.html", "dir_60d8ef35a2fa7bc5ae3400a29ad70e2c" ],
     [ "user", "dir_111cd2f11cffd6d6d28d89ee0389ee9e.html", "dir_111cd2f11cffd6d6d28d89ee0389ee9e" ],
     [ "x86", "dir_70ef696279286f8491369e3b59714092.html", "dir_70ef696279286f8491369e3b59714092" ]
 ];
