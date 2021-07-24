@@ -35,6 +35,8 @@ Latest releases are released when I upload it manually, and nightly are at 10:30
 
 - Serial communications
 
+- Synchronous Processing
+
 - Multi-threading
 
 - Virtual File System
