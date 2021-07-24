@@ -42,4 +42,10 @@ jobs:
         with:
           name: SynnixOS.iso
           path: ./synnixos.iso
-          error: "Failed to upload ISO"
+          
+      - name: Cache Cross Compiler
+        uses: actions/cache@v2.1.6
+        with:
+          path: ~/.local/bin/
+          
+          key: ${{ runner.os }}-toolchain
