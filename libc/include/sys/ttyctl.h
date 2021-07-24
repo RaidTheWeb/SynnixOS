@@ -2,6 +2,11 @@
 #ifndef _SYS_TTYCTL_H_
 #define _SYS_TTYCTL_H_
 
+/** @file
+ * @brief TTY utilities
+ * 
+ */
+
 enum tty_ttyctls {
     TTY_SETPGRP,
     TTY_SETBUFFER,

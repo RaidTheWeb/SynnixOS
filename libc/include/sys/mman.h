@@ -4,6 +4,11 @@
 
 #include <basic.h>
 
+/** @file
+ * @brief Memory management functions 
+ * 
+ */
+
 enum {
     PROT_READ = 1,
     PROT_WRITE = 2,

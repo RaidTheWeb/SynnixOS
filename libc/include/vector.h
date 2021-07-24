@@ -4,6 +4,11 @@
 
 #include <stdint.h>
 
+/** @file
+ * @brief High-level vector operations 
+ * 
+ */
+
 struct vector {
     const char *type;
     size_t len;

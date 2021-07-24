@@ -7,6 +7,11 @@
 #define WIFSIGNALED(stat_val) 0
 #define WTERMSIG(stat_val) 0
 
+/** @file
+ * @brief Process waiting
+ * 
+ */
+
 enum wait_options {
     WNOHANG = 1,
 };

@@ -4,6 +4,11 @@
 
 #include <time.h>
 
+/** @file
+ * @brief Time based operations
+ * 
+ */
+
 typedef long suseconds_t;
 
 struct timeval {

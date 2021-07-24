@@ -2,6 +2,15 @@
 #ifndef _LOCALE_H_
 #define _LOCALE_H_
 
+/** @file
+ * @brief Locale library 
+ * 
+ */
+
+/**
+ * @brief Locale information struct
+ * 
+ */
 struct lconv {
     char *decimal_point;
     char *thousands_sep;
@@ -29,6 +38,11 @@ struct lconv {
     char int_n_sign_posn;
 };
 
+/**
+ * @brief Get  `lconv`
+ * 
+ * @return struct lconv* 
+ */
 struct lconv *localeconv(void);
 
 #define LC_ALL 1
@@ -38,6 +52,13 @@ struct lconv *localeconv(void);
 #define LC_NUMERIC 5
 #define LC_TIME 6
 
+/**
+ * @brief Set locale
+ * 
+ * @param category 
+ * @param locale 
+ * @return char* 
+ */
 char *setlocale(int category, const char *locale);
 
 #endif // _LOCALE_H_

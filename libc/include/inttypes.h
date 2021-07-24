@@ -46,4 +46,9 @@
 #define PRIoMAX "%zo"
 #define PRIoPTR "%zo"
 
+/** @file
+ * @brief Formatting integer types 
+ * 
+ */
+
 #endif // _INTTYPES_H_

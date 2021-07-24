@@ -93,11 +93,6 @@ int strcoll(const char *s1, const char *s2) {
     exit(1);
 }
 
-int system(const char *command) {
-    printf("called unimplemented function system\n");
-    exit(1);
-}
-
 FILE *tmpfile(void) {
     printf("called unimplemented function tmpfile\n");
     exit(1);

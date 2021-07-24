@@ -13,6 +13,11 @@
 #ifndef _STDINT_H
 #define _STDINT_H
 
+/** @file
+ * @brief Standard Integers 
+ * 
+ */
+
 #ifdef __cplusplus
 extern "C" {
 #endif

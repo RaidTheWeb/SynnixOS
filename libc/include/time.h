@@ -11,6 +11,11 @@ typedef int64_t clock_t;
 #define CLOCKS_PER_SEC 1000
 #define HZ CLOCKS_PER_SEC
 
+/** @file
+ * @brief Time operations
+ * 
+ */
+
 struct tm {
     int tm_sec;
     int tm_min;

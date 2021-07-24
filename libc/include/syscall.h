@@ -6,6 +6,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/** @file
+ * @brief Low level syscalls
+ * 
+ */
+
 intptr_t syscall0(int syscall_num);
 
 intptr_t syscall1(int syscall_num, intptr_t arg1);

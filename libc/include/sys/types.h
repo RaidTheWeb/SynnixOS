@@ -5,6 +5,11 @@
 #include <limits.h>
 #include <stdint.h>
 
+/** @file
+ * @brief Standard Types
+ * 
+ */
+
 typedef uintptr_t size_t;
 typedef intptr_t ssize_t;
 

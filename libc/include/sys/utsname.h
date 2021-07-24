@@ -4,6 +4,11 @@
 
 #define UNAME_STR_LEN 64
 
+/** @file
+ * @brief System name information 
+ * 
+ */
+
 struct utsname {
     char sysname[UNAME_STR_LEN];
     char nodename[UNAME_STR_LEN];

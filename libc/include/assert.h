@@ -12,6 +12,11 @@
 #define __assert_exit(x) exit(x)
 #endif
 
+/** @file
+ * @brief Assertions 
+ * 
+ */
+
 #ifndef NDEBUG
 
 #define assert(assertion)                                                      \

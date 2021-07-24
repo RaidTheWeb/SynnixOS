@@ -30,6 +30,11 @@
 #ifndef INCLUDE____MATH_H
 #define INCLUDE____MATH_H
 
+/** @file
+ * @brief A couple of internal math operations (from Sortix)
+ * 
+ */
+
 #include <sys/cdefs.h>
 
 #if defined(__sortix__)

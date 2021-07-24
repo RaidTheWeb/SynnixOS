@@ -9,6 +9,11 @@
 #include <sys/types.h>
 #include <syscall_types.h>
 
+/** @file
+ * @brief SynnixOS native Library
+ * 
+ */
+
 extern const char *syscall_names[];
 
 noreturn int haltvm(int exit_code);

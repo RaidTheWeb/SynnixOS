@@ -5,6 +5,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/** @file
+ * @brief Sockets 
+ * 
+ */
+
 enum socket_mode {
     SOCKET_IDLE,
     SOCKET_BOUND,

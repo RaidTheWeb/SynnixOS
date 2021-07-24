@@ -20,28 +20,94 @@
 #define HEAP_MINIMUM_BLOCK 16
 #define HEAP_MINIMUM_ALIGN 16
 
+/** @file
+ * @brief Standard library
+ * 
+ */
+
+/**
+ * @brief Allocate memory
+ * 
+ * @param len 
+ * @return void* 
+ */
 void *malloc(size_t len);
+
+/**
+ * @brief Free memory
+ * 
+ * @param alloc 
+ */
 void free(void *alloc);
+
+/**
+ * @brief Reallocate memory
+ * 
+ * @param alloc 
+ * @param len 
+ * @return void* 
+ */
 void *realloc(void *alloc, size_t len);
+
+/**
+ * @brief Allocates a block of memory for an array of num elements
+ * 
+ * @param count 
+ * @param len 
+ * @return void* 
+ */
 void *calloc(size_t count, size_t len);
+
+/**
+ * @brief Allocate memory
+ * 
+ * @param len 
+ * @return void* 
+ */
 void *zmalloc(size_t len);
+
+/**
+ * @brief Reallocate memory
+ * 
+ * @return void* 
+ */
 void *zrealloc(void *, size_t);
 
-
+/**
+ * @brief Memory region
+ * 
+ */
 struct __ALIGN(16) mregion {
     unsigned int magic_number_1;
     // const char *allocation_location;
     size_t length;
 };
 
+/**
+ * @brief Free memory region
+ * 
+ */
 struct free_mregion {
     struct mregion m;
     list_node free_node;
 };
 
+/**
+ * @brief memory region
+ * 
+ */
 typedef struct mregion mregion;
+
+/**
+ * @brief Free memory region
+ * 
+ */
 typedef struct free_mregion free_mregion;
 
+/**
+ * @brief Memory heap
+ * 
+ */
 struct mheap {
     list free_list;
     long allocations;
@@ -127,11 +193,9 @@ noreturn void exit(int status);
 noreturn void exit_group(int status);
 int atexit(void (*fn)(void));
 
-// TODO
-
 int system(const char *command);
 int mkstemp(char *name);
 
 #endif
 
-#endif // _STDLIB_H_
+#endif

@@ -85,7 +85,6 @@ extern uintptr_t __stack_chk_guard;
 
 void __stack_chk_fail(void);
 
-// haha
 static inline intptr_t max(intptr_t a, intptr_t b) {
     return (a > b) ? a : b;
 }

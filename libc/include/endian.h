@@ -6,4 +6,9 @@
 #define LITTLE_ENDIAN 2
 #define BYTE_ORDER LITTLE_ENDIAN
 
+/** @file
+ * @brief Endian order 
+ * 
+ */
+
 #endif // _ENDIAN_H_
