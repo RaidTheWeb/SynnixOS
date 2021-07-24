@@ -71,12 +71,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/irq.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/panic.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/tty.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="irq_8h.html">snx/irq.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">snx/tty.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;x86/cpu.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;x86/pic.h&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;x86/uart.h&gt;</span></div>
@@ -135,9 +135,9 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">char</span> f = x86_uart_read_byte(port);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">switch</span> (port) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">case</span> COM1: write_to_serial_tty(&amp;dev_serial, f); <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">case</span> COM1: <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(&amp;<a class="code" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a>, f); <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">case</span> COM2:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        write_to_serial_tty(&amp;dev_serial2, f);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(&amp;<a class="code" href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a>, f);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// case COM3: write_to_serial_tty(&amp;dev_serial3, f); break;</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// case COM4: write_to_serial_tty(&amp;dev_serial4, f); break;</span></div>
@@ -160,14 +160,24 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    x86_uart_setup(0x3f8);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    x86_uart_setup(0x2f8);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    irq_install(IRQ_SERIAL1, x86_uart_irq_handler, (<span class="keywordtype">void</span> *)COM1);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    irq_install(IRQ_SERIAL2, x86_uart_irq_handler, (<span class="keywordtype">void</span> *)COM2);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a>(IRQ_SERIAL1, x86_uart_irq_handler, (<span class="keywordtype">void</span> *)COM1);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a>(IRQ_SERIAL2, x86_uart_irq_handler, (<span class="keywordtype">void</span> *)COM2);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// irq_install(4, x86_uart_irq_handler, (void *)0x3E8);</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// irq_install(3, x86_uart_irq_handler, (void *)0x2E8);</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
+<div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
+<div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
+<div class="ttc" id="airq_8h_html_a872bb2e39230e1fef17df03eea8d697b"><div class="ttname"><a href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a></div><div class="ttdeci">void irq_install(int irq, void(*fn)(interrupt_frame *, void *), void *)</div><div class="ttdoc">Install an irq</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00013">irq.c:13</a></div></div>
+<div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
+<div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

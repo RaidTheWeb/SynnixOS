@@ -70,11 +70,11 @@ $(function() {
 <div class="title">vector.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vector_8h.html">vector.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">struct </span><a class="code" href="structvector.html">vector</a> *new_vec_internal(<span class="keyword">struct</span> <a class="code" href="structvector.html">vector</a> *result, <span class="keyword">const</span> <span class="keywordtype">char</span> *type,</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                <span class="keywordtype">size_t</span> count, <span class="keywordtype">size_t</span> delta) {</div>
@@ -82,14 +82,14 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    result-&gt;len = 0;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    result-&gt;total_size = count;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    result-&gt;delta = delta;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    result-&gt;data = malloc(count * delta);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    result-&gt;data = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(count * delta);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">size_t</span> vec_init_copy(<span class="keyword">struct</span> <a class="code" href="structvector.html">vector</a> *vec, <span class="keyword">struct</span> <a class="code" href="structvector.html">vector</a> *source) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    memcpy(vec, source, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structvector.html">vector</a>));</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    vec-&gt;data = malloc(source-&gt;total_size * source-&gt;delta);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    vec-&gt;data = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(source-&gt;total_size * source-&gt;delta);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    memcpy(vec-&gt;data, source-&gt;data, source-&gt;total_size * source-&gt;delta);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> vec-&gt;len;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (new_len &lt; vec-&gt;len) <span class="keywordflow">return</span> vec-&gt;len; <span class="comment">// no shrinking</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">char</span> *new_data;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    new_data = realloc(vec-&gt;data, new_len * vec-&gt;delta);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    new_data = <a class="code" href="stdlib_8h.html#a2a8fdcfba456c9053289fcba4cd64f9e">realloc</a>(vec-&gt;data, new_len * vec-&gt;delta);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    assert(new_data != NULL); <span class="comment">// &quot;Reallocating to up buffer failed&quot;);</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    vec-&gt;total_size = new_len;</div>
@@ -129,7 +129,7 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> print_vector(<span class="keyword">struct</span> <a class="code" href="structvector.html">vector</a> *v) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    printf(<span class="stringliteral">&quot;struct vector&lt;%s&gt; @%p{len=%zu, total_size=%zu, data=%p}\n&quot;</span>, v-&gt;type,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;struct vector&lt;%s&gt; @%p{len=%zu, total_size=%zu, data=%p}\n&quot;</span>, v-&gt;type,</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;           (<span class="keywordtype">void</span> *)v, v-&gt;len, v-&gt;total_size, (<span class="keywordtype">void</span> *)v-&gt;data);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -165,11 +165,19 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    vec-&gt;len = 0;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    vec-&gt;total_size = 0;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    vec-&gt;delta = 0;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    free(vec-&gt;data);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(vec-&gt;data);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    vec-&gt;data = NULL;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdef"><b>Definition:</b> <a href="vector_8h_source.html#l00007">vector.h:7</a></div></div>
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="astructvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdef"><b>Definition:</b> <a href="vector_8h_source.html#l00012">vector.h:12</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="avector_8h_html"><div class="ttname"><a href="vector_8h.html">vector.h</a></div><div class="ttdoc">High-level vector operations.</div></div>
+<div class="ttc" id="astdlib_8h_html_a2a8fdcfba456c9053289fcba4cd64f9e"><div class="ttname"><a href="stdlib_8h.html#a2a8fdcfba456c9053289fcba4cd64f9e">realloc</a></div><div class="ttdeci">void * realloc(void *alloc, size_t len)</div><div class="ttdoc">Reallocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00311">malloc.c:311</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

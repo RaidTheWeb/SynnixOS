@@ -1,6 +1,6 @@
 <map id="mheap" name="mheap">
-<area shape="rect" id="node1" title=" " alt="" coords="5,276,72,303"/>
-<area shape="rect" id="node2" href="$structmutex.html" title=" " alt="" coords="55,187,119,213"/>
-<area shape="rect" id="node3" href="$structwq.html" title=" " alt="" coords="61,97,102,124"/>
-<area shape="rect" id="node4" href="$structlist.html" title=" " alt="" coords="8,7,51,33"/>
+<area shape="rect" id="node1" title="Memory heap." alt="" coords="5,276,72,303"/>
+<area shape="rect" id="node2" href="$structmutex.html" title="MUTEX structure." alt="" coords="55,187,119,213"/>
+<area shape="rect" id="node3" href="$structwq.html" title="Queue struct." alt="" coords="61,97,102,124"/>
+<area shape="rect" id="node4" href="$structlist.html" title="List struct." alt="" coords="8,7,51,33"/>
 </map>

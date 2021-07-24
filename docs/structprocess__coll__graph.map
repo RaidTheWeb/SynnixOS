@@ -1,10 +1,10 @@
 <map id="process" name="process">
-<area shape="rect" id="node1" title=" " alt="" coords="55,397,127,424"/>
-<area shape="rect" id="node2" href="$structmm__region.html" title=" " alt="" coords="43,308,139,335"/>
-<area shape="rect" id="node3" href="$structfile.html" title=" " alt="" coords="125,210,168,237"/>
-<area shape="rect" id="node6" href="$structfile__ops.html" title=" " alt="" coords="163,308,235,335"/>
-<area shape="rect" id="node4" href="$structwq.html" title=" " alt="" coords="126,97,167,124"/>
-<area shape="rect" id="node8" href="$structmutex.html" title=" " alt="" coords="216,210,280,237"/>
-<area shape="rect" id="node5" href="$structlist.html" title=" " alt="" coords="5,7,48,33"/>
+<area shape="rect" id="node1" title="Process struct." alt="" coords="55,397,127,424"/>
+<area shape="rect" id="node2" href="$structmm__region.html" title="Region struct." alt="" coords="43,308,139,335"/>
+<area shape="rect" id="node3" href="$structfile.html" title="File struct." alt="" coords="125,210,168,237"/>
+<area shape="rect" id="node6" href="$structfile__ops.html" title="Various file operations." alt="" coords="163,308,235,335"/>
+<area shape="rect" id="node4" href="$structwq.html" title="Queue struct." alt="" coords="126,97,167,124"/>
+<area shape="rect" id="node8" href="$structmutex.html" title="MUTEX structure." alt="" coords="216,210,280,237"/>
+<area shape="rect" id="node5" href="$structlist.html" title="List struct." alt="" coords="5,7,48,33"/>
 <area shape="rect" id="node7" href="$structdmgr.html" title=" " alt="" coords="259,308,315,335"/>
 </map>

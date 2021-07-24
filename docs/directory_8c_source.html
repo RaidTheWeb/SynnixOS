@@ -71,20 +71,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="assert_8h.html">assert.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;dirent.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile__ops.html">file_ops</a> directory_ops = {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    .readdir = directory_readdir,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    .child = directory_child,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    .destroy = directory_destroy,</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="fs_8h.html#a60093ac73f28e09b5e7b865bbdb29ec7">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile__ops.html">file_ops</a> <a class="code" href="fs_8h.html#a60093ac73f28e09b5e7b865bbdb29ec7">directory_ops</a> = {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    .readdir = <a class="code" href="fs_8h.html#a850662f04c6e0d3c04349c60ca59ed28">directory_readdir</a>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    .child = <a class="code" href="fs_8h.html#ad51e220aa9615e7345d7075fef83a18b">directory_child</a>,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    .destroy = <a class="code" href="fs_8h.html#a1c446cdfeed1cd8b8c4765023816a952">directory_destroy</a>,</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;ssize_t directory_readdir(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">struct</span> <a class="code" href="structsnx__dirent.html">snx_dirent</a> *buf,</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="fs_8h.html#a850662f04c6e0d3c04349c60ca59ed28">   15</a></span>&#160;ssize_t <a class="code" href="fs_8h.html#a850662f04c6e0d3c04349c60ca59ed28">directory_readdir</a>(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keyword">struct</span> <a class="code" href="structsnx__dirent.html">snx_dirent</a> *buf,</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                          <span class="keywordtype">size_t</span> count) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = ofd-&gt;file;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structfile.html">file</a>-&gt;type != FT_DIRECTORY) <span class="keywordflow">return</span> -ENOTDIR;</div>
@@ -92,11 +92,11 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> index = 0;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, node, &amp;directory-&gt;entries, siblings) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, <a class="code" href="structnode.html">node</a>, &amp;directory-&gt;entries, siblings) {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> (index &gt; count) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        buf[index].type = node-&gt;file-&gt;type;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        buf[index].mode = node-&gt;file-&gt;mode;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        strncpy(&amp;buf[index].name[0], node-&gt;name, 64);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        buf[index].type = <a class="code" href="structnode.html">node</a>-&gt;file-&gt;type;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        buf[index].mode = <a class="code" href="structnode.html">node</a>-&gt;file-&gt;mode;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        strncpy(&amp;buf[index].name[0], <a class="code" href="structnode.html">node</a>-&gt;name, 64);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        index++;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
@@ -109,20 +109,20 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    assert(new-&gt;file.type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    assert(parent-&gt;file.type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_node = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_dot = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_dotdot = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_node = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_dot = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_dotdot = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">new</span>-&gt;file.type = FT_DIRECTORY;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">new</span>-&gt;file.mode = USR_READ | USR_WRITE | USR_EXEC;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">new</span>-&gt;file.refcnt = 1;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">new</span>-&gt;file.ops = &amp;directory_ops;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">new</span>-&gt;file.ops = &amp;<a class="code" href="fs_8h.html#a60093ac73f28e09b5e7b865bbdb29ec7">directory_ops</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    list_init(&amp;new-&gt;entries);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    wq_init(&amp;new-&gt;file.readq);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(&amp;new-&gt;file.readq);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// TODO: INCREF</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (!(<span class="keyword">new</span> == fs_root_node)) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (!(<span class="keyword">new</span> == <a class="code" href="fs_8h.html#aac1fe49eaad0de4eeecf347d37a7b4df">fs_root_node</a>)) {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        new_node-&gt;name = name;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        new_node-&gt;file = &amp;<span class="keyword">new</span>-&gt;file;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        list_append(&amp;parent-&gt;entries, &amp;new_node-&gt;siblings);</div>
@@ -139,27 +139,27 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> &amp;<span class="keyword">new</span>-&gt;file;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *make_directory(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="fs_8h.html#a48de8c1d4df919fce8faaf94d4165f7b">   70</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="fs_8h.html#a48de8c1d4df919fce8faaf94d4165f7b">make_directory</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    assert(directory-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *dir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)directory;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *<span class="keyword">new</span> = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__file.html">directory_file</a>));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *<span class="keyword">new</span> = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__file.html">directory_file</a>));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">new</span>-&gt;file.type = FT_DIRECTORY;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> __make_directory(dir, <span class="keyword">new</span>, name);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> directory_destroy(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="fs_8h.html#a1c446cdfeed1cd8b8c4765023816a952">   79</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="fs_8h.html#a1c446cdfeed1cd8b8c4765023816a952">directory_destroy</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory) {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    assert(directory-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *dir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)directory;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    dir-&gt;file.refcnt--;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, node, &amp;dir-&gt;entries, siblings) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (node-&gt;file != directory &amp;&amp; node-&gt;file-&gt;ops &amp;&amp;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            node-&gt;file-&gt;ops-&gt;close) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, <a class="code" href="structnode.html">node</a>, &amp;dir-&gt;entries, siblings) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structnode.html">node</a>-&gt;file != directory &amp;&amp; <a class="code" href="structnode.html">node</a>-&gt;file-&gt;ops &amp;&amp;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="structnode.html">node</a>-&gt;file-&gt;ops-&gt;close) {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="comment">// node-&gt;file-&gt;ops-&gt;destroy(node-&gt;file);</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        free(node);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(<a class="code" href="structnode.html">node</a>);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    list_init(&amp;dir-&gt;entries);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
@@ -168,9 +168,9 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *fs_root_init(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    __make_directory(fs_root_node, fs_root_node, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> &amp;fs_root_node-&gt;file;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="fs_8h.html#a8d755cf674e06102792bfd692b782b6f">   99</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="fs_8h.html#a8d755cf674e06102792bfd692b782b6f">fs_root_init</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    __make_directory(<a class="code" href="fs_8h.html#aac1fe49eaad0de4eeecf347d37a7b4df">fs_root_node</a>, <a class="code" href="fs_8h.html#aac1fe49eaad0de4eeecf347d37a7b4df">fs_root_node</a>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="fs_8h.html#aac1fe49eaad0de4eeecf347d37a7b4df">fs_root_node</a>-&gt;file;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *__dir_child(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory,</div>
@@ -180,21 +180,21 @@ $(function() {
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span> (list_empty(&amp;dir-&gt;entries)) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, node, &amp;dir-&gt;entries, siblings) {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (strcmp(name, node-&gt;name) == 0) <span class="keywordflow">return</span> node;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>, <a class="code" href="structnode.html">node</a>, &amp;dir-&gt;entries, siblings) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (strcmp(name, <a class="code" href="structnode.html">node</a>-&gt;name) == 0) <span class="keywordflow">return</span> <a class="code" href="structnode.html">node</a>;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;sysret add_dir_file(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a>,</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">  118</a></span>&#160;sysret <a class="code" href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a>,</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    assert(directory-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *dir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)directory;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">if</span> (__dir_child(directory, name)) <span class="keywordflow">return</span> -EEXIST;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_node = zmalloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *new_node = <a class="code" href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structdirectory__node.html">directory_node</a>));</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    new_node-&gt;name = name;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    new_node-&gt;file = <a class="code" href="structfile.html">file</a>;</div>
@@ -203,34 +203,52 @@ $(function() {
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *remove_dir_file(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="fs_8h.html#a6548cd9daa9fee228d658a1564fb3065">  134</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="fs_8h.html#a6548cd9daa9fee228d658a1564fb3065">remove_dir_file</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    assert(directory-&gt;type == FT_DIRECTORY);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *dir = (<span class="keyword">struct </span><a class="code" href="structdirectory__file.html">directory_file</a> *)directory;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *node = __dir_child(directory, name);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *<a class="code" href="structnode.html">node</a> = __dir_child(directory, name);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    list_remove(&amp;node-&gt;siblings);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *removed = node-&gt;file;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    free(node);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    list_remove(&amp;<a class="code" href="structnode.html">node</a>-&gt;siblings);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *removed = <a class="code" href="structnode.html">node</a>-&gt;file;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(<a class="code" href="structnode.html">node</a>);</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    DECREF(removed);</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> removed;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *directory_child(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *node = __dir_child(directory, name);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span> (node) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> node-&gt;file;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="fs_8h.html#ad51e220aa9615e7345d7075fef83a18b">  147</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="fs_8h.html#ad51e220aa9615e7345d7075fef83a18b">directory_child</a>(<span class="keyword">struct</span> <a class="code" href="structfile.html">file</a> *directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *name) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">struct </span><a class="code" href="structdirectory__node.html">directory_node</a> *<a class="code" href="structnode.html">node</a> = __dir_child(directory, name);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structnode.html">node</a>) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structnode.html">node</a>-&gt;file;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructdirectory__node_html"><div class="ttname"><a href="structdirectory__node.html">directory_node</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00103">fs.h:103</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
-<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00098">fs.h:98</a></div></div>
-<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00029">fs.h:29</a></div></div>
-<div class="ttc" id="astructsnx__dirent_html"><div class="ttname"><a href="structsnx__dirent.html">snx_dirent</a></div><div class="ttdef"><b>Definition:</b> <a href="dirent_8h_source.html#l00010">dirent.h:10</a></div></div>
+<div class="ttc" id="afs_8h_html_a8d755cf674e06102792bfd692b782b6f"><div class="ttname"><a href="fs_8h.html#a8d755cf674e06102792bfd692b782b6f">fs_root_init</a></div><div class="ttdeci">struct file * fs_root_init(void)</div><div class="ttdoc">Initialize file system root.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00099">directory.c:99</a></div></div>
+<div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
+<div class="ttc" id="afs_8h_html_a6c3f89db4fb681a6d70d67ebc02d4933"><div class="ttname"><a href="fs_8h.html#a6c3f89db4fb681a6d70d67ebc02d4933">add_dir_file</a></div><div class="ttdeci">sysret add_dir_file(struct file *directory, struct file *file, const char *name)</div><div class="ttdoc">Add file to directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00118">directory.c:118</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
+<div class="ttc" id="astructdirectory__node_html"><div class="ttname"><a href="structdirectory__node.html">directory_node</a></div><div class="ttdoc">Node struct in directory.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00227">fs.h:227</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="afs_8h_html_a850662f04c6e0d3c04349c60ca59ed28"><div class="ttname"><a href="fs_8h.html#a850662f04c6e0d3c04349c60ca59ed28">directory_readdir</a></div><div class="ttdeci">ssize_t directory_readdir(struct open_file *ofd, struct snx_dirent *buf, size_t count)</div><div class="ttdoc">Read directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00015">directory.c:15</a></div></div>
+<div class="ttc" id="astructdirectory__file_html"><div class="ttname"><a href="structdirectory__file.html">directory_file</a></div><div class="ttdoc">Directory struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00218">fs.h:218</a></div></div>
+<div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
+<div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
+<div class="ttc" id="afs_8h_html_a60093ac73f28e09b5e7b865bbdb29ec7"><div class="ttname"><a href="fs_8h.html#a60093ac73f28e09b5e7b865bbdb29ec7">directory_ops</a></div><div class="ttdeci">struct file_ops directory_ops</div><div class="ttdoc">File operations.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00009">directory.c:9</a></div></div>
+<div class="ttc" id="astructsnx__dirent_html"><div class="ttname"><a href="structsnx__dirent.html">snx_dirent</a></div><div class="ttdoc">Directory entry struct.</div><div class="ttdef"><b>Definition:</b> <a href="dirent_8h_source.html#l00019">dirent.h:19</a></div></div>
+<div class="ttc" id="afs_8h_html_ad51e220aa9615e7345d7075fef83a18b"><div class="ttname"><a href="fs_8h.html#ad51e220aa9615e7345d7075fef83a18b">directory_child</a></div><div class="ttdeci">struct file * directory_child(struct file *directory, const char *name)</div><div class="ttdoc">Get directory child.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00147">directory.c:147</a></div></div>
+<div class="ttc" id="afs_8h_html_a1c446cdfeed1cd8b8c4765023816a952"><div class="ttname"><a href="fs_8h.html#a1c446cdfeed1cd8b8c4765023816a952">directory_destroy</a></div><div class="ttdeci">void directory_destroy(struct file *directory)</div><div class="ttdoc">Delete a directory and all associated resources.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00079">directory.c:79</a></div></div>
+<div class="ttc" id="afs_8h_html_a6548cd9daa9fee228d658a1564fb3065"><div class="ttname"><a href="fs_8h.html#a6548cd9daa9fee228d658a1564fb3065">remove_dir_file</a></div><div class="ttdeci">struct file * remove_dir_file(struct file *directory, const char *name)</div><div class="ttdoc">Remove file from directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00134">directory.c:134</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a24a781b52556d647e931e8fde7c1f3b0"><div class="ttname"><a href="stdlib_8h.html#a24a781b52556d647e931e8fde7c1f3b0">zmalloc</a></div><div class="ttdeci">void * zmalloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00008">column.c:8</a></div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
+<div class="ttc" id="afs_8h_html_aac1fe49eaad0de4eeecf347d37a7b4df"><div class="ttname"><a href="fs_8h.html#aac1fe49eaad0de4eeecf347d37a7b4df">fs_root_node</a></div><div class="ttdeci">struct directory_file * fs_root_node</div><div class="ttdoc">Directory struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00028">fs.c:28</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="afs_8h_html_a48de8c1d4df919fce8faaf94d4165f7b"><div class="ttname"><a href="fs_8h.html#a48de8c1d4df919fce8faaf94d4165f7b">make_directory</a></div><div class="ttdeci">struct file * make_directory(struct file *directory, const char *name)</div><div class="ttdoc">Create a directory.</div><div class="ttdef"><b>Definition:</b> <a href="directory_8c_source.html#l00070">directory.c:70</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

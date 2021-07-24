@@ -71,27 +71,27 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/sync.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sync_8h.html">snx/sync.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdatomic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;x86/interrupt.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// // // // //</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> wq_init(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a>(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    list_init(&amp;<a class="code" href="structwq.html">wq</a>-&gt;queue);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> wq_block_on(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="sync_8h.html#a88d5a1a950d219699c529396315f4441">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sync_8h.html#a88d5a1a950d219699c529396315f4441">wq_block_on</a>(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    block_thread(&amp;<a class="code" href="structwq.html">wq</a>-&gt;queue);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> wq_notify_one(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="sync_8h.html#aef5ba437a888a0bf3961977ad3780439">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sync_8h.html#aef5ba437a888a0bf3961977ad3780439">wq_notify_one</a>(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    wake_waitq_one(&amp;<a class="code" href="structwq.html">wq</a>-&gt;queue);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> wq_notify_all(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(<span class="keyword">struct</span> <a class="code" href="structwq.html">wq</a> *<a class="code" href="structwq.html">wq</a>) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    wake_waitq_all(&amp;<a class="code" href="structwq.html">wq</a>-&gt;queue);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
@@ -109,11 +109,11 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> cv_signal(<span class="keyword">struct</span> <a class="code" href="structcondvar.html">condvar</a> *cv) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    wq_notify_one(&amp;cv-&gt;wq);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="sync_8h.html#aef5ba437a888a0bf3961977ad3780439">wq_notify_one</a>(&amp;cv-&gt;wq);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> cv_broadcast(<span class="keyword">struct</span> <a class="code" href="structcondvar.html">condvar</a> *cv) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    wq_notify_all(&amp;cv-&gt;wq);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;cv-&gt;wq);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
@@ -124,17 +124,24 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> mtx_lock(<span class="keyword">struct</span> <a class="code" href="structmutex.html">mutex</a> *mtx) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">while</span> (!mtx_try_lock(mtx)) { wq_block_on(&amp;mtx-&gt;wq); }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">while</span> (!mtx_try_lock(mtx)) { <a class="code" href="sync_8h.html#a88d5a1a950d219699c529396315f4441">wq_block_on</a>(&amp;mtx-&gt;wq); }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> mtx_unlock(<span class="keyword">struct</span> <a class="code" href="structmutex.html">mutex</a> *mtx) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    mtx-&gt;state = 0;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    wq_notify_one(&amp;mtx-&gt;wq);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="sync_8h.html#aef5ba437a888a0bf3961977ad3780439">wq_notify_one</a>(&amp;mtx-&gt;wq);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructcondvar_html"><div class="ttname"><a href="structcondvar.html">condvar</a></div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00016">sync.h:16</a></div></div>
-<div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00023">sync.h:23</a></div></div>
-<div class="ttc" id="astructwq_html"><div class="ttname"><a href="structwq.html">wq</a></div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00009">sync.h:9</a></div></div>
+<div class="ttc" id="async_8h_html_aef5ba437a888a0bf3961977ad3780439"><div class="ttname"><a href="sync_8h.html#aef5ba437a888a0bf3961977ad3780439">wq_notify_one</a></div><div class="ttdeci">void wq_notify_one(struct wq *wq)</div><div class="ttdoc">Notify queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00018">sync.c:18</a></div></div>
+<div class="ttc" id="async_8h_html"><div class="ttname"><a href="sync_8h.html">sync.h</a></div><div class="ttdoc">Synchronous Threading helpers.</div></div>
+<div class="ttc" id="astructcondvar_html"><div class="ttname"><a href="structcondvar.html">condvar</a></div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00029">sync.h:29</a></div></div>
+<div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdoc">MUTEX structure.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00040">sync.h:40</a></div></div>
+<div class="ttc" id="astructwq_html"><div class="ttname"><a href="structwq.html">wq</a></div><div class="ttdoc">Queue struct.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00018">sync.h:18</a></div></div>
+<div class="ttc" id="async_8h_html_a21a346331ccfc1dcf58902d50184582b"><div class="ttname"><a href="sync_8h.html#a21a346331ccfc1dcf58902d50184582b">wq_init</a></div><div class="ttdeci">void wq_init(struct wq *wq)</div><div class="ttdoc">Initialize Queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00010">sync.c:10</a></div></div>
+<div class="ttc" id="async_8h_html_a4e6c14c231ca7fe163e97fbd0d306600"><div class="ttname"><a href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a></div><div class="ttdeci">void wq_notify_all(struct wq *wq)</div><div class="ttdoc">Notify whole queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00022">sync.c:22</a></div></div>
+<div class="ttc" id="async_8h_html_a88d5a1a950d219699c529396315f4441"><div class="ttname"><a href="sync_8h.html#a88d5a1a950d219699c529396315f4441">wq_block_on</a></div><div class="ttdeci">void wq_block_on(struct wq *wq)</div><div class="ttdoc">Block queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00014">sync.c:14</a></div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

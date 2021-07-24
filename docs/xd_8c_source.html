@@ -70,27 +70,27 @@ $(function() {
 <div class="title">xd.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">static</span> <span class="keywordtype">char</span> dump_byte_char(<span class="keywordtype">char</span> c) {</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">return</span> isprint(c) ? c : <span class="charliteral">&#39;.&#39;</span>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a>(c) ? c : <span class="charliteral">&#39;.&#39;</span>;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> print_byte_char_line(<span class="keywordtype">char</span> *c) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++) { printf(<span class="stringliteral">&quot;%c&quot;</span>, dump_byte_char(c[i])); }</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++) { <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%c&quot;</span>, dump_byte_char(c[i])); }</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> hexdump(<span class="keywordtype">size_t</span> len, <span class="keywordtype">char</span> ptr[len], <span class="keywordtype">size_t</span> base_addr) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="debug_8c.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a>(<span class="keywordtype">size_t</span> len, <span class="keywordtype">char</span> ptr[len], <span class="keywordtype">size_t</span> base_addr) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">char</span> *p = ptr;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">char</span> *line = ptr;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; i++) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">if</span> (i % 16 == 0) printf(<span class="stringliteral">&quot;%08lx: &quot;</span>, base_addr + i);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        printf(<span class="stringliteral">&quot;%02hhx &quot;</span>, p[i]);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (i % 16 == 7) printf(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">if</span> (i % 16 == 0) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%08lx: &quot;</span>, base_addr + i);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%02hhx &quot;</span>, p[i]);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (i % 16 == 7) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot; &quot;</span>);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (i % 16 == 15) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            printf(<span class="stringliteral">&quot;   &quot;</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;   &quot;</span>);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            print_byte_char_line(line);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            line = p + i + 1;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
@@ -103,14 +103,21 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ssize_t n = 0;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">size_t</span> offset = 0;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">char</span> buffer[16] = {0};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    setvbuf(stdin, NULL, _IOFBF, 0);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">while</span> ((n = fread(buffer, 1, 16, stdin)) &gt; 0) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        hexdump(n, buffer, offset);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    setvbuf(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>, NULL, _IOFBF, 0);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">while</span> ((n = <a class="code" href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">fread</a>(buffer, 1, 16, <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>)) &gt; 0) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="debug_8c.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a>(n, buffer, offset);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        offset += n;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="actype_8h_html_a99355d8f0fb41ec43effb95189db0ed4"><div class="ttname"><a href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a></div><div class="ttdeci">int isprint(int c)</div><div class="ttdoc">Check if character is printable.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00041">ctype.c:41</a></div></div>
+<div class="ttc" id="astdio_8h_html_acab9c1fe2a80b10e01858bda28a04244"><div class="ttname"><a href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a></div><div class="ttdeci">FILE * stdin</div><div class="ttdoc">Standard Input.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00035">fstdio.c:35</a></div></div>
+<div class="ttc" id="adebug_8c_html_aabcb320d15ced5c430e1dd3f65f1bbc4"><div class="ttname"><a href="debug_8c.html#aabcb320d15ced5c430e1dd3f65f1bbc4">hexdump</a></div><div class="ttdeci">int hexdump(size_t len, char ptr[len])</div><div class="ttdoc">Perform a hex dump.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00127">debug.c:127</a></div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
+<div class="ttc" id="astdio_8h_html_a64e9ff3a639afea7c21b9145b6645628"><div class="ttname"><a href="stdio_8h.html#a64e9ff3a639afea7c21b9145b6645628">fread</a></div><div class="ttdeci">size_t fread(void *s, size_t size, size_t len, FILE *file)</div><div class="ttdoc">Read string into buffer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00153">fstdio.c:153</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

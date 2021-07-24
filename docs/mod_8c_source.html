@@ -72,23 +72,23 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;elf.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/dmgr.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;snx/fs.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/mod.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;snx/syscall.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;snx/thread.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="dmgr_8h.html">snx/dmgr.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mod_8h.html">snx/mod.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;snx/vmm.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">struct </span><a class="code" href="structlist.html">list</a> loaded_mods = LIST_INIT(loaded_mods);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">struct </span><a class="code" href="structmod__sym.html">mod_sym</a> elf_find_symbol_by_address(uintptr_t address) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="mod_8h.html#a6e971f2e432ece455719da80303f1593">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmod__sym.html">mod_sym</a> <a class="code" href="mod_8h.html#a6e971f2e432ece455719da80303f1593">elf_find_symbol_by_address</a>(uintptr_t address) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmod.html">mod</a> *in_mod = NULL;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    elf_md *in_elf = &amp;elf_snxk_md;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>, <a class="code" href="structmod.html">mod</a>, &amp;loaded_mods, node) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>, <a class="code" href="structmod.html">mod</a>, &amp;loaded_mods, <a class="code" href="structnode.html">node</a>) {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        elf_md *e = <a class="code" href="structmod.html">mod</a>-&gt;md;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        uintptr_t mod_start = (uintptr_t)e-&gt;mmap;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        uintptr_t mod_end = (uintptr_t)PTR_ADD(e-&gt;mmap, e-&gt;mmap_size);</div>
@@ -119,7 +119,7 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    elf_md *e = elf_mod_load(<a class="code" href="structfile.html">file</a>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (!e) <span class="keywordflow">return</span> -ENOEXEC;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmod.html">mod</a> *<a class="code" href="structmod.html">mod</a> = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmod.html">mod</a> *<a class="code" href="structmod.html">mod</a> = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>));</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="structmod.html">mod</a>-&gt;md = e;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structmod.html">mod</a>-&gt;refcnt = 1;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    list_init(&amp;<a class="code" href="structmod.html">mod</a>-&gt;deps);</div>
@@ -138,21 +138,34 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> proc_mods(<span class="keyword">struct</span> <a class="code" href="structopen__file.html">open_file</a> *ofd, <span class="keywordtype">void</span> *_) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    proc_sprintf(ofd, <span class="stringliteral">&quot;name start end\n&quot;</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>, <a class="code" href="structmod.html">mod</a>, &amp;loaded_mods, node) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;name start end\n&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structmod.html">mod</a>, <a class="code" href="structmod.html">mod</a>, &amp;loaded_mods, <a class="code" href="structnode.html">node</a>) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        elf_md *e = <a class="code" href="structmod.html">mod</a>-&gt;md;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        uintptr_t mod_start = (uintptr_t)e-&gt;mmap;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        uintptr_t mod_end = (uintptr_t)PTR_ADD(e-&gt;mmap, e-&gt;mmap_size);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        proc_sprintf(ofd, <span class="stringliteral">&quot;%s %zx %zx\n&quot;</span>, <a class="code" href="structmod.html">mod</a>-&gt;name, mod_start, mod_end);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a>(ofd, <span class="stringliteral">&quot;%s %zx %zx\n&quot;</span>, <a class="code" href="structmod.html">mod</a>-&gt;name, mod_start, mod_end);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00016">mod.h:16</a></div></div>
-<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00041">fs.h:41</a></div></div>
-<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00057">fs.h:57</a></div></div>
-<div class="ttc" id="astructmod__sym_html"><div class="ttname"><a href="structmod__sym.html">mod_sym</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00035">mod.h:35</a></div></div>
-<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00022">mod.h:22</a></div></div>
-<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
+<div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
+<div class="ttc" id="astructmodinfo_html"><div class="ttname"><a href="structmodinfo.html">modinfo</a></div><div class="ttdoc">Convenience struct for supplying information about a kernel module.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00029">mod.h:29</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="admgr_8h_html"><div class="ttname"><a href="dmgr_8h.html">dmgr.h</a></div><div class="ttdoc">DMGR helpers.</div></div>
+<div class="ttc" id="afs_8h_html_a19ec9041d80d18fb945c07e5b8e0b8cd"><div class="ttname"><a href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a></div><div class="ttdeci">void proc_sprintf(struct open_file *ofd, const char *format,...)</div><div class="ttdoc">But data into proc file.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00017">procfs.c:17</a></div></div>
+<div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="amod_8h_html_a6e971f2e432ece455719da80303f1593"><div class="ttname"><a href="mod_8h.html#a6e971f2e432ece455719da80303f1593">elf_find_symbol_by_address</a></div><div class="ttdeci">struct mod_sym elf_find_symbol_by_address(uintptr_t address)</div><div class="ttdoc">Helper for finding an elf symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8c_source.html#l00016">mod.c:16</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="astructmod__sym_html"><div class="ttname"><a href="structmod__sym.html">mod_sym</a></div><div class="ttdoc">Kernel module symbol.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00063">mod.h:63</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astructmod_html"><div class="ttname"><a href="structmod.html">mod</a></div><div class="ttdoc">Basic module struct including required data.</div><div class="ttdef"><b>Definition:</b> <a href="mod_8h_source.html#l00039">mod.h:39</a></div></div>
+<div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

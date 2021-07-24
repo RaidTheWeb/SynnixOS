@@ -70,12 +70,12 @@ $(function() {
 <div class="title">rot13.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">char</span> rot(<span class="keywordtype">char</span> c, <span class="keywordtype">int</span> n) {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">if</span> (c &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;z&#39;</span>) <span class="keywordflow">return</span> ((c - <span class="charliteral">&#39;a&#39;</span>) + n) % 26 + <span class="charliteral">&#39;a&#39;</span>;</div>
@@ -89,7 +89,7 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">while</span> ((c = getopt(argc, argv, <span class="stringliteral">&quot;n:&quot;</span>)) != -1) {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">switch</span> (c) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;n&#39;</span>: n = strtol(optarg, NULL, 10); <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>: fprintf(stderr, <span class="stringliteral">&quot;usage: rot13 [-n rot]\n&quot;</span>); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>: <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;usage: rot13 [-n rot]\n&quot;</span>); <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">char</span> buf[128] = {0};</div>
@@ -99,23 +99,33 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">while</span> ((count = read(fd, buf, 128)) &gt; 0) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (isalpha(buf[i])) buf[i] = rot(buf[i], n);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">isalpha</a>(buf[i])) buf[i] = rot(buf[i], n);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        write(STDOUT_FILENO, buf, count);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (count &lt; 0) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        perror(<span class="stringliteral">&quot;read()&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (fd &gt; 2) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">int</span> err = close(fd);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (err) perror(<span class="stringliteral">&quot;close()&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">int</span> err = <a class="code" href="stdio_8h.html#aafbcde67669a1b96577e735ddebd8634">close</a>(fd);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (err) <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;close()&quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="actype_8h_html_a25908ae63aac2df990634e1ae5bd14d9"><div class="ttname"><a href="ctype_8h.html#a25908ae63aac2df990634e1ae5bd14d9">isalpha</a></div><div class="ttdeci">int isalpha(int c)</div><div class="ttdoc">Check if character is alphabetical.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00008">ctype.c:8</a></div></div>
+<div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="astdio_8h_html_aafbcde67669a1b96577e735ddebd8634"><div class="ttname"><a href="stdio_8h.html#aafbcde67669a1b96577e735ddebd8634">close</a></div><div class="ttdeci">int close(int fd)</div><div class="ttdoc">Close file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2autogenerated__syscalls_8c_source.html#l00316">autogenerated_syscalls.c:316</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

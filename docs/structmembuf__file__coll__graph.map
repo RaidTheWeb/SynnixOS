@@ -1,7 +1,7 @@
 <map id="membuf_file" name="membuf_file">
-<area shape="rect" id="node1" title=" " alt="" coords="5,291,109,317"/>
-<area shape="rect" id="node2" href="$structfile.html" title=" " alt="" coords="92,201,135,228"/>
-<area shape="rect" id="node5" href="$structfile__ops.html" title=" " alt="" coords="139,291,211,317"/>
-<area shape="rect" id="node3" href="$structwq.html" title=" " alt="" coords="93,97,134,124"/>
-<area shape="rect" id="node4" href="$structlist.html" title=" " alt="" coords="92,7,135,33"/>
+<area shape="rect" id="node1" title="Memory buffer file struct." alt="" coords="5,291,109,317"/>
+<area shape="rect" id="node2" href="$structfile.html" title="File struct." alt="" coords="92,201,135,228"/>
+<area shape="rect" id="node5" href="$structfile__ops.html" title="Various file operations." alt="" coords="139,291,211,317"/>
+<area shape="rect" id="node3" href="$structwq.html" title="Queue struct." alt="" coords="93,97,134,124"/>
+<area shape="rect" id="node4" href="$structlist.html" title="List struct." alt="" coords="92,7,135,33"/>
 </map>

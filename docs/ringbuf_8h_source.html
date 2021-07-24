@@ -70,33 +70,75 @@ $(function() {
 <div class="title">ringbuf.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="ringbuf_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SNX_RINGBUF_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_RINGBUF_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structringbuf.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">char</span> *data;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">size_t</span> size;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">size_t</span> len;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">size_t</span> head;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> *new_ring(<span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> emplace_ring(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *ring, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> free_ring(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">size_t</span> ring_write(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">size_t</span> ring_read(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define ring_emplace emplace_ring</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdint_8h.html">stdint.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @brief Ring Buffers</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * @brief Ring Buffer structure</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structringbuf.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">char</span> *data;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">size_t</span> size;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">size_t</span> len;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">size_t</span> head;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @brief Create new Ring Buffer</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * @param size </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * @return struct ringbuf* </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">struct </span><a class="code" href="structringbuf.html">ringbuf</a> *<a class="code" href="ringbuf_8h.html#a3219a93c12cb39efa54ef9e74f499126">new_ring</a>(<span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> emplace_ring(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *ring, <span class="keywordtype">size_t</span> size);<span class="comment"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @brief Free a Ring Buffer</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92">free_ring</a>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *);<span class="comment"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @brief Write data to Ring Buffer</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * @param data </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * @param len </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * @return size_t </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len);<span class="comment"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @brief Read data from Ring Buffer</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @param data </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @param len </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @return size_t </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da">ring_read</a>(<span class="keyword">struct</span> <a class="code" href="structringbuf.html">ringbuf</a> *, <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @brief Alias emplace_ring to ring_emplace</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define ring_emplace emplace_ring</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructringbuf_html"><div class="ttname"><a href="structringbuf.html">ringbuf</a></div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8h_source.html#l00009">ringbuf.h:9</a></div></div>
+<div class="ttc" id="aringbuf_8h_html_a30df8adbe49a7a33c2e751240aaba5da"><div class="ttname"><a href="ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da">ring_read</a></div><div class="ttdeci">size_t ring_read(struct ringbuf *, void *data, size_t len)</div><div class="ttdoc">Read data from Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00053">ringbuf.c:53</a></div></div>
+<div class="ttc" id="astructringbuf_html"><div class="ttname"><a href="structringbuf.html">ringbuf</a></div><div class="ttdoc">Ring Buffer structure.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8h_source.html#l00018">ringbuf.h:18</a></div></div>
+<div class="ttc" id="aringbuf_8h_html_ac578a52281847dff43fc6b4830644509"><div class="ttname"><a href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a></div><div class="ttdeci">size_t ring_write(struct ringbuf *, const void *data, size_t len)</div><div class="ttdoc">Write data to Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00027">ringbuf.c:27</a></div></div>
+<div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div><div class="ttdoc">Standard Integers.</div></div>
+<div class="ttc" id="aringbuf_8h_html_a3219a93c12cb39efa54ef9e74f499126"><div class="ttname"><a href="ringbuf_8h.html#a3219a93c12cb39efa54ef9e74f499126">new_ring</a></div><div class="ttdeci">struct ringbuf * new_ring(size_t size)</div><div class="ttdoc">Create new Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00007">ringbuf.c:7</a></div></div>
+<div class="ttc" id="aringbuf_8h_html_a4a954a1867d22807625a8e97890e0c92"><div class="ttname"><a href="ringbuf_8h.html#a4a954a1867d22807625a8e97890e0c92">free_ring</a></div><div class="ttdeci">void free_ring(struct ringbuf *)</div><div class="ttdoc">Free a Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00023">ringbuf.c:23</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

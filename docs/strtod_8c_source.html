@@ -84,16 +84,16 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * until I make one</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *skipwhite(<span class="keyword">const</span> <span class="keywordtype">char</span> *q) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">char</span> *p = (<span class="keywordtype">char</span> *)q;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">while</span> (isspace(*p)) ++p;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a>(*p)) ++p;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> p;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
@@ -114,9 +114,9 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;+&#39;</span>) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        ++p;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (isdigit(*p)) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        d = (double)(*p++ - <span class="charliteral">&#39;0&#39;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">while</span> (*p &amp;&amp; isdigit(*p)) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">while</span> (*p &amp;&amp; <a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            d = d * 10.0 + (double)(*p - <span class="charliteral">&#39;0&#39;</span>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            ++p;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            ++n;</div>
@@ -133,8 +133,8 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">double</span> base = 0.1;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        ++p;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (isdigit(*p)) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">while</span> (*p &amp;&amp; isdigit(*p)) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">while</span> (*p &amp;&amp; <a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                f += base * (*p - <span class="charliteral">&#39;0&#39;</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                base /= 10.0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                ++p;</div>
@@ -158,15 +158,15 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            ++p;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (isdigit(*p)) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">while</span> (*p == <span class="charliteral">&#39;0&#39;</span>) ++p;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            e = (int)(*p++ - <span class="charliteral">&#39;0&#39;</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">while</span> (*p &amp;&amp; isdigit(*p)) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">while</span> (*p &amp;&amp; <a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*p)) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                e = e * 10 + (int)(*p - <span class="charliteral">&#39;0&#39;</span>);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                ++p;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            e *= sign;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!isdigit(*(a - 1))) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*(a - 1))) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            a = <a class="code" href="structstr.html">str</a>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">goto</span> done;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*p == 0) {</div>
@@ -176,7 +176,7 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (d == 2.2250738585072011 &amp;&amp; e == -308) {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            d = 0.0;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            a = p;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            errno = ERANGE;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="errno_8h.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a> = ERANGE;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">goto</span> done;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (d == 2.2250738585072012 &amp;&amp; e &lt;= -308) {</div>
@@ -186,7 +186,7 @@ $(function() {
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">// d *= pow(10.0, (double)e);</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        a = p;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (p &gt; <a class="code" href="structstr.html">str</a> &amp;&amp; !isdigit(*(p - 1))) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (p &gt; <a class="code" href="structstr.html">str</a> &amp;&amp; !<a class="code" href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a>(*(p - 1))) {</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        a = <a class="code" href="structstr.html">str</a>;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">goto</span> done;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
@@ -206,7 +206,14 @@ $(function() {
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">long</span> <span class="keywordtype">double</span>)strtod(<a class="code" href="structstr.html">str</a>, end);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="aerrno_8h_html_ad65a8842cc674e3ddf69355898c0ecbf"><div class="ttname"><a href="errno_8h.html#ad65a8842cc674e3ddf69355898c0ecbf">errno</a></div><div class="ttdeci">int errno</div><div class="ttdoc">Error number.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00005">errno.c:5</a></div></div>
+<div class="ttc" id="actype_8h_html_a56be4166e4673843042a548a7f513dbc"><div class="ttname"><a href="ctype_8h.html#a56be4166e4673843042a548a7f513dbc">isspace</a></div><div class="ttdeci">int isspace(int c)</div><div class="ttdoc">Check if character is a space.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00033">ctype.c:33</a></div></div>
+<div class="ttc" id="actype_8h_html_a3fa45b35c8abf67a950b6d3d4063dede"><div class="ttname"><a href="ctype_8h.html#a3fa45b35c8abf67a950b6d3d4063dede">isdigit</a></div><div class="ttdeci">int isdigit(int c)</div><div class="ttdoc">Check if character is a number.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00020">ctype.c:20</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="astructstr_html"><div class="ttname"><a href="structstr.html">str</a></div><div class="ttdef"><b>Definition:</b> <a href="column_8c_source.html#l00019">column.c:19</a></div></div>
+<div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

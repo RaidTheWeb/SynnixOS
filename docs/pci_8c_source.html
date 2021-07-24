@@ -73,8 +73,8 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/cpu.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;snx/debug.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;snx/pci.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pci_8h.html">snx/pci.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;pci_address_t pci_pack_addr(<span class="keywordtype">int</span> bus, <span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> func, <span class="keywordtype">int</span> offset) {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">return</span> (bus &lt;&lt; 16) | (slot &lt;&lt; 11) | (func &lt;&lt; 8) | (offset &amp; 0xff);</div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> pci_print_addr(pci_address_t pci_addr) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">if</span> (pci_addr == ~0) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        printf(<span class="stringliteral">&quot;INVALID PCI ID&quot;</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;INVALID PCI ID&quot;</span>);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
@@ -91,9 +91,9 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    uint32_t func = (pci_addr &gt;&gt; 8) &amp; 0x3;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    uint32_t offset = (pci_addr)&amp;0xFF;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span> (offset == 0) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        printf(<span class="stringliteral">&quot;%02x:%02x.%x&quot;</span>, bus, slot, func);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%02x:%02x.%x&quot;</span>, bus, slot, func);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        printf(<span class="stringliteral">&quot;%02x:%02x.%x+%#02x&quot;</span>, bus, slot, func, offset);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%02x:%02x.%x+%#02x&quot;</span>, bus, slot, func, offset);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
@@ -129,9 +129,9 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> *dev_type = pci_device_type(<span class="keyword">class</span>, subclass, prog_if);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        printf(<span class="stringliteral">&quot;pci: found %s (%04x:%04x) at &quot;</span>, dev_type, ven, dev);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;pci: found %s (%04x:%04x) at &quot;</span>, dev_type, ven, dev);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        pci_print_addr(pci_address);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
@@ -205,6 +205,9 @@ $(function() {
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="apci_8h_html"><div class="ttname"><a href="pci_8h.html">pci.h</a></div><div class="ttdoc">PCI Support.</div></div>
+<div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -71,9 +71,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;list.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;snx/irq.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="list_8h.html">list.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="irq_8h.html">snx/irq.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">bool</span> handlers_init = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="structlist.html">list</a> irq_handlers[NIRQS];</div>
@@ -82,30 +82,37 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NIRQS; i++) { list_init(&amp;irq_handlers[i]); }</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> irq_install(<span class="keywordtype">int</span> irq, <span class="keywordtype">void</span> (*fn)(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *, <span class="keywordtype">void</span> *), <span class="keywordtype">void</span> *impl) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">   13</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a>(<span class="keywordtype">int</span> irq, <span class="keywordtype">void</span> (*fn)(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *, <span class="keywordtype">void</span> *), <span class="keywordtype">void</span> *impl) {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span> (!handlers_init) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        init_handlers();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        handlers_init = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">struct </span><a class="code" href="structirq__handler.html">irq_handler</a> *handler = malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structirq__handler.html">irq_handler</a>));</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">struct </span><a class="code" href="structirq__handler.html">irq_handler</a> *handler = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structirq__handler.html">irq_handler</a>));</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    handler-&gt;handler_func = fn;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    handler-&gt;impl = impl;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    list_init(&amp;handler-&gt;node);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    list_append(&amp;irq_handlers[irq], &amp;handler-&gt;node);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structirq__handler.html">irq_handler</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c">irq_handler</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r) {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> irq = r-&gt;interrupt_number - 32; <span class="comment">// x86ism</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (list_empty(&amp;irq_handlers[irq])) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structirq__handler.html">irq_handler</a>, h, &amp;irq_handlers[irq], node) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structirq__handler.html">irq_handler</a>, h, &amp;irq_handlers[irq], <a class="code" href="structnode.html">node</a>) {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        h-&gt;handler_func(r, h-&gt;impl);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
+<div class="ttc" id="airq_8h_html_a23fe1ce2cb623ff39cc3ae2f7c14a15c"><div class="ttname"><a href="irq_8h.html#a23fe1ce2cb623ff39cc3ae2f7c14a15c">irq_handler</a></div><div class="ttdeci">void irq_handler(interrupt_frame *)</div><div class="ttdoc">Handler for an interrupt frame.</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00025">irq.c:25</a></div></div>
+<div class="ttc" id="airq_8h_html_a872bb2e39230e1fef17df03eea8d697b"><div class="ttname"><a href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a></div><div class="ttdeci">void irq_install(int irq, void(*fn)(interrupt_frame *, void *), void *)</div><div class="ttdoc">Install an irq</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00013">irq.c:13</a></div></div>
+<div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
-<div class="ttc" id="astructirq__handler_html"><div class="ttname"><a href="structirq__handler.html">irq_handler</a></div><div class="ttdef"><b>Definition:</b> <a href="irq_8h_source.html#l00009">irq.h:9</a></div></div>
-<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00008">list.h:8</a></div></div>
+<div class="ttc" id="astructirq__handler_html"><div class="ttname"><a href="structirq__handler.html">irq_handler</a></div><div class="ttdoc">Define interrupt handler struct.</div><div class="ttdef"><b>Definition:</b> <a href="irq_8h_source.html#l00018">irq.h:18</a></div></div>
+<div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

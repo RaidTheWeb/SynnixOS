@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> THE SOFTWARE.</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define OP_END 0</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define OP_INC_DP 1</span></div>
@@ -129,7 +129,7 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">int</span> compile_bf(<a class="code" href="struct__FILE.html">FILE</a> *fp) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> pc = 0, jmp_pc;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> c;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">while</span> ((c = getc(fp)) != EOF &amp;&amp; pc &lt; PROGRAM_SIZE) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">while</span> ((c = <a class="code" href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a>(fp)) != EOF &amp;&amp; pc &lt; PROGRAM_SIZE) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">switch</span> (c) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;&gt;&#39;</span>: PROGRAM[pc].operator= OP_INC_DP; <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;&lt;&#39;</span>: PROGRAM[pc].operator= OP_DEC_DP; <span class="keywordflow">break</span>;</div>
@@ -168,8 +168,8 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">case</span> OP_DEC_DP: ptr--; <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">case</span> OP_INC_VAL: data[ptr]++; <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">case</span> OP_DEC_VAL: data[ptr]--; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">case</span> OP_OUT: putchar(data[ptr]); <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">case</span> OP_IN: data[ptr] = (<span class="keywordtype">unsigned</span> int)getchar(); <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">case</span> OP_OUT: <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(data[ptr]); <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">case</span> OP_IN: data[ptr] = (<span class="keywordtype">unsigned</span> int)<a class="code" href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a>(); <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">case</span> OP_JMP_FWD:</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">if</span> (!data[ptr]) pc = PROGRAM[pc].operand;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">break</span>;</div>
@@ -187,19 +187,28 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">int</span> status;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="struct__FILE.html">FILE</a> *fp;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span> (argc == 1) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        fp = stdin;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc != 2 || (fp = fopen(argv[1], <span class="stringliteral">&quot;r&quot;</span>)) == NULL) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Usage: %s filename\n&quot;</span>, argv[0]);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        fp = <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc != 2 || (fp = <a class="code" href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a>(argv[1], <span class="stringliteral">&quot;r&quot;</span>)) == NULL) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;Usage: %s filename\n&quot;</span>, argv[0]);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> FAILURE;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    status = compile_bf(fp);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    fclose(fp);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">fclose</a>(fp);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> (status == SUCCESS) status = execute_bf();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (status == FAILURE) fprintf(stderr, <span class="stringliteral">&quot;Error!\n&quot;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (status == FAILURE) <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;Error!\n&quot;</span>);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> status;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdio_8h_html_af4de2514b7778805db3815e8dd6cf09a"><div class="ttname"><a href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a></div><div class="ttdeci">int putchar(int c)</div><div class="ttdoc">Put character to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00271">fstdio.c:271</a></div></div>
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
+<div class="ttc" id="astdio_8h_html_acab9c1fe2a80b10e01858bda28a04244"><div class="ttname"><a href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a></div><div class="ttdeci">FILE * stdin</div><div class="ttdoc">Standard Input.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00035">fstdio.c:35</a></div></div>
 <div class="ttc" id="astruct__FILE_html"><div class="ttname"><a href="struct__FILE.html">_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00010">fstdio.c:10</a></div></div>
+<div class="ttc" id="astdio_8h_html_a043ecd1fa571a0e4f3835a0f19570cfd"><div class="ttname"><a href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a></div><div class="ttdeci">FILE * fopen(const char *name, const char *mode)</div><div class="ttdoc">Open file in mode.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00039">fstdio.c:39</a></div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_a3e29caa20f7cffe18f410f01278905a8"><div class="ttname"><a href="stdio_8h.html#a3e29caa20f7cffe18f410f01278905a8">getchar</a></div><div class="ttdeci">int getchar(void)</div><div class="ttdoc">Get character from stdin.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00247">fstdio.c:247</a></div></div>
+<div class="ttc" id="astdio_8h_html_a5f21408871dc718d04419aed860a4bd8"><div class="ttname"><a href="stdio_8h.html#a5f21408871dc718d04419aed860a4bd8">getc</a></div><div class="ttdeci">int getc(FILE *f)</div><div class="ttdoc">Get character from stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00236">fstdio.c:236</a></div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
+<div class="ttc" id="astdio_8h_html_a76370407f9ab0402564c2bb9bc9664e0"><div class="ttname"><a href="stdio_8h.html#a76370407f9ab0402564c2bb9bc9664e0">fclose</a></div><div class="ttdeci">int fclose(FILE *stream)</div><div class="ttdoc">Close file stream.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00180">fstdio.c:180</a></div></div>
 <div class="ttc" id="astructinstruction__t_html"><div class="ttname"><a href="structinstruction__t.html">instruction_t</a></div><div class="ttdef"><b>Definition:</b> <a href="bf2_8c_source.html#l00048">bf2.c:48</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -75,15 +75,15 @@ Collaboration diagram for thread:</div>
 <map name="thread_coll__map" id="thread_coll__map">
 <area shape="rect" title=" " alt="" coords="249,591,313,617"/>
 <area shape="rect" href="structtimer__event.html" title=" " alt="" coords="103,149,204,176"/>
-<area shape="rect" href="structlist.html" title=" " alt="" coords="224,7,267,33"/>
-<area shape="rect" href="structwq.html" title=" " alt="" coords="306,97,347,124"/>
-<area shape="rect" href="structprocess.html" title=" " alt="" coords="307,485,379,512"/>
-<area shape="rect" href="union____jmp__buf.html" title=" " alt="" coords="474,485,563,512"/>
+<area shape="rect" href="structlist.html" title="List struct." alt="" coords="224,7,267,33"/>
+<area shape="rect" href="structwq.html" title="Queue struct." alt="" coords="306,97,347,124"/>
+<area shape="rect" href="structprocess.html" title="Process struct." alt="" coords="307,485,379,512"/>
+<area shape="rect" href="union____jmp__buf.html" title="Jump buffer." alt="" coords="474,485,563,512"/>
 <area shape="rect" href="structinterrupt__frame.html" title=" " alt="" coords="587,485,711,512"/>
-<area shape="rect" href="structfile.html" title=" " alt="" coords="305,210,348,237"/>
-<area shape="rect" href="structfile__ops.html" title=" " alt="" coords="284,396,356,423"/>
-<area shape="rect" href="structmm__region.html" title=" " alt="" coords="380,396,476,423"/>
-<area shape="rect" href="structmutex.html" title=" " alt="" coords="439,210,503,237"/>
+<area shape="rect" href="structfile.html" title="File struct." alt="" coords="305,210,348,237"/>
+<area shape="rect" href="structfile__ops.html" title="Various file operations." alt="" coords="284,396,356,423"/>
+<area shape="rect" href="structmm__region.html" title="Region struct." alt="" coords="380,396,476,423"/>
+<area shape="rect" href="structmutex.html" title="MUTEX structure." alt="" coords="439,210,503,237"/>
 <area shape="rect" href="structdmgr.html" title=" " alt="" coords="500,396,556,423"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -112,7 +112,7 @@ enum thread_state&#160;</td><td class="memItemRight" valign="bottom"><b>nonsig_s
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>kstack</b></td></tr>
 <tr class="separator:a326c7f11cf1a451e3a088da3b84a7c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c54a07ae6d54bf97c2de91aa8274d76"><td class="memItemLeft" align="right" valign="top"><a id="a3c54a07ae6d54bf97c2de91aa8274d76"></a>
-jmp_buf&#160;</td><td class="memItemRight" valign="bottom"><b>kernel_ctx</b></td></tr>
+<a class="el" href="setjmp_8h.html#aaf29a2b86abac133b769612b4f7d532c">jmp_buf</a>&#160;</td><td class="memItemRight" valign="bottom"><b>kernel_ctx</b></td></tr>
 <tr class="separator:a3c54a07ae6d54bf97c2de91aa8274d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b2586bff4b55606679862314d911bc6"><td class="memItemLeft" align="right" valign="top"><a id="a5b2586bff4b55606679862314d911bc6"></a>
 <a class="el" href="structinterrupt__frame.html">interrupt_frame</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>user_ctx</b></td></tr>
@@ -139,7 +139,7 @@ struct <a class="el" href="structthread.html">thread</a> *&#160;</td><td class="
 <a class="el" href="structlist.html">list</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tracees</b></td></tr>
 <tr class="separator:a4b907895c6ac2bb735c60c5fc860dd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acb08038f367ffdcbf5365a59acd276"><td class="memItemLeft" align="right" valign="top"><a id="a2acb08038f367ffdcbf5365a59acd276"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>trace_node</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>trace_node</b></td></tr>
 <tr class="separator:a2acb08038f367ffdcbf5365a59acd276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afde35a41ddd7e4e9a7ac03453d0b923c"><td class="memItemLeft" align="right" valign="top"><a id="afde35a41ddd7e4e9a7ac03453d0b923c"></a>
 struct <a class="el" href="structthread.html">thread</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>tracer</b></td></tr>
@@ -154,19 +154,19 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>trace_report</b></td><
 int&#160;</td><td class="memItemRight" valign="bottom"><b>trace_signal</b></td></tr>
 <tr class="separator:a46bece8b86be83dcea4cff49f5f2324e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a116c7867a7157dc6c1c1460057a846d6"><td class="memItemLeft" align="right" valign="top"><a id="a116c7867a7157dc6c1c1460057a846d6"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>all_threads</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>all_threads</b></td></tr>
 <tr class="separator:a116c7867a7157dc6c1c1460057a846d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4343d4c720ec5b96d97f40b007166e6b"><td class="memItemLeft" align="right" valign="top"><a id="a4343d4c720ec5b96d97f40b007166e6b"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>runnable</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>runnable</b></td></tr>
 <tr class="separator:a4343d4c720ec5b96d97f40b007166e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adec309517524703d8c2c2181e0a061c1"><td class="memItemLeft" align="right" valign="top"><a id="adec309517524703d8c2c2181e0a061c1"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>freeable</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>freeable</b></td></tr>
 <tr class="separator:adec309517524703d8c2c2181e0a061c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f8631d578a10b1447a99a3b4995f8f6"><td class="memItemLeft" align="right" valign="top"><a id="a9f8631d578a10b1447a99a3b4995f8f6"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_threads</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process_threads</b></td></tr>
 <tr class="separator:a9f8631d578a10b1447a99a3b4995f8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a625c2b11268462cabec7de8b21be3d29"><td class="memItemLeft" align="right" valign="top"><a id="a625c2b11268462cabec7de8b21be3d29"></a>
-<a class="el" href="structlist.html">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>wait_node</b></td></tr>
+<a class="el" href="list_8h.html#aaa7fef9b79ad4eb88c881b00c6c0225c">list_n</a>&#160;</td><td class="memItemRight" valign="bottom"><b>wait_node</b></td></tr>
 <tr class="separator:a625c2b11268462cabec7de8b21be3d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0c2d01712b01328093ac42964e410e"><td class="memItemLeft" align="right" valign="top"><a id="a1e0c2d01712b01328093ac42964e410e"></a>
 struct <a class="el" href="structtimer__event.html">timer_event</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>wait_event</b></td></tr>
@@ -175,16 +175,16 @@ struct <a class="el" href="structtimer__event.html">timer_event</a> *&#160;</td>
 uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><b>user_sp</b></td></tr>
 <tr class="separator:a0208da718d450a641c572df76d340f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad226ef80274402f5ae7953c2c7d330e5"><td class="memItemLeft" align="right" valign="top"><a id="ad226ef80274402f5ae7953c2c7d330e5"></a>
-jmp_buf&#160;</td><td class="memItemRight" valign="bottom"><b>signal_ctx</b></td></tr>
+<a class="el" href="setjmp_8h.html#aaf29a2b86abac133b769612b4f7d532c">jmp_buf</a>&#160;</td><td class="memItemRight" valign="bottom"><b>signal_ctx</b></td></tr>
 <tr class="separator:ad226ef80274402f5ae7953c2c7d330e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a593921bd28c14ec821860bed8e7d2938"><td class="memItemLeft" align="right" valign="top"><a id="a593921bd28c14ec821860bed8e7d2938"></a>
-sighandler_t&#160;</td><td class="memItemRight" valign="bottom"><b>sighandlers</b> [32]</td></tr>
+<a class="el" href="libc_2include_2signal_8h.html#a754cdc0bcfffe07baa426dc252c9101a">sighandler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sighandlers</b> [32]</td></tr>
 <tr class="separator:a593921bd28c14ec821860bed8e7d2938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a755e92f662e02178f57946801b174851"><td class="memItemLeft" align="right" valign="top"><a id="a755e92f662e02178f57946801b174851"></a>
-sigset_t&#160;</td><td class="memItemRight" valign="bottom"><b>sig_pending</b></td></tr>
+<a class="el" href="libc_2include_2signal_8h.html#a7fba2a7c692afae7caa4564f8f82169d">sigset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sig_pending</b></td></tr>
 <tr class="separator:a755e92f662e02178f57946801b174851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9e473f86714e57ef8a5f303b70be019"><td class="memItemLeft" align="right" valign="top"><a id="ae9e473f86714e57ef8a5f303b70be019"></a>
-sigset_t&#160;</td><td class="memItemRight" valign="bottom"><b>sig_mask</b></td></tr>
+<a class="el" href="libc_2include_2signal_8h.html#a7fba2a7c692afae7caa4564f8f82169d">sigset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sig_mask</b></td></tr>
 <tr class="separator:ae9e473f86714e57ef8a5f303b70be019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad547017f526ef1f30407445201793c91"><td class="memItemLeft" align="right" valign="top"><a id="ad547017f526ef1f30407445201793c91"></a>
 long&#160;</td><td class="memItemRight" valign="bottom"><b>n_scheduled</b></td></tr>
@@ -210,7 +210,7 @@ fp_ctx&#160;</td><td class="memItemRight" valign="bottom"><b>fpctx</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="thread_8h_source.html#l00090">90</a> of file <a class="el" href="thread_8h_source.html">thread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread_8h_source.html#l00125">125</a> of file <a class="el" href="thread_8h_source.html">thread.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

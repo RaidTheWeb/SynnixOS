@@ -1,7 +1,7 @@
 <map id="file_pair" name="file_pair">
 <area shape="rect" id="node1" title=" " alt="" coords="5,305,80,332"/>
-<area shape="rect" id="node2" href="$structfile.html" title=" " alt="" coords="73,201,116,228"/>
-<area shape="rect" id="node5" href="$structfile__ops.html" title=" " alt="" coords="115,305,187,332"/>
-<area shape="rect" id="node3" href="$structwq.html" title=" " alt="" coords="74,97,115,124"/>
-<area shape="rect" id="node4" href="$structlist.html" title=" " alt="" coords="73,7,116,33"/>
+<area shape="rect" id="node2" href="$structfile.html" title="File struct." alt="" coords="73,201,116,228"/>
+<area shape="rect" id="node5" href="$structfile__ops.html" title="Various file operations." alt="" coords="115,305,187,332"/>
+<area shape="rect" id="node3" href="$structwq.html" title="Queue struct." alt="" coords="74,97,115,124"/>
+<area shape="rect" id="node4" href="$structlist.html" title="List struct." alt="" coords="73,7,116,33"/>
 </map>
