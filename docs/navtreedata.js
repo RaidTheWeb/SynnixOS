@@ -37,7 +37,14 @@ var NAVTREE =
       [ "Data Structures", "annotated.html", "annotated_dup" ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "Globals", "globals.html", [
+        [ "All", "globals.html", "globals_dup" ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -45,9 +52,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ab_8c_source.html",
-"structdirectory__node.html#a728b749bc3312b6e188e2475569682d4",
-"structmultiboot__tag__elf__sections.html#a04dcd1e99c887b6fa70662bb813cb427",
-"structtimer__event.html#a2563d590f800e402090d58f9577a3032"
+"irq_8h.html#a872bb2e39230e1fef17df03eea8d697b",
+"multiboot2_8h.html",
+"stdio_8h.html#a9702343da581694970e3a0b7cd8630aa",
+"structinterrupt__frame.html#afc885db8ad2a1337ceaafe5933d82d5a",
+"structmultiboot__tag__vbe.html#a169e6692e2c5aed2140b21ccbcb670ec",
+"structutsname.html",
+"unistd_8h.html#a72ce3ce98e68245f18a6512c92f3f760"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

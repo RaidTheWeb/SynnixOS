@@ -64,6 +64,12 @@ Latest releases are released when I upload it manually, and nightly are at 10:30
 
 [Learn more about how you can help here!](https://github.com/RaidTheWeb/SynnixOS/blob/master/CONTRIBUTING.md)
 
+## Documentation
+
+Documentation can be found [here](https://synnixos.raidtheweb.tech)!
+
+Dark mode Doxygen theme by [Doxygen Awesome](https://jothepro.github.io/doxygen-awesome-css/)
+
 ## Building
 
 For building SynnixOS you'll need a few dependencies. Please install the following on your **unix-like** system (If on windows consider [WSL](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux))
