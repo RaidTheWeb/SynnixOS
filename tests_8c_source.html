@@ -58,7 +58,7 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tests_8h.html">snx/tests.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="timer_8h.html">snx/timer.h</a>&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;x86/pic.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pic_8h.html">x86/pic.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> run_sync_tests(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> print_key(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *frame, <span class="keywordtype">void</span> *_x) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">char</span> scancode = inb(0x80);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">char</span> scancode = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(0x80);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;keyboard interrupt: %c\n&quot;</span>, scancode);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
@@ -166,19 +166,22 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        kthread_create(lots_of_threads, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    pic_irq_unmask(IRQ_KEYBOARD);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a>(IRQ_KEYBOARD);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a>(IRQ_KEYBOARD, print_key, NULL);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atests_8h_html_a2becfba94f27f96ceaafc8df687dcfb3"><div class="ttname"><a href="tests_8h.html#a2becfba94f27f96ceaafc8df687dcfb3">run_all_tests</a></div><div class="ttdeci">void run_all_tests(int init_time)</div><div class="ttdoc">Run all hard coded tests.</div><div class="ttdef"><b>Definition:</b> <a href="tests_8c_source.html#l00107">tests.c:107</a></div></div>
 <div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
+<div class="ttc" id="apic_8h_html_a616969cad9f55f0ff2865e66bcaa441f"><div class="ttname"><a href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a></div><div class="ttdeci">void pic_irq_unmask(int irq)</div><div class="ttdoc">Unmask IRQ (enum)</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00036">pic.c:36</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a4b949251e84d5e9a389c4e2db0271c06"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a></div><div class="ttdeci">uint8_t inb(port_addr_t port)</div><div class="ttdoc">Read 8 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00012">cpu.c:12</a></div></div>
 <div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div><div class="ttdoc">Kernel-Space PIT-based timer.</div></div>
 <div class="ttc" id="airq_8h_html_a872bb2e39230e1fef17df03eea8d697b"><div class="ttname"><a href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a></div><div class="ttdeci">void irq_install(int irq, void(*fn)(interrupt_frame *, void *), void *)</div><div class="ttdoc">Install an irq</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00013">irq.c:13</a></div></div>
 <div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
 <div class="ttc" id="atimer_8h_html_ad176338f4c868294e0a45d0fb1184fde"><div class="ttname"><a href="timer_8h.html#ad176338f4c868294e0a45d0fb1184fde">seconds</a></div><div class="ttdeci">int seconds(int s)</div><div class="ttdoc">Convert seconds into ticks (HZ)</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00026">timer.c:26</a></div></div>
 <div class="ttc" id="astructspalloc_html"><div class="ttname"><a href="structspalloc.html">spalloc</a></div><div class="ttdef"><b>Definition:</b> <a href="spalloc_8h_source.html#l00008">spalloc.h:8</a></div></div>
 <div class="ttc" id="atests_8h_html"><div class="ttname"><a href="tests_8h.html">tests.h</a></div><div class="ttdoc">Test suite.</div></div>
-<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
+<div class="ttc" id="apic_8h_html"><div class="ttname"><a href="pic_8h.html">pic.h</a></div><div class="ttdoc">x86 PIC header files</div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->

@@ -206,7 +206,7 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;sysret sys_haltvm(<span class="keywordtype">int</span> exit_code) {</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#if X86</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    outb(0x501, exit_code);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(0x501, exit_code);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    panic(<span class="stringliteral">&quot;sys_haltvm called on an unsupported platform&quot;</span>);</div>
@@ -251,6 +251,7 @@ $(function() {
 <div class="ttc" id="athread_8h_html_a6f75bdeeb80982814e5ac8ce3af720c1"><div class="ttname"><a href="thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1">all_threads</a></div><div class="ttdeci">list all_threads</div><div class="ttdoc">List of all threads.</div></div>
 <div class="ttc" id="adebug_8h_html_a8c83bd615e88c421d47b48f44b10ce98"><div class="ttname"><a href="debug_8h.html#a8c83bd615e88c421d47b48f44b10ce98">backtrace</a></div><div class="ttdeci">void backtrace(uintptr_t bp, uintptr_t ip, void(*callback)(uintptr_t bp, uintptr_t ip))</div><div class="ttdoc">Backtrace from pointer.</div></div>
 <div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>

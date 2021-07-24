@@ -49,34 +49,70 @@ $(function() {
 <div class="title">pic.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="pic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SNX_X86_PIC_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_X86_PIC_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum</span> pic_interrupt {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    IRQ_TIMER = 0,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    IRQ_KEYBOARD = 1,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    IRQ_SERIAL2 = 3,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    IRQ_SERIAL1 = 4,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    IRQ_LPT2 = 5,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    IRQ_FLOPPY = 6,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    IRQ_LPT1 = 7,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    IRQ_RTC = 8,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    IRQ_MOUSE = 12,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    IRQ_FPU = 13,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    IRQ_ATA1 = 14,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    IRQ_ATA2 = 15,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> pic_send_eoi(<span class="keywordtype">int</span> irq);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> pic_init();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> pic_irq_unmask(<span class="keywordtype">int</span> irq);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> pic_irq_mask(<span class="keywordtype">int</span> irq);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * @brief x86 PIC header files</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * @brief PIC interrupts</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="pic_8h.html#aba94a31a5384bbe8c84a29a760252928">   16</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="pic_8h.html#aba94a31a5384bbe8c84a29a760252928">pic_interrupt</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    IRQ_TIMER = 0,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    IRQ_KEYBOARD = 1,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    IRQ_SERIAL2 = 3,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    IRQ_SERIAL1 = 4,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    IRQ_LPT2 = 5,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    IRQ_FLOPPY = 6,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    IRQ_LPT1 = 7,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    IRQ_RTC = 8,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    IRQ_MOUSE = 12,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    IRQ_FPU = 13,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    IRQ_ATA1 = 14,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    IRQ_ATA2 = 15,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * @brief Send an IRQ</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * @param irq </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a67952a5fa15339c2292671d8170bee4d">pic_send_eoi</a>(<span class="keywordtype">int</span> irq);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @brief Initialize PIC</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#ab5ebdc1b31b3357377b0257473641ced">pic_init</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * @brief Unmask IRQ (enum)</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * @param irq </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a>(<span class="keywordtype">int</span> irq);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @brief Mask an IRQ (enum)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @param irq </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a03eb731a7b92d4f784229e11c988c202">pic_irq_mask</a>(<span class="keywordtype">int</span> irq);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="apic_8h_html_a03eb731a7b92d4f784229e11c988c202"><div class="ttname"><a href="pic_8h.html#a03eb731a7b92d4f784229e11c988c202">pic_irq_mask</a></div><div class="ttdeci">void pic_irq_mask(int irq)</div><div class="ttdoc">Mask an IRQ (enum)</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00052">pic.c:52</a></div></div>
+<div class="ttc" id="apic_8h_html_ab5ebdc1b31b3357377b0257473641ced"><div class="ttname"><a href="pic_8h.html#ab5ebdc1b31b3357377b0257473641ced">pic_init</a></div><div class="ttdeci">void pic_init()</div><div class="ttdoc">Initialize PIC.</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00018">pic.c:18</a></div></div>
+<div class="ttc" id="apic_8h_html_a616969cad9f55f0ff2865e66bcaa441f"><div class="ttname"><a href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a></div><div class="ttdeci">void pic_irq_unmask(int irq)</div><div class="ttdoc">Unmask IRQ (enum)</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00036">pic.c:36</a></div></div>
+<div class="ttc" id="apic_8h_html_a67952a5fa15339c2292671d8170bee4d"><div class="ttname"><a href="pic_8h.html#a67952a5fa15339c2292671d8170bee4d">pic_send_eoi</a></div><div class="ttdeci">void pic_send_eoi(int irq)</div><div class="ttdoc">Send an IRQ.</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00013">pic.c:13</a></div></div>
+<div class="ttc" id="apic_8h_html_aba94a31a5384bbe8c84a29a760252928"><div class="ttname"><a href="pic_8h.html#aba94a31a5384bbe8c84a29a760252928">pic_interrupt</a></div><div class="ttdeci">pic_interrupt</div><div class="ttdoc">PIC interrupts.</div><div class="ttdef"><b>Definition:</b> <a href="pic_8h_source.html#l00016">pic.h:16</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

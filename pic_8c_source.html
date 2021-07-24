@@ -52,7 +52,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;x86/pic.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pic_8h.html">x86/pic.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define PRIMARY_COMMAND 0x20</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define PRIMARY_DATA 0x21</span></div>
@@ -61,63 +61,70 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define END_OF_INTERRUPT 0x20</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> pic_send_eoi(<span class="keywordtype">int</span> irq) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span> (irq &gt;= 8) outb(SECONDARY_COMMAND, END_OF_INTERRUPT);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    outb(PRIMARY_COMMAND, END_OF_INTERRUPT);</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="pic_8h.html#a67952a5fa15339c2292671d8170bee4d">   13</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a67952a5fa15339c2292671d8170bee4d">pic_send_eoi</a>(<span class="keywordtype">int</span> irq) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span> (irq &gt;= 8) <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_COMMAND, END_OF_INTERRUPT);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_COMMAND, END_OF_INTERRUPT);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> pic_init() {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    outb(PRIMARY_COMMAND, 0x11); <span class="comment">// reset and program</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    outb(PRIMARY_DATA, 0x20);    <span class="comment">// starting at interrupt 0x20</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    outb(PRIMARY_DATA, 0x04);    <span class="comment">// secondary at line 2</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    outb(PRIMARY_DATA, 0x01);    <span class="comment">// 8086 mode</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    outb(PRIMARY_DATA, 0xFF);    <span class="comment">// mask all interrupts</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="pic_8h.html#ab5ebdc1b31b3357377b0257473641ced">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#ab5ebdc1b31b3357377b0257473641ced">pic_init</a>() {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_COMMAND, 0x11); <span class="comment">// reset and program</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, 0x20);    <span class="comment">// starting at interrupt 0x20</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, 0x04);    <span class="comment">// secondary at line 2</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, 0x01);    <span class="comment">// 8086 mode</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, 0xFF);    <span class="comment">// mask all interrupts</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    outb(SECONDARY_COMMAND, 0x11); <span class="comment">// reset and program</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    outb(SECONDARY_DATA, 0x28);    <span class="comment">// starting at interrupt 0x20</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    outb(SECONDARY_DATA, 0x02);    <span class="comment">// (not 100% sure)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    outb(SECONDARY_DATA, 0x01);    <span class="comment">// 8086 mode</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    outb(SECONDARY_DATA, 0xFF);    <span class="comment">// mask all interrupts</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_COMMAND, 0x11); <span class="comment">// reset and program</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, 0x28);    <span class="comment">// starting at interrupt 0x20</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, 0x02);    <span class="comment">// (not 100% sure)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, 0x01);    <span class="comment">// 8086 mode</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, 0xFF);    <span class="comment">// mask all interrupts</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    pic_irq_unmask(2); <span class="comment">// allow cascade</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a>(2); <span class="comment">// allow cascade</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;pic: initialized\n&quot;</span>);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> pic_irq_unmask(<span class="keywordtype">int</span> irq) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a>(<span class="keywordtype">int</span> irq) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mask;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (irq &gt; 15 || irq &lt; 0) panic(<span class="stringliteral">&quot;pic: can&#39;t unmask irq %i\n&quot;</span>, irq);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (irq &gt;= 8) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        mask = inb(SECONDARY_DATA);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        mask = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(SECONDARY_DATA);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        mask &amp;= ~(1 &lt;&lt; (irq - 8));</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        outb(SECONDARY_DATA, mask);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, mask);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        mask = inb(PRIMARY_DATA);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        mask = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(PRIMARY_DATA);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        mask &amp;= ~(1 &lt;&lt; (irq));</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        outb(PRIMARY_DATA, mask);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, mask);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> pic_irq_mask(<span class="keywordtype">int</span> irq) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="pic_8h.html#a03eb731a7b92d4f784229e11c988c202">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a03eb731a7b92d4f784229e11c988c202">pic_irq_mask</a>(<span class="keywordtype">int</span> irq) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> mask;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (irq &gt; 15 || irq &lt; 0) panic(<span class="stringliteral">&quot;pic: can&#39;t mask irq %i\n&quot;</span>, irq);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (irq &gt;= 8) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        mask = inb(SECONDARY_DATA);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        mask = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(SECONDARY_DATA);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        mask |= 1 &lt;&lt; (irq - 8);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        outb(SECONDARY_DATA, mask);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(SECONDARY_DATA, mask);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        mask = inb(PRIMARY_DATA);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        mask = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(PRIMARY_DATA);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        mask |= 1 &lt;&lt; (irq);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        outb(PRIMARY_DATA, mask);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(PRIMARY_DATA, mask);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="apic_8h_html_a03eb731a7b92d4f784229e11c988c202"><div class="ttname"><a href="pic_8h.html#a03eb731a7b92d4f784229e11c988c202">pic_irq_mask</a></div><div class="ttdeci">void pic_irq_mask(int irq)</div><div class="ttdoc">Mask an IRQ (enum)</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00052">pic.c:52</a></div></div>
+<div class="ttc" id="apic_8h_html_ab5ebdc1b31b3357377b0257473641ced"><div class="ttname"><a href="pic_8h.html#ab5ebdc1b31b3357377b0257473641ced">pic_init</a></div><div class="ttdeci">void pic_init()</div><div class="ttdoc">Initialize PIC.</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00018">pic.c:18</a></div></div>
+<div class="ttc" id="apic_8h_html_a616969cad9f55f0ff2865e66bcaa441f"><div class="ttname"><a href="pic_8h.html#a616969cad9f55f0ff2865e66bcaa441f">pic_irq_unmask</a></div><div class="ttdeci">void pic_irq_unmask(int irq)</div><div class="ttdoc">Unmask IRQ (enum)</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00036">pic.c:36</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a4b949251e84d5e9a389c4e2db0271c06"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a></div><div class="ttdeci">uint8_t inb(port_addr_t port)</div><div class="ttdoc">Read 8 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00012">cpu.c:12</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="apic_8h_html_a67952a5fa15339c2292671d8170bee4d"><div class="ttname"><a href="pic_8h.html#a67952a5fa15339c2292671d8170bee4d">pic_send_eoi</a></div><div class="ttdeci">void pic_send_eoi(int irq)</div><div class="ttdoc">Send an IRQ.</div><div class="ttdef"><b>Definition:</b> <a href="pic_8c_source.html#l00013">pic.c:13</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
+<div class="ttc" id="apic_8h_html"><div class="ttname"><a href="pic_8h.html">pic.h</a></div><div class="ttdoc">x86 PIC header files</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->

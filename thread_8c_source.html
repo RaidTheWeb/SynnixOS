@@ -266,7 +266,7 @@ $(function() {
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * if you don&#39;t actually plan on running it.</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *thread_sched(<span class="keywordtype">bool</span> irqs_disabled) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> (!irqs_disabled) disable_irqs();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> (!irqs_disabled) <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *to;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    to = next_runnable_thread();</div>
@@ -288,7 +288,7 @@ $(function() {
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keywordtype">void</span> thread_yield(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *to = thread_sched(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">if</span> (to == thread_idle) {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        enable_irqs();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
@@ -332,7 +332,7 @@ $(function() {
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> account_thread(<span class="keyword">struct</span> <a class="code" href="structthread.html">thread</a> *th, <span class="keyword">enum</span> in_out st) {</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    uint64_t tick_time = kernel_timer;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> tsc_time = rdtsc();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> tsc_time = <a class="code" href="x86_2include_2x86_2cpu_8h.html#a56237bb115471532c16e426e29e420bb">rdtsc</a>();</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (st == SCH_IN) {</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        th-&gt;n_scheduled += 1;</div>
@@ -349,7 +349,7 @@ $(function() {
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">if</span> (needs_fpu(old)) fxsave(&amp;old-&gt;fpctx);</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">if</span> (needs_fpu(<span class="keyword">new</span>)) fxrstor(&amp;new-&gt;fpctx);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">if</span> (change_vm(<span class="keyword">new</span>, old)) set_vm_root(new-&gt;proc-&gt;vm_root);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">if</span> (change_vm(<span class="keyword">new</span>, old)) <a class="code" href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">set_vm_root</a>(new-&gt;proc-&gt;vm_root);</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    thread_set_running(<span class="keyword">new</span>);</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    DEBUG_PRINTF(<span class="stringliteral">&quot;[%i:%i] -&gt; [%i:%i]\n&quot;</span>, old-&gt;proc-&gt;pid, old-&gt;tid,</div>
@@ -358,7 +358,7 @@ $(function() {
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="setjmp_8h.html#af1c244964ca40814b28a0739b98e327d">setjmp</a>(old-&gt;kernel_ctx)) {</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        account_thread(<span class="keyword">new</span>, SCH_IN);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        old-&gt;flags &amp;= ~TF_ONCPU;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        enable_irqs();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">if</span> (!(running_thread-&gt;flags &amp; TF_IS_KTHREAD)) {</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            handle_killed_condition();</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="kernel_2include_2snx_2signal_8h.html#a063a9aac87e8176caa1c2155bf50da70">handle_pending_signals</a>();</div>
@@ -375,7 +375,7 @@ $(function() {
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    set_kernel_stack(new-&gt;kstack);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (needs_fpu(<span class="keyword">new</span>)) fxrstor(&amp;new-&gt;fpctx);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    set_vm_root(new-&gt;proc-&gt;vm_root);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">set_vm_root</a>(new-&gt;proc-&gt;vm_root);</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    thread_set_running(<span class="keyword">new</span>);</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <a class="code" href="setjmp_8h.html#aa0fa825ee18becfe2d0b9db5fa930c60">longjmp</a>(new-&gt;kernel_ctx, 1);</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
@@ -400,7 +400,7 @@ $(function() {
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keyword">static</span> noreturn <span class="keywordtype">void</span> thread_entrypoint(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *th = running_thread;</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    enable_irqs();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    th-&gt;entry(th-&gt;entry_arg);</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    UNREACHABLE();</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
@@ -543,7 +543,7 @@ $(function() {
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;}</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> finalizer_kthread(<span class="keywordtype">void</span> *_) {</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *th;</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
@@ -573,7 +573,7 @@ $(function() {
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wake_waiting_parent_thread(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keywordflow">if</span> (running_process-&gt;pid == 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    <span class="keyword">struct </span><a class="code" href="structprocess.html">process</a> *parent = running_process-&gt;parent;</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structthread.html">thread</a>, parent_th, &amp;parent-&gt;threads, process_threads) {</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keywordflow">if</span> (parent_th-&gt;state != TS_WAIT) <span class="keywordflow">continue</span>;</div>
@@ -588,7 +588,7 @@ $(function() {
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="comment">// no one is listening, signal the tg leader</span></div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="keyword">struct </span><a class="code" href="structthread.html">thread</a> *parent_th = process_thread(parent);</div>
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <a class="code" href="kernel_2include_2snx_2signal_8h.html#a10c867fc15be211395ff7ce3fea3133d">signal_send_th</a>(parent_th, SIGCHLD);</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    enable_irqs();</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;}</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160; </div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
@@ -604,7 +604,7 @@ $(function() {
 <div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    DEBUG_PRINTF(<span class="stringliteral">&quot;do_thread_exit(%i)\n&quot;</span>, exit_status);</div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    assert(running_thread-&gt;state != TS_DEAD);</div>
 <div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; </div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    list_remove(&amp;running_thread-&gt;wait_node);</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    list_remove(&amp;running_thread-&gt;trace_node);</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    list_remove(&amp;running_thread-&gt;process_threads);</div>
@@ -786,19 +786,19 @@ $(function() {
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <span class="comment">// if (proc-&gt;elf_metadata) free(proc-&gt;elf_metadata);</span></div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="comment">// proc-&gt;elf_metadata = NULL;</span></div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    free_process_slot(proc);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    enable_irqs();</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;}</div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160; </div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="comment">// If it finds a child process to destroy, find_dead_child returns with</span></div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="comment">// interrupts disabled. destroy_child_process will re-enable them.</span></div>
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="structprocess.html">process</a> *find_dead_child(pid_t query) {</div>
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="keywordflow">if</span> (list_empty(&amp;running_process-&gt;children)) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structprocess.html">process</a>, child, &amp;running_process-&gt;children, siblings) {</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <span class="keywordflow">if</span> (!process_matches(query, child)) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;        <span class="keywordflow">if</span> (child-&gt;exit_status &gt; 0) <span class="keywordflow">return</span> child;</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    }</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    enable_irqs();</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>();</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;}</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160; </div>
@@ -861,7 +861,7 @@ $(function() {
 <div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    <span class="keywordflow">if</span> (options &amp; WNOHANG) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160; </div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    <span class="keywordflow">if</span> (running_thread-&gt;state == TS_WAIT) {</div>
 <div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;        thread_block_irqsdisabled();</div>
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;        <span class="comment">// rescheduled when a wait() comes in</span></div>
@@ -876,7 +876,7 @@ $(function() {
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    running_thread-&gt;wait_trace_result = NULL;</div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160; </div>
 <div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    <span class="keywordflow">if</span> (p) {</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        disable_irqs();</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        exit_code = p-&gt;exit_status - 1;</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;        found_pid = p-&gt;pid;</div>
 <div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;        destroy_child_process(p);</div>
@@ -915,7 +915,7 @@ $(function() {
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
 <div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    <span class="comment">// assert(running_thread-&gt;wait_node.next == 0);</span></div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160; </div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    disable_irqs();</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>();</div>
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    running_thread-&gt;state = TS_BLOCKED;</div>
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    list_append(blocked_threads, &amp;running_thread-&gt;wait_node);</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
@@ -1132,13 +1132,15 @@ $(function() {
 <div class="ttc" id="afs_8h_html_a19ec9041d80d18fb945c07e5b8e0b8cd"><div class="ttname"><a href="fs_8h.html#a19ec9041d80d18fb945c07e5b8e0b8cd">proc_sprintf</a></div><div class="ttdeci">void proc_sprintf(struct open_file *ofd, const char *format,...)</div><div class="ttdoc">But data into proc file.</div><div class="ttdef"><b>Definition:</b> <a href="procfs_8c_source.html#l00017">procfs.c:17</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
-<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdoc">Node struct.</div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00052">parse.h:52</a></div></div>
 <div class="ttc" id="asetjmp_8h_html"><div class="ttname"><a href="setjmp_8h.html">setjmp.h</a></div><div class="ttdoc">Jumping.</div></div>
 <div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="astructtimer__event_html"><div class="ttname"><a href="structtimer__event.html">timer_event</a></div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00043">timer.c:43</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="await_8h_html"><div class="ttname"><a href="wait_8h.html">wait.h</a></div><div class="ttdoc">Process waiting.</div></div>
 <div class="ttc" id="adebug_8c_html_ae5dace4217ca0d456c6a85431ed43e72"><div class="ttname"><a href="debug_8c.html#ae5dace4217ca0d456c6a85431ed43e72">backtrace_from_with_ip</a></div><div class="ttdeci">void backtrace_from_with_ip(uintptr_t bp, uintptr_t ip)</div><div class="ttdoc">Back trace from point but using ip</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00078">debug.c:78</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_aa84ddd915c24f5b384167dccd378fbcb"><div class="ttname"><a href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a></div><div class="ttdeci">void disable_irqs(void)</div><div class="ttdoc">Disable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00361">interrupt.c:361</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a56237bb115471532c16e426e29e420bb"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a56237bb115471532c16e426e29e420bb">rdtsc</a></div><div class="ttdeci">uint64_t rdtsc()</div><div class="ttdoc">RDTSC function.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00044">cpu.c:44</a></div></div>
 <div class="ttc" id="astructmutex_html"><div class="ttname"><a href="structmutex.html">mutex</a></div><div class="ttdoc">MUTEX structure.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8h_source.html#l00040">sync.h:40</a></div></div>
 <div class="ttc" id="alist_8h_html_aa442370678f5931c2dd4bc965d464d00"><div class="ttname"><a href="list_8h.html#aa442370678f5931c2dd4bc965d464d00">list_head</a></div><div class="ttdeci">struct list list_head</div><div class="ttdoc">Create type list_head</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00031">list.h:31</a></div></div>
 <div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div><div class="ttdoc">Kernel-Space PIT-based timer.</div></div>
@@ -1146,6 +1148,7 @@ $(function() {
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div><div class="ttdoc">Standard Integers.</div></div>
 <div class="ttc" id="asetjmp_8h_html_aa0fa825ee18becfe2d0b9db5fa930c60"><div class="ttname"><a href="setjmp_8h.html#aa0fa825ee18becfe2d0b9db5fa930c60">longjmp</a></div><div class="ttdeci">noreturn void longjmp(jmp_buf, int)</div><div class="ttdoc">Long jump.</div></div>
+<div class="ttc" id="ainterrupt_8h_html_a9c0acdd6fa6fc322b63fa55f7dd1bf31"><div class="ttname"><a href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a></div><div class="ttdeci">void enable_irqs(void)</div><div class="ttdoc">Enable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00354">interrupt.c:354</a></div></div>
 <div class="ttc" id="astructdmgr_html"><div class="ttname"><a href="structdmgr.html">dmgr</a></div><div class="ttdef"><b>Definition:</b> <a href="dmgr_8h_source.html#l00013">dmgr.h:13</a></div></div>
 <div class="ttc" id="astdio_8h_html_a91b8e3a4b5dc25056e5981ea68f18034"><div class="ttname"><a href="stdio_8h.html#a91b8e3a4b5dc25056e5981ea68f18034">snprintf</a></div><div class="ttdeci">int snprintf(char *buf, size_t len, const char *format,...)</div><div class="ttdoc">Write formatted output to sized buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00472">stdio.c:472</a></div></div>
 <div class="ttc" id="astructtar__header_html"><div class="ttname"><a href="structtar__header.html">tar_header</a></div><div class="ttdoc">Tar file header struct.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8h_source.html#l00018">tarfs.h:18</a></div></div>
@@ -1155,9 +1158,10 @@ $(function() {
 <div class="ttc" id="athread_8h_html_a6f75bdeeb80982814e5ac8ce3af720c1"><div class="ttname"><a href="thread_8h.html#a6f75bdeeb80982814e5ac8ce3af720c1">all_threads</a></div><div class="ttdeci">list all_threads</div><div class="ttdoc">List of all threads.</div></div>
 <div class="ttc" id="asetjmp_8h_html_af1c244964ca40814b28a0739b98e327d"><div class="ttname"><a href="setjmp_8h.html#af1c244964ca40814b28a0739b98e327d">setjmp</a></div><div class="ttdeci">__RETURNS_TWICE int setjmp(jmp_buf)</div><div class="ttdoc">Set jump buffer.</div></div>
 <div class="ttc" id="amemmap_8h_html"><div class="ttname"><a href="memmap_8h.html">memmap.h</a></div><div class="ttdoc">Convenience macros for memory mappings.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_aff59b20302a862c7aa7fdba2fc3ce27f"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">set_vm_root</a></div><div class="ttdeci">void set_vm_root(uintptr_t)</div><div class="ttdoc">Set the vm root object.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00050">cpu.c:50</a></div></div>
 <div class="ttc" id="atimer_8h_html_ae62e6991ffa21022ef7b715ece975662"><div class="ttname"><a href="timer_8h.html#ae62e6991ffa21022ef7b715ece975662">milliseconds</a></div><div class="ttdeci">int milliseconds(int ms)</div><div class="ttdoc">Convert milliseconds into ticks (HZ)</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00030">timer.c:30</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
-<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a10c867fc15be211395ff7ce3fea3133d"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a10c867fc15be211395ff7ce3fea3133d">signal_send_th</a></div><div class="ttdeci">int signal_send_th(struct thread *th, int signal)</div><div class="ttdoc">Simulate a signal trip to a thread via struct.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00065">signal.c:65</a></div></div>
 <div class="ttc" id="afs_8h_html_acdddfa43cb6494d8b8684db3c67f426d"><div class="ttname"><a href="fs_8h.html#acdddfa43cb6494d8b8684db3c67f426d">clone_open_file</a></div><div class="ttdeci">struct open_file * clone_open_file(struct open_file *ofd)</div><div class="ttdoc">Clone an open file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00248">fs.c:248</a></div></div>
 <div class="ttc" id="atimer_8h_html_afd53b4ad1fd1410105378ce8a6178cd1"><div class="ttname"><a href="timer_8h.html#afd53b4ad1fd1410105378ce8a6178cd1">insert_timer_event</a></div><div class="ttdeci">struct timer_event * insert_timer_event(uint64_t delta_t, void(*fn)(void *), const char *fn_name, void *extra_data)</div><div class="ttdoc">Create timer event.</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00063">timer.c:63</a></div></div>

@@ -49,29 +49,74 @@ $(function() {
 <div class="title">interrupt.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="interrupt_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SNX_X86_INTERRUPT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_X86_INTERRUPT_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;cpu.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> install_isrs(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> enable_irqs(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> disable_irqs(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> assert_irqs_enabled(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> assert_irqs_disabled(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> c_interrupt_shim(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Moves va args 1, 2, 3 to userland args 1, 2, 3</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> jmp_to_userspace(uintptr_t ip, uintptr_t sp, ...);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> page_fault(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> generic_exception(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> syscall_handler(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * @brief x86 Interrupt Headers</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> install_isrs(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * @brief Enable IRQs</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * @brief Disable IRQs</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> assert_irqs_enabled(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> assert_irqs_disabled(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> c_interrupt_shim(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * @brief Make the jump to userspace :D</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * @param ip </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * @param sp </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * @param ... </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#afcaf64582fb0e158520aead8c363e08c">jmp_to_userspace</a>(uintptr_t ip, uintptr_t sp, ...);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @brief Manage page fault</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * @param r </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * @brief Manage generic exception</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * @param r </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @brief Handle syscalls</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @param r </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interrupt_8h.html#a456acd4e477d04bf6ba111d6937e6a2e">syscall_handler</a>(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_a456acd4e477d04bf6ba111d6937e6a2e"><div class="ttname"><a href="interrupt_8h.html#a456acd4e477d04bf6ba111d6937e6a2e">syscall_handler</a></div><div class="ttdeci">void syscall_handler(interrupt_frame *r)</div><div class="ttdoc">Handle syscalls.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00215">interrupt.c:215</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_aa4a9e02a0cb41e15a720683007ec1c59"><div class="ttname"><a href="interrupt_8h.html#aa4a9e02a0cb41e15a720683007ec1c59">page_fault</a></div><div class="ttdeci">void page_fault(interrupt_frame *r)</div><div class="ttdoc">Manage page fault.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00303">interrupt.c:303</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_aa84ddd915c24f5b384167dccd378fbcb"><div class="ttname"><a href="interrupt_8h.html#aa84ddd915c24f5b384167dccd378fbcb">disable_irqs</a></div><div class="ttdeci">void disable_irqs(void)</div><div class="ttdoc">Disable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00361">interrupt.c:361</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_a9c0acdd6fa6fc322b63fa55f7dd1bf31"><div class="ttname"><a href="interrupt_8h.html#a9c0acdd6fa6fc322b63fa55f7dd1bf31">enable_irqs</a></div><div class="ttdeci">void enable_irqs(void)</div><div class="ttdoc">Enable IRQs.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00354">interrupt.c:354</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_af3ec26beb013bd13338cd74a6a4096af"><div class="ttname"><a href="interrupt_8h.html#af3ec26beb013bd13338cd74a6a4096af">generic_exception</a></div><div class="ttdeci">void generic_exception(interrupt_frame *r)</div><div class="ttdoc">Manage generic exception.</div><div class="ttdef"><b>Definition:</b> <a href="interrupt_8c_source.html#l00337">interrupt.c:337</a></div></div>
+<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_afcaf64582fb0e158520aead8c363e08c"><div class="ttname"><a href="interrupt_8h.html#afcaf64582fb0e158520aead8c363e08c">jmp_to_userspace</a></div><div class="ttdeci">void jmp_to_userspace(uintptr_t ip, uintptr_t sp,...)</div><div class="ttdoc">Make the jump to userspace :D.</div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

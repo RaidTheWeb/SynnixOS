@@ -213,7 +213,7 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    set_kernel_stack(sigstack);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    jmp_to_userspace((uintptr_t)handler, new_sp, sig);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="interrupt_8h.html#afcaf64582fb0e158520aead8c363e08c">jmp_to_userspace</a>((uintptr_t)handler, new_sp, sig);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    assert(0);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
@@ -242,6 +242,7 @@ $(function() {
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
 <div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a451afac9b5b477394527be0dca6958e0"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a451afac9b5b477394527be0dca6958e0">handle_signal</a></div><div class="ttdeci">void handle_signal(int signal, sighandler_t)</div><div class="ttdoc">Handle a signal via a singal handler.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00120">signal.c:120</a></div></div>
+<div class="ttc" id="ainterrupt_8h_html_afcaf64582fb0e158520aead8c363e08c"><div class="ttname"><a href="interrupt_8h.html#afcaf64582fb0e158520aead8c363e08c">jmp_to_userspace</a></div><div class="ttdeci">void jmp_to_userspace(uintptr_t ip, uintptr_t sp,...)</div><div class="ttdoc">Make the jump to userspace :D.</div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

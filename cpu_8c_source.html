@@ -53,52 +53,52 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;x86/cpu.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="x86_2include_2x86_2cpu_8h.html">x86/cpu.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * cpu.c is for CPU-specific utilities, like</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * MSRs on Intel x86 CPUs</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;uint8_t inb(port_addr_t port) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">   12</a></span>&#160;uint8_t <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    uint8_t result;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;inb %1, %0&quot;</span> : <span class="stringliteral">&quot;=a&quot;</span>(result) : <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> outb(port_addr_t port, uint8_t data) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port, uint8_t data) {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;outb %0, %1&quot;</span> ::<span class="stringliteral">&quot;a&quot;</span>(data), <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;uint16_t inw(port_addr_t port) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#af79b608de5246592cda0797dc5ab945b">   22</a></span>&#160;uint16_t <a class="code" href="x86_2include_2x86_2cpu_8h.html#af79b608de5246592cda0797dc5ab945b">inw</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint16_t result;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;inw %1, %0&quot;</span> : <span class="stringliteral">&quot;=a&quot;</span>(result) : <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> outw(port_addr_t port, uint16_t data) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#aa9b7e745fe0d0db155c23e4e7996504b">   28</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#aa9b7e745fe0d0db155c23e4e7996504b">outw</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port, uint16_t data) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;outw %0, %1&quot;</span> ::<span class="stringliteral">&quot;a&quot;</span>(data), <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// TODO: @Easy rename to inl</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;uint32_t ind(port_addr_t port) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#ad5e08779950123ca7db4c790923e64f4">   33</a></span>&#160;uint32_t <a class="code" href="x86_2include_2x86_2cpu_8h.html#ad5e08779950123ca7db4c790923e64f4">ind</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    uint32_t result;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;inl %1, %0&quot;</span> : <span class="stringliteral">&quot;=a&quot;</span>(result) : <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// TODO: @Easy rename to outl</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> outd(port_addr_t port, uint32_t data) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port, uint32_t data) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;outl %0, %1&quot;</span> ::<span class="stringliteral">&quot;a&quot;</span>(data), <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;uint64_t rdtsc() {</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#a56237bb115471532c16e426e29e420bb">   44</a></span>&#160;uint64_t <a class="code" href="x86_2include_2x86_2cpu_8h.html#a56237bb115471532c16e426e29e420bb">rdtsc</a>() {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    uint64_t result;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;rdtsc&quot;</span> : <span class="stringliteral">&quot;=A&quot;</span>(result));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> set_vm_root(uintptr_t address) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">set_vm_root</a>(uintptr_t address) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;mov %0, %%cr3&quot;</span> ::<span class="stringliteral">&quot;r&quot;</span>(address) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
@@ -124,8 +124,18 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;wrmsr&quot;</span> ::<span class="stringliteral">&quot;c&quot;</span>(msr_id), <span class="stringliteral">&quot;A&quot;</span>(value));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_ad5e08779950123ca7db4c790923e64f4"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#ad5e08779950123ca7db4c790923e64f4">ind</a></div><div class="ttdeci">uint32_t ind(port_addr_t port)</div><div class="ttdoc">Read 32 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00033">cpu.c:33</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a56237bb115471532c16e426e29e420bb"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a56237bb115471532c16e426e29e420bb">rdtsc</a></div><div class="ttdeci">uint64_t rdtsc()</div><div class="ttdoc">RDTSC function.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00044">cpu.c:44</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a4b949251e84d5e9a389c4e2db0271c06"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a></div><div class="ttdeci">uint8_t inb(port_addr_t port)</div><div class="ttdoc">Read 8 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00012">cpu.c:12</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a7627009e8069430931be84988ff5bbdf"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a></div><div class="ttdeci">uint16_t port_addr_t</div><div class="ttdoc">Port address typedef.</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00043">cpu.h:43</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_af79b608de5246592cda0797dc5ab945b"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#af79b608de5246592cda0797dc5ab945b">inw</a></div><div class="ttdeci">uint16_t inw(port_addr_t port)</div><div class="ttdoc">Read 16 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00022">cpu.c:22</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a6202c92c652738a82d710a11854256f0"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a></div><div class="ttdeci">void outd(port_addr_t port, uint32_t data)</div><div class="ttdoc">Write 32 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00040">cpu.c:40</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_aff59b20302a862c7aa7fdba2fc3ce27f"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#aff59b20302a862c7aa7fdba2fc3ce27f">set_vm_root</a></div><div class="ttdeci">void set_vm_root(uintptr_t)</div><div class="ttdoc">Set the vm root object.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00050">cpu.c:50</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_aa9b7e745fe0d0db155c23e4e7996504b"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#aa9b7e745fe0d0db155c23e4e7996504b">outw</a></div><div class="ttdeci">void outw(port_addr_t port, uint16_t data)</div><div class="ttdoc">Write 16 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00028">cpu.c:28</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html">cpu.h</a></div><div class="ttdoc">CPU headers.</div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->

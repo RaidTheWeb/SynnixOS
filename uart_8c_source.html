@@ -56,9 +56,9 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tty_8h.html">snx/tty.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;x86/cpu.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;x86/pic.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;x86/uart.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="x86_2include_2x86_2cpu_8h.html">x86/cpu.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pic_8h.html">x86/pic.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="uart_8h.html">x86/uart.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define UART_DATA 0</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define UART_INTERRUPT_ENABLE 1</span></div>
@@ -70,48 +70,48 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define UART_LINE_STATUS 5</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define UART_MODEM_STATUS 6</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> is_transmit_empty(port_addr_t com) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> (inb(com + UART_LINE_STATUS) &amp; 0x20) != 0;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> is_transmit_empty(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(com + UART_LINE_STATUS) &amp; 0x20) != 0;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> is_data_available(port_addr_t com) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> (inb(com + UART_LINE_STATUS) &amp; 0x01) != 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> is_data_available(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(com + UART_LINE_STATUS) &amp; 0x01) != 0;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wait_for_transmit_empty(port_addr_t com) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wait_for_transmit_empty(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">while</span> (!is_transmit_empty(com)) {}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wait_for_data_available(port_addr_t com) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wait_for_data_available(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">while</span> (!is_data_available(com)) {}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> x86_uart_write_byte(port_addr_t p, <span class="keyword">const</span> <span class="keywordtype">char</span> b) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="uart_8h.html#a7d131a28a033edfd828b9d5377e40330">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a7d131a28a033edfd828b9d5377e40330">x86_uart_write_byte</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> p, <span class="keyword">const</span> <span class="keywordtype">char</span> b) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    wait_for_transmit_empty(p);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    outb(p + UART_DATA, b);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + UART_DATA, b);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> x86_uart_write(port_addr_t p, <span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) x86_uart_write_byte(p, buf[i]);</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="uart_8h.html#af0721b39a0aec1b22c1b9622ab9206f8">   43</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#af0721b39a0aec1b22c1b9622ab9206f8">x86_uart_write</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> p, <span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) <a class="code" href="uart_8h.html#a7d131a28a033edfd828b9d5377e40330">x86_uart_write_byte</a>(p, buf[i]);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">char</span> x86_uart_read_byte(port_addr_t p) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="uart_8h.html#acc6a8d5a52999bf2d7dbb64425e1d912">   47</a></span>&#160;<span class="keywordtype">char</span> <a class="code" href="uart_8h.html#acc6a8d5a52999bf2d7dbb64425e1d912">x86_uart_read_byte</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> p) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    wait_for_data_available(p);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> inb(p + UART_DATA);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(p + UART_DATA);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> x86_uart_enable_interrupt(port_addr_t com) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="uart_8h.html#a78c9fa66b4f29e2006a7921dbce55d2f">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a78c9fa66b4f29e2006a7921dbce55d2f">x86_uart_enable_interrupt</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// For now, I only support_addr_t interrupt on data available</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    outb(com + UART_INTERRUPT_ENABLE, 0x9);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(com + UART_INTERRUPT_ENABLE, 0x9);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> x86_uart_disable_interrupt(port_addr_t com) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    outb(com + UART_INTERRUPT_ENABLE, 0x0);</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="uart_8h.html#ace8bfbd0128ecd34b468f1122a17bde9">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#ace8bfbd0128ecd34b468f1122a17bde9">x86_uart_disable_interrupt</a>(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> com) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(com + UART_INTERRUPT_ENABLE, 0x0);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> x86_uart_irq_handler(<a class="code" href="structinterrupt__frame.html">interrupt_frame</a> *r, <span class="keywordtype">void</span> *serial_port) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    port_addr_t port = (port_addr_t)(intptr_t)serial_port;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">char</span> f = x86_uart_read_byte(port);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> port = (<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a>)(intptr_t)serial_port;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">char</span> f = <a class="code" href="uart_8h.html#acc6a8d5a52999bf2d7dbb64425e1d912">x86_uart_read_byte</a>(port);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">switch</span> (port) {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">case</span> COM1: <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(&amp;<a class="code" href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a>, f); <span class="keywordflow">break</span>;</div>
@@ -123,19 +123,19 @@ $(function() {
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> x86_uart_setup(port_addr_t p) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> x86_uart_setup(<a class="code" href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a> p) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// TODO: cleanup with registers above</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    outb(p + 1, 0x00);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    outb(p + 3, 0x80);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    outb(p + 0, 0x03);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    outb(p + 1, 0x00);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    outb(p + 3, 0x03);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    outb(p + 2, 0xC7);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    outb(p + 4, 0x0B);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    x86_uart_enable_interrupt(p);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 1, 0x00);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 3, 0x80);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 0, 0x03);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 1, 0x00);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 3, 0x03);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 2, 0xC7);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(p + 4, 0x0B);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="uart_8h.html#a78c9fa66b4f29e2006a7921dbce55d2f">x86_uart_enable_interrupt</a>(p);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> x86_uart_init() {</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="uart_8h.html#a5676c2ba8495959e2d57e9d674b641d5">   87</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a5676c2ba8495959e2d57e9d674b641d5">x86_uart_init</a>() {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    x86_uart_setup(0x3f8);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    x86_uart_setup(0x2f8);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
@@ -146,17 +146,29 @@ $(function() {
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// irq_install(3, x86_uart_irq_handler, (void *)0x2E8);</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="auart_8h_html_af0721b39a0aec1b22c1b9622ab9206f8"><div class="ttname"><a href="uart_8h.html#af0721b39a0aec1b22c1b9622ab9206f8">x86_uart_write</a></div><div class="ttdeci">void x86_uart_write(port_addr_t p, const char *buf, size_t len)</div><div class="ttdoc">Write buffer to port.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00043">uart.c:43</a></div></div>
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
+<div class="ttc" id="auart_8h_html_a78c9fa66b4f29e2006a7921dbce55d2f"><div class="ttname"><a href="uart_8h.html#a78c9fa66b4f29e2006a7921dbce55d2f">x86_uart_enable_interrupt</a></div><div class="ttdeci">void x86_uart_enable_interrupt(port_addr_t com)</div><div class="ttdoc">Enable UART interrupts on port.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00052">uart.c:52</a></div></div>
+<div class="ttc" id="auart_8h_html"><div class="ttname"><a href="uart_8h.html">uart.h</a></div><div class="ttdoc">UART (COM) header files.</div></div>
+<div class="ttc" id="auart_8h_html_a5676c2ba8495959e2d57e9d674b641d5"><div class="ttname"><a href="uart_8h.html#a5676c2ba8495959e2d57e9d674b641d5">x86_uart_init</a></div><div class="ttdeci">void x86_uart_init(void)</div><div class="ttdoc">Initialize UART.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00087">uart.c:87</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a4b949251e84d5e9a389c4e2db0271c06"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a></div><div class="ttdeci">uint8_t inb(port_addr_t port)</div><div class="ttdoc">Read 8 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00012">cpu.c:12</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a7627009e8069430931be84988ff5bbdf"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a7627009e8069430931be84988ff5bbdf">port_addr_t</a></div><div class="ttdeci">uint16_t port_addr_t</div><div class="ttdoc">Port address typedef.</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00043">cpu.h:43</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
 <div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
+<div class="ttc" id="auart_8h_html_a7d131a28a033edfd828b9d5377e40330"><div class="ttname"><a href="uart_8h.html#a7d131a28a033edfd828b9d5377e40330">x86_uart_write_byte</a></div><div class="ttdeci">void x86_uart_write_byte(port_addr_t p, const char b)</div><div class="ttdoc">Write byte to port.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00038">uart.c:38</a></div></div>
 <div class="ttc" id="airq_8h_html_a872bb2e39230e1fef17df03eea8d697b"><div class="ttname"><a href="irq_8h.html#a872bb2e39230e1fef17df03eea8d697b">irq_install</a></div><div class="ttdeci">void irq_install(int irq, void(*fn)(interrupt_frame *, void *), void *)</div><div class="ttdoc">Install an irq</div><div class="ttdef"><b>Definition:</b> <a href="irq_8c_source.html#l00013">irq.c:13</a></div></div>
 <div class="ttc" id="airq_8h_html"><div class="ttname"><a href="irq_8h.html">irq.h</a></div><div class="ttdoc">Interrupt definitions.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
-<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00010">cpu.h:10</a></div></div>
+<div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
+<div class="ttc" id="apic_8h_html"><div class="ttname"><a href="pic_8h.html">pic.h</a></div><div class="ttdoc">x86 PIC header files</div></div>
+<div class="ttc" id="auart_8h_html_ace8bfbd0128ecd34b468f1122a17bde9"><div class="ttname"><a href="uart_8h.html#ace8bfbd0128ecd34b468f1122a17bde9">x86_uart_disable_interrupt</a></div><div class="ttdeci">void x86_uart_disable_interrupt(port_addr_t com)</div><div class="ttdoc">Disable UART interrupts on port.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00057">uart.c:57</a></div></div>
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>
+<div class="ttc" id="auart_8h_html_acc6a8d5a52999bf2d7dbb64425e1d912"><div class="ttname"><a href="uart_8h.html#acc6a8d5a52999bf2d7dbb64425e1d912">x86_uart_read_byte</a></div><div class="ttdeci">char x86_uart_read_byte(port_addr_t com)</div><div class="ttdoc">Read byte from port.</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00047">uart.c:47</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html">cpu.h</a></div><div class="ttdoc">CPU headers.</div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -49,7 +49,7 @@ $(function() {
 <div class="title">token.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="token_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SNX_SH_TOKEN_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_SH_TOKEN_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
@@ -57,45 +57,64 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">enum</span> token_type {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    TOKEN_OR,        <span class="comment">// &#39;||&#39;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    TOKEN_AND,       <span class="comment">// &#39;&amp;&amp;&#39;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    TOKEN_PIPE,      <span class="comment">// &#39;|&#39;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    TOKEN_OPAREN,    <span class="comment">// &#39;(&#39;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    TOKEN_CPAREN,    <span class="comment">// &#39;)&#39;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    TOKEN_APPEND,    <span class="comment">// &#39;&gt;&gt;&#39;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    TOKEN_ERRAPPEND, <span class="comment">// &#39;2&gt;&gt;&#39;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    TOKEN_ERROUTPUT, <span class="comment">// &#39;2&gt;&#39;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    TOKEN_INPUT,     <span class="comment">// &#39;&lt;&#39;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TOKEN_OUTPUT,    <span class="comment">// &#39;&gt;&#39;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    TOKEN_AMPERSAND, <span class="comment">// &#39;&amp;&#39;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    TOKEN_SEMICOLON, <span class="comment">// &#39;;&#39;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    TOKEN_STRING,    <span class="comment">// &quot;&#39;&#39;&quot; | &#39;&quot;&quot;&#39;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    TOKEN_VAR,       <span class="comment">// &#39;$&quot;&quot;&#39;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structtoken.html">   27</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtoken.html">token</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">enum</span> token_type type;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *string;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    off_t begin, end;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="structlist.html">list_node</a> <a class="code" href="structnode.html">node</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> token_print(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> token_fprint(<a class="code" href="struct__FILE.html">FILE</a> *, <span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">bool</span> tokenize(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <a class="code" href="structlist.html">list_head</a> *out);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">char</span> *token_strdup(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">char</span> *token_strcpy(<span class="keywordtype">char</span> *dest, <span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief Lexer header file </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * @brief Token types</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">   19</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TOKEN_OR,        <span class="comment">// &#39;||&#39;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    TOKEN_AND,       <span class="comment">// &#39;&amp;&amp;&#39;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    TOKEN_PIPE,      <span class="comment">// &#39;|&#39;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    TOKEN_OPAREN,    <span class="comment">// &#39;(&#39;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    TOKEN_CPAREN,    <span class="comment">// &#39;)&#39;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    TOKEN_APPEND,    <span class="comment">// &#39;&gt;&gt;&#39;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    TOKEN_ERRAPPEND, <span class="comment">// &#39;2&gt;&gt;&#39;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    TOKEN_ERROUTPUT, <span class="comment">// &#39;2&gt;&#39;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    TOKEN_INPUT,     <span class="comment">// &#39;&lt;&#39;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    TOKEN_OUTPUT,    <span class="comment">// &#39;&gt;&#39;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    TOKEN_AMPERSAND, <span class="comment">// &#39;&amp;&#39;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    TOKEN_SEMICOLON, <span class="comment">// &#39;;&#39;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    TOKEN_STRING,    <span class="comment">// &quot;&#39;&#39;&quot; | &#39;&quot;&quot;&#39;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    TOKEN_VAR,       <span class="comment">// &#39;$&quot;&quot;&#39;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * @brief Token struct</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structtoken.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtoken.html">token</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">enum</span> <a class="code" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a> type;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *string;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    off_t begin, end;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structlist.html">list_node</a> <a class="code" href="structnode.html">node</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="token_8h.html#a9cd64e5f723bb40d78c166bb923edb98">token_print</a>(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="token_8h.html#a816393802f792f80e7e103ffa7b503f7">token_fprint</a>(<a class="code" href="struct__FILE.html">FILE</a> *, <span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="token_8h.html#ae974885c62fc43e02e95a4c2e5b4ba5d">tokenize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <a class="code" href="structlist.html">list_head</a> *out);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="token_8h.html#a7431a39e03b6d761323f4d886393adb0">token_strdup</a>(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">char</span> *<a class="code" href="token_8h.html#a133683ba9dfb1f9ccee32660eededeb5">token_strcpy</a>(<span class="keywordtype">char</span> *dest, <span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a> *t);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="atoken_8h_html_ae974885c62fc43e02e95a4c2e5b4ba5d"><div class="ttname"><a href="token_8h.html#ae974885c62fc43e02e95a4c2e5b4ba5d">tokenize</a></div><div class="ttdeci">bool tokenize(const char *string, list_head *out)</div><div class="ttdoc">Tokenize string.</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00170">token.c:170</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdoc">Node struct.</div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00052">parse.h:52</a></div></div>
 <div class="ttc" id="astruct__FILE_html"><div class="ttname"><a href="struct__FILE.html">_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00010">fstdio.c:10</a></div></div>
-<div class="ttc" id="astructtoken_html"><div class="ttname"><a href="structtoken.html">token</a></div><div class="ttdef"><b>Definition:</b> <a href="token_8h_source.html#l00027">token.h:27</a></div></div>
+<div class="ttc" id="astructtoken_html"><div class="ttname"><a href="structtoken.html">token</a></div><div class="ttdoc">Token struct.</div><div class="ttdef"><b>Definition:</b> <a href="token_8h_source.html#l00040">token.h:40</a></div></div>
+<div class="ttc" id="atoken_8h_html_afe5ef662303b6b710ea6ee1a944bad0d"><div class="ttname"><a href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a></div><div class="ttdeci">token_type</div><div class="ttdoc">Token types.</div><div class="ttdef"><b>Definition:</b> <a href="token_8h_source.html#l00019">token.h:19</a></div></div>
+<div class="ttc" id="atoken_8h_html_a133683ba9dfb1f9ccee32660eededeb5"><div class="ttname"><a href="token_8h.html#a133683ba9dfb1f9ccee32660eededeb5">token_strcpy</a></div><div class="ttdeci">char * token_strcpy(char *dest, struct token *t)</div><div class="ttdoc">copy token to destination</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00078">token.c:78</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="atoken_8h_html_a7431a39e03b6d761323f4d886393adb0"><div class="ttname"><a href="token_8h.html#a7431a39e03b6d761323f4d886393adb0">token_strdup</a></div><div class="ttdeci">char * token_strdup(struct token *t)</div><div class="ttdoc">strndup token</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00067">token.c:67</a></div></div>
+<div class="ttc" id="atoken_8h_html_a816393802f792f80e7e103ffa7b503f7"><div class="ttname"><a href="token_8h.html#a816393802f792f80e7e103ffa7b503f7">token_fprint</a></div><div class="ttdeci">void token_fprint(FILE *, struct token *t)</div><div class="ttdoc">Print token to stream.</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00047">token.c:47</a></div></div>
 <div class="ttc" id="asys_2types_8h_html"><div class="ttname"><a href="sys_2types_8h.html">types.h</a></div><div class="ttdoc">Standard Types.</div></div>
 <div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">High-Level lists.</div></div>
+<div class="ttc" id="atoken_8h_html_a9cd64e5f723bb40d78c166bb923edb98"><div class="ttname"><a href="token_8h.html#a9cd64e5f723bb40d78c166bb923edb98">token_print</a></div><div class="ttdeci">void token_print(struct token *t)</div><div class="ttdoc">Print token to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00057">token.c:57</a></div></div>
 <div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdoc">List struct.</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00017">list.h:17</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->

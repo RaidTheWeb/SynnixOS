@@ -49,183 +49,249 @@ $(function() {
 <div class="title">readline.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// vim: ts=4 sw=4 sts=4 :</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;readline.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> history_base = {0};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *history_top = &amp;history_base;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// Line manipulation</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> clear_line(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">while</span> (*ix &gt; 0) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        *ix -= 1;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        buf[*ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\x08 \x08&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> backspace(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> (*ix == 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    *ix -= 1;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    buf[*ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\x08 \x08&quot;</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> load_line(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix, <span class="keywordtype">char</span> *new_line) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    clear_line(buf, ix);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">while</span> (*new_line) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        buf[*ix] = *new_line;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%c&quot;</span>, *new_line);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        new_line += 1;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        *ix += 1;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// History</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> store_history_line(<span class="keywordtype">char</span> *line_to_store, <span class="keywordtype">long</span> len) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *<a class="code" href="structnode.html">node</a> = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structhistory__item.html">history_item</a>));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;history_line = strdup(line_to_store);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;previous = history_top;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;next = NULL;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    history_top-&gt;next = <a class="code" href="structnode.html">node</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    history_top = <a class="code" href="structnode.html">node</a>;</div>
+<a href="readline_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="readline_8h.html">readline.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctype_8h.html">ctype.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="errno_8h.html">errno.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @brief Basic Readline C source file</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * @brief History start</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="readline_8c.html#aeb6b140594a968737ce316cfef0801d2">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> <a class="code" href="readline_8c.html#aeb6b140594a968737ce316cfef0801d2">history_base</a> = {0};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * @brief History end</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *<a class="code" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a> = &amp;<a class="code" href="readline_8c.html#aeb6b140594a968737ce316cfef0801d2">history_base</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @brief Clear a line</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * @param ix </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="readline_8h.html#a6519c0fc7d2cf6e143daa64eaa415072">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="readline_8c.html#a6519c0fc7d2cf6e143daa64eaa415072">clear_line</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">while</span> (*ix &gt; 0) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        *ix -= 1;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        buf[*ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\x08 \x08&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * @brief Print Backspace</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * @param ix </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="readline_8h.html#aa72bb715f81e1b11d644b48687bdcf57">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="readline_8c.html#aa72bb715f81e1b11d644b48687bdcf57">backspace</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (*ix == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    *ix -= 1;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    buf[*ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\x08 \x08&quot;</span>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> load_history_line(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix, <span class="keyword">struct</span> <a class="code" href="structhistory__item.html">history_item</a> *current) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    clear_line(buf, ix);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (!current-&gt;history_line) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    load_line(buf, ix, current-&gt;history_line);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">// Read line</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">long</span> read_line_interactive(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> max_len) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">long</span> ix = 0;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> readlen = 0;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">char</span> cb[256] = {0};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> local = {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        .previous = history_top,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    };</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *current = &amp;local;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        memset(cb, 0, 256);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        readlen = read(STDIN_FILENO, cb, 256);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (readlen == -1) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (readlen == 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @brief Load a line</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @param ix </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @param new_line </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="readline_8h.html#ac2e35ac844008c52156a37131f3be634">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="readline_8c.html#ac2e35ac844008c52156a37131f3be634">load_line</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix, <span class="keywordtype">char</span> *new_line) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="readline_8c.html#a6519c0fc7d2cf6e143daa64eaa415072">clear_line</a>(buf, ix);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">while</span> (*new_line) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        buf[*ix] = *new_line;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%c&quot;</span>, *new_line);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        new_line += 1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        *ix += 1;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> * @brief Store a line in history</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * @param line_to_store </span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * @param len </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="readline_8h.html#aa2abd05fa8e972d93e03d60900382c20">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="readline_8c.html#aa2abd05fa8e972d93e03d60900382c20">store_history_line</a>(<span class="keywordtype">char</span> *line_to_store, <span class="keywordtype">long</span> len) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *<a class="code" href="structnode.html">node</a> = <a class="code" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structhistory__item.html">history_item</a>));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;history_line = strdup(line_to_store);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (cb[0] == <span class="stringliteral">&#39;\x1b&#39;</span>) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        esc_seq:</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (strcmp(cb, <span class="stringliteral">&quot;\x1b[A&quot;</span>) == 0) { <span class="comment">// up arrow</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (current-&gt;previous) current = current-&gt;previous;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                load_history_line(buf, &amp;ix, current);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(cb, <span class="stringliteral">&quot;\x1b[B&quot;</span>) == 0) { <span class="comment">// down arrow</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">if</span> (current-&gt;next) current = current-&gt;next;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                load_history_line(buf, &amp;ix, current);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">if</span> (strlen(cb) &gt; 3) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;unknown escape-sequence %s\n&quot;</span>, &amp;cb[1]);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordtype">int</span> rl = read(STDIN_FILENO, &amp;cb[readlen], 1);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">if</span> (rl &gt; 0) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    readlen += rl;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">goto</span> esc_seq;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; readlen; i++) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordtype">char</span> escape_status = 0;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordtype">char</span> c = cb[i];</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">switch</span> (c) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">case</span> 0x7f: <span class="comment">// backspace</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                backspace(buf, &amp;ix);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">case</span> 0x0b: <span class="comment">// ^K</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                clear_line(buf, &amp;ix);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">case</span> 0x0e: <span class="comment">// ^N</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">if</span> (current-&gt;previous) current = current-&gt;previous;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                load_history_line(buf, &amp;ix, current);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">case</span> 0x08: <span class="comment">// ^H</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (current-&gt;next) current = current-&gt;next;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                load_history_line(buf, &amp;ix, current);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;\n&#39;</span>: <span class="keywordflow">goto</span> done;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">if</span> (ix + 1 == max_len) <span class="keywordflow">goto</span> done; <span class="comment">// continue;</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a>(c)) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;^%c&quot;</span>, c + <span class="charliteral">&#39;@&#39;</span>);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            buf[ix++] = c;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            buf[ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(c);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            cb[i] = 0;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;done:</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> (ix &gt; 0) store_history_line(buf, ix);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> ix;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">long</span> read_line_simple(<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="structfile.html">file</a>, <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> limit) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(<a class="code" href="structfile.html">file</a>)) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;previous = <a class="code" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="structnode.html">node</a>-&gt;next = NULL;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a>-&gt;next = <a class="code" href="structnode.html">node</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a> = <a class="code" href="structnode.html">node</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * @brief Get a line from history</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * @param ix </span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * @param current </span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="readline_8h.html#ac9dc8a3e3f3c22fbd99d90c7d392e4b1">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">long</span> *ix, <span class="keyword">struct</span> <a class="code" href="structhistory__item.html">history_item</a> *current) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="readline_8c.html#a6519c0fc7d2cf6e143daa64eaa415072">clear_line</a>(buf, ix);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!current-&gt;history_line) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="readline_8c.html#ac2e35ac844008c52156a37131f3be634">load_line</a>(buf, ix, current-&gt;history_line);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> * @brief Interactive readline</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * @param max_len </span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * @return long </span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="readline_8h.html#a53bd678608af9823bf4b29e562042d7c">  106</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="readline_8c.html#a53bd678608af9823bf4b29e562042d7c">read_line_interactive</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> max_len) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">long</span> ix = 0;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">int</span> readlen = 0;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">char</span> cb[256] = {0};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> local = {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        .previous = <a class="code" href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a>,</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    };</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">struct </span><a class="code" href="structhistory__item.html">history_item</a> *current = &amp;local;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        memset(cb, 0, 256);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        readlen = read(STDIN_FILENO, cb, 256);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> (readlen == -1) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span> (readlen == 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (cb[0] == <span class="stringliteral">&#39;\x1b&#39;</span>) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        esc_seq:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">if</span> (strcmp(cb, <span class="stringliteral">&quot;\x1b[A&quot;</span>) == 0) { <span class="comment">// up arrow</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">if</span> (current-&gt;previous) current = current-&gt;previous;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <a class="code" href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a>(buf, &amp;ix, current);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(cb, <span class="stringliteral">&quot;\x1b[B&quot;</span>) == 0) { <span class="comment">// down arrow</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">if</span> (current-&gt;next) current = current-&gt;next;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <a class="code" href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a>(buf, &amp;ix, current);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">if</span> (strlen(cb) &gt; 3) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;unknown escape-sequence %s\n&quot;</span>, &amp;cb[1]);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordtype">int</span> rl = read(STDIN_FILENO, &amp;cb[readlen], 1);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">if</span> (rl &gt; 0) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    readlen += rl;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;read()&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">goto</span> esc_seq;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">char</span> *v = <a class="code" href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a>(buf, limit, <a class="code" href="structfile.html">file</a>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (v == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">int</span> ix = strlen(buf);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// EVIL HACK FIXME</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (buf[ix - 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        buf[ix - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        ix -= 1;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; readlen; i++) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordtype">char</span> escape_status = 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordtype">char</span> c = cb[i];</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">case</span> 0x7f: <span class="comment">// backspace</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="readline_8c.html#aa72bb715f81e1b11d644b48687bdcf57">backspace</a>(buf, &amp;ix);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">case</span> 0x0b: <span class="comment">// ^K</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <a class="code" href="readline_8c.html#a6519c0fc7d2cf6e143daa64eaa415072">clear_line</a>(buf, &amp;ix);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">case</span> 0x0e: <span class="comment">// ^N</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">if</span> (current-&gt;previous) current = current-&gt;previous;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <a class="code" href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a>(buf, &amp;ix, current);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">case</span> 0x08: <span class="comment">// ^H</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">if</span> (current-&gt;next) current = current-&gt;next;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <a class="code" href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a>(buf, &amp;ix, current);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;\n&#39;</span>: <span class="keywordflow">goto</span> done;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">if</span> (ix + 1 == max_len) <span class="keywordflow">goto</span> done; <span class="comment">// continue;</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a>(c)) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;^%c&quot;</span>, c + <span class="charliteral">&#39;@&#39;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            buf[ix++] = c;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            buf[ix] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(c);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            cb[i] = 0;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;done:</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (ix &gt; 0) <a class="code" href="readline_8c.html#aa2abd05fa8e972d93e03d60900382c20">store_history_line</a>(buf, ix);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> ix;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment"> * @brief Simple readline</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment"> * @param file </span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment"> * @param buf </span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment"> * @param limit </span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment"> * @return long </span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="readline_8h.html#a52fdffc3a978c44dee6623692fcd3e1a">  200</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="readline_8c.html#a52fdffc3a978c44dee6623692fcd3e1a">read_line_simple</a>(<a class="code" href="struct__FILE.html">FILE</a> *<a class="code" href="structfile.html">file</a>, <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> limit) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a>(<a class="code" href="structfile.html">file</a>)) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">char</span> *v = <a class="code" href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a>(buf, limit, <a class="code" href="structfile.html">file</a>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span> (v == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">int</span> ix = strlen(buf);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">     * @brief Incredibly destructive hack for buffer</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span> (buf[ix - 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        buf[ix - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        ix -= 1;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astdio_8h_html_af4de2514b7778805db3815e8dd6cf09a"><div class="ttname"><a href="stdio_8h.html#af4de2514b7778805db3815e8dd6cf09a">putchar</a></div><div class="ttdeci">int putchar(int c)</div><div class="ttdoc">Put character to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00271">fstdio.c:271</a></div></div>
+<div class="ttc" id="areadline_8c_html_a53bd678608af9823bf4b29e562042d7c"><div class="ttname"><a href="readline_8c.html#a53bd678608af9823bf4b29e562042d7c">read_line_interactive</a></div><div class="ttdeci">long read_line_interactive(char *buf, size_t max_len)</div><div class="ttdoc">Interactive readline.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00106">readline.c:106</a></div></div>
 <div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
+<div class="ttc" id="areadline_8c_html_aeb6b140594a968737ce316cfef0801d2"><div class="ttname"><a href="readline_8c.html#aeb6b140594a968737ce316cfef0801d2">history_base</a></div><div class="ttdeci">struct history_item history_base</div><div class="ttdoc">History start.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00018">readline.c:18</a></div></div>
+<div class="ttc" id="areadline_8c_html_aa2abd05fa8e972d93e03d60900382c20"><div class="ttname"><a href="readline_8c.html#aa2abd05fa8e972d93e03d60900382c20">store_history_line</a></div><div class="ttdeci">void store_history_line(char *line_to_store, long len)</div><div class="ttdoc">Store a line in history.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00076">readline.c:76</a></div></div>
+<div class="ttc" id="areadline_8c_html_a52fdffc3a978c44dee6623692fcd3e1a"><div class="ttname"><a href="readline_8c.html#a52fdffc3a978c44dee6623692fcd3e1a">read_line_simple</a></div><div class="ttdeci">long read_line_simple(FILE *file, char *buf, size_t limit)</div><div class="ttdoc">Simple readline.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00200">readline.c:200</a></div></div>
 <div class="ttc" id="actype_8h_html_a99355d8f0fb41ec43effb95189db0ed4"><div class="ttname"><a href="ctype_8h.html#a99355d8f0fb41ec43effb95189db0ed4">isprint</a></div><div class="ttdeci">int isprint(int c)</div><div class="ttdoc">Check if character is printable.</div><div class="ttdef"><b>Definition:</b> <a href="ctype_8c_source.html#l00041">ctype.c:41</a></div></div>
+<div class="ttc" id="areadline_8h_html"><div class="ttname"><a href="readline_8h.html">readline.h</a></div><div class="ttdoc">Readline header file.</div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
-<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00031">parse.h:31</a></div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdoc">Node struct.</div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00052">parse.h:52</a></div></div>
 <div class="ttc" id="astruct__FILE_html"><div class="ttname"><a href="struct__FILE.html">_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00010">fstdio.c:10</a></div></div>
 <div class="ttc" id="astdlib_8h_html_a381d0a123dbf80ca3efe2614aa826e08"><div class="ttname"><a href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">malloc</a></div><div class="ttdeci">void * malloc(size_t len)</div><div class="ttdoc">Allocate memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00302">malloc.c:302</a></div></div>
 <div class="ttc" id="astdio_8h_html_a0020b6e39df31f8b342a2444b9b4ad31"><div class="ttname"><a href="stdio_8h.html#a0020b6e39df31f8b342a2444b9b4ad31">fgets</a></div><div class="ttdeci">char * fgets(char *str, int num, FILE *stream)</div><div class="ttdoc">Get string of num charactes from stream and write buffer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00164">fstdio.c:164</a></div></div>
-<div class="ttc" id="astructhistory__item_html"><div class="ttname"><a href="structhistory__item.html">history_item</a></div><div class="ttdef"><b>Definition:</b> <a href="readline_8h_source.html#l00008">readline.h:8</a></div></div>
+<div class="ttc" id="astructhistory__item_html"><div class="ttname"><a href="structhistory__item.html">history_item</a></div><div class="ttdoc">Item in history.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8h_source.html#l00017">readline.h:17</a></div></div>
 <div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
+<div class="ttc" id="areadline_8c_html_aaa09d70ce9d53a8d3eab6fafc925c5b6"><div class="ttname"><a href="readline_8c.html#aaa09d70ce9d53a8d3eab6fafc925c5b6">load_history_line</a></div><div class="ttdeci">void load_history_line(char *buf, long *ix, struct history_item *current)</div><div class="ttdoc">Get a line from history.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00093">readline.c:93</a></div></div>
+<div class="ttc" id="areadline_8c_html_ac2e35ac844008c52156a37131f3be634"><div class="ttname"><a href="readline_8c.html#ac2e35ac844008c52156a37131f3be634">load_line</a></div><div class="ttdeci">void load_line(char *buf, long *ix, char *new_line)</div><div class="ttdoc">Load a line.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00060">readline.c:60</a></div></div>
+<div class="ttc" id="areadline_8c_html_aedae551d5a7b8c3dcbf99e18781efb3f"><div class="ttname"><a href="readline_8c.html#aedae551d5a7b8c3dcbf99e18781efb3f">history_top</a></div><div class="ttdeci">struct history_item * history_top</div><div class="ttdoc">History end.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00024">readline.c:24</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
 <div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
+<div class="ttc" id="areadline_8c_html_a6519c0fc7d2cf6e143daa64eaa415072"><div class="ttname"><a href="readline_8c.html#a6519c0fc7d2cf6e143daa64eaa415072">clear_line</a></div><div class="ttdeci">void clear_line(char *buf, long *ix)</div><div class="ttdoc">Clear a line.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00032">readline.c:32</a></div></div>
 <div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
+<div class="ttc" id="areadline_8c_html_aa72bb715f81e1b11d644b48687bdcf57"><div class="ttname"><a href="readline_8c.html#aa72bb715f81e1b11d644b48687bdcf57">backspace</a></div><div class="ttdeci">void backspace(char *buf, long *ix)</div><div class="ttdoc">Print Backspace.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00046">readline.c:46</a></div></div>
 <div class="ttc" id="astdio_8h_html_a9e71f513ad2496acb5361aedc065e3d8"><div class="ttname"><a href="stdio_8h.html#a9e71f513ad2496acb5361aedc065e3d8">feof</a></div><div class="ttdeci">int feof(FILE *stream)</div><div class="ttdoc">Test file stream EOF.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00188">fstdio.c:188</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->

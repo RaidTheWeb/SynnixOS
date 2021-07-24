@@ -56,11 +56,11 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="debug_8h.html">snx/debug.h</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;snx/vmm.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;x86/acpi.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="acpi_8h.html">x86/acpi.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">static</span> <a class="code" href="structacpi__rsdt.html">acpi_rsdt</a> *acpi_rsdt_cache;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="structacpi__rsdt.html">acpi_rsdt</a> *acpi_get_rsdt(<a class="code" href="structacpi__rsdp.html">acpi_rsdp</a> *rsdp) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="acpi_8h.html#a1955615b7b4e1fe37f07923981089b01">   12</a></span>&#160;<a class="code" href="structacpi__rsdt.html">acpi_rsdt</a> *<a class="code" href="acpi_8h.html#a1955615b7b4e1fe37f07923981089b01">acpi_get_rsdt</a>(<a class="code" href="structacpi__rsdp.html">acpi_rsdp</a> *rsdp) {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">// TODO work with XSDT and 64bit ACPI base</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    acpi_rsdt_cache = (<span class="keywordtype">void</span> *)(uintptr_t)rsdp-&gt;rsdt_address;</div>
@@ -74,7 +74,7 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    [MADT] = MADT_SIGNATURE,</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> *acpi_get_table(<span class="keywordtype">int</span> table_id) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="acpi_8h.html#a15910274da6f0f63c7ef7e1661662692">   26</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="acpi_8h.html#a15910274da6f0f63c7ef7e1661662692">acpi_get_table</a>(<span class="keywordtype">int</span> table_id) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (!(table_id &gt;= RSDT &amp;&amp; table_id &lt;= MADT)) panic(<span class="stringliteral">&quot;Invalid ACPI table&quot;</span>);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (!acpi_rsdt_cache) panic(<span class="stringliteral">&quot;RSDT location not initialized&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
@@ -99,12 +99,12 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> acpi_print_header(<a class="code" href="structacpi__header.html">acpi_header</a> *header) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="acpi_8h.html#ae54e7f8f252a1c22f7941b6df4836398">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="acpi_8h.html#ae54e7f8f252a1c22f7941b6df4836398">acpi_print_header</a>(<a class="code" href="structacpi__header.html">acpi_header</a> *header) {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;acpi: table &#39;%.4s&#39; (%.6s)\n&quot;</span>, &amp;header-&gt;signature,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;           &amp;header-&gt;creator_id);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> acpi_print_table(<a class="code" href="structacpi__header.html">acpi_header</a> *table) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="acpi_8h.html#a11ca620f5b7373ff974fc1c190450566">   56</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="acpi_8h.html#a11ca620f5b7373ff974fc1c190450566">acpi_print_table</a>(<a class="code" href="structacpi__header.html">acpi_header</a> *table) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> table_type = -1;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (strncmp(table-&gt;signature, RSDT_SIGNATURE, 4) == 0) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        table_type = RSDT;</div>
@@ -118,7 +118,7 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (table_type == -1) panic(<span class="stringliteral">&quot;Invalid table to print&quot;</span>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    acpi_print_header(table);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="acpi_8h.html#ae54e7f8f252a1c22f7941b6df4836398">acpi_print_header</a>(table);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">switch</span> (table_type) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">case</span> RSDT: {</div>
@@ -130,7 +130,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  madt: LAPIC address: %#x\n&quot;</span>, <a class="code" href="structmadt.html">madt</a>-&gt;lapic_address);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;  madt: APIC entries:\n&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">size_t</span> current = <span class="keyword">sizeof</span>(<a class="code" href="structacpi__header.html">acpi_header</a>) + 8;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">size_t</span> current = <span class="keyword">sizeof</span>(<a class="code" href="acpi_8h.html#a3e19f85ed267995dd8a84419417dd358">acpi_header</a>) + 8;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">while</span> (current &lt; madt-&gt;header.length) {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="structacpi__madt__entry.html">acpi_madt_entry</a> *entry = (<span class="keywordtype">void</span> *)((<span class="keywordtype">char</span> *)<a class="code" href="structmadt.html">madt</a> + current);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">switch</span> (entry-&gt;type) {</div>
@@ -170,13 +170,19 @@ $(function() {
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructacpi__madt__entry_html"><div class="ttname"><a href="structacpi__madt__entry.html">acpi_madt_entry</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00081">acpi.h:81</a></div></div>
+<div class="ttc" id="astructacpi__madt__entry_html"><div class="ttname"><a href="structacpi__madt__entry.html">acpi_madt_entry</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00098">acpi.h:98</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
-<div class="ttc" id="astructacpi__rsdt_html"><div class="ttname"><a href="structacpi__rsdt.html">acpi_rsdt</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00044">acpi.h:44</a></div></div>
-<div class="ttc" id="astructmadt_html"><div class="ttname"><a href="structmadt.html">madt</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00101">acpi.h:101</a></div></div>
+<div class="ttc" id="astructacpi__rsdt_html"><div class="ttname"><a href="structacpi__rsdt.html">acpi_rsdt</a></div><div class="ttdoc">ACPI RSDT type struct.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00061">acpi.h:61</a></div></div>
+<div class="ttc" id="astructmadt_html"><div class="ttname"><a href="structmadt.html">madt</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00118">acpi.h:118</a></div></div>
+<div class="ttc" id="aacpi_8h_html_a1955615b7b4e1fe37f07923981089b01"><div class="ttname"><a href="acpi_8h.html#a1955615b7b4e1fe37f07923981089b01">acpi_get_rsdt</a></div><div class="ttdeci">acpi_rsdt * acpi_get_rsdt(acpi_rsdp *rsdp)</div><div class="ttdoc">Get the rsdt.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8c_source.html#l00012">acpi.c:12</a></div></div>
+<div class="ttc" id="aacpi_8h_html_ae54e7f8f252a1c22f7941b6df4836398"><div class="ttname"><a href="acpi_8h.html#ae54e7f8f252a1c22f7941b6df4836398">acpi_print_header</a></div><div class="ttdeci">void acpi_print_header(acpi_header *header)</div><div class="ttdoc">Print ACPI header to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8c_source.html#l00051">acpi.c:51</a></div></div>
+<div class="ttc" id="aacpi_8h_html_a15910274da6f0f63c7ef7e1661662692"><div class="ttname"><a href="acpi_8h.html#a15910274da6f0f63c7ef7e1661662692">acpi_get_table</a></div><div class="ttdeci">void * acpi_get_table(int table_id)</div><div class="ttdoc">Get ACPI table ID.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8c_source.html#l00026">acpi.c:26</a></div></div>
+<div class="ttc" id="aacpi_8h_html"><div class="ttname"><a href="acpi_8h.html">acpi.h</a></div><div class="ttdoc">ACPI support headers.</div></div>
+<div class="ttc" id="aacpi_8h_html_a3e19f85ed267995dd8a84419417dd358"><div class="ttname"><a href="acpi_8h.html#a3e19f85ed267995dd8a84419417dd358">acpi_header</a></div><div class="ttdeci">struct __PACKED acpi_header acpi_header</div><div class="ttdoc">ACPI header type struct.</div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
-<div class="ttc" id="astructacpi__rsdp_html"><div class="ttname"><a href="structacpi__rsdp.html">acpi_rsdp</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00024">acpi.h:24</a></div></div>
-<div class="ttc" id="astructacpi__header_html"><div class="ttname"><a href="structacpi__header.html">acpi_header</a></div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00032">acpi.h:32</a></div></div>
+<div class="ttc" id="astructacpi__rsdp_html"><div class="ttname"><a href="structacpi__rsdp.html">acpi_rsdp</a></div><div class="ttdoc">ACPI RDDP type struct.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00033">acpi.h:33</a></div></div>
+<div class="ttc" id="aacpi_8h_html_a11ca620f5b7373ff974fc1c190450566"><div class="ttname"><a href="acpi_8h.html#a11ca620f5b7373ff974fc1c190450566">acpi_print_table</a></div><div class="ttdeci">void acpi_print_table(acpi_header *table)</div><div class="ttdoc">Print ACPI table to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8c_source.html#l00056">acpi.c:56</a></div></div>
+<div class="ttc" id="astructacpi__header_html"><div class="ttname"><a href="structacpi__header.html">acpi_header</a></div><div class="ttdoc">ACPI header type struct.</div><div class="ttdef"><b>Definition:</b> <a href="acpi_8h_source.html#l00045">acpi.h:45</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->

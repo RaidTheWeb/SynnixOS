@@ -51,13 +51,13 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;snx/vmm.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;x86/apic.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;x86/cpu.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="apic_8h.html">x86/apic.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="x86_2include_2x86_2cpu_8h.html">x86/cpu.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> lapic_addr;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">static</span> <span class="keywordtype">size_t</span> ioapic_addr;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> enable_apic(<span class="keywordtype">size_t</span> addr) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="apic_8h.html#a3c72bcb85bc0e58a934f179dc8310a8f">    9</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="apic_8h.html#a3c72bcb85bc0e58a934f179dc8310a8f">enable_apic</a>(<span class="keywordtype">size_t</span> addr) {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    lapic_addr = addr;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    wrmsr(IA32_APIC_BASE, lapic_addr | APIC_ENABLE);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
@@ -90,6 +90,9 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aapic_8h_html"><div class="ttname"><a href="apic_8h.html">apic.h</a></div><div class="ttdoc">APIC headers.</div></div>
+<div class="ttc" id="aapic_8h_html_a3c72bcb85bc0e58a934f179dc8310a8f"><div class="ttname"><a href="apic_8h.html#a3c72bcb85bc0e58a934f179dc8310a8f">enable_apic</a></div><div class="ttdeci">int enable_apic(uintptr_t addr)</div><div class="ttdoc">Enable APIC using addr.</div><div class="ttdef"><b>Definition:</b> <a href="apic_8c_source.html#l00009">apic.c:9</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html">cpu.h</a></div><div class="ttdoc">CPU headers.</div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -79,18 +79,18 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;uint32_t pci_config_read(pci_address_t pci_address) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    pci_address &amp;= 0xFFFFFFFC;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    pci_address |= 0x80000000;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    outd(0xCF8, pci_address);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a>(0xCF8, pci_address);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint32_t value = ind(0xCFC);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint32_t value = <a class="code" href="x86_2include_2x86_2cpu_8h.html#ad5e08779950123ca7db4c790923e64f4">ind</a>(0xCFC);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> value;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> pci_config_write(pci_address_t pci_address, uint32_t value) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    pci_address &amp;= 0xFFFFFFFC;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    pci_address |= 0x80000000;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    outd(0xCF8, pci_address);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a>(0xCF8, pci_address);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    outd(0xCFC, value);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a>(0xCFC, value);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> pci_print_device_info(pci_address_t pci_address) {</div>
@@ -185,6 +185,8 @@ $(function() {
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="apci_8h_html"><div class="ttname"><a href="pci_8h.html">pci.h</a></div><div class="ttdoc">PCI Support.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_ad5e08779950123ca7db4c790923e64f4"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#ad5e08779950123ca7db4c790923e64f4">ind</a></div><div class="ttdeci">uint32_t ind(port_addr_t port)</div><div class="ttdoc">Read 32 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00033">cpu.c:33</a></div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a6202c92c652738a82d710a11854256f0"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a6202c92c652738a82d710a11854256f0">outd</a></div><div class="ttdeci">void outd(port_addr_t port, uint32_t data)</div><div class="ttdoc">Write 32 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00040">cpu.c:40</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
