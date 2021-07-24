@@ -6,7 +6,7 @@ Grab the latest stable release [here](https://github.com/RaidTheWeb/SynnixOS/rel
 
 And pick up a nightly build [here](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
 
-Latest releases are released when I upload it manually, and nightly are at 10:30am everyday.
+Latest releases are released when I upload it manually, and nightly are at 10:30am UTC everyday (which is 10:30pm at night for me).
 
 ## Requirements
 

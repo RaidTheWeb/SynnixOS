@@ -78,10 +78,11 @@ def add_guard(content, guard)
 EOF
   end
 
-# TODO: option parsing
 $options = {
   force: false
 }
+
+puts "SynnixOS Build System: Guard Correction"
 
 HEADER_DIRS = %w(fs include kernel libc linker modules sh user x86)
 headers = HEADER_DIRS.map {
@@ -94,13 +95,6 @@ headers.each do |header|
   if File.symlink?(filename)
     next
   end
-
-  # f = File.open(filename)
-  # now = get_guard(filename, f)
-  # good = correct_guard(filename)
-
-  # puts "#{filename}: #{now or "<>"} -> #{good}"
-  # f.close
 
   f = File.open(filename)
   correct = correct_guard(filename)

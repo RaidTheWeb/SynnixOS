@@ -4,6 +4,10 @@
 
 - [ ] Port MRuby
 
+- [ ] Implement more unimplemented functions
+
+- [ ] Change build system to use python
+
 - [ ] Add memory.h to libc
 
 - [ ] Make a programming language exclusive for the system
