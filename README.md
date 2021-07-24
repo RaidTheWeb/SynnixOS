@@ -1,6 +1,6 @@
 # SynnixOS
 
-[![Build](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml/badge.svg)](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
+[![Build Status](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml/badge.svg)](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
 
 Epic Hobby OS targeting x86_64 CPUs, it includes some hacked together functionality for most essential OSs although, with interactivity via QEMU serial0
 
