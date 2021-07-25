@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/RaidTheWeb/SynnixOS"><img src="https://github.com/RaidTheWeb/SynnixOS/blob/master/gitlogo.jpg" alt="SynnixOS Logo"></a>
+  <a href="https://github.com/RaidTheWeb/SynnixOS"><img src="https://github.com/RaidTheWeb/SynnixOS/blob/master/gitlogo.png" alt="SynnixOS Logo"></a>
   <br>
   SynnixOS
   <br>
