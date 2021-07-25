@@ -1,4 +1,10 @@
-# SynnixOS
+<h1 align="center">
+  <br>
+  <a href="https://github.com/RaidTheWeb/SynnixOS"><img src="https://github.com/RaidTheWeb/SynnixOS/blob/master/gitlogo.jpg" alt="SynnixOS Logo"></a>
+  <br>
+  SynnixOS
+  <br>
+</h1>
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FRaidTheWeb%2FSynnixOS%2Fbadge&style=flat)](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
 [![Architecture](https://img.shields.io/badge/Architecture-x86__64-blue)](https:/github.com/RaidTheWeb/SynnixOS)
