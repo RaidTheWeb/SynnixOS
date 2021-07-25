@@ -10,6 +10,7 @@ function build() {
     make snx
     cd -
 
+
     #cd tinyvm
     #CC=~/.local/bin/x86_64-synnixos-gcc make
     #INSTALL_PREFIX=../../sysroot/usr make install 
