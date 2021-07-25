@@ -124,112 +124,148 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        },</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">   76</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(<span class="keyword">struct</span> <a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a>, <span class="keywordtype">char</span> c) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty.html">tty</a> *serial_tty = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;tty;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;file;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (!serial_tty-&gt;initialized) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        emplace_ring(&amp;serial_tty-&gt;ring, 256);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        serial_tty-&gt;initialized = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\r&#39;</span> || c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(&amp;serial_tty-&gt;ring, serial_tty-&gt;buffer,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                   serial_tty-&gt;buffer_index);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(<span class="stringliteral">&quot;\r\n&quot;</span>, 2);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        serial_tty-&gt;buffer_index = 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="tty_8h.html#a40dd2dffadd8c636be06dd3a7af01088">   76</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#a40dd2dffadd8c636be06dd3a7af01088">dev_serial3</a> = {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    .file =</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            .ops = &amp;dev_serial_ops,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            .type = FT_TTY,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            .mode = USR_READ | USR_WRITE,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        },</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    .tty =</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            .push_threshold = 256,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            .buffer_index = 0,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            .buffer_mode = 1,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            .echo = 1,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        },</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\030&#39;</span> || c == <span class="charliteral">&#39;\003&#39;</span>) { <span class="comment">// ^X | ^C</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">// very TODO:</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="kernel_2include_2snx_2signal_8h.html#a2bf916c40122f886a5697b9644437855">signal_send_pgid</a>(serial_tty-&gt;controlling_pgrp, SIGINT);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\004&#39;</span>) { <span class="comment">// ^D</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="structfile.html">file</a>-&gt;signal_eof = 1;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (serial_tty-&gt;buffer_mode == 0) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = c;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(&amp;serial_tty-&gt;ring, serial_tty-&gt;buffer,</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                   serial_tty-&gt;buffer_index);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(&amp;c, 1);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        serial_tty-&gt;buffer_index = 0;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &gt;= <span class="charliteral">&#39; &#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;~&#39;</span>) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(&amp;c, 1);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = c;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &lt; <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            serial_tty-&gt;print_fn(<span class="stringliteral">&quot;^&quot;</span>, 1);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordtype">char</span> ctrl = <span class="charliteral">&#39;@&#39;</span> + c;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            serial_tty-&gt;print_fn(&amp;ctrl, 1);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="stringliteral">&#39;\177&#39;</span>) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;buffer_index) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            serial_tty-&gt;buffer[serial_tty-&gt;buffer_index] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            serial_tty-&gt;buffer_index -= 1;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(<span class="stringliteral">&quot;\b \b&quot;</span>, 3);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        serial_tty-&gt;print_fn(<span class="stringliteral">&quot;?&quot;</span>, 1);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;sysret sys_ttyctl(<span class="keywordtype">int</span> fd, <span class="keywordtype">int</span> cmd, <span class="keywordtype">int</span> arg) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">struct </span><a class="code" href="structopen__file.html">open_file</a> *ofd = dmgr_get(&amp;running_process-&gt;fds, fd);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (ofd == NULL) <span class="keywordflow">return</span> -EBADF;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = ofd-&gt;file;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty.html">tty</a> *t = NULL;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">   93</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">dev_serial4</a> = {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    .file =</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            .ops = &amp;dev_serial_ops,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            .type = FT_TTY,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            .mode = USR_READ | USR_WRITE,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        },</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    .tty =</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            .push_threshold = 256,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            .buffer_index = 0,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            .buffer_mode = 1,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            .echo = 1,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        },</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">  110</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(<span class="keyword">struct</span> <a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a>, <span class="keywordtype">char</span> c) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty.html">tty</a> *serial_tty = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;tty;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;file;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (!serial_tty-&gt;initialized) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        emplace_ring(&amp;serial_tty-&gt;ring, 256);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        serial_tty-&gt;initialized = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\r&#39;</span> || c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(&amp;serial_tty-&gt;ring, serial_tty-&gt;buffer,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                   serial_tty-&gt;buffer_index);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(<span class="stringliteral">&quot;\r\n&quot;</span>, 2);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        serial_tty-&gt;buffer_index = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\030&#39;</span> || c == <span class="charliteral">&#39;\003&#39;</span>) { <span class="comment">// ^X | ^C</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// very TODO:</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="kernel_2include_2snx_2signal_8h.html#a2bf916c40122f886a5697b9644437855">signal_send_pgid</a>(serial_tty-&gt;controlling_pgrp, SIGINT);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\004&#39;</span>) { <span class="comment">// ^D</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="structfile.html">file</a>-&gt;signal_eof = 1;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (serial_tty-&gt;buffer_mode == 0) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = c;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structfile.html">file</a>-&gt;type == FT_TTY) {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a> = (<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *)<a class="code" href="structfile.html">file</a>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        t = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;tty;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a>(&amp;serial_tty-&gt;ring, serial_tty-&gt;buffer,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                   serial_tty-&gt;buffer_index);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(&amp;c, 1);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        serial_tty-&gt;buffer_index = 0;</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">switch</span> (cmd) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">case</span> TTY_SETPGRP:</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        t-&gt;controlling_pgrp = arg;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">case</span> TTY_SETBUFFER:</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        t-&gt;buffer_mode = arg;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">case</span> TTY_SETECHO:</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        t-&gt;echo = arg;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">case</span> TTY_ISTTY: <span class="keywordflow">return</span> ofd-&gt;file-&gt;type == FT_TTY;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> -EINVAL;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <a class="code" href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a>(&amp;<a class="code" href="structfile.html">file</a>-&gt;readq);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &gt;= <span class="charliteral">&#39; &#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;~&#39;</span>) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(&amp;c, 1);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        serial_tty-&gt;buffer[serial_tty-&gt;buffer_index++] = c;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &lt; <span class="charliteral">&#39; &#39;</span>) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;echo) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            serial_tty-&gt;print_fn(<span class="stringliteral">&quot;^&quot;</span>, 1);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordtype">char</span> ctrl = <span class="charliteral">&#39;@&#39;</span> + c;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            serial_tty-&gt;print_fn(&amp;ctrl, 1);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="stringliteral">&#39;\177&#39;</span>) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">if</span> (serial_tty-&gt;buffer_index) {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            serial_tty-&gt;buffer[serial_tty-&gt;buffer_index] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            serial_tty-&gt;buffer_index -= 1;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">if</span> (serial_tty-&gt;echo) serial_tty-&gt;print_fn(<span class="stringliteral">&quot;\b \b&quot;</span>, 3);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        serial_tty-&gt;print_fn(<span class="stringliteral">&quot;?&quot;</span>, 1);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;sysret sys_ttyctl(<span class="keywordtype">int</span> fd, <span class="keywordtype">int</span> cmd, <span class="keywordtype">int</span> arg) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">struct </span><a class="code" href="structopen__file.html">open_file</a> *ofd = dmgr_get(&amp;running_process-&gt;fds, fd);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span> (ofd == NULL) <span class="keywordflow">return</span> -EBADF;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = ofd-&gt;file;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">struct </span><a class="code" href="structtty.html">tty</a> *t = NULL;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structfile.html">file</a>-&gt;type == FT_TTY) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a> = (<span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> *)<a class="code" href="structfile.html">file</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        t = &amp;<a class="code" href="structtty__file.html">tty_file</a>-&gt;tty;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">switch</span> (cmd) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">case</span> TTY_SETPGRP:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        t-&gt;controlling_pgrp = arg;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">case</span> TTY_SETBUFFER:</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        t-&gt;buffer_mode = arg;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">case</span> TTY_SETECHO:</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> -ENOTTY;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        t-&gt;echo = arg;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">case</span> TTY_ISTTY: <span class="keywordflow">return</span> ofd-&gt;file-&gt;type == FT_TTY;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> -EINVAL;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aringbuf_8h_html_a30df8adbe49a7a33c2e751240aaba5da"><div class="ttname"><a href="ringbuf_8h.html#a30df8adbe49a7a33c2e751240aaba5da">ring_read</a></div><div class="ttdeci">size_t ring_read(struct ringbuf *, void *data, size_t len)</div><div class="ttdoc">Read data from Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00053">ringbuf.c:53</a></div></div>
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
-<div class="ttc" id="afs_8h_html_a1019479bc201200d2afb832d084a5c72"><div class="ttname"><a href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">dev_serial_read</a></div><div class="ttdeci">ssize_t dev_serial_read(struct open_file *n, void *data_, size_t len)</div><div class="ttdoc">Read serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00023">tty.c:23</a></div></div>
+<div class="ttc" id="afs_8h_html_a1019479bc201200d2afb832d084a5c72"><div class="ttname"><a href="fs_8h.html#a1019479bc201200d2afb832d084a5c72">dev_serial_read</a></div><div class="ttdeci">ssize_t dev_serial_read(struct open_file *n, void *data_, size_t len)</div><div class="ttdoc">Read serial COM.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00023">tty.c:23</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html">signal.h</a></div><div class="ttdoc">Helpers around threading and signals.</div></div>
 <div class="ttc" id="astructopen__file_html"><div class="ttname"><a href="structopen__file.html">open_file</a></div><div class="ttdoc">Struct representing an opened file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00097">fs.h:97</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdoc">Base TTY struct.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00019">tty.h:19</a></div></div>
+<div class="ttc" id="atty_8h_html_a40dd2dffadd8c636be06dd3a7af01088"><div class="ttname"><a href="tty_8h.html#a40dd2dffadd8c636be06dd3a7af01088">dev_serial3</a></div><div class="ttdeci">struct tty_file dev_serial3</div><div class="ttdoc">TTY File for serial COM3.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
 <div class="ttc" id="aringbuf_8h_html_ac578a52281847dff43fc6b4830644509"><div class="ttname"><a href="ringbuf_8h.html#ac578a52281847dff43fc6b4830644509">ring_write</a></div><div class="ttdeci">size_t ring_write(struct ringbuf *, const void *data, size_t len)</div><div class="ttdoc">Write data to Ring Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8c_source.html#l00027">ringbuf.c:27</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2signal_8h_html_a2bf916c40122f886a5697b9644437855"><div class="ttname"><a href="kernel_2include_2snx_2signal_8h.html#a2bf916c40122f886a5697b9644437855">signal_send_pgid</a></div><div class="ttdeci">int signal_send_pgid(pid_t pgid, int signal)</div><div class="ttdoc">Simulate a signal trip to a Process Group via PGID.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2signal_8c_source.html#l00083">signal.c:83</a></div></div>
-<div class="ttc" id="afs_8h_html_af05e796d01ae8f29a977334128a4c2ae"><div class="ttname"><a href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a></div><div class="ttdeci">ssize_t dev_serial_write(struct open_file *n, const void *data_, size_t len)</div><div class="ttdoc">Write serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00014">tty.c:14</a></div></div>
+<div class="ttc" id="afs_8h_html_af05e796d01ae8f29a977334128a4c2ae"><div class="ttname"><a href="fs_8h.html#af05e796d01ae8f29a977334128a4c2ae">dev_serial_write</a></div><div class="ttdeci">ssize_t dev_serial_write(struct open_file *n, const void *data_, size_t len)</div><div class="ttdoc">Write serial COM.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00014">tty.c:14</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="atty_8h_html"><div class="ttname"><a href="tty_8h.html">tty.h</a></div><div class="ttdoc">Terminal interface helpers.</div></div>
-<div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
+<div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00110">tty.c:110</a></div></div>
 <div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
-<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00018">serial.c:18</a></div></div>
+<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00020">serial.c:20</a></div></div>
 <div class="ttc" id="async_8h_html_a4e6c14c231ca7fe163e97fbd0d306600"><div class="ttname"><a href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a></div><div class="ttdeci">void wq_notify_all(struct wq *wq)</div><div class="ttdoc">Notify whole queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00022">sync.c:22</a></div></div>
 <div class="ttc" id="aserial_8h_html"><div class="ttname"><a href="serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>
+<div class="ttc" id="atty_8h_html_ad5884d3b4aca3f6dfd7480330a104404"><div class="ttname"><a href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">dev_serial4</a></div><div class="ttdeci">struct tty_file dev_serial4</div><div class="ttdoc">TTY File for serial COM4.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00093">tty.c:93</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>

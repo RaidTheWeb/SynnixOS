@@ -62,7 +62,7 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sys_2time_8h.html">sys/time.h</a>&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libc_2include_2sys_2types_8h.html">sys/types.h</a>&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pit_8h.html">x86/pit.h</a>&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#undef insert_timer_event</span></div>
@@ -181,6 +181,7 @@ $(function() {
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> kernel_timer;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="alibc_2include_2sys_2types_8h_html"><div class="ttname"><a href="libc_2include_2sys_2types_8h.html">types.h</a></div><div class="ttdoc">Standard Types.</div></div>
 <div class="ttc" id="apit_8h_html_abafa68882812f08dfd823b8efac9ebf8"><div class="ttname"><a href="pit_8h.html#abafa68882812f08dfd823b8efac9ebf8">pit_create_periodic</a></div><div class="ttdeci">int pit_create_periodic(int hz)</div><div class="ttdoc">Create periodic timer running at HZ (Hertz)</div><div class="ttdef"><b>Definition:</b> <a href="pit_8c_source.html#l00027">pit.c:27</a></div></div>
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="async_8h_html"><div class="ttname"><a href="sync_8h.html">sync.h</a></div><div class="ttdoc">Synchronous Threading helpers.</div></div>
@@ -207,7 +208,6 @@ $(function() {
 <div class="ttc" id="atimer_8h_html_a44f970d17544b1dbaded6f109580ee46"><div class="ttname"><a href="timer_8h.html#a44f970d17544b1dbaded6f109580ee46">init_timer</a></div><div class="ttdeci">void init_timer(void)</div><div class="ttdoc">Initialize timer.</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00054">timer.c:54</a></div></div>
 <div class="ttc" id="atimer_8h_html_ad176338f4c868294e0a45d0fb1184fde"><div class="ttname"><a href="timer_8h.html#ad176338f4c868294e0a45d0fb1184fde">seconds</a></div><div class="ttdeci">int seconds(int s)</div><div class="ttdoc">Convert seconds into ticks (HZ)</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00026">timer.c:26</a></div></div>
 <div class="ttc" id="astructspalloc_html"><div class="ttname"><a href="structspalloc.html">spalloc</a></div><div class="ttdef"><b>Definition:</b> <a href="spalloc_8h_source.html#l00008">spalloc.h:8</a></div></div>
-<div class="ttc" id="asys_2types_8h_html"><div class="ttname"><a href="sys_2types_8h.html">types.h</a></div><div class="ttdoc">Standard Types.</div></div>
 <div class="ttc" id="atimer_8h_html_ae62e6991ffa21022ef7b715ece975662"><div class="ttname"><a href="timer_8h.html#ae62e6991ffa21022ef7b715ece975662">milliseconds</a></div><div class="ttdeci">int milliseconds(int ms)</div><div class="ttdoc">Convert milliseconds into ticks (HZ)</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00030">timer.c:30</a></div></div>
 <div class="ttc" id="astructinterrupt__frame_html"><div class="ttname"><a href="structinterrupt__frame.html">interrupt_frame</a></div><div class="ttdoc">x86 Interrupt frame</div><div class="ttdef"><b>Definition:</b> <a href="x86_2include_2x86_2cpu_8h_source.html#l00019">cpu.h:19</a></div></div>
 <div class="ttc" id="atimer_8h_html_afd53b4ad1fd1410105378ce8a6178cd1"><div class="ttname"><a href="timer_8h.html#afd53b4ad1fd1410105378ce8a6178cd1">insert_timer_event</a></div><div class="ttdeci">struct timer_event * insert_timer_event(uint64_t delta_t, void(*fn)(void *), const char *fn_name, void *extra_data)</div><div class="ttdoc">Create timer event.</div><div class="ttdef"><b>Definition:</b> <a href="timer_8c_source.html#l00063">timer.c:63</a></div></div>

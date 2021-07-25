@@ -77,59 +77,49 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        next_tar += len + 0x200;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        next_tar = round_up(next_tar, 512);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// potentially need to add 512 more if it was aligned to begin</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// with? fragile</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        tar = (<span class="keywordtype">void</span> *)next_tar;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// printf(&quot;next @ %p\n&quot;, (void*)tar - top);</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// printf(&quot;next  &#39;%c&#39;\n&quot;, *(char*)tar);</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;done.\n&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        tar = (<span class="keywordtype">void</span> *)next_tar;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;done.\n&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">   35</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (strcmp(tar-&gt;filename, filename) == 0) <span class="keywordflow">return</span> (<span class="keywordtype">char</span> *)tar + 512;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">   39</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (strcmp(tar-&gt;filename, filename) == 0) <span class="keywordflow">return</span> (<span class="keywordtype">char</span> *)tar + 512;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        next_tar += len + 0x200;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        next_tar = round_up(next_tar, 512);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// COPYPASTE from above print_all_files</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        next_tar += len + 0x200;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        next_tar = round_up(next_tar, 512);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// potentially need to add 512 more if it was aligned to begin</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// with? fragile</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        tar = (<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *)next_tar;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        tar = (<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *)next_tar;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">   51</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">tarfs_get_len</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">   58</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">tarfs_get_len</a>(<span class="keyword">struct</span> <a class="code" href="structtar__header.html">tar_header</a> *tar, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">while</span> (tar-&gt;filename[0]) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">size_t</span> len = <a class="code" href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a>(tar-&gt;size);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (strcmp(tar-&gt;filename, filename) == 0) <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (strcmp(tar-&gt;filename, filename) == 0) <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        next_tar += len + 0x200;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        next_tar = round_up(next_tar, 512);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        tar = (<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *)next_tar;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// COPYPASTE from above print_all_files</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        uintptr_t next_tar = (uintptr_t)tar;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        next_tar += len + 0x200;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        next_tar = round_up(next_tar, 512);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// potentially need to add 512 more if it was aligned to begin</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// with? fragile</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        tar = (<span class="keyword">struct </span><a class="code" href="structtar__header.html">tar_header</a> *)next_tar;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atarfs_8h_html"><div class="ttname"><a href="tarfs_8h.html">tarfs.h</a></div><div class="ttdoc">Tar file read support.</div></div>
 <div class="ttc" id="atarfs_8h_html_a17026b1d4f3d96259a2ac6cbaf938d6d"><div class="ttname"><a href="tarfs_8h.html#a17026b1d4f3d96259a2ac6cbaf938d6d">tarfs_print_all_files</a></div><div class="ttdeci">void tarfs_print_all_files(struct tar_header *tar)</div><div class="ttdoc">Print all tar files.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00021">tarfs.c:21</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
-<div class="ttc" id="atarfs_8h_html_af264629d72259f125a39d5510a70ded1"><div class="ttname"><a href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a></div><div class="ttdeci">void * tarfs_get_file(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get a file from tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00039">tarfs.c:39</a></div></div>
-<div class="ttc" id="atarfs_8h_html_afa8d2ac2adf35df22b0e350537698ab8"><div class="ttname"><a href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">tarfs_get_len</a></div><div class="ttdeci">size_t tarfs_get_len(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get length of file in tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00058">tarfs.c:58</a></div></div>
+<div class="ttc" id="atarfs_8h_html_af264629d72259f125a39d5510a70ded1"><div class="ttname"><a href="tarfs_8h.html#af264629d72259f125a39d5510a70ded1">tarfs_get_file</a></div><div class="ttdeci">void * tarfs_get_file(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get a file from tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00035">tarfs.c:35</a></div></div>
+<div class="ttc" id="atarfs_8h_html_afa8d2ac2adf35df22b0e350537698ab8"><div class="ttname"><a href="tarfs_8h.html#afa8d2ac2adf35df22b0e350537698ab8">tarfs_get_len</a></div><div class="ttdeci">size_t tarfs_get_len(struct tar_header *tar, const char *filename)</div><div class="ttdoc">Get length of file in tar.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00051">tarfs.c:51</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astdint_8h_html"><div class="ttname"><a href="stdint_8h.html">stdint.h</a></div><div class="ttdoc">Standard Integers.</div></div>
 <div class="ttc" id="atarfs_8h_html_ae7a89de9e0f770b61040519f8b757952"><div class="ttname"><a href="tarfs_8h.html#ae7a89de9e0f770b61040519f8b757952">tar_convert_number</a></div><div class="ttdeci">uint64_t tar_convert_number(char *num)</div><div class="ttdoc">Convert number into 64 bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> <a href="tarfs_8c_source.html#l00008">tarfs.c:8</a></div></div>

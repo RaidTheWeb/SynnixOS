@@ -96,23 +96,37 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @brief Write character to serial based TTY</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @brief TTY File for serial COM3</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @param tty_file </span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @param c </span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @return int </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(<span class="keyword">struct</span> <a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a>, <span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#a40dd2dffadd8c636be06dd3a7af01088">dev_serial3</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @brief TTY File for serial COM4</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">extern</span> <span class="keyword">struct </span><a class="code" href="structtty__file.html">tty_file</a> <a class="code" href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">dev_serial4</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * @brief Write character to serial based TTY</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * @param tty_file </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @param c </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @return int </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> <a class="code" href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a>(<span class="keyword">struct</span> <a class="code" href="structtty__file.html">tty_file</a> *<a class="code" href="structtty__file.html">tty_file</a>, <span class="keywordtype">char</span> c);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="atty_8h_html_a5531424b4f66c8b047f58a22c82a9959"><div class="ttname"><a href="tty_8h.html#a5531424b4f66c8b047f58a22c82a9959">dev_serial2</a></div><div class="ttdeci">struct tty_file dev_serial2</div><div class="ttdoc">TTY File for serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00059">tty.c:59</a></div></div>
 <div class="ttc" id="attyctl_8h_html"><div class="ttname"><a href="ttyctl_8h.html">ttyctl.h</a></div><div class="ttdoc">TTY utilities.</div></div>
 <div class="ttc" id="astructringbuf_html"><div class="ttname"><a href="structringbuf.html">ringbuf</a></div><div class="ttdoc">Ring Buffer structure.</div><div class="ttdef"><b>Definition:</b> <a href="ringbuf_8h_source.html#l00018">ringbuf.h:18</a></div></div>
 <div class="ttc" id="astructtty_html"><div class="ttname"><a href="structtty.html">tty</a></div><div class="ttdoc">Base TTY struct.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8h_source.html#l00019">tty.h:19</a></div></div>
-<div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
+<div class="ttc" id="atty_8h_html_a40dd2dffadd8c636be06dd3a7af01088"><div class="ttname"><a href="tty_8h.html#a40dd2dffadd8c636be06dd3a7af01088">dev_serial3</a></div><div class="ttdeci">struct tty_file dev_serial3</div><div class="ttdoc">TTY File for serial COM3.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00076">tty.c:76</a></div></div>
+<div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00110">tty.c:110</a></div></div>
 <div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
+<div class="ttc" id="atty_8h_html_ad5884d3b4aca3f6dfd7480330a104404"><div class="ttname"><a href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">dev_serial4</a></div><div class="ttdeci">struct tty_file dev_serial4</div><div class="ttdoc">TTY File for serial COM4.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00093">tty.c:93</a></div></div>
 <div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
