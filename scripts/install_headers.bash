@@ -19,7 +19,7 @@ copy kernel/include sysroot/usr/include
 copy x86/include sysroot/usr/include
 copy fs/include sysroot/usr/include
 copy linker/include sysroot/usr/include
-copy fakerootfs/home sysroot/home
+copy fakerootfs/ sysroot/
 
 find user -maxdepth 1 -type f -not -name '*.c' -exec cp {} sysroot/bin \;
 

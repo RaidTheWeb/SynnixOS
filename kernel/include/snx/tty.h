@@ -45,6 +45,18 @@ extern struct tty_file dev_serial;
 extern struct tty_file dev_serial2;
 
 /**
+ * @brief TTY File for serial COM3
+ * 
+ */
+extern struct tty_file dev_serial3;
+
+/**
+ * @brief TTY File for serial COM4
+ * 
+ */
+extern struct tty_file dev_serial4;
+
+/**
  * @brief Write character to serial based TTY
  * 
  * @param tty_file 

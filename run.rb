@@ -9,9 +9,7 @@ options = {
     tee: true,
 }
 OptionParser.new do |opts|
-    opts.on("-f", "--file FILE", "ISO to boot") { |f| options[:file] = f }
     opts.on("-r", "--ram RAM", "Set emulated machine RAM") { |r| options[:ram] = r }
-    opts.on("-d", "--debug", "Wait for GDB connection") { options[:debug] = true }
     opts.on("-v", "--video", "Enable QEMU graphical video output") { options[:video] = true }
     opts.on("-i", "--interrupts", "Enable QEMU interrupt debugging") { options[:interrupts] = true }
     opts.on("-n", "--no-serial", "Do not use serial stdio") { options[:serial] = false }

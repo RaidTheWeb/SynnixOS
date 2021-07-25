@@ -50,7 +50,6 @@ char x86_uart_read_byte(port_addr_t p) {
 }
 
 void x86_uart_enable_interrupt(port_addr_t com) {
-    // For now, I only support_addr_t interrupt on data available
     outb(com + UART_INTERRUPT_ENABLE, 0x9);
 }
 
@@ -63,17 +62,15 @@ void x86_uart_irq_handler(interrupt_frame *r, void *serial_port) {
     char f = x86_uart_read_byte(port);
 
     switch (port) {
-    case COM1: write_to_serial_tty(&dev_serial, f); break;
-    case COM2:
-        write_to_serial_tty(&dev_serial2, f);
-        break;
-        // case COM3: write_to_serial_tty(&dev_serial3, f); break;
-        // case COM4: write_to_serial_tty(&dev_serial4, f); break;
+        case COM1: write_to_serial_tty(&dev_serial, f); break;
+        case COM2: write_to_serial_tty(&dev_serial2, f); break;
+        case COM3: write_to_serial_tty(&dev_serial3, f); break;
+        case COM4: write_to_serial_tty(&dev_serial4, f); break;
     }
+
 }
 
 static void x86_uart_setup(port_addr_t p) {
-    // TODO: cleanup with registers above
     outb(p + 1, 0x00);
     outb(p + 3, 0x80);
     outb(p + 0, 0x03);
@@ -85,8 +82,10 @@ static void x86_uart_setup(port_addr_t p) {
 }
 
 void x86_uart_init() {
-    x86_uart_setup(0x3f8);
-    x86_uart_setup(0x2f8);
+    x86_uart_setup(COM1);
+    x86_uart_setup(COM2);
+    x86_uart_setup(COM3);
+    x86_uart_setup(COM4);
 
     irq_install(IRQ_SERIAL1, x86_uart_irq_handler, (void *)COM1);
     irq_install(IRQ_SERIAL2, x86_uart_irq_handler, (void *)COM2);

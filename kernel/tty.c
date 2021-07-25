@@ -73,6 +73,40 @@ struct tty_file dev_serial2 = {
         },
 };
 
+struct tty_file dev_serial3 = {
+    .file =
+        {
+            .ops = &dev_serial_ops,
+            .type = FT_TTY,
+            .mode = USR_READ | USR_WRITE,
+        },
+    .tty =
+        {
+            .push_threshold = 256,
+            .buffer_index = 0,
+            .buffer_mode = 1,
+            .echo = 1,
+            .print_fn = serial_write_str,
+        },
+};
+
+struct tty_file dev_serial4 = {
+    .file =
+        {
+            .ops = &dev_serial_ops,
+            .type = FT_TTY,
+            .mode = USR_READ | USR_WRITE,
+        },
+    .tty =
+        {
+            .push_threshold = 256,
+            .buffer_index = 0,
+            .buffer_mode = 1,
+            .echo = 1,
+            .print_fn = serial_write_str,
+        },
+};
+
 int write_to_serial_tty(struct tty_file *tty_file, char c) {
     struct tty *serial_tty = &tty_file->tty;
     struct file *file = &tty_file->file;

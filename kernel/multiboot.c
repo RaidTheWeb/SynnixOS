@@ -65,9 +65,7 @@ struct initfs_info mb_initfs_info() {
     void *tag = mb_find_tag_of_type(MULTIBOOT_TAG_TYPE_MODULE);
     if (!tag) return (struct initfs_info){0};
 
-    // TODO:
-    // This means I can only support one module, should probably think
-    // more deeply about how I can support an initfs and other things.
+    // TODO: allow for more modules
 
     multiboot_tag_module *mod = tag;
     uintptr_t mod_start = mod->mod_start;

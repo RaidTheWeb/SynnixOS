@@ -23,6 +23,18 @@
 #define COM2 (port_addr_t)0x2f8
 
 /**
+ * @brief Serial 3
+ * 
+ */
+#define COM3 (port_addr_t)0x3e8
+
+/**
+ * @brief Serial 4
+ * 
+ */
+#define COM4 (port_addr_t)0x2e8
+
+/**
  * @brief Initialize UART
  * 
  */

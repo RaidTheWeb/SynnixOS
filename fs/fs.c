@@ -425,6 +425,8 @@ void vfs_boot_file_setup(void) {
     wq_init(&dev_zero->readq);
     wq_init(&dev_serial.file.readq);
     wq_init(&dev_serial2.file.readq);
+    wq_init(&dev_serial3.file.readq);
+    wq_init(&dev_serial4.file.readq);
 }
 
 void vfs_init(uintptr_t initfs_len) {
@@ -433,22 +435,24 @@ void vfs_init(uintptr_t initfs_len) {
     vfs_boot_file_setup();
 
     struct file *dev = make_directory(fs_root, "dev");
-    printf("vfs: creating /proc directory in root node\n");
+    printf("VFS: creating /proc directory...\n");
     make_directory(fs_root, "proc");
 
-    printf("vfs: creating devfs\n");
+    printf("VFS: creating devfs\n");
     add_dir_file(dev, dev_zero, "zero");
     add_dir_file(dev, dev_null, "null");
     //add_dir_file(dev, dev_rtw, "rtw");
     add_dir_file(dev, &dev_serial.file, "serial");
     add_dir_file(dev, &dev_serial2.file, "serial2");
+    add_dir_file(dev, &dev_serial3.file, "serial3");
+    add_dir_file(dev, &dev_serial4.file, "serial4");
 
     struct tar_header *tar = initfs;
     uintptr_t tar_addr = (uintptr_t)tar;
 
     struct file *tar_file;
     uintptr_t next_tar;
-    printf("vfs: populating fs with data from tarfs\n");
+    printf("VFS: populating fs with data from tarfs\n");
     while (tar->filename[0]) {
         size_t len = tar_convert_number(tar->size);
         int mode = tar_convert_number(tar->mode);
@@ -460,7 +464,7 @@ void vfs_init(uintptr_t initfs_len) {
 
         struct file *directory = fs_resolve_directory_of(fs_root, filename);
         if (!directory) {
-            printf("warning: can't place '%s' in file tree\n", filename);
+            printf("WARNING: can't place '%s' in file tree\n", filename);
             goto next;
         }
 
@@ -469,10 +473,9 @@ void vfs_init(uintptr_t initfs_len) {
             add_dir_file(directory, tar_file, base);
         } else if (tar->typeflag == DIRTYPE) {
             last_name(name_buf, 128, filename);
-            // printf("make_directory(%p, \"%s\")\n", directory, name_buf);
             make_directory(directory, strdup(name_buf));
         } else {
-            printf("warning: tar file of unknown type '%c' (%i)\n",
+            printf("WARNING: tar file of unknown type '%c' (%i)\n",
                    tar->typeflag, tar->typeflag);
         }
 
@@ -483,5 +486,5 @@ void vfs_init(uintptr_t initfs_len) {
         tar = (void *)next_tar;
     }
 
-    printf("vfs: READY\n");
+    printf("VFS: DONE\n");
 }

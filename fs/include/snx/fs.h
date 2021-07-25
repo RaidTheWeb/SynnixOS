@@ -361,7 +361,7 @@ struct tty_file {
 };
 
 /**
- * @brief Write serial COM1
+ * @brief Write serial COM
  * 
  * @param n 
  * @param data_ 
@@ -371,7 +371,7 @@ struct tty_file {
 ssize_t dev_serial_write(struct open_file *n, const void *data_, size_t len);
 
 /**
- * @brief Read serial COM1
+ * @brief Read serial COM
  * 
  * @param n 
  * @param data_ 

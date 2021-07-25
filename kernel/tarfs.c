@@ -26,12 +26,8 @@ void tarfs_print_all_files(struct tar_header *tar) {
         uintptr_t next_tar = (uintptr_t)tar;
         next_tar += len + 0x200;
         next_tar = round_up(next_tar, 512);
-        // potentially need to add 512 more if it was aligned to begin
-        // with? fragile
 
         tar = (void *)next_tar;
-        // printf("next @ %p\n", (void*)tar - top);
-        // printf("next  '%c'\n", *(char*)tar);
     }
     printf("done.\n");
 }
@@ -42,12 +38,9 @@ void *tarfs_get_file(struct tar_header *tar, const char *filename) {
 
         size_t len = tar_convert_number(tar->size);
 
-        // COPYPASTE from above print_all_files
         uintptr_t next_tar = (uintptr_t)tar;
         next_tar += len + 0x200;
         next_tar = round_up(next_tar, 512);
-        // potentially need to add 512 more if it was aligned to begin
-        // with? fragile
 
         tar = (struct tar_header *)next_tar;
     }
@@ -61,12 +54,9 @@ size_t tarfs_get_len(struct tar_header *tar, const char *filename) {
 
         if (strcmp(tar->filename, filename) == 0) return len;
 
-        // COPYPASTE from above print_all_files
         uintptr_t next_tar = (uintptr_t)tar;
         next_tar += len + 0x200;
         next_tar = round_up(next_tar, 512);
-        // potentially need to add 512 more if it was aligned to begin
-        // with? fragile
 
         tar = (struct tar_header *)next_tar;
     }
