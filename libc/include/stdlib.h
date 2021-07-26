@@ -25,6 +25,14 @@
  * 
  */
 
+
+/**
+ * @brief Ignore this, useless stub
+ * 
+ * @return int 
+ */
+int malloc_size();
+
 /**
  * @brief Allocate memory
  * 

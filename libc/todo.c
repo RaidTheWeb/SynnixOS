@@ -134,3 +134,8 @@ struct tm *gmtime(const time_t *timep) {
     printf("called unimplemented function gmtime\n");
     exit(1);
 }
+
+int malloc_size() {
+    printf("called unimplemented function malloc_size\n");
+    exit(1);
+}

@@ -18,9 +18,8 @@ static void report_flag_error(char flag) {
 
 static void consume_argument(char *const argv[], const char *flag) {
     if (flag[1]) {
-        // option is rest of this argument
         optind += 1;
-        nextchar = NULL; // don't keep scanning this argv, move to next
+        nextchar = NULL;
         optarg = &flag[1];
         return;
     }
@@ -28,8 +27,8 @@ static void consume_argument(char *const argv[], const char *flag) {
     // option is next argument
     const char *arg = argv[optind + 1];
     if (!arg) {
-        report_arg_error(*flag); // no argument provided
-        optind += 1;             // to stop us running off the end of ARGV
+        report_arg_error(*flag);
+        optind += 1;
     } else {
         optind += 2;
     }
@@ -53,7 +52,7 @@ static enum option_type opttype(char c, const char *optstring) {
 static int option(char *const argv[], const char *flag, const char *optstring) {
     enum option_type t = opttype(*flag, optstring);
     if (t == NONE) {
-        report_flag_error(*flag); // invalid flag
+        report_flag_error(*flag);
         optopt = *flag;
         return '?';
     }
@@ -65,24 +64,19 @@ static int option(char *const argv[], const char *flag, const char *optstring) {
 static const char *next_flag_character(int argc, char *const argv[]) {
     if (nextchar && *nextchar) return nextchar;
     if (nextchar) {
-        // We were scanning a flag argument, but we hit the end. Move along.
         optind += 1;
         nextchar = NULL;
     }
     if (optind > argc || argv[optind] == 0) {
-        // We're at the end of the tracks
         return NULL;
     }
     if (argv[optind][0] != '-') {
-        // This argiment is not an option, so we're done parsing
         return NULL;
     }
     if (argv[optind][1] && argv[optind][1] != '-') {
-        // This is an argument string, -[^-].*
         nextchar = &argv[optind][1];
         return nextchar;
     }
-    // This should only be hit by '-' and '--.*', let's check that assumption
     assert(strcmp(argv[optind], "-") == 0 ||
            strncmp(argv[optind], "--", 2) == 0);
     return NULL;
