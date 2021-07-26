@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: Globals</title>
+<title>SynnixOS: user/testmath.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,64 +39,26 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_111cd2f11cffd6d6d28d89ee0389ee9e.html">user</a></li>  </ul>
+</div>
 </div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">testmath.c</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;
-
-<h3><a id="index_m"></a>- m -</h3><ul>
-<li>make_directory()
-: <a class="el" href="fs_8h.html#a48de8c1d4df919fce8faaf94d4165f7b">fs.h</a>
-</li>
-<li>make_directory_inplace()
-: <a class="el" href="fs_8h.html#a14c4fec518864214f33667acbca0be04">fs.h</a>
-</li>
-<li>make_procdir()
-: <a class="el" href="fs_8h.html#a7f3e02e584e648dc692ea68b8937bbd0">fs.h</a>
-</li>
-<li>make_procfile()
-: <a class="el" href="fs_8h.html#a07dcdea8ea02a2399e17a5e5e6fca23e">fs.h</a>
-</li>
-<li>make_tar_file()
-: <a class="el" href="fs_8h.html#aafbf866fe7c8d931c65f5f3d020e2535">fs.h</a>
-</li>
-<li>malloc()
-: <a class="el" href="stdlib_8h.html#a381d0a123dbf80ca3efe2614aa826e08">stdlib.h</a>
-</li>
-<li>malloc_size()
-: <a class="el" href="stdlib_8h.html#a99c8b26aec22731838274514488decf7">stdlib.h</a>
-</li>
-<li>mb_bootloader()
-: <a class="el" href="multiboot_8h.html#abb1668fb1a5e43f8687b5d7306159f30">multiboot.h</a>
-</li>
-<li>mb_cmdline()
-: <a class="el" href="multiboot_8h.html#aa76aaa48ed6cc92967edd38bf2702fb6">multiboot.h</a>
-</li>
-<li>mb_find_tag_iof_type()
-: <a class="el" href="multiboot_8h.html#a72950acf822230897b3a70406fcadfce">multiboot.h</a>
-</li>
-<li>mb_init()
-: <a class="el" href="multiboot_8h.html#a5e34d5190b3dff7a39dcfa467c46aa70">multiboot.h</a>
-</li>
-<li>mb_initfs_info()
-: <a class="el" href="multiboot_8h.html#a8906aafc26bd1ebc3abc29cdcac7774d">multiboot.h</a>
-</li>
-<li>mb_mmap_enumerate()
-: <a class="el" href="multiboot_8h.html#ace3fdc1da9cee7240c2f74414fda4bbe">multiboot.h</a>
-</li>
-<li>mb_mmap_print()
-: <a class="el" href="multiboot_8h.html#a6e4ec92c198c0d16d8813c587e05092f">multiboot.h</a>
-</li>
-<li>mb_mmap_total_usable()
-: <a class="el" href="multiboot_8h.html#aa841ae4f8c21226cc2d909e71780c681">multiboot.h</a>
-</li>
-<li>mb_pm_callback()
-: <a class="el" href="main_8c.html#ac4428fb4bc2663743777796ee2cfbce9">main.c</a>
-</li>
-<li>milliseconds()
-: <a class="el" href="timer_8h.html#ae62e6991ffa21022ef7b715ece975662">timer.h</a>
-</li>
-</ul>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%d&quot;</span>, floor(10.5));</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

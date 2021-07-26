@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: mheap Struct Reference</title>
+<title>SynnixOS: ldshape Union Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,54 +44,45 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">mheap Struct Reference</div>  </div>
+<div class="title">ldshape Union Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Memory heap.  
- <a href="structmheap.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="stdlib_8h_source.html">stdlib.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for mheap:</div>
-<div class="dyncontent">
-<div class="center"><img src="structmheap__coll__graph.png" border="0" usemap="#mheap_coll__map" alt="Collaboration graph"/></div>
-<map name="mheap_coll__map" id="mheap_coll__map">
-<area shape="rect" title="Memory heap." alt="" coords="5,276,72,303"/>
-<area shape="rect" href="structmutex.html" title="MUTEX structure." alt="" coords="55,187,119,213"/>
-<area shape="rect" href="structwq.html" title="Queue struct." alt="" coords="61,97,102,124"/>
-<area shape="rect" href="structlist.html" title="List struct." alt="" coords="8,7,51,33"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:aff0e371af47e1869e7ab047bb3d4a85a"><td class="memItemLeft" align="right" valign="top"><a id="aff0e371af47e1869e7ab047bb3d4a85a"></a>
-<a class="el" href="structlist.html">list</a>&#160;</td><td class="memItemRight" valign="bottom"><b>free_list</b></td></tr>
-<tr class="separator:aff0e371af47e1869e7ab047bb3d4a85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87ed607c37d15c5ee6139a1e5b25afe1"><td class="memItemLeft" align="right" valign="top"><a id="a87ed607c37d15c5ee6139a1e5b25afe1"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>allocations</b></td></tr>
-<tr class="separator:a87ed607c37d15c5ee6139a1e5b25afe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86267c794fb022f99757c1f32c56235b"><td class="memItemLeft" align="right" valign="top"><a id="a86267c794fb022f99757c1f32c56235b"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>frees</b></td></tr>
-<tr class="separator:a86267c794fb022f99757c1f32c56235b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3abfc3fb854277cba6fedec00099c1eb"><td class="memItemLeft" align="right" valign="top"><a id="a3abfc3fb854277cba6fedec00099c1eb"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>total_size</b></td></tr>
-<tr class="separator:a3abfc3fb854277cba6fedec00099c1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6a8158789eb783ab88809346737f3a1"><td class="memItemLeft" align="right" valign="top"><a id="af6a8158789eb783ab88809346737f3a1"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>free_size</b></td></tr>
-<tr class="separator:af6a8158789eb783ab88809346737f3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b6a2c521537680586fdb84e23928119"><td class="memItemLeft" align="right" valign="top"><a id="a4b6a2c521537680586fdb84e23928119"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_init</b></td></tr>
-<tr class="separator:a4b6a2c521537680586fdb84e23928119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55dcc81c9467e7d876313d38a334f3fd"><td class="memItemLeft" align="right" valign="top"><a id="a55dcc81c9467e7d876313d38a334f3fd"></a>
-<a class="el" href="structmutex.html">mutex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b></td></tr>
-<tr class="separator:a55dcc81c9467e7d876313d38a334f3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a027bc16a56f5cec459edfe86bca1af38"><td class="memItemLeft" align="right" valign="top"><a id="a027bc16a56f5cec459edfe86bca1af38"></a>
+long double&#160;</td><td class="memItemRight" valign="bottom"><b>f</b></td></tr>
+<tr class="separator:a027bc16a56f5cec459edfe86bca1af38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b22ade7118df55c3499bfaf82e0327"><td class="memItemLeft" ><a id="a94b22ade7118df55c3499bfaf82e0327"></a>
+struct {</td></tr>
+<tr class="memitem:a517c9f0e11ee908b20efa9fa8c6c924d"><td class="memItemLeft" >
+&#160;&#160;&#160;uint64_t&#160;&#160;&#160;<b>lo</b></td></tr>
+<tr class="separator:a517c9f0e11ee908b20efa9fa8c6c924d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d6cd84d6470485018d40666b0387a7"><td class="memItemLeft" >
+&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<b>mid</b></td></tr>
+<tr class="separator:ae8d6cd84d6470485018d40666b0387a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acab24b746deb0dcf48b91c5ad5ecd64f"><td class="memItemLeft" >
+&#160;&#160;&#160;uint16_t&#160;&#160;&#160;<b>top</b></td></tr>
+<tr class="separator:acab24b746deb0dcf48b91c5ad5ecd64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d4fa355600d210553b50749ab29870"><td class="memItemLeft" >
+&#160;&#160;&#160;uint16_t&#160;&#160;&#160;<b>se</b></td></tr>
+<tr class="separator:a86d4fa355600d210553b50749ab29870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b22ade7118df55c3499bfaf82e0327"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>i</b></td></tr>
+<tr class="separator:a94b22ade7118df55c3499bfaf82e0327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e6bf7480adebeb52c64f57e06c87b4"><td class="memItemLeft" ><a id="a97e6bf7480adebeb52c64f57e06c87b4"></a>
+struct {</td></tr>
+<tr class="memitem:a72593692f4fe2b2c25311191a641e525"><td class="memItemLeft" >
+&#160;&#160;&#160;uint64_t&#160;&#160;&#160;<b>lo</b></td></tr>
+<tr class="separator:a72593692f4fe2b2c25311191a641e525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e2ace5314058870a5b8fae4fa08564"><td class="memItemLeft" >
+&#160;&#160;&#160;uint64_t&#160;&#160;&#160;<b>hi</b></td></tr>
+<tr class="separator:a81e2ace5314058870a5b8fae4fa08564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e6bf7480adebeb52c64f57e06c87b4"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>i2</b></td></tr>
+<tr class="separator:a97e6bf7480adebeb52c64f57e06c87b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Memory heap. </p>
-
-<p class="definition">Definition at line <a class="el" href="stdlib_8h_source.html#l00119">119</a> of file <a class="el" href="stdlib_8h_source.html">stdlib.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="libm_2include_2math_8h_source.html#l00073">73</a> of file <a class="el" href="libm_2include_2math_8h_source.html">math.h</a>.</p>
 </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
