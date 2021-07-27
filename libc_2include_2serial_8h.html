@@ -68,9 +68,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac0d641ed407bf44597a2730406cc3bd9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">comgetb</a> (int port)</td></tr>
 <tr class="memdesc:ac0d641ed407bf44597a2730406cc3bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read byte from serial port.  <a href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">More...</a><br /></td></tr>
 <tr class="separator:ac0d641ed407bf44597a2730406cc3bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f26db456121d87d1d08d68766bf6977"><td class="memItemLeft" align="right" valign="top"><a id="a3f26db456121d87d1d08d68766bf6977"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>comgets</b> (int port)</td></tr>
+<tr class="memitem:a3f26db456121d87d1d08d68766bf6977"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2serial_8h.html#a3f26db456121d87d1d08d68766bf6977">comgets</a> (int port)</td></tr>
+<tr class="memdesc:a3f26db456121d87d1d08d68766bf6977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read string from serial port, cut off at newline.  <a href="libc_2include_2serial_8h.html#a3f26db456121d87d1d08d68766bf6977">More...</a><br /></td></tr>
 <tr class="separator:a3f26db456121d87d1d08d68766bf6977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f803c1cbe4c5a4fb17764b72b3df71c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">comgetse</a> (int port)</td></tr>
+<tr class="memdesc:a9f803c1cbe4c5a4fb17764b72b3df71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read string from serial port and echo input.  <a href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">More...</a><br /></td></tr>
+<tr class="separator:a9f803c1cbe4c5a4fb17764b72b3df71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>User-space serial library (SynnixOS Exclusive) Wrapper library around serial syscalls. </p>
@@ -102,7 +105,65 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>comgets</b> (int po
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>char </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00018">18</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00019">19</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
+
+</div>
+</div>
+<a id="a3f26db456121d87d1d08d68766bf6977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f26db456121d87d1d08d68766bf6977">&#9670;&nbsp;</a></span>comgets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* comgets </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read string from serial port, cut off at newline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00023">23</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f803c1cbe4c5a4fb17764b72b3df71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f803c1cbe4c5a4fb17764b72b3df71c">&#9670;&nbsp;</a></span>comgetse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* comgetse </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read string from serial port and echo input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00048">48</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
 
 </div>
 </div>
@@ -142,7 +203,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>comgets</b> (int po
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00008">8</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00009">9</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
 
 </div>
 </div>
@@ -188,7 +249,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>comgets</b> (int po
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00013">13</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libc_2serial_8c_source.html#l00014">14</a> of file <a class="el" href="libc_2serial_8c_source.html">serial.c</a>.</p>
 
 </div>
 </div>

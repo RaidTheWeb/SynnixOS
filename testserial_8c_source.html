@@ -54,13 +54,14 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>**argv) {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">char</span> *chr = comgets(COM1);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Got String: %s&quot;</span>, chr);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">char</span> *chr = <a class="code" href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">comgetse</a>(COM1);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\nGot String: %s\n&quot;</span>, chr);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a>(chr);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astdlib_8h_html_ab7b7920d07f1279522b0ecee3ef9c59d"><div class="ttname"><a href="stdlib_8h.html#ab7b7920d07f1279522b0ecee3ef9c59d">free</a></div><div class="ttdeci">void free(void *alloc)</div><div class="ttdoc">Free memory.</div><div class="ttdef"><b>Definition:</b> <a href="malloc_8c_source.html#l00307">malloc.c:307</a></div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_a9f803c1cbe4c5a4fb17764b72b3df71c"><div class="ttname"><a href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">comgetse</a></div><div class="ttdeci">char * comgetse(int port)</div><div class="ttdoc">Read string from serial port and echo input.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00048">serial.c:48</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>

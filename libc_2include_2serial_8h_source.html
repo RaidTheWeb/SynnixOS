@@ -56,51 +56,68 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;syscall.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="unistd_8h.html">unistd.h</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/** @file</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * @brief User-space serial library (SynnixOS Exclusive) </span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * Wrapper library around serial syscalls</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define COM1 0x3f8</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define COM2 0x2f8</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define COM3 0x3e8</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define COM4 0x2e8</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/** </span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * @brief Write byte to serial port</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * @param port </span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * @param byte </span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * @return int </span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libc_2include_2serial_8h.html#a385ff85bfefb3777d83c47e68c8ada61">computb</a>(<span class="keywordtype">int</span> port, <span class="keywordtype">char</span> <span class="keywordtype">byte</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * @brief Write string buffer to serial port</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * @param port </span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * @param buffer </span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * @return int </span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libc_2include_2serial_8h.html#a65bfa682a1a466db39d7e1d6bd102338">computs</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">char</span>* buffer, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @brief Read byte from serial port</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @param port </span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * @return char </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">char</span> <a class="code" href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">comgetb</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">char</span>* comgets(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif // _SERIAL_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;basic.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/** @file</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * @brief User-space serial library (SynnixOS Exclusive) </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Wrapper library around serial syscalls</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define COM1 0x3f8</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define COM2 0x2f8</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define COM3 0x3e8</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define COM4 0x2e8</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/** </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * @brief Write byte to serial port</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * @param port </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * @param byte </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * @return int </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libc_2include_2serial_8h.html#a385ff85bfefb3777d83c47e68c8ada61">computb</a>(<span class="keywordtype">int</span> port, <span class="keywordtype">char</span> <span class="keywordtype">byte</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * @brief Write string buffer to serial port</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * @param port </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * @param buffer </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * @return int </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libc_2include_2serial_8h.html#a65bfa682a1a466db39d7e1d6bd102338">computs</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">char</span>* buffer, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @brief Read byte from serial port</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * @param port </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * @return char </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">char</span> <a class="code" href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">comgetb</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * @brief Read string from serial port, cut off at newline</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * @param port </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @return char* </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="libc_2include_2serial_8h.html#a3f26db456121d87d1d08d68766bf6977">comgets</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> * @brief Read string from serial port and echo input</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * @param port </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @return char* </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">comgetse</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif // _SERIAL_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="alibc_2include_2serial_8h_html_ac0d641ed407bf44597a2730406cc3bd9"><div class="ttname"><a href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">comgetb</a></div><div class="ttdeci">char comgetb(int port)</div><div class="ttdoc">Read byte from serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00018">serial.c:18</a></div></div>
-<div class="ttc" id="alibc_2include_2serial_8h_html_a385ff85bfefb3777d83c47e68c8ada61"><div class="ttname"><a href="libc_2include_2serial_8h.html#a385ff85bfefb3777d83c47e68c8ada61">computb</a></div><div class="ttdeci">int computb(int port, char byte)</div><div class="ttdoc">Write byte to serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00008">serial.c:8</a></div></div>
-<div class="ttc" id="alibc_2include_2serial_8h_html_a65bfa682a1a466db39d7e1d6bd102338"><div class="ttname"><a href="libc_2include_2serial_8h.html#a65bfa682a1a466db39d7e1d6bd102338">computs</a></div><div class="ttdeci">int computs(int port, const char *buffer, size_t len)</div><div class="ttdoc">Write string buffer to serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00013">serial.c:13</a></div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_ac0d641ed407bf44597a2730406cc3bd9"><div class="ttname"><a href="libc_2include_2serial_8h.html#ac0d641ed407bf44597a2730406cc3bd9">comgetb</a></div><div class="ttdeci">char comgetb(int port)</div><div class="ttdoc">Read byte from serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00019">serial.c:19</a></div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_a385ff85bfefb3777d83c47e68c8ada61"><div class="ttname"><a href="libc_2include_2serial_8h.html#a385ff85bfefb3777d83c47e68c8ada61">computb</a></div><div class="ttdeci">int computb(int port, char byte)</div><div class="ttdoc">Write byte to serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00009">serial.c:9</a></div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_a9f803c1cbe4c5a4fb17764b72b3df71c"><div class="ttname"><a href="libc_2include_2serial_8h.html#a9f803c1cbe4c5a4fb17764b72b3df71c">comgetse</a></div><div class="ttdeci">char * comgetse(int port)</div><div class="ttdoc">Read string from serial port and echo input.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00048">serial.c:48</a></div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_a65bfa682a1a466db39d7e1d6bd102338"><div class="ttname"><a href="libc_2include_2serial_8h.html#a65bfa682a1a466db39d7e1d6bd102338">computs</a></div><div class="ttdeci">int computs(int port, const char *buffer, size_t len)</div><div class="ttdoc">Write string buffer to serial port.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00014">serial.c:14</a></div></div>
 <div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
+<div class="ttc" id="alibc_2include_2serial_8h_html_a3f26db456121d87d1d08d68766bf6977"><div class="ttname"><a href="libc_2include_2serial_8h.html#a3f26db456121d87d1d08d68766bf6977">comgets</a></div><div class="ttdeci">char * comgets(int port)</div><div class="ttdoc">Read string from serial port, cut off at newline.</div><div class="ttdef"><b>Definition:</b> <a href="libc_2serial_8c_source.html#l00023">serial.c:23</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
