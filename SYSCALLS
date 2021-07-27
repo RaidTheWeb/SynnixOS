@@ -52,3 +52,5 @@
 57 traceback { pid_t tid, char* buffer, size_t len } int
 58 exit_thread { int exit_code } void noreturn
 59 fstat { int fd, struct stat* statbuf } int
+60 serial_write { int com, int byte } int
+61 serial_read { int com } int

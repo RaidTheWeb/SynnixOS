@@ -3,11 +3,17 @@
 #define SNX_SERIAL_H
 
 #include <basic.h>
+#include <snx/syscalls.h>
 
 /** @file
  * @brief Serial support
  * 
  */
+
+#define COM1 0x3f8
+#define COM2 0x2f8
+#define COM3 0x3e8
+#define COM4 0x2e8
 
 /**
  * @brief Initialize serial drivers

@@ -19,6 +19,9 @@
 ssize_t read(int fd, void *data, size_t len);
 ssize_t write(int fd, const void *data, size_t len);
 
+int serial_write(int com, int b);
+int serial_read(int com);
+
 int unlink(const char *);
 
 pid_t fork(void);

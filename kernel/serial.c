@@ -1,5 +1,6 @@
 #include <basic.h>
 #include <stdio.h>
+#include <snx/syscall.h>
 
 #if X86
 #include <x86/uart.h>
@@ -65,4 +66,41 @@ void serial4_write_str(const char *buf, size_t len) {
 
 char serial4_read(const char c) {
     return x86_uart_read_byte(COM4);
+}
+
+sysret sys_serial_write(int com, int b) {
+    switch(com) {
+        case COM1:
+            serial_write((char)b);
+            break;
+        case COM2:
+            serial2_write((char)b);
+            break;
+        case COM3:
+            serial3_write((char)b);
+            break;
+        case COM4:
+        default:
+            serial4_write((char)b);
+            break;
+    }
+    return 0;
+}
+
+sysret sys_serial_read(int com) {
+    switch(com) {
+        case COM1:
+            return serial_read('e');
+            break;
+        case COM2:
+            return serial2_read('e');
+            break;
+        case COM3:
+            return serial3_read('e');
+            break;
+        case COM4:
+        default:
+            return serial4_read('e');
+            break;
+    }
 }
