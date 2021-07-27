@@ -162,6 +162,14 @@ build = MagpieBuild.define do
     install "sysroot/usr/lib"
   end
 
+  target "libsocs.a" do
+    depends "libc.a"
+    language "C"
+    mode :libc
+    sources "libsocs/**/*.c"
+    install "sysroot/usr/lib"
+  end
+
   target "libm.a" do
     language "C"
     mode :libc

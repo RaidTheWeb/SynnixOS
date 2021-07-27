@@ -42,6 +42,6 @@ int computs(int port, const char* buffer, size_t len);
  */
 char comgetb(int port);
 
-
+char* comgets(int port);
 
 #endif // _SERIAL_H_

@@ -2,6 +2,7 @@
 #include <syscall.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <string.h>
 #include <stdlib.h>
 
 int computb(int port, char b) {
@@ -16,4 +17,29 @@ int computs(int port, const char* buffer, size_t len) {
 
 char comgetb(int port) {
     return (char)serial_read(port);
+}
+
+char* comgets(int port) {
+    char *buffer = NULL, *tmp = NULL;
+    size_t in = 0, size = 0;
+    char ch = -1;
+    while(ch) {
+        ch = comgetb(port);
+        if(ch == '\r' || ch == '\n')
+            ch = 0;
+
+        if (size <= in) {
+            size += 2;
+            tmp = realloc(buffer, size);
+            if(!tmp) {
+                free(buffer);
+                buffer = NULL;
+                break;
+            }
+            buffer = tmp;
+        }
+
+        buffer[in++] = ch;
+    }
+    return buffer;
 }
