@@ -375,7 +375,6 @@ static void internal_fs_tree(struct file *root, int depth) {
 
         printf("%s\n", file->name);
         if (file->name[0] != '.') {
-            // Don't infinitely recurse the ".", ".."!
             internal_fs_tree(file->file, depth + 1);
         }
     }
@@ -385,7 +384,7 @@ void fs_tree() {
     internal_fs_tree(fs_root, 1);
 }
 
-// FIXME: what's this supposed to do?
+// TODO: Stub
 void destroy_file(struct file *_) {}
 
 struct file_ops dev_zero_ops = {

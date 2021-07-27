@@ -5,6 +5,7 @@
 #include <syscall.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <basic.h>
 
 /** @file
  * @brief User-space serial library (SynnixOS Exclusive) 
@@ -42,6 +43,20 @@ int computs(int port, const char* buffer, size_t len);
  */
 char comgetb(int port);
 
+/**
+ * @brief Read string from serial port, cut off at newline
+ * 
+ * @param port 
+ * @return char* 
+ */
 char* comgets(int port);
+
+/**
+ * @brief Read string from serial port and echo input
+ * 
+ * @param port 
+ * @return char* 
+ */
+char* comgetse(int port);
 
 #endif // _SERIAL_H_

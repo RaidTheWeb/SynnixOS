@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 int main(int argc, const char**argv) {
-    char *chr = comgets(COM1);
-    printf("Got String: %s", chr);
+    char *chr = comgetse(COM1);
+    printf("\nGot String: %s\n", chr);
     free(chr);
     return 0;
 }
