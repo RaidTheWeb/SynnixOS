@@ -55,7 +55,7 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="fs_8h.html">snx/fs.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="panic_8h.html">snx/panic.h</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ringbuf_8h.html">snx/ringbuf.h</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="serial_8h.html">snx/serial.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2serial_8h.html">snx/serial.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2signal_8h.html">snx/signal.h</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="thread_8h.html">snx/thread.h</a>&gt;</span></div>
@@ -103,7 +103,7 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            .buffer_index = 0,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            .buffer_mode = 1,</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            .echo = 1,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            .print_fn = <a class="code" href="kernel_2include_2snx_2serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        },</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
@@ -120,7 +120,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            .buffer_index = 0,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            .buffer_mode = 1,</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            .echo = 1,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            .print_fn = <a class="code" href="kernel_2include_2snx_2serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        },</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
@@ -137,7 +137,7 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            .buffer_index = 0,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            .buffer_mode = 1,</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            .echo = 1,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            .print_fn = <a class="code" href="kernel_2include_2snx_2serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        },</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
@@ -154,7 +154,7 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            .buffer_index = 0,</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            .buffer_mode = 1,</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            .echo = 1,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            .print_fn = <a class="code" href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            .print_fn = <a class="code" href="kernel_2include_2snx_2serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a>,</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        },</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
@@ -262,10 +262,10 @@ $(function() {
 <div class="ttc" id="atty_8h_html_a7f41228a7f4959ae793670e88fec7d9c"><div class="ttname"><a href="tty_8h.html#a7f41228a7f4959ae793670e88fec7d9c">write_to_serial_tty</a></div><div class="ttdeci">int write_to_serial_tty(struct tty_file *tty_file, char c)</div><div class="ttdoc">Write character to serial based TTY.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00110">tty.c:110</a></div></div>
 <div class="ttc" id="astructtty__file_html"><div class="ttname"><a href="structtty__file.html">tty_file</a></div><div class="ttdoc">TTY file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00358">fs.h:358</a></div></div>
 <div class="ttc" id="astructfile__ops_html"><div class="ttname"><a href="structfile__ops.html">file_ops</a></div><div class="ttdoc">Various file operations.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00061">fs.h:61</a></div></div>
-<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00020">serial.c:20</a></div></div>
 <div class="ttc" id="async_8h_html_a4e6c14c231ca7fe163e97fbd0d306600"><div class="ttname"><a href="sync_8h.html#a4e6c14c231ca7fe163e97fbd0d306600">wq_notify_all</a></div><div class="ttdeci">void wq_notify_all(struct wq *wq)</div><div class="ttdoc">Notify whole queue.</div><div class="ttdef"><b>Definition:</b> <a href="sync_8c_source.html#l00022">sync.c:22</a></div></div>
-<div class="ttc" id="aserial_8h_html"><div class="ttname"><a href="serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>
+<div class="ttc" id="akernel_2include_2snx_2serial_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2serial_8h.html">serial.h</a></div><div class="ttdoc">Serial support.</div></div>
 <div class="ttc" id="atty_8h_html_ad5884d3b4aca3f6dfd7480330a104404"><div class="ttname"><a href="tty_8h.html#ad5884d3b4aca3f6dfd7480330a104404">dev_serial4</a></div><div class="ttdeci">struct tty_file dev_serial4</div><div class="ttdoc">TTY File for serial COM4.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00093">tty.c:93</a></div></div>
+<div class="ttc" id="akernel_2include_2snx_2serial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="kernel_2include_2snx_2serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="kernel_2serial_8c_source.html#l00021">serial.c:21</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
 <div class="ttc" id="atty_8h_html_aceda6c3ef83d82664f9a53d52d07a560"><div class="ttname"><a href="tty_8h.html#aceda6c3ef83d82664f9a53d52d07a560">dev_serial</a></div><div class="ttdeci">struct tty_file dev_serial</div><div class="ttdoc">TTY File for serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="tty_8c_source.html#l00042">tty.c:42</a></div></div>
 <div class="ttc" id="athread_8h_html"><div class="ttname"><a href="thread_8h.html">thread.h</a></div><div class="ttdoc">Multi-Threading support.</div></div>

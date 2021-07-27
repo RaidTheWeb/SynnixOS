@@ -109,95 +109,16 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @return char </span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">char</span> <a class="code" href="serial_8h.html#a2c20cb6228ae5178f6d501ca73921e63">serial2_read</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @brief Read character from serial COM1</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> * @return char </span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">char</span> <a class="code" href="serial_8h.html#ab6f52494989034ebe3e94abcb6e86774">serial_read</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"> * @brief Write character to serial COM2</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * @param c </span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#af5e03a33d20f7f4d6d2d407780267c65">serial2_write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * @brief Write string to serial COM2</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * Wrapper around `serial2_write` to write a string to serial COM2</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * @param buf </span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * @param len </span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#a63e9f665bd94a4e02a523f4cc43365da">serial2_write_str</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * @brief Read character from serial COM2</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * @return char </span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">char</span> <a class="code" href="serial_8h.html#a2c20cb6228ae5178f6d501ca73921e63">serial2_read</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * @brief Write character to serial COM3</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * @param c </span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#a5e019e3740a62c29cd35a6ad45c3b0c5">serial3_write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> * @brief Write string to serial COM3</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> * Wrapper around `serial3_write` to write a string to serial COM3</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> * @param buf </span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> * @param len </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#a9b589af878ddeb56529ce44c1899e586">serial3_write_str</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * @brief Read character from serial COM3</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment"> * @return char </span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">char</span> <a class="code" href="serial_8h.html#a8f7b5edfcf022234bef1a6c9902f6d06">serial3_read</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment"> * @brief Write character to serial COM4</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"> * @param c </span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#a6199b50bee1b1542e1370a30e746521a">serial4_write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment"> * @brief Write string to serial COM4</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"> * Wrapper around `serial4_write` to write a string to serial COM4</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"> * @param buf </span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment"> * @param len </span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="serial_8h.html#a01533dde3f6274f9282524c8c6e2db72">serial4_write_str</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"> * @brief Read character from serial COM4</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"> * @return char </span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">char</span> <a class="code" href="serial_8h.html#ad44a02f40deb2feb3639693f1e95f985">serial4_read</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aserial_8h_html_af5e03a33d20f7f4d6d2d407780267c65"><div class="ttname"><a href="serial_8h.html#af5e03a33d20f7f4d6d2d407780267c65">serial2_write</a></div><div class="ttdeci">void serial2_write(const char c)</div><div class="ttdoc">Write character to serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00030">serial.c:30</a></div></div>
-<div class="ttc" id="aserial_8h_html_acabc4c9be67d102ddc0de25d1c69618c"><div class="ttname"><a href="serial_8h.html#acabc4c9be67d102ddc0de25d1c69618c">serial_write</a></div><div class="ttdeci">void serial_write(const char c)</div><div class="ttdoc">Write character to serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00016">serial.c:16</a></div></div>
-<div class="ttc" id="aserial_8h_html_a6199b50bee1b1542e1370a30e746521a"><div class="ttname"><a href="serial_8h.html#a6199b50bee1b1542e1370a30e746521a">serial4_write</a></div><div class="ttdeci">void serial4_write(const char c)</div><div class="ttdoc">Write character to serial COM4.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00058">serial.c:58</a></div></div>
+<div class="ttc" id="aserial_8h_html_af5e03a33d20f7f4d6d2d407780267c65"><div class="ttname"><a href="serial_8h.html#af5e03a33d20f7f4d6d2d407780267c65">serial2_write</a></div><div class="ttdeci">void serial2_write(const char c)</div><div class="ttdoc">Write character to serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00026">serial.c:26</a></div></div>
+<div class="ttc" id="aserial_8h_html_acabc4c9be67d102ddc0de25d1c69618c"><div class="ttname"><a href="serial_8h.html#acabc4c9be67d102ddc0de25d1c69618c">serial_write</a></div><div class="ttdeci">void serial_write(const char c)</div><div class="ttdoc">Write character to serial COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00014">serial.c:14</a></div></div>
 <div class="ttc" id="aserial_8h_html_ad2b461e9e9044364a28a61cfadcacdd8"><div class="ttname"><a href="serial_8h.html#ad2b461e9e9044364a28a61cfadcacdd8">serial_init</a></div><div class="ttdeci">void serial_init(void)</div><div class="ttdoc">Initialize serial drivers.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00010">serial.c:10</a></div></div>
-<div class="ttc" id="aserial_8h_html_ad44a02f40deb2feb3639693f1e95f985"><div class="ttname"><a href="serial_8h.html#ad44a02f40deb2feb3639693f1e95f985">serial4_read</a></div><div class="ttdeci">char serial4_read(void)</div><div class="ttdoc">Read character from serial COM4.</div></div>
-<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00020">serial.c:20</a></div></div>
-<div class="ttc" id="aserial_8h_html_a63e9f665bd94a4e02a523f4cc43365da"><div class="ttname"><a href="serial_8h.html#a63e9f665bd94a4e02a523f4cc43365da">serial2_write_str</a></div><div class="ttdeci">void serial2_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM2 Wrapper around serial2_write to write a string to serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00034">serial.c:34</a></div></div>
-<div class="ttc" id="aserial_8h_html_a5e019e3740a62c29cd35a6ad45c3b0c5"><div class="ttname"><a href="serial_8h.html#a5e019e3740a62c29cd35a6ad45c3b0c5">serial3_write</a></div><div class="ttdeci">void serial3_write(const char c)</div><div class="ttdoc">Write character to serial COM3.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00044">serial.c:44</a></div></div>
-<div class="ttc" id="aserial_8h_html_a8f7b5edfcf022234bef1a6c9902f6d06"><div class="ttname"><a href="serial_8h.html#a8f7b5edfcf022234bef1a6c9902f6d06">serial3_read</a></div><div class="ttdeci">char serial3_read(void)</div><div class="ttdoc">Read character from serial COM3.</div></div>
+<div class="ttc" id="aserial_8h_html_a91082364f780c02095877da0bdb485b0"><div class="ttname"><a href="serial_8h.html#a91082364f780c02095877da0bdb485b0">serial_write_str</a></div><div class="ttdeci">void serial_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM1 Wrapper around serial_write to print a string to COM1.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00018">serial.c:18</a></div></div>
+<div class="ttc" id="aserial_8h_html_a63e9f665bd94a4e02a523f4cc43365da"><div class="ttname"><a href="serial_8h.html#a63e9f665bd94a4e02a523f4cc43365da">serial2_write_str</a></div><div class="ttdeci">void serial2_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM2 Wrapper around serial2_write to write a string to serial COM2.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00030">serial.c:30</a></div></div>
 <div class="ttc" id="aserial_8h_html_ab6f52494989034ebe3e94abcb6e86774"><div class="ttname"><a href="serial_8h.html#ab6f52494989034ebe3e94abcb6e86774">serial_read</a></div><div class="ttdeci">char serial_read(void)</div><div class="ttdoc">Read character from serial COM1.</div></div>
-<div class="ttc" id="aserial_8h_html_a01533dde3f6274f9282524c8c6e2db72"><div class="ttname"><a href="serial_8h.html#a01533dde3f6274f9282524c8c6e2db72">serial4_write_str</a></div><div class="ttdeci">void serial4_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM4 Wrapper around serial4_write to write a string to serial COM4.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00062">serial.c:62</a></div></div>
 <div class="ttc" id="aserial_8h_html_a2c20cb6228ae5178f6d501ca73921e63"><div class="ttname"><a href="serial_8h.html#a2c20cb6228ae5178f6d501ca73921e63">serial2_read</a></div><div class="ttdeci">char serial2_read(void)</div><div class="ttdoc">Read character from serial COM2.</div></div>
-<div class="ttc" id="aserial_8h_html_a9b589af878ddeb56529ce44c1899e586"><div class="ttname"><a href="serial_8h.html#a9b589af878ddeb56529ce44c1899e586">serial3_write_str</a></div><div class="ttdeci">void serial3_write_str(const char *buf, size_t len)</div><div class="ttdoc">Write string to serial COM3 Wrapper around serial3_write to write a string to serial COM3.</div><div class="ttdef"><b>Definition:</b> <a href="serial_8c_source.html#l00048">serial.c:48</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
