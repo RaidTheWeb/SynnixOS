@@ -77,7 +77,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;sysret sys_uname(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a> *n) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (!n) <span class="keywordflow">return</span> -EINVAL;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    memset(n, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a>));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;sysname, <span class="stringliteral">&quot;synnixos&quot;</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;sysname, <span class="stringliteral">&quot;SynnixOS&quot;</span>);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;nodename, getHostname());</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;release, SYNNIXOS_VERSION);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;version, SYNNIXOS_VERSION);</div>
