@@ -34,6 +34,10 @@ function clean() {
     rm epic8
     cd -
 
+    cd synfetch
+    rm synfetch
+    cd -
+
     #cd tinyvm
     #make clean
     #cd -
