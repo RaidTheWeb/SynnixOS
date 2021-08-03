@@ -10,6 +10,9 @@ function build() {
     make snx
     cd -
 
+    cd synfetch
+    make snx
+    cd -
 
     #cd tinyvm
     #CC=~/.local/bin/x86_64-synnixos-gcc make
