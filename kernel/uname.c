@@ -26,7 +26,7 @@ char* getHostname() {
 sysret sys_uname(struct utsname *n) {
     if (!n) return -EINVAL;
     memset(n, 0, sizeof(struct utsname));
-    strcpy((char *)&n->sysname, "synnixos");
+    strcpy((char *)&n->sysname, "SynnixOS");
     strcpy((char *)&n->nodename, getHostname());
     strcpy((char *)&n->release, SYNNIXOS_VERSION);
     strcpy((char *)&n->version, SYNNIXOS_VERSION);
