@@ -62,6 +62,12 @@ enum snx_syscall {
     SNX_FSTAT = 59,
     SNX_SERIAL_WRITE = 60,
     SNX_SERIAL_READ = 61,
+    SNX_GET_YEAR = 62,
+    SNX_GET_MONTH = 63,
+    SNX_GET_DAY = 64,
+    SNX_GET_HOUR = 65,
+    SNX_GET_MINUTE = 66,
+    SNX_GET_SECOND = 67,
     SYSCALL_MAX,
 };
 

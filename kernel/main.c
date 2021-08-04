@@ -138,7 +138,7 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     serial_init();
     
     updatertc();
-    printf("Current year: %d\n", year);
+    printf("Datetime from RTC: %d/%d/%d %02d:%02d:%02d\n", day, month, year, hour, minute, second);
 
     if (mb_magic != MULTIBOOT2_BOOTLOADER_MAGIC)
         panic("Bootloader does not appear to be multiboot2.");

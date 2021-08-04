@@ -60,5 +60,11 @@ noreturn void exit_thread(int exit_code);
 int fstat(int fd, struct stat *statbuf);
 int serial_write(int com, int byte);
 int serial_read(int com);
+int get_year();
+int get_month();
+int get_day();
+int get_hour();
+int get_minute();
+int get_second();
 
 #endif

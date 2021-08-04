@@ -54,3 +54,9 @@
 59 fstat { int fd, struct stat* statbuf } int
 60 serial_write { int com, int byte } int
 61 serial_read { int com } int
+62 get_year { } int
+63 get_month { } int
+64 get_day { } int
+65 get_hour { } int
+66 get_minute { } int
+67 get_second { } int

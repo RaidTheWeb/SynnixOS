@@ -60,5 +60,11 @@ sysret sys_exit_thread(int exit_code);
 sysret sys_fstat(int fd, struct stat *statbuf);
 sysret sys_serial_write(int com, int byte);
 sysret sys_serial_read(int com);
+sysret sys_get_year();
+sysret sys_get_month();
+sysret sys_get_day();
+sysret sys_get_hour();
+sysret sys_get_minute();
+sysret sys_get_second();
 
 #endif

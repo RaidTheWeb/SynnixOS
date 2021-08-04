@@ -3,6 +3,7 @@
 #define SNX_RTC_H
 
 #include <x86/cpu.h>
+#include <snx/syscall.h>
 
 #define CURRENT_YEAR 2021
 
@@ -99,6 +100,36 @@ void updatertc() {
         year += (CURRENT_YEAR / 100) * 100;
         if(year < CURRENT_YEAR) year += 100;
     }
+}
+
+sysret sys_get_year() {
+    updatertc();
+    return year;
+}
+
+sysret sys_get_month() {
+    updatertc();
+    return month;
+}
+
+sysret sys_get_day() {
+    updatertc();
+    return day;
+}
+
+sysret sys_get_hour() {
+    updatertc();
+    return hour;
+}
+
+sysret sys_get_minute() {
+    updatertc();
+    return minute;
+}
+
+sysret sys_get_second() {
+    updatertc();
+    return second;
 }
 
 #endif

@@ -22,6 +22,13 @@ ssize_t write(int fd, const void *data, size_t len);
 int serial_write(int com, int b);
 int serial_read(int com);
 
+int get_year();
+int get_month();
+int get_day();
+int get_hour();
+int get_minute();
+int get_second();
+
 int unlink(const char *);
 
 pid_t fork(void);

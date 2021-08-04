@@ -531,3 +531,63 @@ int serial_read(int com) {
     }
 
 }
+int get_year() {
+    intptr_t ret = syscall0(SNX_GET_YEAR);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int get_month() {
+    intptr_t ret = syscall0(SNX_GET_MONTH);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int get_day() {
+    intptr_t ret = syscall0(SNX_GET_DAY);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int get_hour() {
+    intptr_t ret = syscall0(SNX_GET_HOUR);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int get_minute() {
+    intptr_t ret = syscall0(SNX_GET_MINUTE);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int get_second() {
+    intptr_t ret = syscall0(SNX_GET_SECOND);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}

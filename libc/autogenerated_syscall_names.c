@@ -58,4 +58,10 @@ const char *syscall_names[] = {
     [SNX_FSTAT] = "fstat",
     [SNX_SERIAL_WRITE] = "serial_write",
     [SNX_SERIAL_READ] = "serial_read",
+    [SNX_GET_YEAR] = "get_year",
+    [SNX_GET_MONTH] = "get_month",
+    [SNX_GET_DAY] = "get_day",
+    [SNX_GET_HOUR] = "get_hour",
+    [SNX_GET_MINUTE] = "get_minute",
+    [SNX_GET_SECOND] = "get_second",
 };
