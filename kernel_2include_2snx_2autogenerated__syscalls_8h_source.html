@@ -111,8 +111,14 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;sysret sys_fstat(<span class="keywordtype">int</span> fd, <span class="keyword">struct</span> <a class="code" href="structstat.html">stat</a> *statbuf);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;sysret sys_serial_write(<span class="keywordtype">int</span> com, <span class="keywordtype">int</span> <span class="keywordtype">byte</span>);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;sysret sys_serial_read(<span class="keywordtype">int</span> com);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;sysret sys_get_year();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;sysret sys_get_month();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;sysret sys_get_day();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;sysret sys_get_hour();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;sysret sys_get_minute();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;sysret sys_get_second();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructstat_html"><div class="ttname"><a href="structstat.html">stat</a></div><div class="ttdef"><b>Definition:</b> <a href="stat_8h_source.html#l00012">stat.h:12</a></div></div>
 <div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdoc">Polling file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="poll_8h_source.html#l00014">poll.h:14</a></div></div>

@@ -54,106 +54,138 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SNX_RTC_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="x86_2include_2x86_2cpu_8h.html">x86/cpu.h</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define CURRENT_YEAR 2021</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> centuryreg = 0x00;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> second;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> minute;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> hour;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> day;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> month;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> year;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    cmos = 0x70,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    cmos_data = 0x71</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> getupdateflag() {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(cmos, 0x0A);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(cmos_data) &amp; 0x80);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> getrtcregister(<span class="keywordtype">int</span> reg) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(cmos, reg);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(cmos_data);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> updatertc() {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> century;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_second;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_minute;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_hour;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_day;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_month;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_year;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_century;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> registerb;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">while</span>(getupdateflag());</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    second = getrtcregister(0x00);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    minute = getrtcregister(0x01);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    hour = getrtcregister(0x04);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    day = getrtcregister(0x07);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    month = getrtcregister(0x08);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    year = getrtcregister(0x09);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span>(centuryreg != 0) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        century = getrtcregister(centuryreg);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        last_second = second;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        last_minute = minute;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        last_hour = hour;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        last_day = day;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        last_month = month;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        last_year = year;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        last_century = century;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">while</span>(getupdateflag());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        second = getrtcregister(0x00);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        minute = getrtcregister(0x01);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        hour = getrtcregister(0x04);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        day = getrtcregister(0x07);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        month = getrtcregister(0x08);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        year = getrtcregister(0x09);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span>(centuryreg != 0) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            century = getrtcregister(centuryreg);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    } <span class="keywordflow">while</span>( (last_second != second) || (last_minute != minute) || (last_hour != hour) ||</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;             (last_day != day) || (last_month != month) || (last_year != year) || </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;             (last_century != century) );</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    registerb = getrtcregister(0x0B);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>(!(registerb &amp; 0x04)) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        second = (second &amp; 0x0F) + ((second / 16) * 10);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        minute = (minute &amp; 0x0F) + ((minute / 16) * 10);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        hour = ( (hour &amp; 0x0F) + (((hour &amp; 0x70) / 16) * 10) ) | (hour &amp; 0x80);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        day = (day &amp; 0x0F) + ((day / 16) * 10);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        month = (month &amp; 0x0F) + ((month / 16) * 10);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        year = (year &amp; 0x0F) + ((year / 16) * 10);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span>(centuryreg != 0) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            century = (century &amp; 0x0F) + ((century / 16) * 10);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span>(!(registerb &amp; 0x02) &amp;&amp; (hour &amp; 0x80)) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        hour = ((hour &amp; 0x7F) + 12) % 24;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span>(centuryreg != 0) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        year += century * 100;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        year += (CURRENT_YEAR / 100) * 100;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">if</span>(year &lt; CURRENT_YEAR) year += 100;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kernel_2include_2snx_2syscall_8h.html">snx/syscall.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define CURRENT_YEAR 2021</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">int</span> centuryreg = 0x00;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> second;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> minute;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> hour;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> day;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> month;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> year;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    cmos = 0x70,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    cmos_data = 0x71</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> getupdateflag() {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(cmos, 0x0A);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(cmos_data) &amp; 0x80);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> getrtcregister(<span class="keywordtype">int</span> reg) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a>(cmos, reg);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a>(cmos_data);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> updatertc() {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> century;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_second;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_minute;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_hour;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_day;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_month;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_year;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> last_century;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> registerb;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">while</span>(getupdateflag());</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    second = getrtcregister(0x00);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    minute = getrtcregister(0x01);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    hour = getrtcregister(0x04);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    day = getrtcregister(0x07);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    month = getrtcregister(0x08);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    year = getrtcregister(0x09);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(centuryreg != 0) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        century = getrtcregister(centuryreg);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        last_second = second;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        last_minute = minute;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        last_hour = hour;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        last_day = day;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        last_month = month;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        last_year = year;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        last_century = century;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">while</span>(getupdateflag());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        second = getrtcregister(0x00);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        minute = getrtcregister(0x01);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        hour = getrtcregister(0x04);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        day = getrtcregister(0x07);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        month = getrtcregister(0x08);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        year = getrtcregister(0x09);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span>(centuryreg != 0) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            century = getrtcregister(centuryreg);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    } <span class="keywordflow">while</span>( (last_second != second) || (last_minute != minute) || (last_hour != hour) ||</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;             (last_day != day) || (last_month != month) || (last_year != year) || </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;             (last_century != century) );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    registerb = getrtcregister(0x0B);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span>(!(registerb &amp; 0x04)) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        second = (second &amp; 0x0F) + ((second / 16) * 10);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        minute = (minute &amp; 0x0F) + ((minute / 16) * 10);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        hour = ( (hour &amp; 0x0F) + (((hour &amp; 0x70) / 16) * 10) ) | (hour &amp; 0x80);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        day = (day &amp; 0x0F) + ((day / 16) * 10);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        month = (month &amp; 0x0F) + ((month / 16) * 10);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        year = (year &amp; 0x0F) + ((year / 16) * 10);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span>(centuryreg != 0) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            century = (century &amp; 0x0F) + ((century / 16) * 10);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span>(!(registerb &amp; 0x02) &amp;&amp; (hour &amp; 0x80)) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        hour = ((hour &amp; 0x7F) + 12) % 24;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span>(centuryreg != 0) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        year += century * 100;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        year += (CURRENT_YEAR / 100) * 100;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span>(year &lt; CURRENT_YEAR) year += 100;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;sysret sys_get_year() {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> year;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;sysret sys_get_month() {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> month;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;sysret sys_get_day() {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> day;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;sysret sys_get_hour() {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> hour;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;sysret sys_get_minute() {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> minute;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;sysret sys_get_second() {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    updatertc();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> second;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
 <div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a4b949251e84d5e9a389c4e2db0271c06"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a4b949251e84d5e9a389c4e2db0271c06">inb</a></div><div class="ttdeci">uint8_t inb(port_addr_t port)</div><div class="ttdoc">Read 8 bit integer from port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00012">cpu.c:12</a></div></div>
 <div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
 <div class="ttc" id="ax86_2include_2x86_2cpu_8h_html"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html">cpu.h</a></div><div class="ttdoc">CPU headers.</div></div>
