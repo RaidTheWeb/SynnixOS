@@ -12,6 +12,7 @@
 #include <snx/thread.h>
 #include <snx/timer.h>
 #include <snx/vmm.h>
+#include <snx/rtc.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -135,6 +136,9 @@ noreturn void kernel_main(uint32_t mb_magic, uintptr_t mb_info) {
     pic_irq_unmask(3); // Serial COM2
 
     serial_init();
+    
+    updatertc();
+    printf("Current year: %d\n", year);
 
     if (mb_magic != MULTIBOOT2_BOOTLOADER_MAGIC)
         panic("Bootloader does not appear to be multiboot2.");

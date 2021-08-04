@@ -19,15 +19,12 @@ int enable_apic(size_t addr) {
 }
 
 void ioapic_write(uint8_t offset, uint32_t value) {
-    // TODO: fix race condition!
-    // if we get an interrupt in between these it could break shit
 
     *(volatile uint32_t *)(ioapic_addr) = offset;       // register select
     *(volatile uint32_t *)(ioapic_addr + 0x10) = value; // value
 }
 
 uint32_t ioapic_read(uint8_t offset) {
-    // See write for the problem with this approach
 
     *(volatile uint32_t *)(ioapic_addr) = offset;      // register select
     return *(volatile uint32_t *)(ioapic_addr + 0x10); // value
