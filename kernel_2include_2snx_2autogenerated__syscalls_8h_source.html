@@ -120,8 +120,10 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;sysret sys_totalmem();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;sysret sys_freemem();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;sysret sys_leakedmem();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;sysret sys_getcwd(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;sysret sys_chdir(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructstat_html"><div class="ttname"><a href="structstat.html">stat</a></div><div class="ttdef"><b>Definition:</b> <a href="stat_8h_source.html#l00012">stat.h:12</a></div></div>
 <div class="ttc" id="astructpollfd_html"><div class="ttname"><a href="structpollfd.html">pollfd</a></div><div class="ttdoc">Polling file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="poll_8h_source.html#l00014">poll.h:14</a></div></div>

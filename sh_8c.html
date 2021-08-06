@@ -63,6 +63,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3f6c85626043c579971322dba1d58446"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a3f6c85626043c579971322dba1d58446">eval</a> (struct <a class="el" href="structnode.html">node</a> *)</td></tr>
 <tr class="memdesc:a3f6c85626043c579971322dba1d58446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate nodes.  <a href="sh_8c.html#a3f6c85626043c579971322dba1d58446">More...</a><br /></td></tr>
 <tr class="separator:a3f6c85626043c579971322dba1d58446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21579a20737c3b2b24e18bb5e51d8140"><td class="memItemLeft" align="right" valign="top"><a id="a21579a20737c3b2b24e18bb5e51d8140"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>print_prompt</b> ()</td></tr>
+<tr class="separator:a21579a20737c3b2b24e18bb5e51d8140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a> ()</td></tr>
 <tr class="memdesc:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a single line.  <a href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">More...</a><br /></td></tr>
 <tr class="separator:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,6 +96,9 @@ Variables</h2></td></tr>
 <tr class="memitem:aa74b9afafd36575ac4b16ddc93cf956a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a></td></tr>
 <tr class="memdesc:aa74b9afafd36575ac4b16ddc93cf956a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shell script input file.  <a href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">More...</a><br /></td></tr>
 <tr class="separator:aa74b9afafd36575ac4b16ddc93cf956a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717c0720066c358466d44f6f0d53b172"><td class="memItemLeft" align="right" valign="top"><a id="a717c0720066c358466d44f6f0d53b172"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;local&quot;</td></tr>
+<tr class="separator:a717c0720066c358466d44f6f0d53b172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shell entry point. </p>
@@ -140,7 +146,7 @@ Variables</h2></td></tr>
 <p>Handle a single line. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00068">68</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00079">79</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -168,7 +174,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00121">121</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00132">132</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -187,7 +193,7 @@ Variables</h2></td></tr>
 
 <p>Enable Abstract Syntax Tree debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00042">42</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00043">43</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -205,7 +211,7 @@ Variables</h2></td></tr>
 
 <p>Do the buffer? </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00030">30</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00031">31</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -223,7 +229,7 @@ Variables</h2></td></tr>
 
 <p>Shell script input file. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00054">54</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00055">55</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -241,7 +247,7 @@ Variables</h2></td></tr>
 
 <p>Enable interactive mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00048">48</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00049">49</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -259,7 +265,7 @@ Variables</h2></td></tr>
 
 <p>Enable token debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00036">36</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00037">37</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
