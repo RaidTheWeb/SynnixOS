@@ -130,7 +130,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">   81</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">getuser</a>() {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    strcpy(<a class="code" href="sh_8c.html#a0c5ec728515b694d11286dcafd628b84">username</a>, <span class="stringliteral">&quot;local&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    strcpy(<a class="code" href="sh_8c.html#a0c5ec728515b694d11286dcafd628b84">username</a>, getenv(<span class="stringliteral">&quot;USER&quot;</span>));</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/**</span></div>

@@ -53,16 +53,24 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdlib_8h.html">stdlib.h</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>** argv) {</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">if</span>(argc &lt; 1) {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;usage: %s [name]&quot;</span>, argv[0]);</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">if</span>(argc == 1) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;usage: %s [name]\n&quot;</span>, argv[0]);</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    }</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, argv[1], getenv(argv[1]));</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">char</span>* result = getenv(argv[1]);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">if</span>(result == NULL) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;enviroment value does not exist\n&quot;</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%s=%s\n&quot;</span>, argv[1], result);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
 <div class="ttc" id="astdlib_8h_html"><div class="ttname"><a href="stdlib_8h.html">stdlib.h</a></div><div class="ttdoc">Standard library.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
