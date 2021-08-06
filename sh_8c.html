@@ -63,9 +63,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a3f6c85626043c579971322dba1d58446"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a3f6c85626043c579971322dba1d58446">eval</a> (struct <a class="el" href="structnode.html">node</a> *)</td></tr>
 <tr class="memdesc:a3f6c85626043c579971322dba1d58446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate nodes.  <a href="sh_8c.html#a3f6c85626043c579971322dba1d58446">More...</a><br /></td></tr>
 <tr class="separator:a3f6c85626043c579971322dba1d58446"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21579a20737c3b2b24e18bb5e51d8140"><td class="memItemLeft" align="right" valign="top"><a id="a21579a20737c3b2b24e18bb5e51d8140"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_prompt</b> ()</td></tr>
-<tr class="separator:a21579a20737c3b2b24e18bb5e51d8140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31414a2d49c4a73942de40f410fed170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">getuser</a> ()</td></tr>
+<tr class="memdesc:a31414a2d49c4a73942de40f410fed170"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get username and copy to buffer.  <a href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">More...</a><br /></td></tr>
+<tr class="separator:a31414a2d49c4a73942de40f410fed170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bda466b931066c2776c175aa9e1b8d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a6bda466b931066c2776c175aa9e1b8d6">gethost</a> ()</td></tr>
+<tr class="memdesc:a6bda466b931066c2776c175aa9e1b8d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get hostname (nodename) and copy to buffer.  <a href="sh_8c.html#a6bda466b931066c2776c175aa9e1b8d6">More...</a><br /></td></tr>
+<tr class="separator:a6bda466b931066c2776c175aa9e1b8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18b7faf3350c67928a3556c8664615b6"><td class="memItemLeft" align="right" valign="top"><a id="a18b7faf3350c67928a3556c8664615b6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>print_prompt</b> (char *format, char *buffer)</td></tr>
+<tr class="separator:a18b7faf3350c67928a3556c8664615b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d045ca77fdc77540040c06d5243c02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">draw_prompt</a> ()</td></tr>
+<tr class="memdesc:a19d045ca77fdc77540040c06d5243c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw user prompt.  <a href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">More...</a><br /></td></tr>
+<tr class="separator:a19d045ca77fdc77540040c06d5243c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a> ()</td></tr>
 <tr class="memdesc:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a single line.  <a href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">More...</a><br /></td></tr>
 <tr class="separator:a8ebc79830dc3d9fe9b0dae2a19426edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -96,15 +105,39 @@ Variables</h2></td></tr>
 <tr class="memitem:aa74b9afafd36575ac4b16ddc93cf956a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#a175abb747ea3b78aa8da87355dcec473">FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a></td></tr>
 <tr class="memdesc:aa74b9afafd36575ac4b16ddc93cf956a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shell script input file.  <a href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">More...</a><br /></td></tr>
 <tr class="separator:aa74b9afafd36575ac4b16ddc93cf956a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a717c0720066c358466d44f6f0d53b172"><td class="memItemLeft" align="right" valign="top"><a id="a717c0720066c358466d44f6f0d53b172"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;local&quot;</td></tr>
-<tr class="separator:a717c0720066c358466d44f6f0d53b172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5ec728515b694d11286dcafd628b84"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a0c5ec728515b694d11286dcafd628b84">username</a> [1024]</td></tr>
+<tr class="memdesc:a0c5ec728515b694d11286dcafd628b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Username buffer.  <a href="sh_8c.html#a0c5ec728515b694d11286dcafd628b84">More...</a><br /></td></tr>
+<tr class="separator:a0c5ec728515b694d11286dcafd628b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7858519d633b10b2a43ff6ca26ab3108"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sh_8c.html#a7858519d633b10b2a43ff6ca26ab3108">hostname</a> [256]</td></tr>
+<tr class="memdesc:a7858519d633b10b2a43ff6ca26ab3108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hostname buffer.  <a href="sh_8c.html#a7858519d633b10b2a43ff6ca26ab3108">More...</a><br /></td></tr>
+<tr class="separator:a7858519d633b10b2a43ff6ca26ab3108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shell entry point. </p>
 
 <p class="definition">Definition in file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a19d045ca77fdc77540040c06d5243c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d045ca77fdc77540040c06d5243c02">&#9670;&nbsp;</a></span>draw_prompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_prompt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw user prompt. </p>
+
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00221">221</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+
+</div>
+</div>
 <a id="a3f6c85626043c579971322dba1d58446"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f6c85626043c579971322dba1d58446">&#9670;&nbsp;</a></span>eval()</h2>
 
@@ -128,6 +161,48 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 </div>
 </div>
+<a id="a6bda466b931066c2776c175aa9e1b8d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bda466b931066c2776c175aa9e1b8d6">&#9670;&nbsp;</a></span>gethost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gethost </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get hostname (nodename) and copy to buffer. </p>
+
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00089">89</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+
+</div>
+</div>
+<a id="a31414a2d49c4a73942de40f410fed170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31414a2d49c4a73942de40f410fed170">&#9670;&nbsp;</a></span>getuser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getuser </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get username and copy to buffer. </p>
+
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00081">81</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+
+</div>
+</div>
 <a id="a8ebc79830dc3d9fe9b0dae2a19426edc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ebc79830dc3d9fe9b0dae2a19426edc">&#9670;&nbsp;</a></span>handle_one_line()</h2>
 
@@ -146,7 +221,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 <p>Handle a single line. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00079">79</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00234">234</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -174,7 +249,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00132">132</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00286">286</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -193,7 +268,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 <p>Enable Abstract Syntax Tree debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00043">43</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00044">44</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -211,7 +286,25 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 <p>Do the buffer? </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00031">31</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00032">32</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+
+</div>
+</div>
+<a id="a7858519d633b10b2a43ff6ca26ab3108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7858519d633b10b2a43ff6ca26ab3108">&#9670;&nbsp;</a></span>hostname</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char hostname[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hostname buffer. </p>
+
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00075">75</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -229,7 +322,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 <p>Shell script input file. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00055">55</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00056">56</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -247,7 +340,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 <p>Enable interactive mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00049">49</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00050">50</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
@@ -265,7 +358,25 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>_user</b> = &quot;l
 
 <p>Enable token debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00037">37</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00038">38</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
+
+</div>
+</div>
+<a id="a0c5ec728515b694d11286dcafd628b84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5ec728515b694d11286dcafd628b84">&#9670;&nbsp;</a></span>username</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char username[1024]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Username buffer. </p>
+
+<p class="definition">Definition at line <a class="el" href="sh_8c_source.html#l00069">69</a> of file <a class="el" href="sh_8c_source.html">sh.c</a>.</p>
 
 </div>
 </div>
