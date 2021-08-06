@@ -67,4 +67,6 @@ const char *syscall_names[] = {
     [SNX_TOTALMEM] = "totalmem",
     [SNX_FREEMEM] = "freemem",
     [SNX_LEAKEDMEM] = "leakedmem",
+    [SNX_GETCWD] = "getcwd",
+    [SNX_CHDIR] = "chdir",
 };

@@ -40,7 +40,6 @@ extern struct tar_header *initfs;
 
 #define ZOMBIE (void *)2
 
-// kmutex process_lock = KMUTEX_INIT;
 struct dmgr threads;
 
 static void finalizer_kthread(void *);
@@ -50,6 +49,8 @@ static void handle_stopped_condition();
 void proc_threads(struct open_file *ofd, void *_);
 void proc_zombies(struct open_file *ofd, void *_);
 void thread_done_irqsdisabled(void);
+
+char globalcwd[256] = "/home";
 
 struct process proc_zero = {
     .pid = 0,
@@ -155,8 +156,6 @@ static void make_freeable(struct thread *defunct) {
 
 static bool enqueue_checks(struct thread *th) {
     if (th->tid == 0) return false;
-    // if (th->trace_state == TRACE_STOPPED)  return false;
-    // I hope the above is covered by TRWAIT, but we'll see
     if (th->flags & TF_QUEUED) return false;
     assert(th->proc->pid > -1);
     assert(th->magic == THREAD_MAGIC);
@@ -180,16 +179,13 @@ void thread_enqueue_at_front(struct thread *th) {
     }
 }
 
-// portability!
 static void fxsave(fp_ctx *fpctx) {
-    // printf("called fxsave with %p\n", fpctx);
 #if X86_64
     asm volatile("fxsaveq %0" ::"m"(*fpctx));
 #endif
 }
 
 static void fxrstor(fp_ctx *fpctx) {
-    // printf("called fxrstor with %p\n", fpctx);
 #if X86_64
     asm volatile("fxrstorq %0" : "=m"(*fpctx));
 #endif
@@ -205,15 +201,6 @@ static struct thread *next_runnable_thread() {
     return rt;
 }
 
-/*
- * Choose the next thread to run.
- *
- * This procedure disables interrupts and expects you to re-enable them
- * when you're done doing whatever you need to with this information.
- *
- * It does dequeue the thread from the runnable queue, so consider that
- * if you don't actually plan on running it.
- */
 struct thread *thread_sched(bool irqs_disabled) {
     if (!irqs_disabled) disable_irqs();
 
@@ -439,7 +426,7 @@ void bootstrap_usermode(const char *init_filename) {
 
     th->entry = new_userspace_entry;
     th->entry_arg = (void *)init_filename;
-    th->cwd = fs_path("/home");
+    th->cwd = fs_path(globalcwd);
 
     proc->mmap_base = USER_MMAP_BASE;
     proc->vm_root = vmm_fork(proc);
@@ -679,6 +666,17 @@ sysret sys_getpid() {
 
 sysret sys_gettid() {
     return running_thread->tid;
+}
+
+sysret sys_getcwd(char* buf, size_t size) {
+    char* pathname = globalcwd;
+    strncpy(buf, pathname, size);
+    return 0;
+}
+
+sysret sys_chdir(const char* path) {
+    // TODO: #7 Make an effective chdir()
+    return 0;
 }
 
 sysret sys_execve(struct interrupt_frame *frame, char *filename,

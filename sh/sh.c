@@ -17,6 +17,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/utsname.h>
 
 /** @file
  * @brief Shell entry point
@@ -60,6 +61,16 @@ FILE *input_file;
  */
 int eval(struct node *);
 
+char* _user = "local";
+
+void print_prompt() {
+    struct utsname hostbuf;
+    uname(&hostbuf);
+    char cwdbuffer[256];
+    getcwd(cwdbuffer, 256);
+    fprintf(stderr, "[%s@%s] %s $ ", _user, hostbuf.nodename, cwdbuffer);
+}
+
 /**
  * @brief Handle a single line
  * 
@@ -67,7 +78,7 @@ int eval(struct node *);
  */
 int handle_one_line() {
     // TODO: /etc/hostname ?
-    if (interactive) fprintf(stderr, "[local@synnixos]~$ ");
+    if (interactive) print_prompt();
     char buffer[1024] = {0};
     int ret_val = 127;
     list tokens;

@@ -29,6 +29,9 @@ int get_hour();
 int get_minute();
 int get_second();
 
+int getcwd(char* buf, size_t size);
+int chdir(const char* path);
+
 int unlink(const char *);
 
 pid_t fork(void);

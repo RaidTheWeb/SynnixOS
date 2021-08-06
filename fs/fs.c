@@ -180,7 +180,6 @@ sysret do_close_open_file(struct open_file *ofd) {
 
     if (file->ops->close) file->ops->close(ofd);
 
-    // if (ofd->basename) free(ofd->basename);
     DECREF(file);
     free(ofd);
     return 0;
@@ -248,7 +247,6 @@ sysret sys_readdir(int fd, struct snx_dirent *buf, size_t count) {
 struct open_file *clone_open_file(struct open_file *ofd) {
     struct open_file *nfd = malloc(sizeof(struct open_file));
     memcpy(nfd, ofd, sizeof(struct open_file));
-    // if (ofd->basename) nfd->basename = strdup(ofd->basename);
     ofd->file->refcnt += 1;
     if (ofd->file->ops->clone) ofd->file->ops->clone(ofd, nfd);
     return nfd;
@@ -278,7 +276,6 @@ sysret sys_seek(int fd, off_t offset, int whence) {
     if (file->ops->seek) {
         file->ops->seek(ofd, offset, whence);
     } else {
-        // File is not seekable
         return -ESPIPE;
     }
 
@@ -309,15 +306,8 @@ sysret sys_poll(struct pollfd *fds, nfds_t nfds, int timeout) {
         if (!file) return -EBADF;
 
         if (file->type != FT_TTY) {
-            // This is still terrible
             return -ETODO;
         }
-
-        // FIXME: what file type was this intended for??
-        // if (file->ring.len != 0) {
-        //         fds[i].revents = POLLIN;
-        //         return 1;
-        // }
     }
 
     return 0;

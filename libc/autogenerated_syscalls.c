@@ -621,3 +621,23 @@ int leakedmem() {
     }
 
 }
+int getcwd(char *buf, size_t size) {
+    intptr_t ret = syscall2(SNX_GETCWD, (intptr_t)buf, (intptr_t)size);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int chdir(const char *path) {
+    intptr_t ret = syscall1(SNX_CHDIR, (intptr_t)path);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
