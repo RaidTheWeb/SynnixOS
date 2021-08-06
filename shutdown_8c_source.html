@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SynnixOS: sh/eval.c File Reference</title>
+<title>SynnixOS: user/shutdown.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -41,63 +41,26 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_60d8ef35a2fa7bc5ae3400a29ad70e2c.html">sh</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_111cd2f11cffd6d6d28d89ee0389ee9e.html">user</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">eval.c File Reference</div>  </div>
+<div class="title">shutdown.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Evaluate shell commands C source for evaluating shell commands after parsing.  
-<a href="#details">More...</a></p>
-
-<p><a href="eval_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:abf5d9e44a7044bea150a2ad487c0fcbd"><td class="memItemLeft" align="right" valign="top"><a id="abf5d9e44a7044bea150a2ad487c0fcbd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>completely_destroy_array</b> (char *array)</td></tr>
-<tr class="separator:abf5d9e44a7044bea150a2ad487c0fcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1ae063fd44b79071fd475bc5a2b14e"><td class="memItemLeft" align="right" valign="top"><a id="abd1ae063fd44b79071fd475bc5a2b14e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>eval_pipeline</b> (struct <a class="el" href="structpipeline.html">pipeline</a> *<a class="el" href="structpipeline.html">pipeline</a>)</td></tr>
-<tr class="separator:abd1ae063fd44b79071fd475bc5a2b14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9531b2cc7d389b69809dd5c7da5158ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eval_8c.html#a9531b2cc7d389b69809dd5c7da5158ce">eval</a> (struct <a class="el" href="structnode.html">node</a> *<a class="el" href="structnode.html">node</a>)</td></tr>
-<tr class="memdesc:a9531b2cc7d389b69809dd5c7da5158ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate nodes.  <a href="eval_8c.html#a9531b2cc7d389b69809dd5c7da5158ce">More...</a><br /></td></tr>
-<tr class="separator:a9531b2cc7d389b69809dd5c7da5158ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Evaluate shell commands C source for evaluating shell commands after parsing. </p>
-
-<p class="definition">Definition in file <a class="el" href="eval_8c_source.html">eval.c</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a9531b2cc7d389b69809dd5c7da5158ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9531b2cc7d389b69809dd5c7da5158ce">&#9670;&nbsp;</a></span>eval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int eval </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnode.html">node</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Evaluate nodes. </p>
-<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="eval_8c_source.html#l00176">176</a> of file <a class="el" href="eval_8c_source.html">eval.c</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="synnixos_8h.html">synnixos.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;Shutting down...\n&quot;</span>);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    shutdown();</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="asynnixos_8h_html"><div class="ttname"><a href="synnixos_8h.html">synnixos.h</a></div><div class="ttdoc">SynnixOS native Library.</div></div>
+<div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
+<div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -212,25 +212,30 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    panic(<span class="stringliteral">&quot;sys_haltvm called on an unsupported platform&quot;</span>);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;sysret sys_fault(<span class="keyword">enum</span> fault_type type) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">int</span> *x = 0;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">case</span> NULL_DEREF: <span class="keywordflow">return</span> *x;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">case</span> ASSERT: assert(0); <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> -EINVAL;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;__USED uintptr_t __stack_chk_guard = (~14882L);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;__USED noreturn <span class="keywordtype">void</span> __stack_chk_fail(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    panic(<span class="stringliteral">&quot;Stack smashing detected, ahhhh!&quot;</span>);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    __builtin_unreachable();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;sysret sys_shutdown() {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="x86_2include_2x86_2cpu_8h.html#aa9b7e745fe0d0db155c23e4e7996504b">outw</a>(0x604, 0x2000);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    panic(<span class="stringliteral">&quot;sys_shutdown failed&quot;</span>);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;sysret sys_fault(<span class="keyword">enum</span> fault_type type) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">int</span> *x = 0;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">switch</span> (type) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">case</span> NULL_DEREF: <span class="keywordflow">return</span> *x;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">case</span> ASSERT: assert(0); <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> -EINVAL;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;__USED uintptr_t __stack_chk_guard = (~14882L);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif // __GNUC__</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;__USED noreturn <span class="keywordtype">void</span> __stack_chk_fail(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    panic(<span class="stringliteral">&quot;Stack smashing detected, ahhhh!&quot;</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    __builtin_unreachable();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#endif // __GNUC__</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="adebug_8c_html_a6fd2e2c1eb2b27c857fdfec83b5d1e02"><div class="ttname"><a href="debug_8c.html#a6fd2e2c1eb2b27c857fdfec83b5d1e02">backtrace_from_here</a></div><div class="ttdeci">void backtrace_from_here()</div><div class="ttdoc">Back trace from point.</div><div class="ttdef"><b>Definition:</b> <a href="debug_8c_source.html#l00082">debug.c:82</a></div></div>
 <div class="ttc" id="asyscalls_8h_html"><div class="ttname"><a href="syscalls_8h.html">syscalls.h</a></div><div class="ttdoc">Include systematicaly generated syscalls.</div></div>
@@ -253,6 +258,7 @@ $(function() {
 <div class="ttc" id="amod_8h_html"><div class="ttname"><a href="mod_8h.html">mod.h</a></div><div class="ttdoc">Functions for loading and unloading kernel modules at runtime.</div></div>
 <div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_a1de30fd3d2e5e8243487f43e167f346c"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#a1de30fd3d2e5e8243487f43e167f346c">outb</a></div><div class="ttdeci">void outb(port_addr_t port, uint8_t data)</div><div class="ttdoc">Write 8 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00018">cpu.c:18</a></div></div>
 <div class="ttc" id="apanic_8h_html"><div class="ttname"><a href="panic_8h.html">panic.h</a></div><div class="ttdoc">Helper functions for kernel panics.</div></div>
+<div class="ttc" id="ax86_2include_2x86_2cpu_8h_html_aa9b7e745fe0d0db155c23e4e7996504b"><div class="ttname"><a href="x86_2include_2x86_2cpu_8h.html#aa9b7e745fe0d0db155c23e4e7996504b">outw</a></div><div class="ttdeci">void outw(port_addr_t port, uint16_t data)</div><div class="ttdoc">Write 16 bit integer to port.</div><div class="ttdef"><b>Definition:</b> <a href="cpu_8c_source.html#l00028">cpu.c:28</a></div></div>
 <div class="ttc" id="adebug_8h_html"><div class="ttname"><a href="debug_8h.html">debug.h</a></div><div class="ttdoc">Various debugging tools.</div></div>
 <div class="ttc" id="astdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdoc">Write formatted data to stdout.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00512">stdio.c:512</a></div></div>
 <!-- HTML footer for doxygen 1.8.17-->
