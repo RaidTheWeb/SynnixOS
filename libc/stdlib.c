@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifndef __kernel__
 
@@ -41,8 +42,30 @@ lldiv_t lldiv(long long x, long long y) {
     return (lldiv_t){.quot = x / y, .rem = x % y};
 }
 
+char *read_keyvalues(FILE *file, char const *desired_name) { 
+    char name[128];
+    char val[128];
+    char line[512];
+    char* token;
+
+    while (fgets(line, sizeof line, file) != NULL) {
+        
+        strcpy(name, strtok(line, "="));
+        strcpy(val, strtok(NULL, "="));
+
+        if (strcmp(name, desired_name) == 0) {
+            fclose(file);
+            return strdup(val);
+        }
+    }
+    fclose(file);
+    return NULL;
+}
+
 char *getenv(const char *name) {
-    return "";
+
+    FILE *f = fopen("/etc/.env", "r");
+    return read_keyvalues(f, name);
 }
 
 void abort(void) {

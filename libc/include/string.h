@@ -36,6 +36,8 @@ void *memcpy(void *restrict pdest, const void *restrict psrc, size_t count);
 void *memmove(void *pdest, const void *psrc, size_t count);
 size_t strspn(const char *s, const char *accept);
 
+char *strtok(char* s, const char* sep);
+
 // TODO
 size_t strcspn(const char *s, const char *reject);
 int strcoll(const char *s1, const char *s2);

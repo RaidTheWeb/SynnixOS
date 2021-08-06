@@ -103,11 +103,6 @@ int gettimeofday(struct timeval *time, void *thing) {
     exit(1);
 }
 
-int sscanf(const char *s, const char *format, ...) {
-    printf("called unimplemented function sscanf\n");
-    exit(1);
-}
-
 /*
 int rand(void) {
     printf("called unimplemented function rand\n");
