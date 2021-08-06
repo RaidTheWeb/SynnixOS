@@ -65,3 +65,4 @@
 70 leakedmem { } int
 71 getcwd { char* buf, size_t size } int
 72 chdir { const char* path } int
+73 shutdown { } int

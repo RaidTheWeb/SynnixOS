@@ -641,3 +641,13 @@ int chdir(const char *path) {
     }
 
 }
+int shutdown() {
+    intptr_t ret = syscall0(SNX_SHUTDOWN);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}

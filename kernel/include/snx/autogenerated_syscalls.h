@@ -71,5 +71,6 @@ sysret sys_freemem();
 sysret sys_leakedmem();
 sysret sys_getcwd(char *buf, size_t size);
 sysret sys_chdir(const char *path);
+sysret sys_shutdown();
 
 #endif

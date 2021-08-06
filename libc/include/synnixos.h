@@ -36,6 +36,8 @@ int totalmem();
 int freemem();
 int leakedmem();
 
+int shutdown();
+
 void redirect_output_to(char *const argv[]);
 
 #endif

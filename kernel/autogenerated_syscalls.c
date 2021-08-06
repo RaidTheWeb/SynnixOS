@@ -69,6 +69,7 @@ sysret (*syscall_table[SYSCALL_TABLE_SIZE])() = {
     [SNX_LEAKEDMEM] = sys_leakedmem,
     [SNX_GETCWD] = sys_getcwd,
     [SNX_CHDIR] = sys_chdir,
+    [SNX_SHUTDOWN] = sys_shutdown,
 };
 const char *syscall_debuginfos[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = "_exit(%zi)",
@@ -138,6 +139,7 @@ const char *syscall_debuginfos[SYSCALL_TABLE_SIZE] = {
     [SNX_LEAKEDMEM] = "leakedmem()",
     [SNX_GETCWD] = "getcwd(\"%s\", %zu)",
     [SNX_CHDIR] = "chdir(\"%s\")",
+    [SNX_SHUTDOWN] = "shutdown()",
 };
 unsigned int syscall_ptr_mask[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = 0,
@@ -207,6 +209,7 @@ unsigned int syscall_ptr_mask[SYSCALL_TABLE_SIZE] = {
     [SNX_LEAKEDMEM] = 0,
     [SNX_GETCWD] = 1,
     [SNX_CHDIR] = 1,
+    [SNX_SHUTDOWN] = 0,
 };
 const char *syscall_names[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = "_exit",
@@ -276,4 +279,5 @@ const char *syscall_names[SYSCALL_TABLE_SIZE] = {
     [SNX_LEAKEDMEM] = "leakedmem",
     [SNX_GETCWD] = "getcwd",
     [SNX_CHDIR] = "chdir",
+    [SNX_SHUTDOWN] = "shutdown",
 };

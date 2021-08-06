@@ -161,6 +161,11 @@ sysret sys_haltvm(int exit_code) {
     panic("sys_haltvm called on an unsupported platform");
 }
 
+sysret sys_shutdown() {
+    outw(0x604, 0x2000);
+    panic("sys_shutdown failed");
+}
+
 sysret sys_fault(enum fault_type type) {
     volatile int *x = 0;
     switch (type) {

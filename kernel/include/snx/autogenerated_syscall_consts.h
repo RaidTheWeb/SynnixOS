@@ -73,6 +73,7 @@ enum snx_syscall {
     SNX_LEAKEDMEM = 70,
     SNX_GETCWD = 71,
     SNX_CHDIR = 72,
+    SNX_SHUTDOWN = 73,
     SYSCALL_MAX,
 };
 

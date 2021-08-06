@@ -71,5 +71,6 @@ int freemem();
 int leakedmem();
 int getcwd(char *buf, size_t size);
 int chdir(const char *path);
+int shutdown();
 
 #endif
