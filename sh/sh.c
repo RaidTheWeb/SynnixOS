@@ -96,7 +96,7 @@ void gethost() {
 
 #define LINE_LEN 4096
 
-#define FALLBACK_PS1 "[\\u@\\h] \\w$ "
+#define FALLBACK_PS1 "[\\u@\\h] \\w $ "
 
 void print_prompt(char* format, char* buffer) {
     char cwdbuffer[256];
@@ -220,10 +220,13 @@ void print_prompt(char* format, char* buffer) {
  */
 void draw_prompt() {
     char buf[1024];
+
+    char* ps1 = getenv("PS1");
+
     getuser();
     gethost();
-    print_prompt(FALLBACK_PS1, buf);
-    fprintf(stdout, "%s", buf);
+    print_prompt(ps1 ? ps1 : FALLBACK_PS1, buf);
+    fprintf(stderr, "%s", buf);
 }
 
 /**

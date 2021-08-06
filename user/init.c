@@ -30,10 +30,12 @@ int exec(const char *stdio_file, char **argv) {
         printf(
             "HOME = %s\n"
             "SHELL = %s\n"
-            "TTY = %s\n",
+            "TTY = %s\n"
+            "PS1 = %s\n",
             getenv("HOME"),
             getenv("SHELL"),
-            getenv("TTY")
+            getenv("TTY"),
+            getenv("PS1") ? getenv("PS1") : "UNDEFINED"
         );
         execve(argv[0], argv, NULL);
 
