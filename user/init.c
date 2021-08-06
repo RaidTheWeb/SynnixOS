@@ -25,7 +25,14 @@ int exec(const char *stdio_file, char **argv) {
         open(stdio_file, O_WRONLY);
         open(stdio_file, O_WRONLY);
 
-        printf("Initializing Shell\n");
+        printf("spawning shell...\n");
+        printf("enviroment values:\n");
+        printf(
+            "HOME = %s\n"
+            "SHELL = %s\n",
+            getenv("HOME"),
+            getenv("SHELL")
+        );
         execve(argv[0], argv, NULL);
 
         printf("init failed to run sh\n");

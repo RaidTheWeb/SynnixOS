@@ -79,7 +79,7 @@ char hostname[256];
  * 
  */
 void getuser() {
-    strcpy(username, "local");
+    strcpy(username, getenv("USER"));
 }
 
 /**

@@ -49,12 +49,14 @@ char *read_keyvalues(FILE *file, char const *desired_name) {
     char* token;
 
     while (fgets(line, sizeof line, file) != NULL) {
-        
+        if(strlen(line) == 0) return NULL;
+
         strcpy(name, strtok(line, "="));
         strcpy(val, strtok(NULL, "="));
 
         if (strcmp(name, desired_name) == 0) {
             fclose(file);
+            val[strcspn(val, "\n")] = 0;
             return strdup(val);
         }
     }

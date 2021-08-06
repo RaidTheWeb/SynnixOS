@@ -1,8 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char** argv) {
-    // TODO: Actual UID based  whoami
-    char* user = "local";
+    char* user = getenv("USER");
     printf("%s\n", user);
     return 0;
 }
