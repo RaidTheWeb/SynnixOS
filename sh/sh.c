@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/utsname.h>
+#include <string.h>
 
 /** @file
  * @brief Shell entry point
@@ -61,14 +62,168 @@ FILE *input_file;
  */
 int eval(struct node *);
 
-char* _user = "local";
+/**
+ * @brief Username buffer
+ * 
+ */
+char username[1024];
 
-void print_prompt() {
+/**
+ * @brief Hostname buffer
+ * 
+ */
+char hostname[256];
+
+/**
+ * @brief Get username and copy to buffer
+ * 
+ */
+void getuser() {
+    strcpy(username, "local");
+}
+
+/**
+ * @brief Get hostname (nodename) and copy to buffer
+ * 
+ */
+void gethost() {
     struct utsname hostbuf;
     uname(&hostbuf);
+
+    int len = strlen(hostbuf.nodename);
+    memcpy(hostname, hostbuf.nodename, len+1);
+}
+
+#define LINE_LEN 4096
+
+#define FALLBACK_PS1 "[\\u@\\h] \\w$ "
+
+void print_prompt(char* format, char* buffer) {
     char cwdbuffer[256];
     getcwd(cwdbuffer, 256);
-    fprintf(stderr, "[%s@%s] %s $ ", _user, hostbuf.nodename, cwdbuffer);
+
+    size_t offset = 0;
+
+    while (*format) {
+        if(*format == '\\') {
+            format++;
+            switch (*format) {
+                case '\\':
+                    buffer[offset++] = *format;
+                    format++;
+                    break;
+                case '[':
+                    format++;
+                    break;
+                case ']':
+                    format++;
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7': {
+                    int i = (*format) - '0';
+                    format++;
+                    if(*format >= '0' && *format <= '7') {
+                        i *= 8;
+                        i += (*format) - '0';
+                        format++;
+                        if(*format >= '0' && *format <= '7') {
+                            i *= 8;
+                            i += (*format) - '0';
+                            format++;
+                        }
+                    }
+                    buffer[offset++] = i;
+                    break;
+                }
+
+                case 'e':
+                    buffer[offset++] = '\033';
+                    format++;
+                    break;
+
+                case 'd':
+                    {
+                        // TODO: Date buffer format
+                    }
+                    format++;
+                    break;
+
+                case 't':
+                    {
+                        // TODO: Time buffer format
+                    }
+                    format++;
+                    break;
+
+                case 'h':
+                    {
+                        int size = sprintf(buffer+offset, "%s", hostname);
+                        offset += size;
+                    }
+                    format++;
+                    break;
+                
+                case 'u':
+                    {
+                        int size = sprintf(buffer+offset, "%s", username);
+                        offset += size;
+                    }
+                    format++;
+                    break;
+                
+                case 'w':
+                    {
+                        int size = sprintf(buffer+offset, "%s", cwdbuffer);
+                        offset += size;
+                    }
+                    format++;
+                    break;
+
+                case '$':
+                    buffer[offset++] = '$';
+                    format++;
+                    break;
+                
+                case 'r':
+                    {
+                        int size = sprintf(buffer+offset, "%s", 0);
+                        offset += size;
+                    }
+                    format++;
+                    break;
+                default:
+                    {
+                        int size = sprintf(buffer+offset, "\\%c", *format);
+                        offset += size;
+                    }
+                    format++;
+                    break;
+            }
+        } else {
+            buffer[offset++] = *format;
+            format++;
+        }
+    }
+
+    buffer[offset] = '\0';
+}
+
+/**
+ * @brief Draw user prompt
+ * 
+ */
+void draw_prompt() {
+    char buf[1024];
+    getuser();
+    gethost();
+    print_prompt(FALLBACK_PS1, buf);
+    fprintf(stdout, "%s", buf);
 }
 
 /**
@@ -77,8 +232,7 @@ void print_prompt() {
  * @return int 
  */
 int handle_one_line() {
-    // TODO: /etc/hostname ?
-    if (interactive) print_prompt();
+    if (interactive) draw_prompt();
     char buffer[1024] = {0};
     int ret_val = 127;
     list tokens;

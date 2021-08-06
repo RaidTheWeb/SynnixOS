@@ -675,7 +675,7 @@ sysret sys_getcwd(char* buf, size_t size) {
 }
 
 sysret sys_chdir(const char* path) {
-    // TODO: #7 Make an effective chdir()
+    // TODO: #8 Make an effective chdir()
     return 0;
 }
 
