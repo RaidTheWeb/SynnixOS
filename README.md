@@ -1,13 +1,13 @@
 <h1 align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/RaidTheWeb/SynnixOS/master/gitlogo.png" alt="SynnixOS Logo">
+  <a href="https://github.com/RaidTheWeb/SynnixOS"><img src="https://github.com/RaidTheWeb/SynnixOS/blob/master/gitlogo.png" alt="SynnixOS Logo"></a>
   <br>
   SynnixOS
   <br>
 </h1>
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FRaidTheWeb%2FSynnixOS%2Fbadge&style=flat)](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
-[![Architecture](https://img.shields.io/badge/Architecture-x86__64-blue)](https:/github.com/RaidTheWeb/SynnixOS)
+[![Architecture](https://img.shields.io/badge/Architecture-x86__64-blue)](https://github.com/RaidTheWeb/SynnixOS)
 
 Epic Hobby OS targeting x86_64 CPUs, it includes some hacked together functionality for most essential OSs although, with interactivity via QEMU serial0
 
