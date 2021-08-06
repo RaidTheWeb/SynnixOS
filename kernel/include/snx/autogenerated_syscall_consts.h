@@ -68,6 +68,9 @@ enum snx_syscall {
     SNX_GET_HOUR = 65,
     SNX_GET_MINUTE = 66,
     SNX_GET_SECOND = 67,
+    SNX_TOTALMEM = 68,
+    SNX_FREEMEM = 69,
+    SNX_LEAKEDMEM = 70,
     SYSCALL_MAX,
 };
 

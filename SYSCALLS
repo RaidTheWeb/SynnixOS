@@ -60,3 +60,6 @@
 65 get_hour { } int
 66 get_minute { } int
 67 get_second { } int
+68 totalmem { } int
+69 freemem { } int
+70 leakedmem { } int

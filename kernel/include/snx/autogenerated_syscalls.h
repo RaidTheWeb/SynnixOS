@@ -66,5 +66,8 @@ sysret sys_get_day();
 sysret sys_get_hour();
 sysret sys_get_minute();
 sysret sys_get_second();
+sysret sys_totalmem();
+sysret sys_freemem();
+sysret sys_leakedmem();
 
 #endif

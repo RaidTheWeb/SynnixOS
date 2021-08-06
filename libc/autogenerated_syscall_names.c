@@ -64,4 +64,7 @@ const char *syscall_names[] = {
     [SNX_GET_HOUR] = "get_hour",
     [SNX_GET_MINUTE] = "get_minute",
     [SNX_GET_SECOND] = "get_second",
+    [SNX_TOTALMEM] = "totalmem",
+    [SNX_FREEMEM] = "freemem",
+    [SNX_LEAKEDMEM] = "leakedmem",
 };

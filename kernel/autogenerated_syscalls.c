@@ -64,6 +64,9 @@ sysret (*syscall_table[SYSCALL_TABLE_SIZE])() = {
     [SNX_GET_HOUR] = sys_get_hour,
     [SNX_GET_MINUTE] = sys_get_minute,
     [SNX_GET_SECOND] = sys_get_second,
+    [SNX_TOTALMEM] = sys_totalmem,
+    [SNX_FREEMEM] = sys_freemem,
+    [SNX_LEAKEDMEM] = sys_leakedmem,
 };
 const char *syscall_debuginfos[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = "_exit(%zi)",
@@ -128,6 +131,9 @@ const char *syscall_debuginfos[SYSCALL_TABLE_SIZE] = {
     [SNX_GET_HOUR] = "get_hour()",
     [SNX_GET_MINUTE] = "get_minute()",
     [SNX_GET_SECOND] = "get_second()",
+    [SNX_TOTALMEM] = "totalmem()",
+    [SNX_FREEMEM] = "freemem()",
+    [SNX_LEAKEDMEM] = "leakedmem()",
 };
 unsigned int syscall_ptr_mask[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = 0,
@@ -192,6 +198,9 @@ unsigned int syscall_ptr_mask[SYSCALL_TABLE_SIZE] = {
     [SNX_GET_HOUR] = 0,
     [SNX_GET_MINUTE] = 0,
     [SNX_GET_SECOND] = 0,
+    [SNX_TOTALMEM] = 0,
+    [SNX_FREEMEM] = 0,
+    [SNX_LEAKEDMEM] = 0,
 };
 const char *syscall_names[SYSCALL_TABLE_SIZE] = {
     [SNX__EXIT] = "_exit",
@@ -256,4 +265,7 @@ const char *syscall_names[SYSCALL_TABLE_SIZE] = {
     [SNX_GET_HOUR] = "get_hour",
     [SNX_GET_MINUTE] = "get_minute",
     [SNX_GET_SECOND] = "get_second",
+    [SNX_TOTALMEM] = "totalmem",
+    [SNX_FREEMEM] = "freemem",
+    [SNX_LEAKEDMEM] = "leakedmem",
 };

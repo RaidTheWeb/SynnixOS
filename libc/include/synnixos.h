@@ -32,6 +32,9 @@ int syscall_trace(pid_t pid, int state);
 int top(int show_threads);
 int load_module(int fd);
 int sleepms(int milliseconds);
+int totalmem();
+int freemem();
+int leakedmem();
 
 void redirect_output_to(char *const argv[]);
 

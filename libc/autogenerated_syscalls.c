@@ -591,3 +591,33 @@ int get_second() {
     }
 
 }
+int totalmem() {
+    intptr_t ret = syscall0(SNX_TOTALMEM);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int freemem() {
+    intptr_t ret = syscall0(SNX_FREEMEM);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}
+int leakedmem() {
+    intptr_t ret = syscall0(SNX_LEAKEDMEM);
+    if (is_error(ret)) {
+        errno = -ret;
+        return (int)-1;
+    } else {
+        return (int)ret;
+    }
+
+}

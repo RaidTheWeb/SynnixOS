@@ -164,3 +164,60 @@ void pm_summary(struct open_file *ofd, void *_) {
     proc_sprintf(ofd, "in use:    %10zu (%10zx)\n", inuse, inuse);
     proc_sprintf(ofd, "leaked:    %10zu (%10zx)\n", leak, leak);
 }
+
+sysret sys_totalmem() {
+    uint8_t last = 0;
+    size_t i = 0;
+    size_t inuse = 0, avail = 0, leak = 0;
+
+    for (; i < NBASE; i++) {
+        int ref = base_page_refcounts[i];
+        int dsp = disp(ref);
+
+        if (dsp == 1) leak += PAGE_SIZE;
+        if (dsp == 2) avail += PAGE_SIZE;
+        if (dsp == 3) inuse += PAGE_SIZE;
+        if (dsp == last) continue;
+        
+        last = dsp;
+    }
+
+    return leak + avail + inuse;
+}
+
+sysret sys_freemem() {
+    uint8_t last = 0;
+    size_t i = 0;
+    size_t inuse = 0, avail = 0, leak = 0;
+
+    for (; i < NBASE; i++) {
+        int ref = base_page_refcounts[i];
+        int dsp = disp(ref);
+
+        if (dsp == 1) leak += PAGE_SIZE;
+        if (dsp == 2) avail += PAGE_SIZE;
+        if (dsp == 3) inuse += PAGE_SIZE;
+        if (dsp == last) continue;
+        last = dsp;
+    }
+    return avail;
+}
+
+sysret sys_leakedmem() {
+    uint8_t last = 0;
+    size_t i = 0;
+    size_t inuse = 0, avail = 0, leak = 0;
+
+    for (; i < NBASE; i++) {
+        int ref = base_page_refcounts[i];
+        int dsp = disp(ref);
+
+        if (dsp == 1) leak += PAGE_SIZE;
+        if (dsp == 2) avail += PAGE_SIZE;
+        if (dsp == 3) inuse += PAGE_SIZE;
+        if (dsp == last) continue;
+
+        last = dsp;
+    }
+    return leak;
+}

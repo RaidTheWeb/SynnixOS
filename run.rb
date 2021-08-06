@@ -7,6 +7,7 @@ options = {
     ram: "32M",
     serial: true,
     tee: true,
+    localtime: true,
 }
 OptionParser.new do |opts|
     opts.on("-r", "--ram RAM", "Set emulated machine RAM") { |r| options[:ram] = r }
@@ -20,6 +21,7 @@ OptionParser.new do |opts|
     opts.on("--serial2-file FILE", "Attach a file to the second serial port") { |f| options[:s2file] = f }
     opts.on("--test-mode", "Run in test mode (attach isa-debug-exit device)") { options[:test] = true }
     opts.on("--dry-run", "Just print the QEMU command, don't run it") { options[:dry_run] = true }
+    opts.on("--utc", "Run QEMU using UTC RTC") { options[:localtime] = false }
 end.parse!
 
 options[:serial] = false if options[:monitor]
@@ -44,6 +46,7 @@ qemu_command << "-display none" unless options[:video]
 qemu_command << "--device isa-debug-exit" if options[:test]
 qemu_command << "-serial unix:./serial2,nowait,server" if options[:s2socket]
 qemu_command << "-serial file:./#{options[:s2file]}" if options[:s2file]
+qemu_command << "-rtc base=localtime" if options[:localtime]
 
 if options[:net]
     qemu_command << "-device rtl8139,netdev=net0"
