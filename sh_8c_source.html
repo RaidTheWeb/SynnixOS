@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#define LINE_LEN 4096</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#define FALLBACK_PS1 &quot;[\\u@\\h] \\w$ &quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#define FALLBACK_PS1 &quot;[\\u@\\h] \\w $ &quot;</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> print_prompt(<span class="keywordtype">char</span>* format, <span class="keywordtype">char</span>* buffer) {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">char</span> cwdbuffer[256];</div>
@@ -271,116 +271,119 @@ $(function() {
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">  221</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">draw_prompt</a>() {</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">char</span> buf[1024];</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">getuser</a>();</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="sh_8c.html#a6bda466b931066c2776c175aa9e1b8d6">gethost</a>();</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    print_prompt(FALLBACK_PS1, buf);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a>, <span class="stringliteral">&quot;%s&quot;</span>, buf);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment"> * @brief Handle a single line</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"> * @return int </span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">  234</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a>() {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) <a class="code" href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">draw_prompt</a>();</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">char</span> buffer[1024] = {0};</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">int</span> ret_val = 127;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="structlist.html">list</a> tokens;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    list_init(&amp;tokens);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> &amp;&amp; <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETBUFFER, 0);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETECHO, 0);</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETPGRP, getpid());</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="readline_8c.html#a53bd678608af9823bf4b29e562042d7c">read_line_interactive</a>(buffer, 256) == -1) <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> == <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>) {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETBUFFER, 1);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETECHO, 1);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETPGRP, getpid());</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="readline_8c.html#a52fdffc3a978c44dee6623692fcd3e1a">read_line_simple</a>(<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a>, buffer, 256) == -1) <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span> (!buffer[0]) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="token_8c.html#ae974885c62fc43e02e95a4c2e5b4ba5d">tokenize</a>(buffer, &amp;tokens)) {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#a4626ff50298dd9c6aacb862959c1107d">token_debug</a>) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            list_for_each(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a>, t, &amp;tokens, <a class="code" href="structnode.html">node</a>) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <a class="code" href="token_8c.html#a835cefa7a14cdb43c5a6ef73508b111c">token_fprint</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, t);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keyword">struct </span><a class="code" href="structnode.html">node</a> *<a class="code" href="structnode.html">node</a> = <a class="code" href="parse_8c.html#a9c8f9b66db508267433550f376284565">parse</a>(&amp;tokens);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structnode.html">node</a>) {</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adfe41a207d53775f477ef158d1307b8b">ast_debug</a>) <a class="code" href="parse_8c.html#a4188ce4b216877b73ceb0a550c2e70be">node_fprint</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <a class="code" href="structnode.html">node</a>);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            ret_val = <a class="code" href="sh_8c.html#a3f6c85626043c579971322dba1d58446">eval</a>(<a class="code" href="structnode.html">node</a>);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span> (ret_val &gt;= 128 &amp;&amp; ret_val &lt; 128 + 32) {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;terminated by signal %i\n&quot;</span>, ret_val - 128);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ret_val != 0) {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;-&gt; %i\n&quot;</span>, ret_val);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment"> * @brief Handle signal</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment"> * @param signal </span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">  286</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a>(<span class="keywordtype">int</span> <a class="code" href="libc_2include_2signal_8h.html#af5deff54993bb606e67a06d443d3f0cd">signal</a>) {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="keywordtype">void</span> help(<span class="keyword">const</span> <span class="keywordtype">char</span> *progname) {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>,</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="stringliteral">&quot;usage: %s [-nd]\n&quot;</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="stringliteral">&quot;  -n     disable tty buffering\n&quot;</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="stringliteral">&quot;  -d     token debug mode\n&quot;</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="stringliteral">&quot;  -a     ast debug mode\n&quot;</span>,</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            progname);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordtype">int</span> pid = getpid();</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    setpgid(pid, pid);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> = <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="libc_2include_2signal_8h.html#af5deff54993bb606e67a06d443d3f0cd">signal</a>(SIGINT, <a class="code" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a>);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordtype">int</span> opt;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">while</span> ((opt = getopt(argc, argv, <span class="stringliteral">&quot;ndah&quot;</span>)) != -1) {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">switch</span> (opt) {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;n&#39;</span>: <a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> = <span class="keyword">false</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>: <a class="code" href="sh_8c.html#a4626ff50298dd9c6aacb862959c1107d">token_debug</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;a&#39;</span>: <a class="code" href="sh_8c.html#adfe41a207d53775f477ef158d1307b8b">ast_debug</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>: <span class="comment">// FALLTHROUGH :)</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>: help(argv[0]); <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span> (argv[optind]) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> = <a class="code" href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a>(argv[optind], <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a>) {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;fopen&quot;</span>);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (!isatty(<a class="code" href="stdio_8h.html#af86fa14728c9bad5418a6d29cad9f9ff">fileno</a>(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>))) <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;SynnixOS Shell\n&quot;</span>);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a>() == 0) {}</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordtype">char</span>* ps1 = getenv(<span class="stringliteral">&quot;PS1&quot;</span>);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">getuser</a>();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <a class="code" href="sh_8c.html#a6bda466b931066c2776c175aa9e1b8d6">gethost</a>();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    print_prompt(ps1 ? ps1 : FALLBACK_PS1, buf);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;%s&quot;</span>, buf);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment"> * @brief Handle a single line</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment"> * @return int </span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">  237</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a>() {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) <a class="code" href="sh_8c.html#a19d045ca77fdc77540040c06d5243c02">draw_prompt</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">char</span> buffer[1024] = {0};</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordtype">int</span> ret_val = 127;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="structlist.html">list</a> tokens;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    list_init(&amp;tokens);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> &amp;&amp; <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETBUFFER, 0);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETECHO, 0);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        ttyctl(STDIN_FILENO, TTY_SETPGRP, getpid());</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="readline_8c.html#a53bd678608af9823bf4b29e562042d7c">read_line_interactive</a>(buffer, 256) == -1) <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> == <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETBUFFER, 1);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETECHO, 1);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            ttyctl(STDIN_FILENO, TTY_SETPGRP, getpid());</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="readline_8c.html#a52fdffc3a978c44dee6623692fcd3e1a">read_line_simple</a>(<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a>, buffer, 256) == -1) <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">if</span> (!buffer[0]) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="token_8c.html#ae974885c62fc43e02e95a4c2e5b4ba5d">tokenize</a>(buffer, &amp;tokens)) {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#a4626ff50298dd9c6aacb862959c1107d">token_debug</a>) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            list_for_each(<span class="keyword">struct</span> <a class="code" href="structtoken.html">token</a>, t, &amp;tokens, <a class="code" href="structnode.html">node</a>) {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="token_8c.html#a835cefa7a14cdb43c5a6ef73508b111c">token_fprint</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, t);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keyword">struct </span><a class="code" href="structnode.html">node</a> *<a class="code" href="structnode.html">node</a> = <a class="code" href="parse_8c.html#a9c8f9b66db508267433550f376284565">parse</a>(&amp;tokens);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="structnode.html">node</a>) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adfe41a207d53775f477ef158d1307b8b">ast_debug</a>) <a class="code" href="parse_8c.html#a4188ce4b216877b73ceb0a550c2e70be">node_fprint</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <a class="code" href="structnode.html">node</a>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            ret_val = <a class="code" href="sh_8c.html#a3f6c85626043c579971322dba1d58446">eval</a>(<a class="code" href="structnode.html">node</a>);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">if</span> (ret_val &gt;= 128 &amp;&amp; ret_val &lt; 128 + 32) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;terminated by signal %i\n&quot;</span>, ret_val - 128);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ret_val != 0) {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>, <span class="stringliteral">&quot;-&gt; %i\n&quot;</span>, ret_val);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> * @brief Handle signal</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"> * @param signal </span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">  289</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a>(<span class="keywordtype">int</span> <a class="code" href="libc_2include_2signal_8h.html#af5deff54993bb606e67a06d443d3f0cd">signal</a>) {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="keywordtype">void</span> help(<span class="keyword">const</span> <span class="keywordtype">char</span> *progname) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a>(<a class="code" href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a>,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="stringliteral">&quot;usage: %s [-nd]\n&quot;</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="stringliteral">&quot;  -n     disable tty buffering\n&quot;</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="stringliteral">&quot;  -d     token debug mode\n&quot;</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="stringliteral">&quot;  -a     ast debug mode\n&quot;</span>,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            progname);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">int</span> pid = getpid();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    setpgid(pid, pid);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> = <a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="libc_2include_2signal_8h.html#af5deff54993bb606e67a06d443d3f0cd">signal</a>(SIGINT, <a class="code" href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a>);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">int</span> opt;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">while</span> ((opt = getopt(argc, argv, <span class="stringliteral">&quot;ndah&quot;</span>)) != -1) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">switch</span> (opt) {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;n&#39;</span>: <a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> = <span class="keyword">false</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>: <a class="code" href="sh_8c.html#a4626ff50298dd9c6aacb862959c1107d">token_debug</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;a&#39;</span>: <a class="code" href="sh_8c.html#adfe41a207d53775f477ef158d1307b8b">ast_debug</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>: <span class="comment">// FALLTHROUGH :)</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>: help(argv[0]); <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">if</span> (argv[optind]) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a> = <a class="code" href="stdio_8h.html#a043ecd1fa571a0e4f3835a0f19570cfd">fopen</a>(argv[optind], <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="sh_8c.html#aa74b9afafd36575ac4b16ddc93cf956a">input_file</a>) {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <a class="code" href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a>(<span class="stringliteral">&quot;fopen&quot;</span>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <a class="code" href="sh_8c.html#af4527a7245c0b0b8e2819aa3bd04d472">do_buffer</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span> (!isatty(<a class="code" href="stdio_8h.html#af86fa14728c9bad5418a6d29cad9f9ff">fileno</a>(<a class="code" href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a>))) <a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a>) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;SynnixOS Shell\n&quot;</span>);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a>() == 0) {}</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="ash_8c_html_a31414a2d49c4a73942de40f410fed170"><div class="ttname"><a href="sh_8c.html#a31414a2d49c4a73942de40f410fed170">getuser</a></div><div class="ttdeci">void getuser()</div><div class="ttdoc">Get username and copy to buffer.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00081">sh.c:81</a></div></div>
 <div class="ttc" id="areadline_8c_html_a53bd678608af9823bf4b29e562042d7c"><div class="ttname"><a href="readline_8c.html#a53bd678608af9823bf4b29e562042d7c">read_line_interactive</a></div><div class="ttdeci">long read_line_interactive(char *buf, size_t max_len)</div><div class="ttdoc">Interactive readline.</div><div class="ttdef"><b>Definition:</b> <a href="readline_8c_source.html#l00106">readline.c:106</a></div></div>
@@ -394,7 +397,7 @@ $(function() {
 <div class="ttc" id="astdio_8h_html_acab9c1fe2a80b10e01858bda28a04244"><div class="ttname"><a href="stdio_8h.html#acab9c1fe2a80b10e01858bda28a04244">stdin</a></div><div class="ttdeci">FILE * stdin</div><div class="ttdoc">Standard Input.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00035">fstdio.c:35</a></div></div>
 <div class="ttc" id="aassert_8h_html"><div class="ttname"><a href="assert_8h.html">assert.h</a></div><div class="ttdoc">Assertions.</div></div>
 <div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdoc">Node struct.</div><div class="ttdef"><b>Definition:</b> <a href="parse_8h_source.html#l00052">parse.h:52</a></div></div>
-<div class="ttc" id="ash_8c_html_a3b527c56ed133ee6815bfbc625e757af"><div class="ttname"><a href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a></div><div class="ttdeci">void signal_handler(int signal)</div><div class="ttdoc">Handle signal.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00286">sh.c:286</a></div></div>
+<div class="ttc" id="ash_8c_html_a3b527c56ed133ee6815bfbc625e757af"><div class="ttname"><a href="sh_8c.html#a3b527c56ed133ee6815bfbc625e757af">signal_handler</a></div><div class="ttdeci">void signal_handler(int signal)</div><div class="ttdoc">Handle signal.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00289">sh.c:289</a></div></div>
 <div class="ttc" id="astruct__FILE_html"><div class="ttname"><a href="struct__FILE.html">_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00010">fstdio.c:10</a></div></div>
 <div class="ttc" id="ash_8c_html_a7858519d633b10b2a43ff6ca26ab3108"><div class="ttname"><a href="sh_8c.html#a7858519d633b10b2a43ff6ca26ab3108">hostname</a></div><div class="ttdeci">char hostname[256]</div><div class="ttdoc">Hostname buffer.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00075">sh.c:75</a></div></div>
 <div class="ttc" id="ash_8c_html_adcad5c4575f31370cebe2ef7121db3ec"><div class="ttname"><a href="sh_8c.html#adcad5c4575f31370cebe2ef7121db3ec">interactive</a></div><div class="ttdeci">bool interactive</div><div class="ttdoc">Enable interactive mode.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00050">sh.c:50</a></div></div>
@@ -409,7 +412,6 @@ $(function() {
 <div class="ttc" id="atoken_8c_html_ae974885c62fc43e02e95a4c2e5b4ba5d"><div class="ttname"><a href="token_8c.html#ae974885c62fc43e02e95a4c2e5b4ba5d">tokenize</a></div><div class="ttdeci">bool tokenize(const char *string, list_head *out)</div><div class="ttdoc">Tokenize string.</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00170">token.c:170</a></div></div>
 <div class="ttc" id="actype_8h_html"><div class="ttname"><a href="ctype_8h.html">ctype.h</a></div><div class="ttdoc">C Types.</div></div>
 <div class="ttc" id="asynnixos_8h_html"><div class="ttname"><a href="synnixos_8h.html">synnixos.h</a></div><div class="ttdoc">SynnixOS native Library.</div></div>
-<div class="ttc" id="astdio_8h_html_ac80f4484175bf6c48d7b7ca4e9897ae6"><div class="ttname"><a href="stdio_8h.html#ac80f4484175bf6c48d7b7ca4e9897ae6">stdout</a></div><div class="ttdeci">FILE * stdout</div><div class="ttdoc">Standard Output.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00036">fstdio.c:36</a></div></div>
 <div class="ttc" id="astdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div><div class="ttdoc">Standard Input/Output.</div></div>
 <div class="ttc" id="ash_8c_html_adfe41a207d53775f477ef158d1307b8b"><div class="ttname"><a href="sh_8c.html#adfe41a207d53775f477ef158d1307b8b">ast_debug</a></div><div class="ttdeci">bool ast_debug</div><div class="ttdoc">Enable Abstract Syntax Tree debugging.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00044">sh.c:44</a></div></div>
 <div class="ttc" id="ash_8c_html_a0c5ec728515b694d11286dcafd628b84"><div class="ttname"><a href="sh_8c.html#a0c5ec728515b694d11286dcafd628b84">username</a></div><div class="ttdeci">char username[1024]</div><div class="ttdoc">Username buffer.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00069">sh.c:69</a></div></div>
@@ -417,7 +419,7 @@ $(function() {
 <div class="ttc" id="astdio_8h_html_ae41ff60ab072068a0f730c6da6cf1ce9"><div class="ttname"><a href="stdio_8h.html#ae41ff60ab072068a0f730c6da6cf1ce9">fprintf</a></div><div class="ttdeci">int fprintf(FILE *file, const char *format,...)</div><div class="ttdoc">Print formatted string to FILE pointer.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00078">fstdio.c:78</a></div></div>
 <div class="ttc" id="aunistd_8h_html"><div class="ttname"><a href="unistd_8h.html">unistd.h</a></div><div class="ttdoc">Universal Standard operations.</div></div>
 <div class="ttc" id="atoken_8c_html_a835cefa7a14cdb43c5a6ef73508b111c"><div class="ttname"><a href="token_8c.html#a835cefa7a14cdb43c5a6ef73508b111c">token_fprint</a></div><div class="ttdeci">void token_fprint(FILE *f, struct token *t)</div><div class="ttdoc">Print token to stream.</div><div class="ttdef"><b>Definition:</b> <a href="token_8c_source.html#l00047">token.c:47</a></div></div>
-<div class="ttc" id="ash_8c_html_a8ebc79830dc3d9fe9b0dae2a19426edc"><div class="ttname"><a href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a></div><div class="ttdeci">int handle_one_line()</div><div class="ttdoc">Handle a single line.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00234">sh.c:234</a></div></div>
+<div class="ttc" id="ash_8c_html_a8ebc79830dc3d9fe9b0dae2a19426edc"><div class="ttname"><a href="sh_8c.html#a8ebc79830dc3d9fe9b0dae2a19426edc">handle_one_line</a></div><div class="ttdeci">int handle_one_line()</div><div class="ttdoc">Handle a single line.</div><div class="ttdef"><b>Definition:</b> <a href="sh_8c_source.html#l00237">sh.c:237</a></div></div>
 <div class="ttc" id="ash_8c_html_a3f6c85626043c579971322dba1d58446"><div class="ttname"><a href="sh_8c.html#a3f6c85626043c579971322dba1d58446">eval</a></div><div class="ttdeci">int eval(struct node *)</div><div class="ttdoc">Evaluate nodes.</div><div class="ttdef"><b>Definition:</b> <a href="eval_8c_source.html#l00176">eval.c:176</a></div></div>
 <div class="ttc" id="astdio_8h_html_a01a2bb0c382b7df2d8c1f51263762bf8"><div class="ttname"><a href="stdio_8h.html#a01a2bb0c382b7df2d8c1f51263762bf8">sprintf</a></div><div class="ttdeci">int sprintf(char *buf, const char *format,...)</div><div class="ttdoc">Write formatted data to buffer.</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00464">stdio.c:464</a></div></div>
 <div class="ttc" id="astructutsname_html"><div class="ttname"><a href="structutsname.html">utsname</a></div><div class="ttdef"><b>Definition:</b> <a href="utsname_8h_source.html#l00012">utsname.h:12</a></div></div>
