@@ -22,6 +22,17 @@ int main(int argc, char* argv[])
     simple_queue_t output;
     simple_stack_t ops;
 
+    if(argc > 1) {
+        queue_init(&output);
+        stack_init(&ops);
+
+        shunting_yard(argv[1], &ops, &output);
+
+        result = compute_rpn(&output);
+        printf("%lld\n", result);
+        return 0;
+    }
+
     while(true) {
 
         char *input = readline("calc> ");
