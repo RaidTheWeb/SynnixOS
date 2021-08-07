@@ -33,6 +33,8 @@ Latest releases are released when I upload it manually, and nightly are at 10:30
 
 - Lua port
 
+- Ape language port
+
 - Userspace
 
 - Kernel Modules
@@ -123,6 +125,7 @@ Building SynnixOS has been tested **only on unix-like enviroments**. Here are th
     |-- docs/ - doxygen documentation (generated on git push)
 
     |-- external/ - extra software that isn't included normally
+        |-- ape/ - ape port
         |-- lua/ - lua port
         |-- Epic8C/ - c port of Epic8 CPU emulator
         |-- kuroko/ - WIP port of Kuroko
