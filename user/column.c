@@ -46,7 +46,6 @@ int main(int argc, char **argv) {
     list_for_each(struct str, str, &strings, node) {
         int len = strlen(str->string);
 
-        // drop newlines
         if (len > 0 && str->string[len - 1] == '\n') {
             str->string[len - 1] = '\0';
             len -= 1;
