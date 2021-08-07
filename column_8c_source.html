@@ -97,36 +97,35 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, <a class="code" href="structnode.html">node</a>) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">int</span> len = strlen(<a class="code" href="structstr.html">str</a>-&gt;string);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// drop newlines</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (len &gt; 0 &amp;&amp; <a class="code" href="structstr.html">str</a>-&gt;string[len - 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="structstr.html">str</a>-&gt;string[len - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            len -= 1;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        max_len = max(len, max_len);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> screen_width = 80;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> columns = screen_width / (max_len + 1);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (columns &lt; 1) columns = 1;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> column_width = 80 / columns;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> last_newline = 0;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, <a class="code" href="structnode.html">node</a>) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%-*s&quot;</span>, column_width, <a class="code" href="structstr.html">str</a>-&gt;string);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        last_newline = 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        i++;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (i &gt; 0 &amp;&amp; i % columns == 0) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            last_newline = 1;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (!last_newline) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">if</span> (len &gt; 0 &amp;&amp; <a class="code" href="structstr.html">str</a>-&gt;string[len - 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="structstr.html">str</a>-&gt;string[len - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            len -= 1;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        max_len = max(len, max_len);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> screen_width = 80;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> columns = screen_width / (max_len + 1);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (columns &lt; 1) columns = 1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> column_width = 80 / columns;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> last_newline = 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    list_for_each(<span class="keyword">struct</span> <a class="code" href="structstr.html">str</a>, <a class="code" href="structstr.html">str</a>, &amp;strings, <a class="code" href="structnode.html">node</a>) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;%-*s&quot;</span>, column_width, <a class="code" href="structstr.html">str</a>-&gt;string);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        last_newline = 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        i++;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (i &gt; 0 &amp;&amp; i % columns == 0) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            last_newline = 1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (!last_newline) <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aerrno_8h_html_a5230748e1917fb81dcfad2c78b1d7fd6"><div class="ttname"><a href="errno_8h.html#a5230748e1917fb81dcfad2c78b1d7fd6">perror</a></div><div class="ttdeci">void perror(const char *const message)</div><div class="ttdoc">Printed error.</div><div class="ttdef"><b>Definition:</b> <a href="errno_8c_source.html#l00010">errno.c:10</a></div></div>
 <div class="ttc" id="astdio_8h_html_ac9e47c346a25e2e7edd2c9b4ca5d0262"><div class="ttname"><a href="stdio_8h.html#ac9e47c346a25e2e7edd2c9b4ca5d0262">stderr</a></div><div class="ttdeci">FILE * stderr</div><div class="ttdoc">Standard Error.</div><div class="ttdef"><b>Definition:</b> <a href="fstdio_8c_source.html#l00037">fstdio.c:37</a></div></div>
