@@ -18,6 +18,10 @@ function build() {
     make
     cd -
 
+    cd calc
+    make snx
+    cd -
+
     #cd tinyvm
     #CC=~/.local/bin/x86_64-synnixos-gcc make
     #INSTALL_PREFIX=../../sysroot/usr make install 
@@ -44,6 +48,10 @@ function clean() {
 
     cd ape
     make clean
+    cd -
+
+    cd calc
+    rm calc
     cd -
 
     #cd tinyvm
