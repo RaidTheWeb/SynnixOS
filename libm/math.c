@@ -1,5 +1,6 @@
 #include <basic.h>
 #include <math.h>
+#include <complex.h>
 
 double fabs(double v) {
     if (v < 0) {
@@ -763,4 +764,40 @@ double cbrt(double x)
 	r = (r-t)/(w+r);
 	t = t+t*r;
 	return t;
+}
+
+static unsigned long int next = 1;
+ 
+int rand( void ) // RAND_MAX assumed to be 32767
+{
+    next = next * 1103515245 + 12345;
+    return (unsigned int)(next / 65536) % 32768;
+}
+ 
+void srand( unsigned int seed )
+{
+    next = seed;
+}
+
+
+typedef union {
+	double complex z;
+    struct {
+        double real;
+        double imag;
+    };
+} double_complex;
+
+double creal(double complex z) {
+    double_complex dc = {.z = z};
+    return dc.real;
+}
+
+double cimag(double complex z) {
+    double_complex dc = {.z = z};
+    return dc.imag;
+}
+
+double cabs(double complex c) {
+    return hypot(creal(c), cimag(c));
 }

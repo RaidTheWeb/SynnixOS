@@ -516,3 +516,8 @@ int printf(const char *format, ...) {
     return vprintf(format, args);
     // va_end in vsprintf
 }
+
+void rewind(void *f) {
+    // TODO: #9 Implement rewind(FILE *f)
+    return;
+}

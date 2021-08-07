@@ -455,6 +455,8 @@ size_t fwrite_unlocked(const void *ptr, size_t size, size_t n, FILE *stream);
 char *fgets_unlocked(char *s, int n, FILE *stream);
 int fputs_unlocked(const char *s, FILE *stream);
 
+void rewind(void *f);
+
 //TODO: #5 Below
 FILE *popen(const char *command, const char *type);
 int pclose(FILE *stream);
