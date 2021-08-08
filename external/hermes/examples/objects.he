@@ -1,0 +1,24 @@
+object x = {};
+
+object person = {
+    string name = "John";
+    int age = 22;
+
+    list foods = [
+        "beef",
+        "egg",
+        "milk"
+    ];
+};
+
+print(person.name);
+print(person.age);
+
+list foods = person.foods;
+int i = 0;
+
+while (i < foods.length)
+{
+    print(foods[i]);
+    i += 1;
+};

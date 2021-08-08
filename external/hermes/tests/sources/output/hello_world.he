@@ -1,0 +1,13 @@
+object HelloWorldPrinter = {
+    void print_hello_world()
+    {
+        stdoutbuffer("hello world");
+    }
+};
+
+void main()
+{
+    HelloWorldPrinter.print_hello_world();
+}
+
+main();

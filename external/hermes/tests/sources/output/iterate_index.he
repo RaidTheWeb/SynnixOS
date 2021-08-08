@@ -1,0 +1,8 @@
+list fruits = ["banana", "apple", "pear"];
+
+
+iterate fruits with void @(string fruit, int index)
+{
+    stdoutbuffer(fruit);
+    stdoutbuffer(index);
+}

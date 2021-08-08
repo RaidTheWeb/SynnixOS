@@ -1,0 +1,12 @@
+int x = 1;
+string name;
+
+if (x > 3)
+    name = "John";
+else if (x == 0)
+    name = "Sarah";
+else if (x == 1)
+    name = "Edgar";
+
+
+print(name);

@@ -1,0 +1,1 @@
+iterate ["apple", "pear", "banana"] with void @(string fruit) { print(fruit); };

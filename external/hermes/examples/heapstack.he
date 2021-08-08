@@ -1,0 +1,18 @@
+object get_person(string name)
+{
+    object o = {
+        string name;
+    };
+
+    o.name = name;
+
+    return o;
+}
+
+object apa = new get_person("hanna");
+aprint(apa);
+object apa2 = new get_person("bobby");
+aprint(apa2);
+
+print(apa.name);
+print(apa2.name);

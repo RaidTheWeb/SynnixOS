@@ -1,0 +1,15 @@
+void m(void a, void b, void c)
+{
+    a();
+    b();
+    c();
+}
+
+m(void @(){ print("a"); }, void @(){ print("b"); }, void @(){ print("c"); });
+
+list fruits = ["apple", "pear", "banana"];
+
+iterate fruits with void @(string fruit)
+{
+    print(fruit);
+}

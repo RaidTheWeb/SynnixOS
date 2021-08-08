@@ -1,0 +1,3 @@
+list fruits = ["pear", "banana", "apple"];
+
+stdoutbuffer(fruits);

@@ -1,0 +1,13 @@
+int i = 0;
+
+if (i == 1){
+    stdoutbuffer("it's 1");
+
+} else if (i != 0) {
+    stdoutbuffer("it's not 1");
+
+} else {
+    stdoutbuffer("it's not");
+}
+
+stdoutbuffer("hello world");

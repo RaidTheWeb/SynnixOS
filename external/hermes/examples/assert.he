@@ -1,0 +1,8 @@
+assert 1 == 1;
+
+int get_number()
+{
+    return 5 + 5;
+}
+
+assert 20 == get_number();

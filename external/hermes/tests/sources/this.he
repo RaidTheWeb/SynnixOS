@@ -1,0 +1,14 @@
+object person = 
+{
+    void say_something()
+    {
+        this.say_hello();
+    };
+
+    void say_hello()
+    {
+        print("Hello");
+    };
+};
+
+person.say_something();

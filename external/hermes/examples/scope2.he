@@ -1,0 +1,9 @@
+string name = "something"
+  
+string return_name(){ 
+     string name = "else";
+     return name;
+}
+
+name = return_name();
+print(name);

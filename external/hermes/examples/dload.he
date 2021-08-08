@@ -1,0 +1,6 @@
+dload("/home/ianertson/workspace/testlib/libhermes_httpget.so", "httpget");
+
+
+string res = httpget("http://example.org");
+
+print(res);

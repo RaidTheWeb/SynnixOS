@@ -1,0 +1,2 @@
+int result = char_to_dec('a');
+print(result);

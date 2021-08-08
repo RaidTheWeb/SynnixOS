@@ -1,0 +1,3 @@
+string a = input("Say something: ");
+
+print("You said: " + a);

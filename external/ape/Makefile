@@ -1,6 +1,6 @@
 CC = ~/.local/bin/x86_64-synnixos-gcc
 CFLAGS = -static -O0 -std=c11 -Wl,--allow-multiple-definition
-SYSUSR ?= ~/SynnixOS/sysroot/usr/bin/
+SYSUSR ?= ../../sysroot/usr/bin/
 
 all: ape
 

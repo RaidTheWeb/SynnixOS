@@ -1,0 +1,9 @@
+list fruits = ["pear", "banana", "apple"];
+
+
+void fruit_iterator(string item)
+{
+    stdoutbuffer(item);
+}
+
+iterate fruits with fruit_iterator;

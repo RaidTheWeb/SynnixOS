@@ -1,0 +1,15 @@
+int add_2(int x)
+{
+    return x + 2;
+}
+
+int remove_1(int x)
+{
+    return x - 1;
+}
+
+int mycomp(int x) =
+    int @(int x) { return x + 2; }, int @(int x) { return x - 1; };
+
+int x = mycomp(10);
+stdoutbuffer(x);

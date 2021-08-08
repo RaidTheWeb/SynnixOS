@@ -1,0 +1,13 @@
+int i = 0;
+
+if (i == 1){
+    print("it's 1");
+
+} else if (i != 0) {
+    print("it's not 1");
+
+} else {
+    print("it's not");
+}
+
+print("hello world");

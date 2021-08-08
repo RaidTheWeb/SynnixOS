@@ -1,0 +1,11 @@
+enum
+{
+    DOG,
+    HORSE,
+    CAT
+} animal;
+
+print(animal.DOG);
+print(animal.HORSE);
+print(animal.CAT);
+print(animal);

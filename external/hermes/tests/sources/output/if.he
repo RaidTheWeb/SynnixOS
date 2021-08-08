@@ -1,0 +1,12 @@
+int x = 16;
+
+
+if (x > 8)
+{
+    stdoutbuffer("yes");
+}
+
+if (x < 9)
+{
+    stdoutbuffer("no");
+}

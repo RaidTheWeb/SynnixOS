@@ -1,0 +1,115 @@
+
+hermes_parser_parse
+""" statements: compound_statement """
+
+
+compound_statement is one statemnet or a list of statements (";" is OPTIONAL)
+hermes_parser_parse_statements
+""" compound_statement: statement (";" statement)* [";"] """
+
+
+hermes_parser_parse_statement
+""" statement: TOKEN_ID
+    | TOKEN_NUMBER_VALUE
+    | TOKEN_CHAR_VALUE
+    | TOKEN_FLOAT_VALUE
+    | TOKEN_NUMBER_VALUE
+    | TOKEN_INTEGER_VALUE
+    | EMTPY (NOOP)
+"""
+
+
+TOKEN_ID:
+""" TOKEN_ID: STATEMENT_WHILE
+    | STATEMENT_IF
+    | (VALUE_FALSE | VALUE_TRUE)
+    | VALUE_NULL
+    | STATEMENT_RETURN
+    | STATEMENT_NEW
+    | STATEMENT_ITERATE
+    | STATEMENT_ASSERT
+    | FUNCTION_DEFINITION ->(hermes_parser_parse_function_definition)
+    |VARIABLE ( "(" | ("." expr) | ("[" expr "]") )*
+    or
+    | VARIABLE "(" ->(hermes_parser_parse_function_call)
+    | VARIABLE "." expr
+    | VARIABLE "[" expr "]"
+    | VARIABLE ->(hermes_parser_parse_variable)
+"""
+
+
+hermes_parser_parse_while
+""" STATEMENT_WHILE: 
+    "while" "(" expr ")" "{" (compound_ statement)* "}" 
+"""
+
+
+hermes_parser_parse_if
+""" STATEMENT_IF: 
+    "if" "(" expr ")" "{" (compound_statement)* "}" ("else" STATEMENT_IF)?
+
+
+hermes_parser_parse_boolean
+""" boolean: "true" | "false" """
+
+
+hermes_parser_parse_null
+""" null: "NULL" """
+
+hermes_parser_parse_new
+""" new: "new" expr """
+
+
+hermes_parser_parse_iterate
+""" iterate: "iterate" expr "with" (FUNCTION_DEFINITION | VARIABLE)
+
+
+hermes_parser_parse_assert
+""" assert: "assert" expr """ 
+
+
+hermes_parser_parse_function_definition
+""" FUNCTION_DEFINITION: 
+    type VARIABLE ("(" [expr] ")" "{" (compound_statement)* "}") | "=" ((type FUNCTION_DEFINITION | VARIABLE) | (enum | expr)) 
+"""
+
+hermes_parser_parse_function_call
+""" FUNCTION_CALL: VARIABLE "(" expr (, expr)* ")"
+"""
+
+
+hermes_parser_parse_expr
+""" expr : term ((PLUS | MINUS) term)* """
+
+
+
+hermes_parser_parse_term
+""" term: FUNCTION_DEFINITION
+    | factor ((TOKEN_DIV
+    | TOKEN_STAR
+    | TOKEN_AND
+    | TOKEN_LESS_THAN
+    | TOKEN_LARGER_THAN
+    | TOKEN_EQUALS_EQUALS
+    | TOKEN_NOT_EQUALS) factor)*
+"""
+
+
+`hermes_parser_parse_factor`
+""" factor: boolean
+    | null
+    | STATEMENT_NEW
+    | VARIABLE
+    | TOKEN_DOT factor
+    | TOKEN_LBRACKET expr TOKEN_RBRACKET
+    | TOKEN_NUMBER_VALUE
+    | TOKEN_INTEGER_VALUE
+    | TOKEN_FLOAT_VALUE
+    | TOKEN_STRING_VALUE
+    | TOKEN_CHAR_VALUE
+"""
+
+
+
+hermes_parser_parse_variable 
+""" VARIABLE: ID | (variable_assignment_left variable_value) | (TOKEN_PLUS_EQUALS| TOKEN_MINUS_EQUALS | TOKEN_STAR_EQUALS) expr """

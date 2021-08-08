@@ -1,0 +1,11 @@
+void print_list(list l)
+{
+    void list_printer(void e)
+    {
+        print(e);
+    }
+
+    iterate l with list_printer;
+}
+
+print_list(["apple", "pear", "banana"]);

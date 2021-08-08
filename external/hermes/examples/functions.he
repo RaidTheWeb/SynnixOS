@@ -1,0 +1,22 @@
+string get_name()
+{
+    return "John Doe";
+};
+
+float get_age()
+{
+    return 22.3;
+};
+
+bool is_dead()
+{
+    return false;
+};
+
+void print_nice_formate(string s1, string s2){
+    print(s1);
+}
+
+
+// print_nice_formate("nice formate"); // will throw error
+print_nice_formate("nice formate", "nice");

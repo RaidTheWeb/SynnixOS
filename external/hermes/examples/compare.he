@@ -1,0 +1,3 @@
+print((1 + 200) < 90000);
+
+print("not dead");

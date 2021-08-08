@@ -1,0 +1,9 @@
+int x = 2;
+int y = 0;
+
+if (x > 3)
+    y = 22;
+else
+    y = 10;
+
+stdoutbuffer(y);

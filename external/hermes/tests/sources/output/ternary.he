@@ -1,0 +1,4 @@
+int x = 0;
+
+stdoutbuffer(x > 3 ? "John" : "David");
+

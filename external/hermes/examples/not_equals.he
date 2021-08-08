@@ -1,0 +1,6 @@
+object person = {
+    string name = "john";
+};
+
+
+print(person != NULL);

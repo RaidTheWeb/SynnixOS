@@ -1,0 +1,7 @@
+string name = "john";
+
+
+object x = {};
+
+
+print(x.name);

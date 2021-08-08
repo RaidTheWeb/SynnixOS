@@ -1,0 +1,5 @@
+object o = new {
+    string x = "hey";
+};
+
+aprint(o);

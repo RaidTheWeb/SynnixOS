@@ -1,0 +1,7 @@
+object person = {
+    int age = 2;    
+};
+
+person.age += 1;
+
+print(person.age);

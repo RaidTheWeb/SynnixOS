@@ -1,0 +1,6 @@
+object file = fopen("data/hello_world.txt", "r");
+string x = file.read();
+
+stdoutbuffer(x);
+
+fclose(file);

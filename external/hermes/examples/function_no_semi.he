@@ -1,0 +1,18 @@
+string get_name()
+{
+    return "John Doe";
+}
+
+float get_age()
+{
+    return 22.3;
+}
+
+bool is_dead()
+{
+    return false;
+}
+
+print(get_name());
+print(get_age());
+print(is_dead());

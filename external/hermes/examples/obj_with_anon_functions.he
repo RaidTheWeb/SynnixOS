@@ -1,0 +1,15 @@
+int mycomp(int x) =
+    int @(int y) { return y + 1; },
+    int @(int y) { return y - 1; };
+
+
+object person = {
+    void say(void sayfunc)
+    {
+        sayfunc();
+    }
+}
+
+person.say(void @(){
+    print("My name is John and my age is " + mycomp(25));
+});

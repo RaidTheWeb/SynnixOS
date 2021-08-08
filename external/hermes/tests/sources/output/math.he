@@ -1,0 +1,11 @@
+stdoutbuffer(10 / 2);
+stdoutbuffer(10 - 5);
+stdoutbuffer(10 * 5);
+stdoutbuffer(10 + 2);
+
+long int x = 100;
+long int y = 50;
+
+stdoutbuffer(x - y);
+stdoutbuffer(x / y);
+stdoutbuffer(x * y);

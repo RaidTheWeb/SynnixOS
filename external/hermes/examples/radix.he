@@ -1,0 +1,11 @@
+string result_bin = char_to_bin('a');
+print("bin: " + result_bin);
+
+string result_oct = char_to_oct('a');
+print("oct: " + result_oct);
+
+int result_dec = char_to_dec('a');
+print(result_dec);
+
+string result_hex = char_to_hex('_');
+print("hex: " + result_hex);

@@ -1,0 +1,18 @@
+void do_something(char c)
+{
+    print(c);
+};
+
+
+
+// not_declared = 2;
+
+void something()
+{
+    print("work is done");
+    print(c);
+};
+
+do_something('G', 'o');
+// no_exist()
+//something();

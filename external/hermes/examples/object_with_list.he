@@ -1,0 +1,12 @@
+object person = {
+    string name = "John";
+    int age = 22;
+
+    list foods = [
+        "beef",
+        "egg",
+        "milk"
+    ];
+};
+
+print(person.foods.length);

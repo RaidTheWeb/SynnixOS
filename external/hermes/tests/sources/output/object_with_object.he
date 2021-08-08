@@ -1,0 +1,12 @@
+object person = {
+    object pet = {
+        string name = "dog";
+
+        object age = {
+            int value = 6;
+        };
+    };
+};
+
+stdoutbuffer(person.pet.name);
+stdoutbuffer(person.pet.age.value);

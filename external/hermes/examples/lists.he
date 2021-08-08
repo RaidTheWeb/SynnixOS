@@ -1,0 +1,11 @@
+list x = [];
+
+x.add(1);
+x.add(2);
+
+print(x.length);
+
+x.remove(0);
+
+print(x.length);
+print(x[0]);

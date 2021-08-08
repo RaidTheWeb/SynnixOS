@@ -1,0 +1,6 @@
+void printit(string to_print)
+{
+    print(to_print);
+}
+
+print("hello world");

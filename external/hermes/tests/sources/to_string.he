@@ -1,0 +1,12 @@
+int x = 2;
+
+object person = {
+    string x = "hello";    
+};
+
+char c = 'E';
+
+print(x);
+print(c);
+print(person);
+print(5 + 5);

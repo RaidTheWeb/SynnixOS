@@ -1,0 +1,7 @@
+void @()
+{
+    print("Should not call!");
+}
+
+@();
+print("Still alive");

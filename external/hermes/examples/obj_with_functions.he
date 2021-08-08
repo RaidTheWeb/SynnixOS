@@ -1,0 +1,8 @@
+object person = {
+    void say()
+    {
+        print("yo");
+    }
+}
+
+person.say();

@@ -1,0 +1,12 @@
+bool x = true;
+string name = x ? "John" : "David";
+print(name);
+
+
+string return_name(){
+    string n = "jack";
+    return n;
+}
+
+string e = return_name()  ? "jack" : "john";
+print(e);

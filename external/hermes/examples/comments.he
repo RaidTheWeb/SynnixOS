@@ -1,0 +1,15 @@
+#!/usr/local/bin/hermes
+// printing something
+print("hello"); // comment
+
+/*
+* comment yo
+*/
+print("batman"); /* comment */
+
+print("still alive");
+
+# woah comment
+print("alive 001"); # alive
+# alive
+print("alive");

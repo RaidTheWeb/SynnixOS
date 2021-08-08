@@ -1,0 +1,3 @@
+list x = [];
+x.add(123);
+print(x[0]);

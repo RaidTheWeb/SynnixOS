@@ -1,0 +1,2 @@
+string result = char_to_oct('a');
+print(result);

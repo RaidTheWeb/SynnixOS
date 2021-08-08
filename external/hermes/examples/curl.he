@@ -1,0 +1,23 @@
+/*dload("/home/ianertson/workspace/hermes-curl/libhermes_curl.so", "hcurl_easy_init");
+dload("/home/ianertson/workspace/hermes-curl/libhermes_curl.so", "hcurl_easy_setopt");
+dload("/home/ianertson/workspace/hermes-curl/libhermes_curl.so", "hcurl_get_option");
+dload("/home/ianertson/workspace/hermes-curl/libhermes_curl.so", "hcurl_easy_perform");
+dload("/home/ianertson/workspace/hermes-curl/libhermes_curl.so", "hcurl_easy_cleanup");*/
+
+dload(
+    "/home/ianertson/workspace/hermes-curl/libhermes_curl.so",
+    "hcurl_easy_init",
+    "hcurl_easy_setopt",
+    "hcurl_get_option",
+    "hcurl_easy_perform",
+    "hcurl_easy_cleanup"
+);
+
+object curl = hcurl_easy_init();
+hcurl_easy_setopt(curl, hcurl_get_option("CURLOPT_URL"), "https://coelum.org");
+
+string response = hcurl_easy_perform(curl);
+
+hcurl_easy_cleanup(curl);
+
+print(response);

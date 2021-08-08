@@ -1,0 +1,20 @@
+
+int x = 2;
+
+if ( x == 2 &&  1 == 1){
+    print("everything is ok");
+}
+
+if ( 4 + 5 < 2 + 8){
+    print("everything is ok");
+}
+
+if ( x + 4 == 6 && 1 == 1){
+    print("everything is ok");
+}
+
+print( x > 3 ? "yes" : "no")
+
+
+
+print("hello world");

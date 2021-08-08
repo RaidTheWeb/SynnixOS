@@ -1,0 +1,12 @@
+int x = 0;
+int y = 1;
+
+if (x == 0 && y == 1)
+{
+    stdoutbuffer("hello");
+}
+
+if (x == 0 && y == 13)
+{
+    stdoutbuffer("should not be printed");
+}

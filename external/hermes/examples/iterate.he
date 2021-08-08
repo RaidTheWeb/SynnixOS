@@ -1,0 +1,10 @@
+void iterate_items(string item)
+{
+    print(item);
+}
+
+list fruits = ["pear", "banana", "apple"];
+
+iterate fruits with void @(string item) {
+    print(item);
+};

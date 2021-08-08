@@ -1,0 +1,4 @@
+string firstname = "john";
+string lastname = "doe";
+
+print(firstname + " " + lastname);

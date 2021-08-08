@@ -1,0 +1,9 @@
+string x = "john";
+string y = "john";
+string z = "david";
+
+if (x == y)
+    print("yes");
+
+if (x == z)
+    print("yes");
