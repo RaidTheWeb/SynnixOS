@@ -49,13 +49,13 @@ fakeroot: scripts/install_headers.bash
 	./scripts/install_headers.bash
 
 external: external/make.bash
-	cd external; ./make.bash; cd -
+	@cd external; ./make.bash; cd -
 
 init.tar: sysroot $(MP_ALL_INSTALL_TARGETS) $(shell find sysroot)
 	$(call MP_INFO,TAR	$@)
 	@cd sysroot; tar --sort=name -cf ../$@ *
 
-synnixos.iso: sysroot fakeroot init.tar snxk.elf kernel/grub.cfg
+synnixos.iso: sysroot fakeroot external init.tar snxk.elf kernel/grub.cfg
 	$(call MP_INFO,ISO	$@)
 	@mkdir -p isodir/boot/grub
 	@cp kernel/grub.cfg isodir/boot/grub
