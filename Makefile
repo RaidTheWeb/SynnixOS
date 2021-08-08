@@ -33,6 +33,8 @@ help:
 	@echo "all				build all"
 	@echo "build.mk			generate makefile for building"
 	@echo "sysroot				create sysroot and migrate executables and header files"
+	@echo "fakerootfs			migrate fake root (not exectuables) to sysroot"
+	@echo "external			build all external ports and migrate into sysroot"
 	@echo "init.tar			build initfs"
 	@echo "synnixos.iso			build ISO file"
 
