@@ -1,7 +1,7 @@
 OSCC = ~/.local/bin/x86_64-synnixos-gcc
 SYSUSR = ../../sysroot/usr/bin/
 
-CFLAGS ?= -g -static -Wl,--allow-multiple-definition
+CFLAGS ?= -g -Wl,--allow-multiple-definition -static
 CC ?= gcc
 
 local:

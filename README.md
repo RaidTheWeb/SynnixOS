@@ -15,6 +15,9 @@ And pick up a nightly build [here](https://github.com/RaidTheWeb/SynnixOS/action
 
 Latest releases are released when I upload it manually, and nightly are at 10:30am UTC everyday (which is 10:30pm at night for me).
 
+Very Nice
+    - Totally Linus Torvalds
+
 ## Requirements
 
 - Atleast 5GB is required to store the full compiled source and toolchain
