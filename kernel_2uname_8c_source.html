@@ -69,25 +69,33 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define SYNNIXOS_VERSION &quot;Null&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">char</span>* getHostname() {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// TODO: Kernel space get hostname</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;synnixos&quot;</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;sysret sys_uname(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a> *n) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (!n) <span class="keywordflow">return</span> -EINVAL;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    memset(n, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a>));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;sysname, <span class="stringliteral">&quot;SynnixOS&quot;</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;nodename, getHostname());</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;release, SYNNIXOS_VERSION);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;version, SYNNIXOS_VERSION);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    strcpy((<span class="keywordtype">char</span> *)&amp;n-&gt;machine, UNAME_ARCH);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">char</span>* getHostname() {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// pretty happy with this, maybe might add some improvements...? - @RaidTheWeb</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">struct </span><a class="code" href="structfile.html">file</a> *<a class="code" href="structfile.html">file</a> = <a class="code" href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a>(<span class="stringliteral">&quot;/etc/hostname&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a> *<a class="code" href="structmembuf__file.html">membuf_file</a> = (<span class="keyword">struct </span><a class="code" href="structmembuf__file.html">membuf_file</a>*)<a class="code" href="structfile.html">file</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">char</span>* buffer = <a class="code" href="structmembuf__file.html">membuf_file</a>-&gt;memory;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;sysret sys_uname(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a> *n) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (!n) <span class="keywordflow">return</span> -EINVAL;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    memset(n, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code" href="structutsname.html">utsname</a>));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    strcpy((<span class="keywordtype">char</span>*)&amp;n-&gt;sysname, <span class="stringliteral">&quot;SynnixOS&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    strcpy((<span class="keywordtype">char</span>*)&amp;n-&gt;nodename, getHostname());</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    strcpy((<span class="keywordtype">char</span>*)&amp;n-&gt;release, SYNNIXOS_VERSION);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    strcpy((<span class="keywordtype">char</span>*)&amp;n-&gt;version, SYNNIXOS_VERSION);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    strcpy((<span class="keywordtype">char</span>*)&amp;n-&gt;machine, UNAME_ARCH);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="afs_8h_html"><div class="ttname"><a href="fs_8h.html">fs.h</a></div><div class="ttdoc">Virtual File System headers.</div></div>
 <div class="ttc" id="akernel_2include_2snx_2string_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2string_8h.html">string.h</a></div><div class="ttdoc">Kernel Space String Helpers.</div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdoc">File struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00077">fs.h:77</a></div></div>
+<div class="ttc" id="afs_8h_html_a03ef4ce67850c7ee6073925bcb685cc2"><div class="ttname"><a href="fs_8h.html#a03ef4ce67850c7ee6073925bcb685cc2">fs_path</a></div><div class="ttdeci">struct file * fs_path(const char *filename)</div><div class="ttdoc">Get file.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8c_source.html#l00097">fs.c:97</a></div></div>
 <div class="ttc" id="akernel_2include_2snx_2syscall_8h_html"><div class="ttname"><a href="kernel_2include_2snx_2syscall_8h.html">syscall.h</a></div><div class="ttdoc">Syscall helpers.</div></div>
+<div class="ttc" id="astructmembuf__file_html"><div class="ttname"><a href="structmembuf__file.html">membuf_file</a></div><div class="ttdoc">Memory buffer file struct.</div><div class="ttdef"><b>Definition:</b> <a href="fs_8h_source.html#l00326">fs.h:326</a></div></div>
 <div class="ttc" id="astructutsname_html"><div class="ttname"><a href="structutsname.html">utsname</a></div><div class="ttdef"><b>Definition:</b> <a href="utsname_8h_source.html#l00012">utsname.h:12</a></div></div>
 <div class="ttc" id="autsname_8h_html"><div class="ttname"><a href="utsname_8h.html">utsname.h</a></div><div class="ttdoc">System name information.</div></div>
 <div class="ttc" id="aerrno_8h_html"><div class="ttname"><a href="errno_8h.html">errno.h</a></div><div class="ttdoc">Errors.</div></div>
