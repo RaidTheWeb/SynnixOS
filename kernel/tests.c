@@ -25,7 +25,7 @@ void lots_of_threads(void *message) {
 
 noreturn void test_sleepy_thread(void *_) {
     while (true) {
-        printf("sleepy thread");
+        printf("*yawn* sleepy thread"); // come on man, it was 10pm
         sleep_thread(seconds(1));
     }
 }
@@ -79,7 +79,7 @@ void srand( unsigned int seed )
 
 char* get_motd(int init_time) {
     srand(init_time);
-    int random = randn(5);
+    int random = randn(6);
     switch (random)
     {
     case 0:
@@ -97,7 +97,10 @@ char* get_motd(int init_time) {
     case 4:
         return "Never make any misteaks";
         break;
-    
+    case 5:
+        return "I'd highly recommend OSDev if you enjoy wasting hours of your time making something only you will ever use :) fun thoughts.";
+        break;
+
     default:
         return "/dev/rtw 0-0";
         break;

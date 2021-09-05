@@ -1,0 +1,38 @@
+class Car {
+	init(colour, name) {
+		this.colour = colour;
+		this.name = name;
+		this.speed = 0;
+	}
+	honk() {
+		print "Honk!";
+	}
+	accelerate() {
+		print "Press the pedal down!";
+		this.speed = this.speed + 5;
+	}
+	deccelerate() {
+		print "Press the brake pedal!";
+		if(this.speed >= 5) {
+			this.speed = this.speed - 5;
+		} else {
+			print "Slowed all the way down :0";
+			this.speed = 0;
+		}
+	}
+	readDial() {
+		print "Your " + this.name + " is driving at:";
+		print this.speed;
+	}
+	describe() {
+		print "Your " + this.name + "'s colour is " + this.colour + "!";
+	}
+}
+var lamborghini = Car("red", "Lamborghini");
+lamborghini.honk();
+lamborghini.describe();
+lamborghini.accelerate();
+lamborghini.accelerate();
+lamborghini.readDial();
+lamborghini.deccelerate();
+lamborghini.readDial();

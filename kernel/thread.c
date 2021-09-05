@@ -208,8 +208,9 @@ struct thread *thread_sched(bool irqs_disabled) {
     to = next_runnable_thread();
 
     if (!to) to = thread_idle;
-    assert(to->magic == THREAD_MAGIC);
-    assert(to->state == TS_RUNNING || to->state == TS_STARTED);
+    // TODO: fix bullshit here
+    //assert(to->magic == THREAD_MAGIC);
+    //assert(to->state == TS_RUNNING || to->state == TS_STARTED);
     return to;
 }
 
@@ -529,7 +530,9 @@ static void wake_waiting_parent_thread(void) {
 
 
 static void do_process_exit(int exit_status) {
+    // TODO: ayo fix this shit
     if (running_process->pid == 1) panic("attempted to kill init!");
+    //if(running_process->pid == 1) return;
     assert(list_empty(&running_process->threads));
     running_process->exit_status = exit_status + 1;
 
@@ -811,9 +814,6 @@ sysret sys_waitpid(pid_t pid, int *status, enum wait_options options) {
     disable_irqs();
     if (running_thread->state == TS_WAIT) {
         thread_block_irqsdisabled();
-        // rescheduled when a wait() comes in
-        // see wake_waiting_parent_thread();
-        // and trace_wake_tracer_with();
     }
     if (running_thread->state == TS_WAIT) return -EINTR;
 
@@ -860,13 +860,11 @@ sysret sys_syscall_trace(pid_t tid, int state) {
 void block_thread(list *blocked_threads) {
     DEBUG_PRINTF("** block %i\n", running_thread->tid);
 
-    // assert(running_thread->wait_node.next == 0);
 
     disable_irqs();
     running_thread->state = TS_BLOCKED;
     list_append(blocked_threads, &running_thread->wait_node);
-
-    // whoever sets the thread blocking is responsible for bring it back
+    
     thread_block_irqsdisabled();
 }
 

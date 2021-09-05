@@ -46,8 +46,9 @@ int exec(const char *stdio_file, char **argv) {
 }
 
 void run_sh_forever(const char *device) {
+    char* shell = getenv("SHELL");
     while (true) {
-        int child = exec(device, (char *[]){"/bin/sh", NULL});
+        int child = exec(device, (char *[]){shell, NULL});
         int return_code;
         while (true) {
             int pid = waitpid(child, &return_code, 0);
