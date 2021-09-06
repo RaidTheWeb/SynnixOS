@@ -25,7 +25,6 @@ int exec(const char *stdio_file, char **argv) {
         open(stdio_file, O_WRONLY);
         open(stdio_file, O_WRONLY);
 
-        printf("spawning shell...\n");
         printf("enviroment values:\n");
         printf(
             "HOME = %s\n"

@@ -241,6 +241,14 @@ build = MagpieBuild.define do
     install "sysroot/bin"
   end
 
+  target "init" do
+    depends "libc.a", "crt0.o"
+    sources "init/init.c"
+    mode :user
+    alt_dir "init-"
+    install "sysroot/"
+  end
+
   target "ld-snx.so" do
     sources [
       "linker/elf-snx.c",
