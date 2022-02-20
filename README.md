@@ -7,6 +7,8 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FRaidTheWeb%2FSynnixOS%2Fbadge&style=flat)](https://github.com/RaidTheWeb/SynnixOS/actions/workflows/build.yml)
 [![Architecture](https://img.shields.io/badge/Architecture-x86__64-blue)](https://github.com/RaidTheWeb/SynnixOS)
 
+***PROJECT IS DEFUNCT, I AM WORKING ON CWORD INSTEAD***
+
 Epic Hobby OS targeting x86_64 CPUs, it includes some hacked together functionality for most essential OSs although, with interactivity via QEMU serial0
 
 Grab the latest stable release [here](https://github.com/RaidTheWeb/SynnixOS/releases)
